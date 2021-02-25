@@ -2,9 +2,9 @@ name: PHP Composer
 
 on:
   push:
-    branches: [ master ]
+    branches: [ dev, master ]
   pull_request:
-    branches: [ master ]
+    branches: [ dev, master ]
 
 jobs:
   build:
@@ -16,6 +16,10 @@ jobs:
 
     - name: install composer
       run: composer install
+
+    - name: Yarn
+      run: yarn --ignore-engines install
+
 
     - name: code_quality
       run: |
