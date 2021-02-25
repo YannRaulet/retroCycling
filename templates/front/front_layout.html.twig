@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block navbar %}
+    <nav>
+        <ul>
+            <li><a href="{{path('front_home')}}" class="active">Accueil</a></li>
+            <li><a href="{{path('front_collection')}}">Collection</a></li>
+            <li><a href="{{path('front_blog')}}">Blog</a></li>
+            <li><a href="{{path('front_contact')}}">Contact</a></li>
+            <li><a href="{{path('front_article')}}">Article</a></li>
+        </ul>
+    </nav>
+{% endblock %}
+
+{% block footer %}
+    <footer>        
+    </footer>
+{% endblock %}

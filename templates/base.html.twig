@@ -1,19 +1,28 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
-        {% endblock %}
 
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+{# This is the base that all other views will extend #}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Retro-Cycling{% endblock %}</title>
+    {{ encore_entry_link_tags('app') }}
+</head>
+<body>
+    <header>
+    {% block navbar %}
+    {% endblock %}
+    </header>
+
+    <main>
+    {% block body %}
+    {% endblock %}
+    </main>
+
+    <footer>
+    {% block footer %}
+    {% endblock %}
+    </footer>
+    {{ encore_entry_script_tags('app') }}
+</body>
 </html>
