@@ -14,5 +14,14 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Validate composer.json and composer.lock
-      run: composer validate
+    - name: install composer
+      run: composer install
+
+    - name: code_quality
+      run: |
+        ./vendor/bin/phpcs
+        ./vendor/bin/phpstan analyse src --level max
+        ./vendor/bin/phpmd src text phpmd.xml
+    
+    - name: phpunit
+      run: bin/phpunit
