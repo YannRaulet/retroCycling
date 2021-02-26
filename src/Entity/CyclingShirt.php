@@ -37,12 +37,12 @@ class CyclingShirt
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    private ?mixed $teamInformations;
+    private mixed $teamInformations;
 
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    private ?mixed $results;
+    private mixed $results;
 
     /**
      * @ORM\OneToMany(targetEntity=Favorite::class, mappedBy="cyclingShirt")
