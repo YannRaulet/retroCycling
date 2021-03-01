@@ -1,0 +1,11 @@
+{% extends 'admin/admin_layout.html.twig' %}
+
+{% block title %}{{ parent() }} - Admin - Nouveau article{% endblock %}
+
+{% block body %}
+    <h1>Créer un article</h1>
+    <div class="page-form-edit">
+        {{ include('admin/article_form.html.twig') }}
+        <a href="{{ path('admin_articles') }}">retour sur les articles</a>
+    </div>
+{% endblock %}

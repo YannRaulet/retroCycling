@@ -1,0 +1,34 @@
+{% extends 'admin/admin_layout.html.twig' %}
+
+{% block title %}{{ parent() }} - Admin - Les articles{% endblock %}
+
+{% block body %}
+    <h1>Liste des articles</h1>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Image</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr>
+                <td>{{ article.picture }}</td>
+                <td>{{ article.name }}</td>
+                <td>
+                    <a class="btn btn-outline-dark" href="{{ path('admin_article_show', {'id': article.id}) }}" role="button">Details</a>
+                    <a class="btn btn-outline-dark" href="{{ path('admin_article_edit', {'id': article.id}) }}" role="button">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="14">Aucun article trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+        <a class="btn btn-success btn-created" href="{{ path('admin_article_new') }}" role="button">Creér un article</a>
+{% endblock %}
