@@ -1,13 +1,40 @@
 {% extends 'base.html.twig' %}
 
 {% block navbar %}
-    <nav>
-        <ul>
-            <li><a href="{{path('admin_home')}}" class="active">Accueil</a></li>
-            <li><a href="{{path('admin_collection')}}">Collection</a></li>
-            <li><a href="{{path('admin_blog')}}">Blog</a></li>
-        </ul>
+
+    <nav class="container">
+        <input type="checkbox" name="checkbox" id="check">
+        
+        <div class="nav-btn">
+            <div class="nav-links">
+                <ul class="nav-links-ul">
+                    <li class="nav-link" style="--i: .6s">
+                        <a href="{{path('admin_home')}}" class="active">Accueil</a>
+                    </li>
+                    <li class="nav-link" style="--i: .85s">
+                        <a href="{{path('admin_collection')}}">Collection</a>
+                    </li>
+                    <li class="nav-link" style="--i: 1.35s">
+                        <a href="{{path('admin_home')}}" class="logo-a"><img class="logo" src="assets/images/logo-retro.png" alt="logo-retro"></a>
+                    </li>
+                    <li class="nav-link" style="--i: 1.1s">
+                        <a href="{{path('admin_blog')}}">Blog</a>
+                    </li>
+                    <li class="nav-link" style="--i: 1.35s">
+                        <a href="{{path('front_home')}}">Retour sur le site</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="hamburger-menu-container">
+            <div class="hamburger-menu">
+                <div></div>
+                <img class="hamburger-logo" src="assets/images/logo-retro.png" alt="hamburger-logo">
+            </div>
+        </div>
     </nav>
+
 {% endblock %}
 
 {% block footer %}
