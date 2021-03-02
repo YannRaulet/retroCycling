@@ -23,10 +23,13 @@ class ArticleType extends AbstractType
             ])
             ->add('createdAt', DateType::class, [
                 'widget' => 'choice',
-                'label' => 'Créer le :',
+                'label' => 'Crée le :',
             ])
 
-            ->add('category')
+            ->add('category', null, [
+                'label' => 'Nom de la catégorie',
+                'choice_label' => 'name'
+            ])
         ;
     }
 

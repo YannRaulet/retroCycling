@@ -1,0 +1,17 @@
+{% extends 'admin/admin_layout.html.twig' %}
+
+{% block title %}{{ parent() }} - Admin - Modifier catégorie{% endblock %}
+
+{% block body %}
+<div class="page-form-edit">
+    <h1>Modifier la catégorie</h1>
+    <div class="form-edit">
+        {{ include('admin/category_form.html.twig') }}
+    </div>
+    <div class="form-edit">
+        {{ include('admin/category_delete_form.html.twig') }}
+    </div>
+    
+    <a href="{{ path('admin_categories') }}">Retour aux catégories</a>
+</div>
+{% endblock %}
