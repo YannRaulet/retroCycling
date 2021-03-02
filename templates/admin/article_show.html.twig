@@ -19,9 +19,12 @@
                 <th scope="col">Nom</th>
                 <td>{{ article.name }}</td>
             </tr>
+                <th scope="col">Catégorie</th>
+                <td>{{ article.category }}</td>
+            </tr>
             <tr>
                 <th scope="col">Date de création</th>
-                <td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ article.createdAt ? article.createdAt|date('Y-M-d') : '' }}</td>
             </tr>
         </tbody>
          <tfoot>
