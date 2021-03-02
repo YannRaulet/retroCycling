@@ -1,0 +1,18 @@
+{% extends 'admin/admin_layout.html.twig' %}
+
+{% block title %}{{ parent() }} - Admin - Modifier article{% endblock %}
+
+{% block body %}
+<div class="page-form-edit">
+    <h1>Modifier l'article</h1>
+
+    <div class="form-edit">
+        {{ include('admin/article_form.html.twig') }}
+    </div>
+    <div class="form-edit">
+        {{ include('admin/article_delete_form.html.twig') }}
+    </div>
+    
+    <a href="{{ path('admin_articles') }}">Retour sur les articles</a>
+</div>
+{% endblock %}
