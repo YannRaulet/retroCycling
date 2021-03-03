@@ -25,7 +25,7 @@ class ArticleContent
     /**
      * @ORM\Column(type="text")
      */
-    private mixed $content;
+    private string $content;
 
     /**
      * @ORM\ManyToOne(targetEntity=Article::class, inversedBy="articleContents")
