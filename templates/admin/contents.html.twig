@@ -1,0 +1,35 @@
+{% extends 'admin/admin_layout.html.twig' %}
+
+{% block title %}{{ parent() }} - Admin - Les contenus{% endblock %}
+
+{% block body %}
+    <h1>Liste des contenus</h1>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Nom de l'article</th>
+                <th scope="col">Titre</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for article_content in article_contents %}
+            <tr>
+                <td>{{ article_content.article }}</td>
+                <td>{{ article_content.title }}</td>
+                <td>
+                    <a class="btn btn-outline-dark"href="{{ path('admin_content_show', {'id': article_content.id}) }}" role="button">Détails</a>
+                    <a class="btn btn-outline-dark"href="{{ path('admin_content_edit', {'id': article_content.id}) }}" role="button">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="14">Aucun contenu trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-success btn-created" href="{{ path('admin_content_new') }}" role="button">Créer un contenu</a>
+{% endblock %}
