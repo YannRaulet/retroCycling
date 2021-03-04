@@ -31,7 +31,7 @@ class CyclingShirtType extends AbstractType
             ])
 
             ->add('results', TextareaType::class, [
-                'label' => 'Résulat notable : ',
+                'label' => 'Résultats notables : ',
             ])
         ;
     }
