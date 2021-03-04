@@ -12,6 +12,7 @@ use DateTime;
 
 /**
  * @ORM\Entity(repositoryClass=ArticleRepository::class)
+ * // We specify to the entity that we use the upload of the Vich uploader package
  * @Vich\Uploadable
  */
 class Article
@@ -27,6 +28,10 @@ class Article
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private ?string $picture = "";
+
+    //We create a new attribute to our entity, which will not be linked to a column
+    //We do not add file type data in bdd
+    //ArticlePicture only retrieves the name of the uploaded file
 
     /**
      * @Vich\UploadableField(mapping="article_picture", fileNameProperty="picture")
@@ -92,6 +97,9 @@ class Article
         return $this->articlePicture;
     }
 
+    //Creates a setter to modify at the same time as you change or load an image,
+    //the modification date which will be persisted in the database
+    //and which, therefore, will save all your changes.
     public function setArticlePicture(File $articlePicture = null): self
     {
         $this->articlePicture = $articlePicture;
