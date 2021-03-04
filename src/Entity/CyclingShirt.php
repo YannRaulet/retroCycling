@@ -37,12 +37,12 @@ class CyclingShirt
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    private mixed $teamInformations;
+    private string $teamInformations;
 
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    private mixed $results;
+    private string $results;
 
     /**
      * @ORM\OneToMany(targetEntity=Favorite::class, mappedBy="cyclingShirt")
@@ -88,7 +88,7 @@ class CyclingShirt
         return $this->cyclistName;
     }
 
-    public function setCyclistName(?string $cyclistName): self
+    public function setCyclistName(string $cyclistName): self
     {
         $this->cyclistName = $cyclistName;
 
@@ -100,7 +100,7 @@ class CyclingShirt
         return $this->teamInformations;
     }
 
-    public function setTeamInformations(?string $teamInformations): self
+    public function setTeamInformations(string $teamInformations): self
     {
         $this->teamInformations = $teamInformations;
 
@@ -112,7 +112,7 @@ class CyclingShirt
         return $this->results;
     }
 
-    public function setResults(?string $results): self
+    public function setResults(string $results): self
     {
         $this->results = $results;
 

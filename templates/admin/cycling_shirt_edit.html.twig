@@ -1,0 +1,16 @@
+{% extends 'admin/admin_layout.html.twig' %}
+
+{% block title %}{{ parent() }} - Admin - Modifier le maillot{% endblock %}
+
+{% block body %}
+<div class="page-form-edit">
+    <h1>Edit CyclingShirt</h1>
+    <div class="form-edit">
+        {{ include('admin/cycling_shirt_form.html.twig') }}
+    </div>
+    <div class="form-edit">
+        {{ include('admin/cycling_shirt_delete_form.html.twig') }}
+    </div>
+    <a href="{{ path('admin_cycling_shirts') }}">Retour aux maillots</a>
+</div>
+{% endblock %}
