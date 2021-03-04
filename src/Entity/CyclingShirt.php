@@ -6,9 +6,13 @@ use App\Repository\CyclingShirtRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use DateTime;
 
 /**
  * @ORM\Entity(repositoryClass=CyclingShirtRepository::class)
+ * @Vich\Uploadable
  */
 class CyclingShirt
 {
@@ -20,9 +24,19 @@ class CyclingShirt
     private int $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private string $picture;
+    private ?string $picture = "";
+
+    /**
+     * @Vich\UploadableField(mapping="cycling_shirt_picture", fileNameProperty="picture")
+     */
+    private ?File $cyclingShirtPicture = null;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private DateTime $updatedAt;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -64,11 +78,41 @@ class CyclingShirt
         return $this->picture;
     }
 
-    public function setPicture(string $picture): self
+    public function setPicture(?string $picture): self
     {
         $this->picture = $picture;
 
         return $this;
+    }
+
+    public function getCyclingShirtPicture(): ?File
+    {
+        return $this->cyclingShirtPicture;
+    }
+
+    public function setCyclingShirtPicture(File $cyclingShirtPicture = null): self
+    {
+        $this->cyclingShirtPicture = $cyclingShirtPicture;
+        if ($cyclingShirtPicture) {
+            $this->updatedAt = new DateTime('now');
+        }
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param mixed $updatedAt
+     */
+    public function setUpdatedAt($updatedAt): void
+    {
+        $this->updatedAt = $updatedAt;
     }
 
     public function getName(): ?string
