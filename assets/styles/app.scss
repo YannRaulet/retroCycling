@@ -6,7 +6,8 @@
     box-sizing: border-box;
 }
 
-body{
-    font-family: 'Rokkitt', serif;
-    overflow: hidden;
+:root{
+    --main-background-color: #2D4655;
+    --second-background-color : #fff;
+    --third-background-color : #B99867;
 }

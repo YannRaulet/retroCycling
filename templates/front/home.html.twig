@@ -5,12 +5,50 @@
 {% block title %}{{ parent() }} - Accueil{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <section class="background-picture-home">
+    </section>
 
-<div class="example-wrapper">
-    <h1>Accueil ✅</h1>
-</div>
+    <section class="background-picture">
+        <h1><span>Collection</span></h1>
+        <section class="accordions-pictures">
+            <div class="accordions-pictures1">
+                <h2>Années 50-60</h2>
+                <div class="accordions-section1">
+                    <img src="assets/images/Milremo.jpg" class="img img1" alt="picture1"/>
+                    <img src="assets/images/Olida-68.jpg" class="img img2" alt="picture2"/>
+                    <img src="assets/images/L'economique.jpg" class="img img3" alt="picture3"/>
+                </div>
+            </div>
+            <div class="accordions-pictures2">
+                <h2>Années 70</h2>
+                <div class="accordions-section2">
+                    <img src="assets/images/Milremo.jpg" class="img img4" alt="picture4"/>
+                    <img src="assets/images/Olida-68.jpg" class="img img5" alt="picture5"/>
+                    <img src="assets/images/L'economique.jpg" class="img img6" alt="picture6"/>
+                </div>
+            </div>
+        </section>
+        <section class="accordions-pictures">
+            <div class="accordions-pictures1">
+                <h2>Années 80</h2>
+                <div class="accordions-section1">
+                    <img src="assets/images/Milremo.jpg" class="img img1" alt="picture1"/>
+                    <img src="assets/images/Olida-68.jpg" class="img img2" alt="picture2"/>
+                    <img src="assets/images/L'economique.jpg" class="img img3" alt="picture3"/>
+                </div>
+            </div>
+            <div class="accordions-pictures2">
+                <h2>Années 90</h2>
+                <div class="accordions-section2">
+                    <img src="assets/images/Milremo.jpg" class="img img4" alt="picture4"/>
+                    <img src="assets/images/Olida-68.jpg" class="img img5" alt="picture5"/>
+                    <img src="assets/images/L'economique.jpg" class="img img6" alt="picture6"/>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <section class="articles">
+        <h1 class="articles-title"><span>A la une</span></h1>
+    </section>
 {% endblock %}
