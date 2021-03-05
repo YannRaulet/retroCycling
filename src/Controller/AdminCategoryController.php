@@ -13,11 +13,14 @@ use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * @Route("/admin", name="admin_")
+ * This controller is used to manage the Category entity for Article entity
  */
 class AdminCategoryController extends AbstractController
 {
     /**
      * @Route("/catégories", name="categories", methods={"GET"})
+     * Display the page with the all categories
+     * @return Response
      */
     public function categories(CategoryRepository $categoryRepository): Response
     {
@@ -28,6 +31,8 @@ class AdminCategoryController extends AbstractController
 
     /**
      * @Route("/catégorie/ajouter", name="category_new", methods={"GET","POST"})
+     * Display the page for add a category
+     * @return Response
      */
     public function newCategory(Request $request, EntityManagerInterface $manager): Response
     {
@@ -48,17 +53,9 @@ class AdminCategoryController extends AbstractController
     }
 
     /**
-     * @Route("/catégorie/{id}", name="category_show", methods={"GET"})
-     */
-    public function showCategory(Category $category): Response
-    {
-        return $this->render('admin/category_show.html.twig', [
-            'category' => $category,
-        ]);
-    }
-
-    /**
      * @Route("/catégory/modifier/{id}/", name="category_edit", methods={"GET","POST"})
+     * Display the page for edit a category
+     * @return Response
      */
     public function editCategory(Request $request, Category $category, EntityManagerInterface $manager): Response
     {
@@ -80,6 +77,8 @@ class AdminCategoryController extends AbstractController
 
     /**
      * @Route("/category/supprimer/{id}", name="category_delete", methods={"DELETE"})
+     * Display the page for delete a category
+     * @return Response
      */
     public function deleteCategory(Request $request, Category $category, EntityManagerInterface $manager): Response
     {

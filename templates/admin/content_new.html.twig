@@ -1,0 +1,12 @@
+{% extends 'admin/admin_layout.html.twig' %}
+
+{% block title %}{{ parent() }} - Admin - Nouveau contenu{% endblock %}
+
+{% block body %}
+    <h1>Créer un contenu</h1>
+    <div class="page-form-edit">
+        {{ include('admin/content_form.html.twig') }}
+        <a href="{{ path('admin_contents') }}">Retour aux contenus</a>
+    </div>
+
+{% endblock %}

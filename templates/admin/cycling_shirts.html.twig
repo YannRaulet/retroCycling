@@ -1,0 +1,37 @@
+{% extends 'admin/admin_layout.html.twig' %}
+
+{% block title %}{{ parent() }} - Admin - Les maillots{% endblock %}
+
+{% block body %}
+    <h1>Liste des maillots</h1>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Image du maillot</th>
+                <th>Nom du maillot</th>
+                <th>Nom du cycliste</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cycling_shirt in cycling_shirts %}
+            <tr>
+                <td>{{ cycling_shirt.picture }}</td>
+                <td>{{ cycling_shirt.name }}</td>
+                <td>{{ cycling_shirt.cyclistName }}</td>
+                <td>
+                    <a class="btn btn-outline-dark" href="{{ path('admin_cycling_shirt_show', {'id': cycling_shirt.id}) }}" role="button">Détails</a>
+                    <a class="btn btn-outline-dark"href="{{ path('admin_cycling_shirt_edit', {'id': cycling_shirt.id}) }}" role="button">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="14">Aucun maillot trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-success btn-created" href="{{ path('admin_cycling_shirt_new') }}">Créer un maillot</a>
+{% endblock %}
