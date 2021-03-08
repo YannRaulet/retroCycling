@@ -1,0 +1,14 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        article_picture:
+            # alias that allows us to access our images from the browser
+            uri_prefix: /assets/images/
+            # Path to the storage folder
+            upload_destination: '%upload_directory%'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+        cycling_shirt_picture:
+            uri_prefix: /assets/images/
+            upload_destination: '%upload_directory%'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer

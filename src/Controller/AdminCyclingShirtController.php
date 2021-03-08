@@ -13,11 +13,14 @@ use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * @Route("/admin", name="admin_")
+ * This controller is used to manage the CyclingShirt entity
  */
 class AdminCyclingShirtController extends AbstractController
 {
     /**
      * @Route("/maillots", name="cycling_shirts", methods={"GET"})
+     * Display the page with the all cycling shirts
+     * @return Response
      */
     public function cyclingShirts(CyclingShirtRepository $shirtRepository): Response
     {
@@ -28,6 +31,8 @@ class AdminCyclingShirtController extends AbstractController
 
     /**
      * @Route("/maillot/ajouter", name="cycling_shirt_new", methods={"GET","POST"})
+     * Display the page for add a cycling shirt
+     * @return Response
      */
     public function newCyclingShirt(Request $request, EntityManagerInterface $manager): Response
     {
@@ -50,6 +55,8 @@ class AdminCyclingShirtController extends AbstractController
 
     /**
      * @Route("/maillot/{id}", name="cycling_shirt_show", methods={"GET"})
+     * Displays the page view cycling shirt details
+     * @return Response
      */
     public function showCyclingShirt(CyclingShirt $cyclingShirt): Response
     {
@@ -60,6 +67,8 @@ class AdminCyclingShirtController extends AbstractController
 
     /**
      * @Route("/maillot/modifier/{id}", name="cycling_shirt_edit", methods={"GET","POST"})
+     * Display the page for edit a cycling shirt
+     * @return Response
      */
     public function editCyclingShirt(
         Request $request,
@@ -84,6 +93,8 @@ class AdminCyclingShirtController extends AbstractController
 
     /**
      * @Route("/maillot/supprimer/{id}", name="cycling_shirt_delete", methods={"DELETE"})
+     * Display the page for delete a cycling shirt
+     * @return Response
      */
     public function deleteCyclingShirt(
         Request $request,

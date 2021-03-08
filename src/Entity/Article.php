@@ -6,9 +6,14 @@ use App\Repository\ArticleRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use DateTime;
 
 /**
  * @ORM\Entity(repositoryClass=ArticleRepository::class)
+ * // We specify to the entity that we use the upload of the Vich uploader package
+ * @Vich\Uploadable
  */
 class Article
 {
@@ -20,9 +25,23 @@ class Article
     private int $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private string $picture;
+    private ?string $picture = "";
+
+    //We create a new attribute to our entity, which will not be linked to a column
+    //We do not add file type data in bdd
+    //ArticlePicture only retrieves the name of the uploaded file
+
+    /**
+     * @Vich\UploadableField(mapping="article_picture", fileNameProperty="picture")
+     */
+    private ?File $articlePicture = null;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private DateTime $updatedAt;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -66,11 +85,44 @@ class Article
         return $this->picture;
     }
 
-    public function setPicture(string $picture): self
+    public function setPicture(?string $picture): self
     {
         $this->picture = $picture;
 
         return $this;
+    }
+
+    public function getArticlePicture(): ?File
+    {
+        return $this->articlePicture;
+    }
+
+    //Creates a setter to modify at the same time as you change or load an image,
+    //the modification date which will be persisted in the database
+    //and which, therefore, will save all your changes.
+    public function setArticlePicture(File $articlePicture = null): self
+    {
+        $this->articlePicture = $articlePicture;
+        if ($articlePicture) {
+            $this->updatedAt = new DateTime('now');
+        }
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param mixed $updatedAt
+     */
+    public function setUpdatedAt($updatedAt): void
+    {
+        $this->updatedAt = $updatedAt;
     }
 
     public function getName(): ?string

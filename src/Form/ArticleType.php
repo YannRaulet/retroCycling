@@ -8,19 +8,24 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class ArticleType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('picture', TextType::class, [
-                'label' => 'Nom de l\'image',
+            ->add('articlePicture', VichFileType::class, [
+                'required'      => false,
+                'allow_delete'  => false,
+                'download_uri' => false,
+                'attr' => ['placeholder' => 'Choisir un fichier'],
             ])
 
             ->add('name', TextType::class, [
                 'label' => 'Nom de l\'article',
             ])
+
             ->add('createdAt', DateType::class, [
                 'widget' => 'choice',
                 'label' => 'Crée le :',
