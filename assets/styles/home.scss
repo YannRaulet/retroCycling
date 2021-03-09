@@ -8,13 +8,6 @@
     z-index: 2;
 }
 
-.background-picture{
-    background-image: url("../images/nordwood.png");
-    width: 100%;
-    height: auto;
-    z-index: 1;
-}
-
 h1{
     text-align: center;
     margin-bottom: 5%;
@@ -161,7 +154,7 @@ h2 {
 /* PC version */
 @media (min-width: 1200px) {
     .background-picture-home {
-        height: 50vh;
+        height: 35vh;
     }
 
     h1 span{

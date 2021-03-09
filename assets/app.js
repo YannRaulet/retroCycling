@@ -10,7 +10,7 @@ import './styles/app.scss';
 import './styles/crud.scss';
 import './styles/navBar.scss';
 import './styles/home.scss';
-
+import './styles/collection.scss';
 
 // start the Stimulus application
 require('bootstrap');

@@ -63,6 +63,11 @@ class CyclingShirt
      */
     private collection $favorites;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private string $years;
+
     public function __construct()
     {
         $this->favorites = new ArrayCollection();
@@ -189,6 +194,18 @@ class CyclingShirt
                 $favorite->setCyclingShirt(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getYears(): ?string
+    {
+        return $this->years;
+    }
+
+    public function setYears(string $years): self
+    {
+        $this->years = $years;
 
         return $this;
     }
