@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\CyclingShirt;
+use App\Repository\CyclingShirtRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -20,14 +22,6 @@ class FrontController extends AbstractController
         return $this->render('front/home.html.twig');
     }
 
-     /**
-     * @Route("/collection", name="collection")
-     */
-    public function collection(): Response
-    {
-        return $this->render('front/collection.html.twig');
-    }
-
     /**
      * @Route("/blog", name="blog")
      */
@@ -36,7 +30,7 @@ class FrontController extends AbstractController
         return $this->render('front/blog.html.twig');
     }
 
-     /**
+    /**
      * @Route("/article", name="article")
      */
     public function article(): Response

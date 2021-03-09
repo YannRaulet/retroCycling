@@ -1,0 +1,19 @@
+{# This is the home page that will display the cycling shirts's for 70's collection #}
+
+{% extends 'front/front_layout.html.twig' %}
+
+{% block title %}{{ parent() }} - Maillot{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="background-picture-home"></div>
+    </section>
+
+    <section>
+        <h1>{{ cyclingShirt70.name }}</h1>
+        <img class="cycling-shirt-picture" src="/assets/images/uploads/{{ cyclingShirt70.picture }}"></a>
+        <h2>Porté par : <br> {{ cyclingShirt70.cyclistName }}</h2>
+        <h2>informations sur l'équipe : <br>{{ cyclingShirt70.teamInformations }}</h2>
+        <h2>Résultats notables : <br>{{ cyclingShirt70.results }}</h2>
+    </section>>
+{% endblock %}
