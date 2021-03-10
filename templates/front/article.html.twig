@@ -1,14 +1,19 @@
+{# This is the page that will display the details of an article #}
+
 {% extends 'front/front_layout.html.twig' %}
 
-{% block title %}{{ parent() }} - Article{% endblock %}
+{% block title %}{{ parent() }} - Article - {{ article.name }}{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Article ✅</h1>
-</div>
+<section class="background-picture-home">
+</section>
+    <h1><span>{{ article.name }}</span></h1>
+        <article class="article-box">
+            {% for articleContent in articleContents %}
+            <aside class="article-content">
+                <h2>{{ articleContent.title }}</h2>
+                    <p>{{ articleContent.content }}</p>
+            </aside>
+            {% endfor %}
+        </article>
 {% endblock %}

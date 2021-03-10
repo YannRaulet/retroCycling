@@ -5,6 +5,9 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
+use App\Repository\ArticleRepository;
+use App\Repository\ArticleContentRepository;
 
 /**
  * Creates views that allow users to see the different produc
@@ -20,7 +23,7 @@ class FrontController extends AbstractController
         return $this->render('front/home.html.twig');
     }
 
-     /**
+    /**
      * @Route("/collection", name="collection")
      */
     public function collection(): Response
@@ -30,18 +33,32 @@ class FrontController extends AbstractController
 
     /**
      * @Route("/blog", name="blog")
+     * This controler takes all articles and posters in the blog
+     * @return Response
      */
-    public function blog(): Response
+    public function blog(ArticleRepository $articleRepository): Response
     {
-        return $this->render('front/blog.html.twig');
+        return $this->render('front/blog.html.twig', [
+            'articles' => $articleRepository->findAll(),
+        ]);
     }
 
-     /**
-     * @Route("/article", name="article")
+    /**
+     * @Route("/article/{id<^[0-9]+$>}", name="article")
+     * This controller displays a blog article and all are content
+     * @return Response
      */
-    public function article(): Response
-    {
-        return $this->render('front/article.html.twig');
+    public function article(
+        ArticleRepository $articleRepository,
+        ArticleContentRepository $contentRepository,
+        int $id
+    ): Response {
+        return $this->render('front/article.html.twig', [
+            'article' => $articleRepository->findOneBy(
+                ['id' => $id]
+            ),
+            'articleContents' => $contentRepository->findAll(),
+        ]);
     }
 
     /**
