@@ -39,7 +39,7 @@ class FrontController extends AbstractController
 
     /**
      * @Route("/article/{id<^[0-9]+$>}", name="article")
-     * This controller displays a blog article and all are content
+     * This controller displays a blog article and all its content
      * @return Response
      * @Route("/article", name="article")
      */
