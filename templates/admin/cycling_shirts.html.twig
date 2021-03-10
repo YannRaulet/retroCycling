@@ -10,6 +10,7 @@
             <tr>
                 <th>Image du maillot</th>
                 <th>Nom du maillot</th>
+                <th>Années</th>
                 <th>Nom du cycliste</th>
                 <th>Actions</th>
             </tr>
@@ -19,6 +20,7 @@
             <tr>
                 <td><img src="/assets/images/uploads/{{ cycling_shirt.picture }}"></td>
                 <td>{{ cycling_shirt.name }}</td>
+                <td>{{ cycling_shirt.years }}</td>
                 <td>{{ cycling_shirt.cyclistName }}</td>
                 <td>
                     <a class="btn btn-outline-dark" href="{{ path('admin_cycling_shirt_show', {'id': cycling_shirt.id}) }}" role="button">Détails</a>
