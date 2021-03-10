@@ -1,0 +1,141 @@
+/* Mobile version */
+
+.blog-article {
+    display: flex;
+    flex-direction: column;
+}
+
+.bloc-article {
+    background-color: var(--main-background-color);
+    width: 85%;
+    height: 48vh;
+    margin: auto;
+    margin-top: 4%;
+    padding: 2%;
+    border-radius: 5px;
+    box-shadow: 6px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.img-article {
+    width: 80%;
+    margin: auto;
+    box-shadow: 6px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.title-article {
+    color: var(--third-background-color);
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 7%;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.detail-article {
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.description-article {
+    display: flex;
+    justify-content: space-around;
+    margin: 6% 0% 2% 0%;
+}
+
+.elipse {
+    width: 12px;
+    height: 12px;
+    background-color: var(--third-background-color);
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 3px;
+}
+
+.btn-article {
+    background-color: var(--third-background-color);
+    color: black;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 30%;
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+}
+
+/* Tablet version */
+@media (min-width: 600px) {
+    .bloc-article {
+        height: 64vh;
+    }
+
+    .btn-article {
+        width: 20%;
+    }
+
+    .title-article {
+        font-size: 1.8rem;
+       
+    }
+    
+    .detail-article {
+        font-size: 1.5rem;
+    }
+}
+
+/* Tablet - PC version */
+@media (min-width: 1024px) {
+    .blog-article {
+        width: 90%;
+        height: auto;
+        margin: 30px auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 400px);
+        justify-content: center;
+        grid-gap: 50px;
+    }
+    
+    .bloc-article {
+        width: 400px;
+        height: 36vh;   
+    }
+
+    .description-article {
+        margin: 8% 0% 2% 0%;
+    }
+
+    .btn-article {
+        width: 30%;
+        margin-top: 30px;
+        font-size: 1.5rem;
+    }
+
+    .elipse {
+        width: 16px;
+        height: 16px;
+    }
+
+    .title-article {
+        font-size: 1.8rem;
+    }
+
+    .detail-article {
+        font-size: 1.5rem;
+    }
+}
+
+/* Large PC */
+@media (min-width: 1200px) {
+    .blog-article {
+        width: 90%;
+        height: auto;
+        margin: 30px auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 500px);
+        justify-content: center;
+        grid-gap: 70px;
+    }
+    
+    .bloc-article {
+        width: 500px;
+        height: 100vh;
+    }
+}

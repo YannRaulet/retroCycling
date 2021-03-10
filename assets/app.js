@@ -10,6 +10,8 @@ import './styles/app.scss';
 import './styles/crud.scss';
 import './styles/navBar.scss';
 import './styles/home.scss';
+import './styles/blog.scss';
+import './styles/article.scss';
 import './styles/collection.scss';
 import './styles/cyclingShirt.scss';
 
