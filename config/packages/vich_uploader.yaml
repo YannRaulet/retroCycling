@@ -8,7 +8,11 @@ vich_uploader:
             # Path to the storage folder
             upload_destination: '%upload_directory%'
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
-        cycling_shirt_picture:
+        cycling_shirt_picture_front:
+            uri_prefix: /assets/images/
+            upload_destination: '%upload_directory%'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+        cycling_shirt_picture_back:
             uri_prefix: /assets/images/
             upload_destination: '%upload_directory%'
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer

@@ -26,12 +26,23 @@ class CyclingShirt
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private ?string $picture = "";
+    private ?string $pictureFront = "";
 
     /**
-     * @Vich\UploadableField(mapping="cycling_shirt_picture", fileNameProperty="picture")
+     * @Vich\UploadableField(mapping="cycling_shirt_picture_front", fileNameProperty="pictureFront")
      */
-    private ?File $cyclingShirtPicture = null;
+    private ?File $shirtPictureFront = null;
+
+     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private ?string $pictureBack = "";
+
+    /**
+     * @Vich\UploadableField(mapping="cycling_shirt_picture_back", fileNameProperty="pictureBack")
+     */
+    private ?File $shirtPictureBack = null;
+
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
@@ -78,27 +89,53 @@ class CyclingShirt
         return $this->id;
     }
 
-    public function getPicture(): ?string
+    public function getPictureFront(): ?string
     {
-        return $this->picture;
+        return $this->pictureFront;
     }
 
-    public function setPicture(?string $picture): self
+    public function setPictureFront(?string $pictureFront): self
     {
-        $this->picture = $picture;
+        $this->pictureFront = $pictureFront;
 
         return $this;
     }
 
-    public function getCyclingShirtPicture(): ?File
+    public function getShirtPictureFront(): ?File
     {
-        return $this->cyclingShirtPicture;
+        return $this->shirtPictureFront;
     }
 
-    public function setCyclingShirtPicture(File $cyclingShirtPicture = null): self
+    public function setShirtPictureFront(File $shirtPictureFront = null): self
     {
-        $this->cyclingShirtPicture = $cyclingShirtPicture;
-        if ($cyclingShirtPicture) {
+        $this->shirtPictureFront = $shirtPictureFront;
+        if ($shirtPictureFront) {
+            $this->updatedAt = new DateTime('now');
+        }
+        return $this;
+    }
+
+    public function getPictureBack(): ?string
+    {
+        return $this->pictureBack;
+    }
+
+    public function setPictureBack(?string $pictureBack): self
+    {
+        $this->pictureBack = $pictureBack;
+
+        return $this;
+    }
+
+    public function getShirtPictureBack(): ?File
+    {
+        return $this->shirtPictureBack;
+    }
+
+    public function setShirtPictureBack(File $shirtPictureBack = null): self
+    {
+        $this->shirtPictureBack = $shirtPictureBack;
+        if ($shirtPictureBack) {
             $this->updatedAt = new DateTime('now');
         }
         return $this;
