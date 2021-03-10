@@ -2,12 +2,11 @@
 
 namespace App\Controller;
 
-use App\Entity\CyclingShirt;
-use App\Repository\CyclingShirtRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use App\Entity\Article;
 use App\Repository\ArticleRepository;
 use App\Repository\ArticleContentRepository;
 
@@ -45,13 +44,14 @@ class FrontController extends AbstractController
     public function article(
         ArticleRepository $articleRepository,
         ArticleContentRepository $contentRepository,
-        int $id
+        int $id,
+        Article $article
     ): Response {
         return $this->render('front/article.html.twig', [
             'article' => $articleRepository->findOneBy(
                 ['id' => $id]
             ),
-            'articleContents' => $contentRepository->findAll(),
+            'articleContents' => $contentRepository->findBy(['article' => $article]),
         ]);
     }
 
