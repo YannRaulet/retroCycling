@@ -1,4 +1,4 @@
-{# This is the home page that will display the cycling shirts's for 70's collection #}
+{# This is the home page that will display the cycling shirts's for 90's collection #}
 
 {% extends 'front/front_layout.html.twig' %}
 
@@ -10,10 +10,24 @@
     </section>
 
     <section>
-        <h1>{{ cyclingShirt90.name }}</h1>
-        <img class="cycling-shirt-picture" src="/assets/images/uploads/{{ cyclingShirt90.picture }}"></a>
-        <h2>Porté par : <br> {{ cyclingShirt90.cyclistName }}</h2>
-        <h2>informations sur l'équipe : <br>{{ cyclingShirt90.teamInformations }}</h2>
-        <h2>Résultats notables : <br>{{ cyclingShirt90.results }}</h2>
-    </section>>
+        <div class="shirt-container">
+            <img class="shirt-picture" src="/assets/images/uploads/{{ cyclingShirt90.picture }}" alt="cycling shirt picture"></a>
+        </div>
+        <h2 class="shirt-description">{{ cyclingShirt90.name }}</h2>
+    </section>
+
+    <section>
+        <h2 class="shirt-description">Porté par</h2>
+        <p class="shirt-description-p">{{ cyclingShirt90.cyclistName }}</p>
+    </section>
+
+    <section>
+        <h2 class="shirt-description">informations sur l'équipe</h2>
+        <p class="shirt-description-p">{{ cyclingShirt90.teamInformations }}</p>
+    </section>
+
+    <section>
+        <h2 class="shirt-description">Résultats notables</h2>
+        <p class="shirt-description-p">{{ cyclingShirt90.results }}</p>
+    </section>
 {% endblock %}

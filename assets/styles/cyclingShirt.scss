@@ -1,0 +1,17 @@
+.shirt-container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.shirt-picture{
+    width: 60%;
+    height: auto;
+    margin:auto;
+    border: 10px solid rgba(255,255,255, 0.5);
+    box-sizing: border-box;
+}
+
+.shirt-description, .shirt-description-p {
+    text-align: center;
+}
