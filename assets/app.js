@@ -14,6 +14,5 @@ import './styles/blog.scss';
 import './styles/article.scss';
 import './styles/collection.scss';
 
-
 // start the Stimulus application
 require('bootstrap');
