@@ -2,18 +2,45 @@
 
 {% extends 'front/front_layout.html.twig' %}
 
-{% block title %}{{ parent() }} - Article - {{ article.name }}{% endblock %}
+{% block title %}{{ parent() }}-Article-{{ article.name }}{% endblock %}
 
 {% block body %}
 <section class="background-picture-home">
 </section>
-    <h1><span>{{ article.name }}</span></h1>
         <article class="article-box">
+            <h1 class="collection-title"><span>{{ article.name }}</span></h1>
             {% for articleContent in articleContents %}
-            <aside class="article-content">
-                <h2>{{ articleContent.title }}</h2>
-                    <p>{{ articleContent.content }}</p>
-            </aside>
+                <aside class="article-content">
+                    <h2 class="article-title-h2">{{ articleContent.title }}</h2>
+                        <p>{{ articleContent.content }}</p>
+                </aside>
             {% endfor %}
+                    <h3 class="article-title-h3">Partager</h3>
+                        <div class="container-social">
+                            <button class="btn btn-share share_twitter" data-url="http://127.0.0.1:8000/{{ article.id }}">
+                                <img class="logo-share" src="/assets/images/logo-twitter.png">
+                                Partager sur twitter
+                            </button>
+                            <button class="btn btn-share share_facebook" data-url="http://127.0.0.1:8000/{{ article.id }}">
+                                <img class="logo-share" src="/assets/images/logo-facebook.png">
+                                Partager sur facebook
+                            </button>
+                            <button class="btn  btn-share share_gplus" data-url="http://127.0.0.1:8000/{{ article.id }}">
+                                <img class="logo-share" src="/assets/images/logo-google.png">
+                                Partager sur google+
+                            </button>
+                            <button class="btn btn-share share_linkedin" data-url="http://127.0.0.1:8000/{{ article.id }}">
+                                <img class="logo-share" src="/assets/images/logo-linkedin.png">
+                                Partager sur linkedin
+                            </button>
+                        </div>
+                        <div class="separateur">
+                            <img class="d-block w-100" src="/assets/images/separateur.png">
+                        </div>
+                    <h3 class="article-title-h3">Commentaires</h3>
         </article>
+        {% block javascript %}
+            {{ parent() }}
+            {{ encore_entry_script_tags('social') }}
+        {% endblock %}
 {% endblock %}

@@ -9,7 +9,7 @@
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Rokkitt:wght@600&display=swap" rel="stylesheet"> 
-    <title>{% block title %}Retro-Cycling{% endblock %}</title>
+    <title>{% block title %}Retro Cycling{% endblock %}</title>
     {{ encore_entry_link_tags('app') }}
 </head>
 <body>
@@ -27,6 +27,8 @@
     {% block footer %}
     {% endblock %}
     </footer>
-    {{ encore_entry_script_tags('app') }}
+    {% block javascript %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
 </body>
 </html>
