@@ -15,7 +15,7 @@
         {% for cyclingShirt in cyclingShirts80 %}
             <div class="cycling-shirt-container">
                 <div class="cycling-shirt-hover">
-                    <a href="{{ path('front_shirt_cycling80', { id : cyclingShirt.id }) }}"><img class="cycling-shirt-picture" src="/assets/images/uploads/{{ cyclingShirt.picture }}" alt="cycling shirt picture"></a>
+                    <a href="{{ path('front_shirt_cycling80', { id : cyclingShirt.id }) }}"><img class="cycling-shirt-picture" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="cycling shirt picture"></a>
                     <div class="overlay overlayFade">
                         <a href="{{ path('front_shirt_cycling80', { id : cyclingShirt.id }) }}"><div class="text">Voir >></div></a>
                     </div>

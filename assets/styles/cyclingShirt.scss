@@ -1,17 +1,130 @@
-.shirt-container {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-}
-
-.shirt-picture{
-    width: 60%;
-    height: auto;
-    margin:auto;
-    border: 10px solid rgba(255,255,255, 0.5);
-    box-sizing: border-box;
-}
-
 .shirt-description, .shirt-description-p {
     text-align: center;
+}
+
+.shirt-description {
+    margin-top: 3rem;
+    font-size: 2rem;
+}
+
+.card-wrapper {
+    width: 15rem;
+    margin: auto;
+}
+
+img {
+    width: 100%;
+    display: block;
+}
+
+.img-display {
+    overflow: hidden;
+}
+
+.img-showcase {
+    display: flex;
+    width: 100%;
+    transition: all 0.3s ease-in-out;
+}
+
+.img-showcase img {
+    min-width: 100%;
+}
+
+.img-select {
+    display: flex;
+}
+
+.img-item {
+    width: 60%;
+}
+
+.img-item:nth-child(1) {
+    margin: 0.2rem 0.2rem 0 0;
+}
+
+.img-item:nth-child(2) {
+    margin-top: 0.2rem;
+}
+
+.img-item:hover {
+    opacity: 0.8;
+}
+
+.shirt-details-hr {
+    width: 70%;
+    margin: auto;
+    padding-bottom: 5%;
+}
+
+/* Tablet version */
+@media (min-width: 600px) {
+    .card-wrapper{
+        width: 25rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .shirt-details-hr {
+        width: 50%;
+    }
+
+    .card-wrapper {
+        width: 35rem;
+        position: relative;
+    }
+
+    .img-display {
+        overflow: hidden;
+        width: 100%;
+        height: 46rem;
+    }
+
+    .img-showcase {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .img-select {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        left: -27%;
+        top: 25%;
+    }
+
+    .img-item {
+        width: 60%;
+    }
+}
+
+/* Tablet - PC version */
+@media (min-width: 1600px) {
+    .card-wrapper {
+        width: 35rem;
+        position: relative;
+    }
+
+    .img-display {
+        overflow: hidden;
+        width: 100%;
+        height: 46rem;
+    }
+
+    .img-showcase {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .img-select {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        left: -27%;
+        top: 25%;
+    }
+
+    .img-item {
+        width: 60%;
+    }
 }
