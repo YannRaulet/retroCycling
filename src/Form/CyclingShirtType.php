@@ -16,14 +16,14 @@ class CyclingShirtType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('cyclingShirtPictureFront', VichFileType::class, [
+            ->add('shirtPictureFront', VichFileType::class, [
                 'required'      => false,
                 'allow_delete'  => false,
                 'download_uri' => false,
                 'attr' => ['placeholder' => 'Choisir un fichier'],
             ])
 
-            ->add('cyclingShirtPictureBack', VichFileType::class, [
+            ->add('shirtPictureBack', VichFileType::class, [
                 'required'      => false,
                 'allow_delete'  => false,
                 'download_uri' => false,

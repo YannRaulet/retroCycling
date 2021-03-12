@@ -10,24 +10,50 @@
     </section>
 
     <section>
-        <div class="shirt-container">
-            <img class="shirt-picture" src="/assets/images/uploads/{{ cyclingShirt80.pictureFront }}" alt="cycling shirt picture"></a>
-        </div>
         <h2 class="shirt-description">{{ cyclingShirt80.name }}</h2>
+        <hr class="shirt-details-hr">
+        <div class = "card-wrapper">
+            <div class = "img-display">
+                <div class = "img-showcase">
+                    <img src="/assets/images/uploads/{{ cyclingShirt80.pictureFront }}" alt = "pictureFront">
+                    <img src="/assets/images/uploads/{{ cyclingShirt80.pictureBack }}" alt = "pictureBack">
+                </div>
+            </div>
+            <div class = "img-select">
+                <div class = "img-item">
+                <a href = "#" data-id = "1">
+                    <img class="img" src="/assets/images/uploads/{{ cyclingShirt80.pictureFront }}" alt = "pictureFront">
+                </a>
+                </div>
+                <div class = "img-item">
+                <a href = "#" data-id = "2">
+                    <img src="/assets/images/uploads/{{ cyclingShirt80.pictureBack }}"  alt = "pictureBack">
+                </a>
+                </div>
+            </div>
+        </div>
     </section>
 
     <section>
         <h2 class="shirt-description">Porté par</h2>
+        <hr class="shirt-details-hr">
         <p class="shirt-description-p">{{ cyclingShirt80.cyclistName }}</p>
     </section>
 
     <section>
         <h2 class="shirt-description">informations sur l'équipe</h2>
+        <hr class="shirt-details-hr">
         <p class="shirt-description-p">{{ cyclingShirt80.teamInformations }}</p>
     </section>
 
     <section>
         <h2 class="shirt-description">Résultats notables</h2>
+        <hr class="shirt-details-hr">
         <p class="shirt-description-p">{{ cyclingShirt80.results }}</p>
     </section>
+
+    {% block javascript %}
+        {{parent()}}
+        {{ encore_entry_script_tags('switchCyclingShirt') }}
+    {% endblock %}
 {% endblock %}
