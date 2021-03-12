@@ -8,7 +8,8 @@
     <table class="table table-hover">
         <thead>
             <tr>
-                <th>Image du maillot</th>
+                <th>Image avant du maillot</th>
+                <th>Image arrière du maillot</th>
                 <th>Nom du maillot</th>
                 <th>Années</th>
                 <th>Nom du cycliste</th>
@@ -18,7 +19,8 @@
         <tbody>
         {% for cycling_shirt in cycling_shirts %}
             <tr>
-                <td><img src="/assets/images/uploads/{{ cycling_shirt.picture }}"></td>
+                <td><img src="/assets/images/uploads/{{ cycling_shirt.pictureFront }}"></td>
+                <td><img src="/assets/images/uploads/{{ cycling_shirt.pictureBack }}"></td>
                 <td>{{ cycling_shirt.name }}</td>
                 <td>{{ cycling_shirt.years }}</td>
                 <td>{{ cycling_shirt.cyclistName }}</td>
