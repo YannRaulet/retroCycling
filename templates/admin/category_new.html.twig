@@ -3,9 +3,9 @@
 {% block title %}{{ parent() }}-Admin-Nouvelle catégorie{% endblock %}
 
 {% block body %}
-    <h1>Creér une catégorie</h1>
+    <h1 class="title-crud">Creér une catégorie</h1>
     <div class="page-form-edit">
-        {{ include('admin/category_form.html.twig') }}
+        {{ include('admin/category_form.html.twig', { button_label: 'Créer'}) }}
         <a href="{{ path('admin_categories') }}">Retour aux catégories</a>
     </div>
 {% endblock %}

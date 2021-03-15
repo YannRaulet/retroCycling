@@ -3,9 +3,9 @@
 {% block title %}{{ parent() }}-Admin-Nouveau maillot{% endblock %}
 
 {% block body %}
-    <h1>Ajouter un maillot</h1>
+    <h1 class="title-crud">Ajouter un maillot</h1>
     <div class="page-form-edit">
-        {{ include('admin/cycling_shirt_form.html.twig') }}
-        <a href="{{ path('admin_cycling_shirts') }}">Retour au maillott</a>
+        {{ include('admin/cycling_shirt_form.html.twig', { button_label: 'Créer'}) }}
+        <a href="{{ path('admin_cycling_shirts') }}">Retour aux maillot</a>
     </div>
 {% endblock %}
