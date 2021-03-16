@@ -22,6 +22,11 @@
     box-shadow: 6px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
+.picture-article {
+    height: 175px;
+    object-fit: cover;
+}
+
 .title-article {
     color: var(--third-background-color);
     text-align: center;
@@ -79,6 +84,11 @@
     .detail-article {
         font-size: 1.5rem;
     }
+
+    .picture-article {
+        height: 350px;
+        object-fit: cover;
+    }
 }
 
 /* Tablet - PC version */
@@ -95,7 +105,12 @@
     
     .bloc-article {
         width: 400px;
-        height: 36vh;   
+        height: 40vh;   
+    }
+
+    .picture-article {
+        height: 260px;
+        object-fit: cover;
     }
 
     .description-article {

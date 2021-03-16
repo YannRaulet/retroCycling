@@ -21,7 +21,7 @@ class FrontController extends AbstractController
      * @Route("/", name="home")
      * Displays the page showing cycling shirts from each categories
      */
-    public function homeCollection5060(CyclingShirtRepository $shirtRepository): Response
+    public function homeCollection(CyclingShirtRepository $shirtRepository): Response
     {
         return $this->render('front/home.html.twig', [
             'cyclingShirts50_60' => $shirtRepository->findBy(

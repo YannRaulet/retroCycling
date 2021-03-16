@@ -14,17 +14,17 @@ class ArticleContentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('article', null, [
+                'label' => 'Nom de l\'article',
+                'choice_label' => 'name'
+            ])
+
             ->add('title', TextType::class, [
                 'label' => 'Titre de l\'article',
             ])
 
             ->add('content', TextareaType::class, [
                 'label' => 'Le contenu',
-            ])
-
-            ->add('article', null, [
-                'label' => 'Nom de l\'article',
-                'choice_label' => 'name'
             ])
         ;
     }

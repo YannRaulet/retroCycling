@@ -3,7 +3,8 @@
 {% block title %}{{ parent() }}-Admin-Les maillots{% endblock %}
 
 {% block body %}
-    <h1>Liste des maillots</h1>
+    <h1 class="title-crud">Liste des maillots</h1>
+    <a class="btn btn-success btn-created" href="{{ path('admin_cycling_shirt_new') }}">Créer un maillot</a>
 
     <table class="table table-hover">
         <thead>
@@ -36,6 +37,4 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a class="btn btn-success btn-created" href="{{ path('admin_cycling_shirt_new') }}">Créer un maillot</a>
 {% endblock %}

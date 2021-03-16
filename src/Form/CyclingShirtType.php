@@ -17,6 +17,7 @@ class CyclingShirtType extends AbstractType
     {
         $builder
             ->add('shirtPictureFront', VichFileType::class, [
+                'label' => 'Maillot face avant',
                 'required'      => false,
                 'allow_delete'  => false,
                 'download_uri' => false,
@@ -24,6 +25,7 @@ class CyclingShirtType extends AbstractType
             ])
 
             ->add('shirtPictureBack', VichFileType::class, [
+                'label' => 'Maillot face arrière',
                 'required'      => false,
                 'allow_delete'  => false,
                 'download_uri' => false,
