@@ -71,11 +71,11 @@
     .overlay {
         position: absolute;
         opacity: 0;
-        transition:all .6s ease-in-out;
+        transition:all .4s ease-in-out;
     }
 
     .cycling-shirt-hover:hover .overlay, .cycling-shirt-hover:hover .overlayFade {
-        opacity: 1;
+        opacity: 0.8;
         background: linear-gradient(to top, #535252, transparent);
     }
 }
