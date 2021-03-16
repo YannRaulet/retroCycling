@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use DateTime;
 
+
 /**
  * @ORM\Entity(repositoryClass=CyclingShirtRepository::class)
  * @Vich\Uploadable

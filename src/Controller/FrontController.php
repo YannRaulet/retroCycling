@@ -9,19 +9,35 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Article;
 use App\Repository\ArticleRepository;
 use App\Repository\ArticleContentRepository;
+use App\Repository\CyclingShirtRepository;
+
 
 /**
- * Creates views that allow users to see the different produc
+ * Creates views that allow users to see the three last cycling shirts in each  category
  * @Route(name="front_")
  */
 class FrontController extends AbstractController
 {
     /**
      * @Route("/", name="home")
+     * Displays the page showing cycling shirts from each categories
      */
-    public function home(): Response
+    public function homeCollection5060(CyclingShirtRepository $shirtRepository): Response
     {
-        return $this->render('front/home.html.twig');
+        return $this->render('front/home.html.twig', [
+            'cyclingShirts50_60' => $shirtRepository->findBy(
+                ['years' => 'Années 50-60'],
+                ['id' => 'DESC'],3),
+            'cyclingShirts70' => $shirtRepository->findBy(
+                ['years' => 'Années 70'],
+                ['id' => 'DESC'],3),
+            'cyclingShirts80' => $shirtRepository->findBy(
+                ['years' => 'Années 80'],
+                ['id' => 'DESC'],3),
+            'cyclingShirts90' => $shirtRepository->findBy(
+                ['years' => 'Années 90'],
+                ['id' => 'DESC'],3),
+        ]);
     }
 
     /**
