@@ -15,7 +15,13 @@ class ArticleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('category', null, [
+                'label' => 'Nom de la catégorie',
+                'choice_label' => 'name'
+            ])
+
             ->add('articlePicture', VichFileType::class, [
+                'label' => 'Image de l\'article',
                 'required'      => false,
                 'allow_delete'  => false,
                 'download_uri' => false,
@@ -29,11 +35,6 @@ class ArticleType extends AbstractType
             ->add('createdAt', DateType::class, [
                 'widget' => 'choice',
                 'label' => 'Crée le :',
-            ])
-
-            ->add('category', null, [
-                'label' => 'Nom de la catégorie',
-                'choice_label' => 'name'
             ])
         ;
     }
