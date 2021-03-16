@@ -56,6 +56,7 @@
     margin: auto;
     width: 90%;
     margin-top: 8%;
+    margin-bottom: 8%;
 }
 
 /* Tablet - PC version */
@@ -68,11 +69,24 @@
     .btn-share {
         font-size: 1.2rem;
     }
+
+    .separateur {
+        width: 70%;
+    }
 }
 
 /* Large PC */
 @media (min-width: 1200px) {
     .btn-share {
         width: 50%;
+    }
+}
+
+/* Large PC */
+@media (min-width: 1600px) {
+    .separateur {
+        width: 50%;
+        margin-top: 4%;
+        margin-bottom: 4%;
     }
 }
