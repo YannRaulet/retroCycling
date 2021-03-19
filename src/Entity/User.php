@@ -28,7 +28,6 @@ class User implements UserInterface
      */
     private string $email;
 
-
      /**
      * @ORM\Column(type="string", length=255, nullable=false)
      * @Assert\NotBlank()
