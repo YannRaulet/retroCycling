@@ -1,0 +1,41 @@
+.login-h1 {
+    text-align: center;
+    margin: 40% 0 10% 0;
+}
+
+.login-form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+}
+.login-container-btn {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
+.registrer-login-btn {
+    width: 8rem;
+    height: auto;
+    margin: 10% 10% 0 0;
+}
+
+.login-btn {
+    width: 8rem;
+    height: auto;
+    margin-top: 10%;
+}
+
+@media (min-width: 600px) {
+    .login-form {
+        width: 50%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .login-form {
+        width: 30%;
+    }
+}
