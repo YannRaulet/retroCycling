@@ -1,6 +1,9 @@
-.login-h1 {
-    text-align: center;
-    margin: 40% 0 10% 0;
+.logo-connexion {
+    width: 40%;
+    height: auto;
+    margin: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
 
 .login-form {
@@ -9,31 +12,90 @@
     flex-direction: column;
     width: 80%;
     margin: auto;
+    margin-bottom: 3%;
 }
 .login-container-btn {
     display: flex;
-    justify-content: center;
+    align-items: center;
     margin: auto;
-}
-
-.registrer-login-btn {
-    width: 8rem;
-    height: auto;
-    margin: 10% 10% 0 0;
+    margin-top: 6%;
 }
 
 .login-btn {
     width: 8rem;
-    height: auto;
-    margin-top: 10%;
+    height: 3rem;
+    background: rgba(185, 152, 103, 0.72);
+    color: black;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin: auto;
+    border-radius: 50px;
 }
 
+.login-btn:hover {
+    background: rgb(185, 152, 103);
+    transition: all 1s ease-out;
+
+}
+
+.login-input {
+    width: 100%;
+    margin: 5% 0;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid black;
+    background: none;
+    text-align: center;
+    font-size: 1.4rem;
+    color: white;
+}
+
+.login-input:focus {
+    outline: 0;
+}
+
+.login-input:-webkit-autofill,
+.login-input:-webkit-autofill:hover, 
+.login-input:-webkit-autofill:focus {
+  -webkit-text-fill-color: white;
+  transition: background-color 9000s ease-in-out 0s;
+}
+
+.register {
+    margin-right: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-input::placeholder {
+    color: white;
+}
+
+/* Tablet version */
 @media (min-width: 600px) {
     .login-form {
         width: 50%;
     }
+
+    .login-input {
+        font-size: 1.7rem;
+    }
+
+    .login-btn {
+        width: 12rem;
+        height: 4rem;
+        font-size: 1.4rem;
+    }
 }
 
+/* Tablet - PC version */
+@media (min-width: 1024px) {
+    .login-form {
+        width: 40%;
+    }
+}
+
+/* Large PC */
 @media (min-width: 1200px) {
     .login-form {
         width: 30%;
