@@ -1,10 +1,10 @@
 {% extends 'front/front_layout.html.twig' %}
 
-{% block title %}{{ parent() }}-Inscrivez vous{% endblock %}
+{% block title %}{{ parent() }}-Inscription{% endblock %}
 
 {% block body %}
-    <h1>Inscrivez vous</h1>
-    
+    <h1 class="registrer-h1">Inscription</h1>
+    <div class="registrer-form">
         {{ form_start(registrationForm) }}
         {{ form_row(registrationForm.pseudo, {'label': 'Nom d\'utilisateur',
         'attr': {'placeholder': 'Nom d\'utilisateur' }}) }}
@@ -14,8 +14,8 @@
         'attr': {'placeholder': 'Mot de passe !' }}) }}
         {{ form_row(registrationForm.plainPassword.second, {'label': 'Confirmer le mot de passe',
         'attr': {'placeholder': 'Veuillez répéter le mot de passe' }}) }}
-
-            <button type="submit">S'inscrire</button>
+        {{ form_row(registrationForm.termsAccepted, {'label': 'J\'accepte les conditions d\'utilisations'}) }}
+            <button class="btn registrer-btn" type="submit">S'inscrire</button>
         {{ form_end(registrationForm) }}
-
+    </div>
 {% endblock %}
