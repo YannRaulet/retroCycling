@@ -1,6 +1,7 @@
 web_profiler:
     toolbar: true
-    intercept_redirects: false
+    #Intercepte le mail et met une page de redirection ceci est temporaire#
+    intercept_redirects: true
 
 framework:
     profiler: { only_exceptions: false }

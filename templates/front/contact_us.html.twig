@@ -1,0 +1,23 @@
+{% extends 'front/front_layout.html.twig' %}
+
+{% block title %}{{ parent() }}-Contact{% endblock %}
+
+{% block body %}
+<div class="form-contact">
+    <h1>Contactez-nous</h1>
+
+    {{ form_start(contactForm) }}
+        <div class="row">
+            <div class="col">{{ form_row(contactForm.name, {'attr': {'placeholder': 'Nom' }}) }}</div>
+        </div>
+        <div class="row">
+            <div class="col">{{ form_row(contactForm.email, {'attr': {'placeholder': 'Adresse mail' }}) }}</div>
+        </div>
+        <div class="row">
+            <div class="col">{{ form_row(contactForm.message, {'attr': {'placeholder': 'Message' }}) }}</div>
+        </div>
+        {{ form_widget(contactForm) }}
+        <button class="btn btn-contact">Envoyer</button>
+    {{ form_end(contactForm) }}
+</div>
+{% endblock %} 
