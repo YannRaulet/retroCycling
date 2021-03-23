@@ -10,12 +10,14 @@
         <thead>
             <tr>
                 <th>Image</th>
+                <th>Nom de l'image</th>
             </tr>
         </thead>
         <tbody>
         {% for background_picture in background_pictures %}
             <tr>
                 <td><img src="/assets/images/uploads/{{ background_picture.picture }}"></td>
+                <td>{{ background_picture.name }}</td>
                 <td>
                     <a class="btn btn-outline-dark" href="{{ path('admin_background_picture_show', {'id': background_picture.id}) }}" role="button">Détails</a>
                     <a class="btn btn-outline-dark"href="{{ path('admin_background_picture_edit', {'id': background_picture.id}) }}" role="button">Modifier</a>

@@ -30,19 +30,19 @@ class AdminBackgroundPictureController extends AbstractController
     }
 
     /**
-     * @Route("image/ajouter", name="background_picture_new", methods={"GET","POST"})
+     * @Route("/image/ajouter", name="background_picture_new", methods={"GET","POST"})
      * Display the page that adds a background picture
+     * @return Response
      */
-    public function newBackgroundPicture(Request $request): Response
+    public function newBackgroundPicture(Request $request, EntityManagerInterface $manager): Response
     {
         $backgroundPicture = new BackgroundPicture();
         $form = $this->createForm(BackgroundPictureType::class, $backgroundPicture);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($backgroundPicture);
-            $entityManager->flush();
+            $manager->persist($backgroundPicture);
+            $manager->flush();
 
             return $this->redirectToRoute('admin_background_pictures');
         }
@@ -56,6 +56,7 @@ class AdminBackgroundPictureController extends AbstractController
     /**
      * @Route("/image/{id}", name="background_picture_show", methods={"GET"})
      * Display the page that show a background picture
+     * @return Response
      */
     public function showBackgroundPicture(BackgroundPicture $backgroundPicture): Response
     {
@@ -67,14 +68,19 @@ class AdminBackgroundPictureController extends AbstractController
     /**
      * @Route("/image/modifier/{id}", name="background_picture_edit", methods={"GET","POST"})
      * Display the page that edit a background picture
+     * @return Response
      */
-    public function edit(Request $request, BackgroundPicture $backgroundPicture): Response
-    {
+    public function editBackgroundPicture(
+        Request $request,
+        BackgroundPicture $backgroundPicture,
+        EntityManagerInterface $manager
+    ): Response {
         $form = $this->createForm(BackgroundPictureType::class, $backgroundPicture);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $manager->persist($backgroundPicture);
+            $manager->flush();
 
             return $this->redirectToRoute('admin_background_pictures');
         }
@@ -88,13 +94,16 @@ class AdminBackgroundPictureController extends AbstractController
     /**
      * @Route("/image/supprimer/{id}", name="background_picture_delete", methods={"DELETE"})
      * Display the page that delete a background picture
+     * @return Response
      */
-    public function delete(Request $request, BackgroundPicture $backgroundPicture): Response
-    {
+    public function deleteBackgroundPicture(
+        Request $request,
+        BackgroundPicture $backgroundPicture,
+        EntityManagerInterface $manager
+    ): Response {
         if ($this->isCsrfTokenValid('delete' . $backgroundPicture->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($backgroundPicture);
-            $entityManager->flush();
+            $manager->remove($backgroundPicture);
+            $manager->flush();
         }
 
         return $this->redirectToRoute('admin_background_pictures');
