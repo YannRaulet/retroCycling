@@ -2,12 +2,12 @@
 
 namespace App\Form;
 
-use App\Entity\BackgroundImage;
+use App\Entity\BackgroundPicture;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class BackgroundImageType extends AbstractType
+class BackgroundPictureType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -19,7 +19,7 @@ class BackgroundImageType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => BackgroundImage::class,
+            'data_class' => BackgroundPicture::class,
         ]);
     }
 }

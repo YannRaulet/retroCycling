@@ -9,21 +9,21 @@
         <tbody>
             <tr>
                 <th scope="col">Id</th>
-                <td>{{ background_image.id }}</td>
+                <td>{{ background_picture.id }}</td>
             </tr>
             <tr>
                 <th scope="col">Image de fond</th>
-                <td><img src="/assets/images/uploads/{{ background_image.picture }}"></td>
+                <td><img src="/assets/images/uploads/{{ background_picture.picture }}"></td>
             </tr>
         </tbody>
         <tfoot>
             <th>
-                <a href="{{ path('admin_background_images') }}">Retour à l'accueil administrateur</a>
+                <a href="{{ path('admin_background_pictures') }}">Retour à l'accueil administrateur</a>
             </th>
         </tfoot>
     </table>
     <div class="button-action">
-        <a class="btn btn-success" href="{{ path('admin_background_image_edit', {'id': background_image.id}) }}" role="button">Modifier</a>
-        {{ include('admin/background_image_delete_form.html.twig') }}
+        <a class="btn btn-success" href="{{ path('admin_background_picture_edit', {'id': background_picture.id}) }}" role="button">Modifier</a>
+        {{ include('admin/background_picture_delete_form.html.twig') }}
     </div>
 {% endblock %}

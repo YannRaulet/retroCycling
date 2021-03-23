@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\BackgroundImage;
+use App\Entity\BackgroundPicture;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method BackgroundImage|null find($id, $lockMode = null, $lockVersion = null)
- * @method BackgroundImage|null findOneBy(array $criteria, array $orderBy = null)
- * @method BackgroundImage[]    findAll()
- * @method BackgroundImage[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method BackgroundPicture|null find($id, $lockMode = null, $lockVersion = null)
+ * @method BackgroundPicture|null findOneBy(array $criteria, array $orderBy = null)
+ * @method BackgroundPicture[]    findAll()
+ * @method BackgroundPicture[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class BackgroundImageRepository extends ServiceEntityRepository
+class BackgroundPictureRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, BackgroundImage::class);
+        parent::__construct($registry, BackgroundPicture::class);
     }
 
     // /**
-    //  * @return BackgroundImage[] Returns an array of BackgroundImage objects
+    //  * @return BackgroundPicture[] Returns an array of BackgroundPicture objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class BackgroundImageRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?BackgroundImage
+    public function findOneBySomeField($value): ?BackgroundPicture
     {
         return $this->createQueryBuilder('b')
             ->andWhere('b.exampleField = :val')
