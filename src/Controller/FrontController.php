@@ -13,7 +13,7 @@ use App\Repository\ArticleContentRepository;
 use App\Repository\CyclingShirtRepository;
 
 /**
- * Creates views that allow users to see the three last cycling shirts in each  category
+ * Creates views showing the three last cycling shirts for each category
  * @Route(name="front_")
  */
 class FrontController extends AbstractController
@@ -47,7 +47,7 @@ class FrontController extends AbstractController
             ;
             //We send the message
             $mailer->send($message);
-            $this->addFlash('message', 'Votre message à bien été envoyé');
+            $this->addFlash('message', 'Votre message a bien été envoyé');
             return $this->redirectToRoute('front_home');
         }
         return $this->render('front/contact_us.html.twig', [
