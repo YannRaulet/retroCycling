@@ -7,19 +7,58 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Article;
+use App\Form\ContactType;
 use App\Repository\ArticleRepository;
 use App\Repository\ArticleContentRepository;
 use App\Repository\CyclingShirtRepository;
 
 /**
- * Creates views that allow users to see the three last cycling shirts in each  category
+ * Creates views showing the three last cycling shirts for each category
  * @Route(name="front_")
  */
 class FrontController extends AbstractController
 {
     /**
+     * Displays contact page
+     * @Route("/contact", name="contact_us")
+     * @return Response
+     */
+    public function contactUs(Request $request, \Swift_Mailer $mailer): Response
+    {
+        $form = $this->createForm(ContactType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $contact = $form->getData();
+
+            //send mail
+            $message = (new \Swift_Message('Nouveau Contact'))
+                ->setFrom($contact['email'])
+                ->setTo('admin@monsite.fr')
+
+                //Create the message and send it to the emails template
+                ->setBody(
+                    $this->renderView(
+                        'emails/contact.html.twig',
+                        ['contact' => $contact],
+                    ),
+                    'text/html'
+                )
+            ;
+            //We send the message
+            $mailer->send($message);
+            $this->addFlash('message', 'Votre message a bien été envoyé');
+            return $this->redirectToRoute('front_home');
+        }
+        return $this->render('front/contact_us.html.twig', [
+            'contactForm' => $form ->createView(),
+        ]);
+    }
+
+    /**
      * @Route("/", name="home")
      * Displays the page showing cycling shirts from each categories
+     * @return Response
      */
     public function homeCollection(CyclingShirtRepository $shirtRepository): Response
     {
@@ -76,13 +115,5 @@ class FrontController extends AbstractController
             ),
             'articleContents' => $contentRepository->findBy(['article' => $article]),
         ]);
-    }
-
-    /**
-     * @Route("/contact", name="contact")
-     */
-    public function contact(): Response
-    {
-        return $this->render('front/contact.html.twig');
     }
 }
