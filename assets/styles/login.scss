@@ -3,7 +3,7 @@
     height: auto;
     margin: auto;
     margin-top: 5%;
-    margin-bottom: 5%;
+    margin-bottom: 4%;
 }
 
 .login-form {
@@ -68,6 +68,32 @@
 
 .login-input::placeholder {
     color: white;
+}
+
+.forgot-pass {
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    display: block;
+}
+
+.forgotpass-form {
+    width: 50%;
+    margin: auto;
+}
+
+.form-reset {
+    justify-content: center;
+    width: 70%;
+    margin: auto;
+    margin-bottom: 3%;
+}
+
+.resetpass-title-h2 {
+    font-size: 2rem;
+    color: var(--third-background-color);
+    margin-bottom: 2%;
+    text-align: center;
 }
 
 /* Tablet version */

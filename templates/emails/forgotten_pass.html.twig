@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Nouvelle demande de mot de passe</title>
+    </head>
+    <body>
+        <h1>Réinitialisation du mot de passe</h1>
+            <p>Bonjour,<br>vous avez fait une demande pour réinitialiser le mot de passe sur retro-cycling.fr, veuillez cliquer sur le lien ci-dessous pour le réinitialiser</p>
+            <p><a href="{{ absolute_url(path('app_reset_password', {'token': token })) }}">Changer le mot de passe</a></p>
+    </body>
+</html>
