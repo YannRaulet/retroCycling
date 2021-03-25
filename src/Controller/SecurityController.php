@@ -113,7 +113,7 @@ class SecurityController extends AbstractController
     public function activation(string $token, UserRepository $userRepo, EntityManagerInterface $manager): Response
     {
         //Vérifie si l'utilisateur a un token
-        $user = $userRepo->findOneBy(['activation_token' => $token]);
+        $user = $userRepo->findOneBy(['activationToken' => $token]);
 
         //Si aucun utilisateur n'est associé à ce token
         if (!$user) {
@@ -218,7 +218,7 @@ class SecurityController extends AbstractController
     ): Response {
         // On cherche un utilisateur avec le token donné
         $user = $userRepository->findOneBy([
-            'reset_token' => $token
+            'resetToken' => $token
         ]);
 
         // Si l'utilisateur n'existe pas
