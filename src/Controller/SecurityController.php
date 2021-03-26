@@ -29,7 +29,7 @@ class SecurityController extends AbstractController
     {
         // check if there is no user in database and redirects to initial user creation form
         if (empty($userRepository->findAll())) {
-            return $this->redirectToRoute('app_register');
+            return $this->redirectToRoute('app_registrer');
         }
 
         // get the login error if there is one
