@@ -17,19 +17,15 @@
             {% endfor %}
                     <h3 class="article-title-h3">Partager</h3>
                         <div class="container-social">
-                            <button class="btn btn-share share_twitter" data-url="http://127.0.0.1:8000/{{ article.id }}">
+                            <button class="btn btn-share share_twitter" data-url="{{ absolute_url(path('front_article', { id: article.id })) }}">
                                 <img class="logo-share" src="/assets/images/logo-twitter.png">
                                 Partager sur twitter
                             </button>
-                            <button class="btn btn-share share_facebook" data-url="http://127.0.0.1:8000/{{ article.id }}">
+                            <button class="btn btn-share share_facebook" data-url="{{ absolute_url(path('front_article', { id: article.id  })) }}">
                                 <img class="logo-share" src="/assets/images/logo-facebook.png">
                                 Partager sur facebook
                             </button>
-                            <button class="btn  btn-share share_gplus" data-url="http://127.0.0.1:8000/{{ article.id }}">
-                                <img class="logo-share" src="/assets/images/logo-google.png">
-                                Partager sur google+
-                            </button>
-                            <button class="btn btn-share share_linkedin" data-url="http://127.0.0.1:8000/{{ article.id }}">
+                            <button class="btn btn-share share_linkedin" data-url="{{ absolute_url(path('front_article', { id: article.id  })) }}">
                                 <img class="logo-share" src="/assets/images/logo-linkedin.png">
                                 Partager sur linkedin
                             </button>
