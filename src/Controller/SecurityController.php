@@ -134,7 +134,7 @@ class SecurityController extends AbstractController
      * @Route("/oubli-mot-de-passe", name="app_forgotten_password")
      * @return Response
      */
-    public function oubliPass(
+    public function forgetPass(
         Request $request,
         UserRepository $userRepository,
         \Swift_Mailer $mailer,
