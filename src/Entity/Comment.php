@@ -20,13 +20,19 @@ class Comment
     /**
      * @ORM\Column(type="text")
      */
-    private mixed $comment;
+    private string $comment;
 
     /**
      * @ORM\ManyToOne(targetEntity=Article::class, inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
      */
     private ?Article $article;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="comments")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private ?User $user;
 
     public function getId(): ?int
     {
@@ -53,6 +59,18 @@ class Comment
     public function setArticle(?Article $article): self
     {
         $this->article = $article;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

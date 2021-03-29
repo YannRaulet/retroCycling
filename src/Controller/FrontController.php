@@ -2,15 +2,21 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Request;
+use Swift_Message;
+use App\Entity\User;
 use App\Entity\Article;
+use App\Entity\Comment;
+use App\Form\CommentType;
 use App\Form\ContactType;
 use App\Repository\ArticleRepository;
-use App\Repository\ArticleContentRepository;
+use App\Repository\CommentRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\CyclingShirtRepository;
+use App\Repository\ArticleContentRepository;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * Creates views showing the three last cycling shirts for each category
@@ -32,7 +38,7 @@ class FrontController extends AbstractController
             $contact = $form->getData();
 
             //send mail
-            $message = (new \Swift_Message('Nouveau Contact'))
+            $message = (new Swift_Message('Nouveau Contact'))
                 ->setFrom($contact['email'])
                 ->setTo('admin@monsite.fr')
 
@@ -104,16 +110,38 @@ class FrontController extends AbstractController
      * @return Response
      */
     public function article(
+        Request $request,
         ArticleRepository $articleRepository,
         ArticleContentRepository $contentRepository,
         int $id,
-        Article $article
+        Article $article,
+        User $user,
+        CommentRepository $commentRepository,
+        EntityManagerInterface $manager
     ): Response {
+
+        $comment = new Comment();
+        $form = $this->createForm(CommentType::class, $comment);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $comment->setUser($user);
+            $comment->setArticle($article);
+
+            $manager->persist($comment);
+            $manager->flush();
+
+            return $this->redirectToRoute('front_article', ['id' => $id]);
+        }
+
+        $comments = $commentRepository->findBy(['article' => $article]);
         return $this->render('front/article.html.twig', [
             'article' => $articleRepository->findOneBy(
                 ['id' => $id]
             ),
             'articleContents' => $contentRepository->findBy(['article' => $article]),
+            'commentForm' => $form->createView(),
+            'comments' => $comments,
         ]);
     }
 }
