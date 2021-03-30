@@ -1,6 +1,11 @@
 security:
+    enable_authenticator_manager: true
     encoders:
-        App\Entity\User: bcrypt
+        App\Entity\User:
+            # Use native password encoder
+            # This value auto-selects the best possible hashing algorithm
+            # (i.e. Sodium when available).
+            algorithm: auto
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
@@ -14,8 +19,14 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            anonymous: true
             lazy: true
+            # by default, the feature allows 5 login attempts per minute
+            login_throttling: null
+
+            # configure the maximum login attempts (per minute)
+            login_throttling:
+                max_attempts: 3
+
             provider: app_user_provider
             guard:
                 authenticators:
