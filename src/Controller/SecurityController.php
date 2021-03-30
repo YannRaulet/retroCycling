@@ -243,7 +243,7 @@ class SecurityController extends AbstractController
             // On crée le message flash
             $this->addFlash('message', 'Mot de passe mis à jour');
 
-            return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('front_home');
         } else {
             // Si on n'a pas reçu les données, on affiche le formulaire
             return $this->render('security/reset_password.html.twig', ['token' => $token]);
