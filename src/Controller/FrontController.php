@@ -122,10 +122,12 @@ class FrontController extends AbstractController
     ): Response {
 
         $comment = new Comment();
+        $user = new User();
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $user = $comment->getUser();
             $comment->setUser($user);
             $comment->setArticle($article);
 
