@@ -13,6 +13,7 @@ use App\Repository\CommentRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\CyclingShirtRepository;
 use App\Repository\ArticleContentRepository;
+use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -115,9 +116,9 @@ class FrontController extends AbstractController
         ArticleContentRepository $contentRepository,
         int $id,
         Article $article,
-        User $user,
         CommentRepository $commentRepository,
-        EntityManagerInterface $manager
+        EntityManagerInterface $manager,
+        User $user
     ): Response {
 
         $comment = new Comment();
