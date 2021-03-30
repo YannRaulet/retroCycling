@@ -13,7 +13,6 @@ use App\Repository\CommentRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\CyclingShirtRepository;
 use App\Repository\ArticleContentRepository;
-use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -122,12 +121,10 @@ class FrontController extends AbstractController
     ): Response {
 
         $comment = new Comment();
-        $user = new User();
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $user = $comment->getUser();
             $comment->setUser($user);
             $comment->setArticle($article);
 
