@@ -6,7 +6,7 @@ use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\RouterInterface;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\Exception\CustomUserMessageAuthenticationException;
@@ -17,32 +17,35 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Csrf\CsrfToken;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Symfony\Component\Security\Guard\Authenticator\AbstractFormLoginAuthenticator;
+use Symfony\Component\Security\Guard\PasswordAuthenticatedInterface;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
 
-class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
+class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements PasswordAuthenticatedInterface
 {
     use TargetPathTrait;
 
+    public const LOGIN_ROUTE = 'app_login';
+
     private EntityManagerInterface $entityManager;
-    private RouterInterface $router;
+    private UrlGeneratorInterface $urlGenerator;
     private CsrfTokenManagerInterface $csrfTokenManager;
     private UserPasswordEncoderInterface $passwordEncoder;
 
     public function __construct(
         EntityManagerInterface $entityManager,
-        RouterInterface $router,
+        UrlGeneratorInterface $urlGenerator,
         CsrfTokenManagerInterface $csrfTokenManager,
         UserPasswordEncoderInterface $passwordEncoder
     ) {
         $this->entityManager = $entityManager;
-        $this->router = $router;
+        $this->urlGenerator = $urlGenerator;
         $this->csrfTokenManager = $csrfTokenManager;
         $this->passwordEncoder = $passwordEncoder;
     }
 
     public function supports(Request $request)
     {
-        return 'app_login' === $request->attributes->get('_route')
+        return self::LOGIN_ROUTE === $request->attributes->get('_route')
             && $request->isMethod('POST');
     }
 
@@ -72,7 +75,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 
         if (!$user) {
             // fail authentication with a custom error
-            throw new CustomUserMessageAuthenticationException('E-mail introuvable.');
+            throw new CustomUserMessageAuthenticationException('Email could not be found.');
         }
 
         return $user;
@@ -83,20 +86,28 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
         return $this->passwordEncoder->isPasswordValid($user, $credentials['password']);
     }
 
+    /**
+     * Used to upgrade (rehash) the user's password automatically over time.
+     */
+    public function getPassword($credentials): ?string
+    {
+        return $credentials['password'];
+    }
+
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $providerKey)
     {
-        //if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
-        //    return new RedirectResponse($targetPath);
-        //}
+        $targetPath = $this->getTargetPath($request->getSession(), $providerKey);
+
+        if ($targetPath) {
+            return new RedirectResponse($targetPath);
+        }
 
         // redirect to some "app_homepage" route - of wherever you want
-        //return new RedirectResponse($this->urlGenerator->generate('front_home'));
-
-        return new RedirectResponse($this->router->generate('front_home'));
+        return new RedirectResponse($this->urlGenerator->generate('front_home'));
     }
 
     protected function getLoginUrl()
     {
-        return $this->router->generate('app_login');
+        return $this->urlGenerator->generate(self::LOGIN_ROUTE);
     }
 }
