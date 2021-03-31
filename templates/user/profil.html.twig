@@ -1,0 +1,18 @@
+{% extends 'front/front_layout.html.twig' %}
+
+{% block title %}{{ parent() }}-Profil de {{ app.user.pseudo }}{% endblock %}
+
+{% block body %}
+<h1 class="collection-title"><span>Bienvenue {{ app.user.pseudo }}</span></h1>
+<div class="container">
+    <div class="row">
+        <div class="col">Pseudo :</div>
+        <div class="col">{{ app.user.pseudo }}</div>
+        <div class="w-100 d-none d-md-block"></div>
+        <div class="col">Email :</div>
+        <div class="col">{{ app.user.email }}</div>
+  </div>
+</div>
+    <a class="btn btn-primary" href="{{ path('user_edit_profil') }}">Modifier le profil</a>
+    <a class="btn btn-primary" href="{{ path('user_edit_password') }}">Modifier le mot de passe</a>
+{% endblock %}

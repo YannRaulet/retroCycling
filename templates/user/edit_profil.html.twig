@@ -1,0 +1,11 @@
+{% extends 'front/front_layout.html.twig' %}
+
+{% block title %}{{ parent() }}-Modification du profil de {{ app.user.pseudo }}{% endblock %}
+
+{% block body %}
+<h1 class="collection-title"><span>Modification du profil de {{ app.user.pseudo }}</span></h1>
+    {{ include('user/form.html.twig') }}
+
+    <a href="{{ path('user_profil') }}">Retour profil</a>
+
+{% endblock %}
