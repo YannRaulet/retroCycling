@@ -124,7 +124,7 @@ class FrontController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $user = $this->getUser();
-            $comment->setUser($user);
+            $comment->setUser($user); /** @phpstan-ignore-line */
             $comment->setArticle($article);
 
             $manager->persist($comment);
