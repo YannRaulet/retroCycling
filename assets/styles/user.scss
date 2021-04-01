@@ -1,0 +1,56 @@
+/*Mobile version*/
+
+.my-info {
+    width: 90%;
+    margin: auto;
+}
+
+.list-group {
+    width: 80%;
+    margin: auto;
+}
+
+.list-group-item {
+    text-align: center;
+}
+
+.list-group-item span {
+    font-weight: bolder;
+    font-size: 1.3em;
+    color: var(--second-background-color);
+}
+
+.user-modif {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-user {
+    background-color: var(--third-background-color);
+    color: black;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin: auto;
+    margin-top: 10px;
+}
+
+.my-favorite {
+    width: 90%;
+    margin: auto;
+    margin-top: 4%;
+}
+
+.my-comments {
+    width: 90%;
+    margin: auto;
+    margin-top: 4%;
+}
+
+/* Tablet - PC version */
+@media (min-width: 1024px) {
+    .list-group {
+        width: 60%;
+        margin: auto;
+    }
+}

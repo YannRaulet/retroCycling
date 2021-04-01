@@ -29,13 +29,11 @@ class UserController extends AbstractController
      */
     public function editProfil(Request $request, EntityManagerInterface $manager): Response
     {
-        /** @phpstan-ignore-next-line */
         $user = $this->getUser();
         $form = $this->createForm(EditProfilType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            /** @phpstan-ignore-next-line */
             $manager->persist($user);
             $manager->flush();
 
@@ -60,8 +58,8 @@ class UserController extends AbstractController
             $user = $this->getUser();
             // On vérifie si les 2 mots de passe sont identiques
             if ($request->request->get('pass') == $request->request->get('pass2')) {
-                /** @phpstan-ignore-next-line */
                 $user->setPassword($passwordEncoder->encodePassword($user, $request->request->get('pass')));
+                $manager->persist($user);
                 $manager->flush();
                 $this->addFlash('success', 'Mot de passe mis à jour avec succès');
 

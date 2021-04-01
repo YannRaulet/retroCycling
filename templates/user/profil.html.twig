@@ -3,16 +3,34 @@
 {% block title %}{{ parent() }}-Profil de {{ app.user.pseudo }}{% endblock %}
 
 {% block body %}
-<h1 class="collection-title"><span>Bienvenue {{ app.user.pseudo }}</span></h1>
-<div class="container">
-    <div class="row">
-        <div class="col">Pseudo :</div>
-        <div class="col">{{ app.user.pseudo }}</div>
-        <div class="w-100 d-none d-md-block"></div>
-        <div class="col">Email :</div>
-        <div class="col">{{ app.user.email }}</div>
-  </div>
-</div>
-    <a class="btn btn-primary" href="{{ path('user_edit_profil') }}">Modifier le profil</a>
-    <a class="btn btn-primary" href="{{ path('user_edit_password') }}">Modifier le mot de passe</a>
+    <section class="my-info">
+    <h1 class="collection-title"><span>Bienvenue {{ app.user.pseudo }}</span></h1>
+        <h2 class="title-crud">Mes infos</h2>
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-dark"><span>Pseudo :</span> {{ app.user.pseudo }}</li>
+                <li class="list-group-item list-group-item-dark"><span>Adresse mail :</span> {{ app.user.email }}</li>
+                <li class="user-modif list-group-item list-group-item-dark"><span>Je veux modifier :</span>
+                    <a class="btn btn-user" href="{{ path('user_edit_profil') }}">Profil</a>
+                    <a class="btn btn-user" href="{{ path('user_edit_password') }}">Mot de passe</a>
+                </li>
+            </ul>
+    </section>
+    <section class="my-favorite">
+        <h3 class="title-crud">Mes Favoris</h3>
+            <p>Mauris faucibus suscipit tortor.
+            Phasellus vel dignissim turpis. Sed vitae ornare eros.
+            Sed porttitor ligula vitae semper elementum. Nam semper enim quis nisi tempor vulputate.
+            Pellentesque placerat lorem arcu, non iaculis erat dictum id.
+            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae
+            </p>
+    </section>
+    <section class="my-comments">
+        <h3 class="title-crud">Mes derniers commentaires</h3>
+            <p>Mauris faucibus suscipit tortor.
+            Phasellus vel dignissim turpis. Sed vitae ornare eros.
+            Sed porttitor ligula vitae semper elementum. Nam semper enim quis nisi tempor vulputate.
+            Pellentesque placerat lorem arcu, non iaculis erat dictum id.
+            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae
+        </p>
+    </section>
 {% endblock %}
