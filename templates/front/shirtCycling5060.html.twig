@@ -9,7 +9,18 @@
         <div class="background-picture-home"></div>
     </section>
 
-    <section>
+     <section>
+     
+        {% if app.user %}
+            <a id="favoriteBtn" href="{{ path("front_shirt_cycling50_60", { id: cyclingShirt50_60.id }) }}">
+                <i class="{{ app.user.favorites(cyclingShirt50_60) ? 'fas' : 'far' }} fa-heart"></i>
+            </a>
+        {% endif %}
+    
+        <div class="favorite-container">
+            <i onclick="Toggle()" id="favoriteBtn"class="far fa-heart"></i>
+        </div>
+
         <h2 class="shirt-description">{{ cyclingShirt50_60.name }}</h2>
         <hr class="shirt-details-hr">
         <div class = "card-wrapper">
@@ -52,6 +63,19 @@
         <p class="shirt-description-p">{{ cyclingShirt50_60.results }}</p>
     </section>
 
+    <script>
+    let favoriteBtn = document.getElementById('favoriteBtn')
+
+    function Toggle() {
+        if (favoriteBtn.classList.contains("far")) {
+            favoriteBtn.classList.remove("far");
+            favoriteBtn.classList.add("fas")
+        } else {
+            favoriteBtn.classList.remove("fas");
+            favoriteBtn.classList.add("far")
+        }
+    }
+    </script>
     {% block javascript %}
         {{parent()}}
         {{ encore_entry_script_tags('switchCyclingShirt') }}

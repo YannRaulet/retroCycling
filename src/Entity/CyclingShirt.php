@@ -79,9 +79,15 @@ class CyclingShirt
      */
     private string $years;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=User::class, mappedBy="favorites")
+     */
+    private collection $users;
+
     public function __construct()
     {
         $this->favorites = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -243,6 +249,33 @@ class CyclingShirt
     public function setYears(string $years): self
     {
         $this->years = $years;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->addFavorite($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->users->removeElement($user)) {
+            $user->removeFavorite($this);
+        }
 
         return $this;
     }

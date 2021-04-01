@@ -64,10 +64,16 @@ class User implements UserInterface
      */
     private collection $comments;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=CyclingShirt::class, inversedBy="users")
+     */
+    private collection $favorites;
+
     public function __construct()
     {
         $this->roles = array('ROLE_USER');
         $this->comments = new ArrayCollection();
+        $this->favorites = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -216,6 +222,30 @@ class User implements UserInterface
                 $comment->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CyclingShirt[]
+     */
+    public function getFavorites(): Collection
+    {
+        return $this->favorites;
+    }
+
+    public function addFavorite(CyclingShirt $favorite): self
+    {
+        if (!$this->favorites->contains($favorite)) {
+            $this->favorites[] = $favorite;
+        }
+
+        return $this;
+    }
+
+    public function removeFavorite(CyclingShirt $favorite): self
+    {
+        $this->favorites->removeElement($favorite);
 
         return $this;
     }
