@@ -17,6 +17,7 @@ import './styles/cyclingShirt.scss';
 import './styles/login.scss';
 import './styles/registrer.scss';
 import './styles/contact.scss';
+import './styles/user.scss';
 
 // start the Stimulus application
 require('bootstrap');

@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use Swift_Message;
-use App\Entity\User;
 use App\Entity\Article;
 use App\Entity\Comment;
 use App\Form\CommentType;
@@ -105,7 +104,7 @@ class FrontController extends AbstractController
     }
 
     /**
-     * @Route("/article/{id<^[0-9]+$>}", name="article")
+     * @Route("/article/{id<^[0-9]+$>}", name="article",  methods={"GET","POST"})
      * This controller displays a blog article and all its content
      * @return Response
      */
@@ -116,8 +115,7 @@ class FrontController extends AbstractController
         int $id,
         Article $article,
         CommentRepository $commentRepository,
-        EntityManagerInterface $manager,
-        User $user
+        EntityManagerInterface $manager
     ): Response {
 
         $comment = new Comment();
@@ -125,7 +123,8 @@ class FrontController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $comment->setUser($user);
+            $user = $this->getUser();
+            $comment->setUser($user); /** @phpstan-ignore-line */
             $comment->setArticle($article);
 
             $manager->persist($comment);
