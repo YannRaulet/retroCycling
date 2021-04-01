@@ -68,10 +68,10 @@ class Comment
         return $this->user;
     }
 
-    public function setUser(?User $user): self  /** @phpstan-ignore-line */
+    public function setUser(?User $user): self
     {
-        $this->user = $user; /** @phpstan-ignore-line */
+        $this->user = $user;
 
-        return $this; /** @phpstan-ignore-line */
+        return $this;
     }
 }
