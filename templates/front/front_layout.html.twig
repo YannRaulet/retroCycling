@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block navbar %}
-    <nav class="container">
+    <nav class="container container-nav">
         <input type="checkbox" name="checkbox" id="check">
         
         <div class="nav-btn">
@@ -72,9 +72,43 @@
         </div>
     </nav>
 {% endblock %}
-
 {% block footer %}
-    <footer>        
+    <footer class="nav-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <h6>À propos</h6>
+                <p class="text-footer">Retro-cycling.com est un site communautaire visant les passionées de cyclisme avant tous.
+                    Retro-Cycling se concentre sur l'histoire du cysclisme comme les maillots, les coureurs, les tours de France etc...
+                </p>
+          </div>
+          <div class="col-xs-6 col-md-6">
+            <h6>Liens</h6>
+            <ul class="footer-links">
+              <li><a href="{{path('front_legal_notice')}}">Mentions légales</a></li>
+              <li><a href="{{path('front_privacy_policy')}}">Politique de confidentialité</a></li>
+              <li><a href="{{path('front_copyright')}}">Copyright</a></li>
+            </ul>
+          </div>
+        </div>
+        <hr>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-sm-8 col-xs-12">
+            <p class="text-footer">Copyright &copy; 2021 All Rights Reserved by 
+         <a href="#">retro-cycling</a>.
+            </p>
+          </div>
+          <div class="col-md-10 col-sm-8 col-xs-12">
+            <ul class="social-icons">
+              <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+              <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>   
+            </ul>
+          </div>
+        </div>
+      </div>
     </footer>
 {% endblock %}
 {% block javascript %}
