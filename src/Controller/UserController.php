@@ -91,14 +91,14 @@ class UserController extends AbstractController
         CyclingShirt $favorite,
         EntityManagerInterface $manager
     ): Response {
-        if (!$this->getUser()->isInFavorite($favorite)) { // @phpstan-ignore-line
-            $this->getUser()->addLike($favorite);         // @phpstan-ignore-line
+        if (!$this->getUser()->isInFavorite($favorite)) {
+            $this->getUser()->addLike($favorite);
         } else {
-            $this->getUser()->removeLike($favorite);       // @phpstan-ignore-line
+            $this->getUser()->removeLike($favorite);
         }
         $manager->flush();
 
-        return $this->json(['isInFavorite' => $this->getUser()->isInFavorite($favorite), // @phpstan-ignore-line
+        return $this->json(['isInFavorite' => $this->getUser()->isInFavorite($favorite),
         ]);
     }
 }
