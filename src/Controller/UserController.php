@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use App\Repository\BackgroundPictureRepository;
 
 /**
  * @Route("/user", name="user_")
@@ -21,9 +22,11 @@ class UserController extends AbstractController
      * @Route("/profil", name="profil")
      * @return Response
      */
-    public function profil(): Response
+    public function profil(BackgroundPictureRepository $backgroundRepository): Response
     {
-        return $this->render('user/profil.html.twig');
+        return $this->render('user/profil.html.twig', [
+            'background_pictures' => $backgroundRepository->findByName('background-main'),
+        ]);
     }
 
     /**
@@ -31,8 +34,11 @@ class UserController extends AbstractController
      * @Route("/profil/modifier", name="edit_profil")
      * @return Response
      */
-    public function editProfil(Request $request, EntityManagerInterface $manager): Response
-    {
+    public function editProfil(
+        Request $request,
+        EntityManagerInterface $manager,
+        BackgroundPictureRepository $backgroundRepository
+    ): Response {
         /** @phpstan-ignore-next-line */
         $user = $this->getUser();
         $form = $this->createForm(EditProfilType::class, $user);
@@ -49,6 +55,7 @@ class UserController extends AbstractController
 
         return $this->render('user/edit_profil.html.twig', [
             'form' => $form->createView(),
+            'background_pictures' => $backgroundRepository->findByName('background-main'),
         ]);
     }
 
@@ -60,7 +67,8 @@ class UserController extends AbstractController
     public function editPassword(
         Request $request,
         UserPasswordEncoderInterface $passwordEncoder,
-        EntityManagerInterface $manager
+        EntityManagerInterface $manager,
+        BackgroundPictureRepository $backgroundRepository
     ): Response {
         if ($request->isMethod('POST')) {
             $user = $this->getUser();
@@ -79,6 +87,8 @@ class UserController extends AbstractController
             }
         }
 
-        return $this->render('user/edit_password.html.twig');
+        return $this->render('user/edit_password.html.twig', [
+            'background_pictures' => $backgroundRepository->findByName('background-main'),
+        ]);
     }
 }
