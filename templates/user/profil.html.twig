@@ -17,12 +17,14 @@
     </section>
     <section class="my-favorite">
         <h3 class="title-crud">Mes Favoris</h3>
-            <p>Mauris faucibus suscipit tortor.
-            Phasellus vel dignissim turpis. Sed vitae ornare eros.
-            Sed porttitor ligula vitae semper elementum. Nam semper enim quis nisi tempor vulputate.
-            Pellentesque placerat lorem arcu, non iaculis erat dictum id.
-            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae
-            </p>
+        {% for cyclingShirts in app.user.likes|reverse %}
+            <figure class="profil-favorite">
+                <img class="picture-favorite" src="/assets/images/uploads/{{ cyclingShirts.pictureFront }}" alt = "Maillot face avant 50-60">
+            </figure>
+        {% else %}
+            <p class="no-favorites">Vous n'avez encore rien posté</p>
+        {% endfor %}
+
     </section>
     <section class="my-comments">
         <h3 class="title-crud">Mes derniers commentaires</h3>
@@ -33,4 +35,5 @@
             Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae
         </p>
     </section>
+    
 {% endblock %}

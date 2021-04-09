@@ -2,13 +2,13 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
+use App\Entity\CyclingShirt;
 use App\Form\EditProfilType;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
@@ -80,5 +80,25 @@ class UserController extends AbstractController
         }
 
         return $this->render('user/edit_password.html.twig');
+    }
+
+    /**
+     * This method allows you show the favorites cycling shirts
+     * @Route("/collection/{id}/like", name="favorite", methods={"GET", "POST"})
+     * @return Response
+     */
+    public function addToFavorite(
+        CyclingShirt $favorite,
+        EntityManagerInterface $manager
+    ): Response {
+        if (!$this->getUser()->isInFavorite($favorite)) {
+            $this->getUser()->addLike($favorite);
+        } else {
+            $this->getUser()->removeLike($favorite);
+        }
+        $manager->flush();
+
+        return $this->json(['isInFavorite' => $this->getUser()->isInFavorite($favorite),
+        ]);
     }
 }

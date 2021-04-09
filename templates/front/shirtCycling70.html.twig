@@ -10,6 +10,20 @@
     </section>
 
     <section>
+        {% if app.user %}
+            <a class="like" href="{{ path('user_favorite', {id: cyclingShirt70.id})}}">
+                {% if app.user.isInFavorite(cyclingShirt70) %}
+                    <img class="favorite-icon" src="{{ asset('assets/images/favoriteRed.png') }}">
+                {% else %}
+                    <img class="favorite-icon" src="{{ asset('assets/images/favoriteEmpty.png') }}">
+                {% endif %}
+            </a>
+        {% else %}
+            <a class="like-not-connected" href="{{ path('app_login') }}">
+                <img class="favorite-icon" src="{{ asset('assets/images/favoriteEmpty.png') }}">
+            </a>
+        {% endif %}
+
         <h2 class="shirt-description">{{ cyclingShirt70.name }}</h2>
         <hr class="shirt-details-hr">
         <div class = "card-wrapper">
