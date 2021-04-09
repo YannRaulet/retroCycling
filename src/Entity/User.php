@@ -286,9 +286,6 @@ class User implements UserInterface
         return $this;
     }
 
-    /**
-     * @var int|string|bool
-     */
     public function isInFavorite(CyclingShirt $favorite): bool
     {
         if ($this->likes->contains($favorite)) {
