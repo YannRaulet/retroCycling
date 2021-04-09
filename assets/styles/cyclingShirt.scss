@@ -57,33 +57,20 @@
     padding-bottom: 5%;
 }
 
-.favorite-container {
+.favorite-icon {
     position: absolute;
     left: 80%;
-    padding: 0.8rem;
-    transform: translate(-50%,-50%);
-    box-shadow: 0 2px rgba(0,0,0,.1);
-    border-radius: 80px;
-}
-
-.favorite-container i {
-    font-size: 2rem;
-    transition: .4s;
-}
-
-.favorite-container:hover i {
-    color: #f50057;
-}
-
-.fas {
-    color: #f50057;
-    transition: .4s;
+    width: 2rem;
 }
 
 /* Tablet version */
 @media (min-width: 600px) {
     .card-wrapper{
         width: 25rem;
+    }
+
+    .favorite-icon {
+        width: 2.5rem;
     }
 }
 
@@ -148,5 +135,10 @@
 
     .picture-item {
         width: 60%;
+    }
+
+    .favorite-icon {
+        left: 75%;
+        width: 3rem;
     }
 }

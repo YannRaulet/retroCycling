@@ -80,14 +80,20 @@ class CyclingShirt
     private string $years;
 
     /**
-     * @ORM\ManyToMany(targetEntity=User::class, mappedBy="favorites")
+     * @ORM\ManyToMany(targetEntity=User::class, mappedBy="likes")
      */
-    private collection $users;
+    private collection $userLikes;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="favorites")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private ?User $owner;
 
     public function __construct()
     {
         $this->favorites = new ArrayCollection();
-        $this->users = new ArrayCollection();
+        $this->userLikes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -256,26 +262,38 @@ class CyclingShirt
     /**
      * @return Collection|User[]
      */
-    public function getUsers(): Collection
+    public function getUserLikes(): Collection
     {
-        return $this->users;
+        return $this->userLikes;
     }
 
-    public function addUser(User $user): self
+    public function addUserLike(User $userLike): self
     {
-        if (!$this->users->contains($user)) {
-            $this->users[] = $user;
-            $user->addFavorite($this);
+        if (!$this->userLikes->contains($userLike)) {
+            $this->userLikes[] = $userLike;
+            $userLike->addLike($this);
         }
 
         return $this;
     }
 
-    public function removeUser(User $user): self
+    public function removeUserLike(User $userLike): self
     {
-        if ($this->users->removeElement($user)) {
-            $user->removeFavorite($this);
+        if ($this->userLikes->removeElement($userLike)) {
+            $userLike->removeLike($this);
         }
+
+        return $this;
+    }
+
+    public function getOwner(): ?User
+    {
+        return $this->owner;
+    }
+
+    public function setOwner(?User $owner): self
+    {
+        $this->owner = $owner;
 
         return $this;
     }

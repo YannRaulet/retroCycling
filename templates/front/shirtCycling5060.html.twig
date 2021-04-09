@@ -10,16 +10,19 @@
     </section>
 
      <section>
-     
         {% if app.user %}
-            <a id="favoriteBtn" href="{{ path("front_shirt_cycling50_60", { id: cyclingShirt50_60.id }) }}">
-                <i class="{{ app.user.favorites(cyclingShirt50_60) ? 'fas' : 'far' }} fa-heart"></i>
+            <a class="like" href="{{ path('user_favorite', {id: cyclingShirt50_60.id})}}">
+                {% if app.user.isInFavorite(cyclingShirt50_60) %}
+                    <img class="favorite-icon" src="{{ asset('assets/images/favoriteRed.png') }}">
+                {% else %}
+                    <img class="favorite-icon" src="{{ asset('assets/images/favoriteEmpty.png') }}">
+                {% endif %}
+            </a>
+        {% else %}
+            <a class="like-not-connected" href="{{ path('app_login') }}">
+                <img class="favorite-icon" src="{{ asset('assets/images/favoriteEmpty.png') }}">
             </a>
         {% endif %}
-    
-        <div class="favorite-container">
-            <i onclick="Toggle()" id="favoriteBtn"class="far fa-heart"></i>
-        </div>
 
         <h2 class="shirt-description">{{ cyclingShirt50_60.name }}</h2>
         <hr class="shirt-details-hr">
@@ -63,19 +66,6 @@
         <p class="shirt-description-p">{{ cyclingShirt50_60.results }}</p>
     </section>
 
-    <script>
-    let favoriteBtn = document.getElementById('favoriteBtn')
-
-    function Toggle() {
-        if (favoriteBtn.classList.contains("far")) {
-            favoriteBtn.classList.remove("far");
-            favoriteBtn.classList.add("fas")
-        } else {
-            favoriteBtn.classList.remove("fas");
-            favoriteBtn.classList.add("far")
-        }
-    }
-    </script>
     {% block javascript %}
         {{parent()}}
         {{ encore_entry_script_tags('switchCyclingShirt') }}

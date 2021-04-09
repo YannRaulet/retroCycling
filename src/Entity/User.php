@@ -65,7 +65,12 @@ class User implements UserInterface
     private collection $comments;
 
     /**
-     * @ORM\ManyToMany(targetEntity=CyclingShirt::class, inversedBy="users")
+     * @ORM\ManyToMany(targetEntity=CyclingShirt::class, inversedBy="userLikes")
+     */
+    private collection $likes;
+
+    /**
+     * @ORM\OneToMany(targetEntity=CyclingShirt::class, mappedBy="owner", orphanRemoval=true)
      */
     private collection $favorites;
 
@@ -73,6 +78,7 @@ class User implements UserInterface
     {
         $this->roles = array('ROLE_USER');
         $this->comments = new ArrayCollection();
+        $this->likes = new ArrayCollection();
         $this->favorites = new ArrayCollection();
     }
 
@@ -226,6 +232,30 @@ class User implements UserInterface
         return $this;
     }
 
+   /**
+    * @return Collection|CyclingShirt[]
+    */
+    public function getLikes(): Collection
+    {
+        return $this->likes;
+    }
+
+    public function addLike(CyclingShirt $like): self
+    {
+        if (!$this->likes->contains($like)) {
+            $this->likes[] = $like;
+        }
+
+        return $this;
+    }
+
+    public function removeLike(CyclingShirt $like): self
+    {
+        $this->likes->removeElement($like);
+
+        return $this;
+    }
+
     /**
      * @return Collection|CyclingShirt[]
      */
@@ -238,6 +268,7 @@ class User implements UserInterface
     {
         if (!$this->favorites->contains($favorite)) {
             $this->favorites[] = $favorite;
+            $favorite->setOwner($this);
         }
 
         return $this;
@@ -245,8 +276,25 @@ class User implements UserInterface
 
     public function removeFavorite(CyclingShirt $favorite): self
     {
-        $this->favorites->removeElement($favorite);
+        if ($this->favorites->removeElement($favorite)) {
+            // set the owning side to null (unless already changed)
+            if ($favorite->getOwner() === $this) {
+                $favorite->setOwner(null);
+            }
+        }
 
         return $this;
+    }
+
+    /**
+     * @var int|string|bool
+     */
+    public function isInFavorite(CyclingShirt $favorite): bool
+    {
+        if ($this->likes->contains($favorite)) {
+            return true;
+        }
+
+        return false;
     }
 }
