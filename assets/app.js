@@ -9,6 +9,7 @@
 import './styles/app.scss';
 import './styles/crud.scss';
 import './styles/navBar.scss';
+import './styles/footer.scss';
 import './styles/home.scss';
 import './styles/blog.scss';
 import './styles/article.scss';

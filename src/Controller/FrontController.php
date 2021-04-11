@@ -161,4 +161,34 @@ class FrontController extends AbstractController
             'background_pictures' => $backgroundRepository->findByName('background-main')
         ]);
     }
+
+    /**
+     * @Route("/mentions-légales", name="legal_notice")
+     * This controler displays the legal notices
+     * @return Response
+     */
+    public function legalNotice(): Response
+    {
+        return $this->render('front/legal_notice.html.twig');
+    }
+
+    /**
+     * @Route("/politique-de-confidentialité", name="privacy_policy")
+     * This controler displays the privacy policy
+     * @return Response
+     */
+    public function privacyPolicy(): Response
+    {
+        return $this->render('front/privacy_policy.html.twig');
+    }
+
+    /**
+     * @Route("/copyright", name="copyright")
+     * This controler displays the copyright page
+     * @return Response
+     */
+    public function copyright(): Response
+    {
+        return $this->render('front/copyright.html.twig');
+    }
 }

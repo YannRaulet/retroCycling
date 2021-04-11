@@ -26,3 +26,16 @@ function slideImage(){
 }
 // We bind the resize event to the function
 window.addEventListener('resize', slideImage);
+
+//---------------------------------------------------------------------------------------------
+// Function to add or delete a cycling shirt to favorite
+document.querySelectorAll('.like').forEach(item => {item.addEventListener('click', addToLikes)});
+
+function addToLikes(event)
+{
+    event.preventDefault();
+    let likeLink = event.currentTarget;
+    let link = likeLink.href;
+    fetch(link);
+    document.location.reload();
+}

@@ -79,9 +79,21 @@ class CyclingShirt
      */
     private string $years;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=User::class, mappedBy="likes")
+     */
+    private collection $userLikes;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="favorites")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private ?User $owner;
+
     public function __construct()
     {
         $this->favorites = new ArrayCollection();
+        $this->userLikes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -243,6 +255,45 @@ class CyclingShirt
     public function setYears(string $years): self
     {
         $this->years = $years;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getUserLikes(): Collection
+    {
+        return $this->userLikes;
+    }
+
+    public function addUserLike(User $userLike): self
+    {
+        if (!$this->userLikes->contains($userLike)) {
+            $this->userLikes[] = $userLike;
+            $userLike->addLike($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserLike(User $userLike): self
+    {
+        if ($this->userLikes->removeElement($userLike)) {
+            $userLike->removeLike($this);
+        }
+
+        return $this;
+    }
+
+    public function getOwner(): ?User
+    {
+        return $this->owner;
+    }
+
+    public function setOwner(?User $owner): self
+    {
+        $this->owner = $owner;
 
         return $this;
     }
