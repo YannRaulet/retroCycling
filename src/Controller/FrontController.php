@@ -75,8 +75,12 @@ class FrontController extends AbstractController
         ArticleRepository $articleRepository,
         BackgroundPictureRepository $backgroundRepository
     ): Response {
-        $articles = $articleRepository->findBy([],
-            ['createdAt' => 'desc'], 3, 0);
+        $articles = $articleRepository->findBy(
+            [],
+            ['createdAt' => 'desc'],
+            3,
+            0
+        );
 
         return $this->render('front/home.html.twig', [
             'cyclingShirts50_60' => $shirtRepository->findBy(
