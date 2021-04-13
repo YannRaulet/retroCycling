@@ -42,4 +42,12 @@ class AdminFrontController extends AbstractController
     {
         return $this->render('admin/article.html.twig');
     }
+
+    /**
+     * @Route("/gestion-de-contenu", name="dashboard")
+     */
+    public function dashboard(): Response
+    {
+        return $this->render('admin/dashboard.html.twig');
+    }
 }
