@@ -16,10 +16,12 @@
 }
 
 .login-container-btn {
+    width: 60%;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     margin: auto;
-    margin-top: 6%;
+    margin-top: 4%;
+    padding-bottom: 5%;
 }
 
 .login-btn {
@@ -41,16 +43,18 @@
     width: 100%;
     margin: 5% 0;
     box-sizing: border-box;
-    border: none;
-    border-bottom: 2px solid black;
-    background: none;
     text-align: center;
     font-size: 1.4rem;
     color: white;
+    background-color: rgba(0, 0, 0, 0.363);
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .login-input:focus {
     outline: 0 !important;
+    border: 1px solid black;
 }
 
 .login-input:-webkit-autofill,
@@ -61,10 +65,14 @@
 }
 
 .register {
-    margin-right: 10%;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.title-register {
+    text-align: center;
+    color: white;
 }
 
 .login-input::placeholder {
@@ -74,8 +82,16 @@
 .forgot-pass {
     width: 50%;
     margin: auto;
+    margin-top: 20px;
     text-align: center;
     display: block;
+    color:white;
+    font-size: 1.2em;
+}
+
+.forgot-pass:hover {
+    color: black !important;
+    text-decoration: none;
 }
 
 .forgotpass-form {
