@@ -126,8 +126,8 @@
         </section>
     {% endfor %}
 {% endif %}
-        {% block javascript %}
-            {{ parent() }}
-            {{ encore_entry_script_tags('social') }}
-        {% endblock %}
+   {% block javascript %}
+       {{ parent() }}
+       {{ encore_entry_script_tags('social') }}
+   {% endblock %}
 {% endblock %}
