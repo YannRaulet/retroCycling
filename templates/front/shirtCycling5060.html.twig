@@ -23,18 +23,13 @@
                                 <img class="favorite-icon" src="{{ asset('assets/images/favoriteRed.png') }}">
                             {% else %}
                                 <img class="favorite-icon" src="{{ asset('assets/images/favoriteEmpty.png') }}">
-                        {% endif %}
+                            {% endif %}
                         </a>
                     {% else %}
                         <a class="like-not-connected" href="{{ path('app_login') }}">
                             <img class="favorite-icon" src="{{ asset('assets/images/favoriteEmpty.png') }}">
                         </a>
                     {% endif %}
-        {% else %}
-            <a class="like-not-connected" href="{{ path('app_login') }}">
-                <img class="favorite-icon" src="{{ asset('assets/images/favoriteEmpty.png') }}">
-            </a>
-        {% endif %}
                 </div>
                 <div class = "picture-select">
                     <div class = "picture-item">
