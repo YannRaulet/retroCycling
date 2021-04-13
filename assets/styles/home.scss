@@ -1,9 +1,12 @@
+/* Mobile version */
+
 .background-picture-home {
     width: 100%;
     height: 25vh;
     background-image: url("../images/home-picture.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     background-attachment: fixed;
     z-index: 2;
 }
@@ -22,29 +25,17 @@
     margin-bottom: 2%;
 }
 
-.home-articles-title{
-    color: var(--second-background-color);
-}
-
 .collection-title-h2 a {
     text-decoration: none;
     color: var(--third-background-color);
-}
-
-.home-articles {
-    width: 100%;
-    height: 70vh;
-    background-color: var(--main-background-color);
 }
 
 .accordion-a {
     display: contents;
 }
 
-/* Mobile version */
-
 .accordions-pictures1, .accordions-pictures2 {
-    margin-bottom: 6%;
+    padding-bottom: 6%;
 }
 
 .accordions-section1, .accordions-section2 {
@@ -129,11 +120,89 @@
     margin-left: -8%;
 }
 
+.box-article {
+    display: flex;
+    flex-direction: column;
+}
+
+.home-articles {
+    width: 100%;
+    height: 138vh;
+    background-color: var(--main-background-color);
+}
+
+.home-article-title {
+    color: var(--second-background-color);
+    text-align: center;
+    padding-top: 2%;
+}
+
+.card-article {
+    background-color: white;
+    width: 85%;
+    height: 38vh;
+    margin: auto;
+    margin-top: 4%;
+    border-radius: 5px;
+    box-shadow: 6px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.image-article {
+    width: 100%;
+    margin: auto;
+    box-shadow: 6px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.card-article-title {
+    color: black;
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 6%;
+    margin-bottom: 5%;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.btn-blog {
+    background-color: var(--third-background-color);
+    color: black;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 45%;
+    padding: 10px;
+    display: block;
+    margin: auto;
+    margin-top: 25px;
+}
+
 /* Tablet version */
 @media (min-width: 600px) {
     .accordions-section1 .img, .accordions-section2 .img {
         width: 18rem;
         height: 18rem;
+    }
+
+    .home-articles {
+        width: 100%;
+        height: 182vh;
+        background-color: var(--main-background-color);
+    }
+
+    .card-article {
+        height: 52vh;
+    }
+
+    .card-article-title  {
+        font-size: 1.8rem;
+    }
+
+    .picture-article {
+        height: 350px;
+        object-fit: cover;
+    }
+
+    .btn-blog {
+        width: 30%;
+        margin-top: 30px;
+        font-size: 1.4em;
     }
 }
 
@@ -156,6 +225,29 @@
     .accordions-section1 .img, .accordions-section2 .img {
         width: 10rem;
         height: 16rem;
+    }
+
+    .home-articles {
+        height: 128vh;
+    }
+
+    .card-article {
+        width: 60%;
+        height: 35vh; 
+    }
+
+    .picture-article {
+        height: 260px;
+        object-fit: cover;
+    }
+
+    .card-article-title {
+        font-size: 2rem;
+    }
+
+    .btn-blog {
+        width: 26%;
+        font-size: 1.6em;
     }
 }
 
@@ -266,12 +358,31 @@
         transition: all 0.5s ease-in-out;
     }
 
+    .home-articles {
+        height: 120vh;
+    }
+
     .home-articles-title{
         color: var(--second-background-color);
     }
 
     .home-articles-title span::before {
         background-color: var(--second-background-color);
+    }
+
+    .box-article {
+        width: 100%;
+        height: auto;
+        margin: 30px auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 390px);
+        justify-content: center;
+        grid-gap: 35px;
+    }
+    
+    .card-article {
+        width: 390px;
+        height: 78vh;
     }
 }
 

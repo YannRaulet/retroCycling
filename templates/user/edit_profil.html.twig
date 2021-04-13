@@ -3,11 +3,30 @@
 {% block title %}{{ parent() }}-Modification du profil de {{ app.user.pseudo }}{% endblock %}
 
 {% block body %}
-<div class="page-form-edit">
-    <h1 class="collection-title"><span>Modification du profil de {{ app.user.pseudo }}</span></h1>
-    <div class="form-edit">
-        {{ include('user/form.html.twig') }}
-    </div>
-    <a href="{{ path('user_profil') }}">Retour profil</a>
-</div>
+
+{% if background_pictures == false %}
+    <section>
+        <div class="page-form-edit">
+            <h1 class="collection-title"><span>Modification du profil de {{ app.user.pseudo }}</span></h1>
+            <div class="form-edit">
+                {{ include('user/form.html.twig') }}
+            </div>
+            <a href="{{ path('user_profil') }}">Retour profil</a>
+        </div>
+    </section>
+{% else %}
+
+    {% for background_picture in background_pictures %}
+        <section class="background my-info" style="background-image:url( /assets/images/uploads/{{ background_picture.picture }}">
+            <div class="page-form-edit">
+                <h1 class="collection-title"><span>Modification du profil de {{ app.user.pseudo }}</span></h1>
+                <div class="form-edit">
+                    {{ include('user/form.html.twig') }}
+                </div>
+                <a href="{{ path('user_profil') }}">Retour profil</a>
+            </div>
+        </section>
+    {% endfor %}
+{% endif %}
+
 {% endblock %}

@@ -5,66 +5,129 @@
 {% block title %}{{ parent() }}-Article-{{ article.name }}{% endblock %}
 
 {% block body %}
-<section class="background-picture-home">
-</section>
-    <article class="article-box">
-        <h1 class="collection-title"><span>{{ article.name }}</span></h1>
-        {% for articleContent in articleContents %}
-            <aside class="article-content">
-                <h2 class="article-title-h2">{{ articleContent.title }}</h2>
-                <p>{{ articleContent.content }}</p>
-            </aside>
-        {% endfor %}
-        <h3 class="article-title-h3">Partager</h3>
-            <div class="container-social">
-                <button class="btn btn-share share_twitter" data-url="{{ absolute_url(path('front_article', { id: article.id })) }}">
-                    <img class="logo-share" src="/assets/images/logo-twitter.png">
-                    Partager sur twitter
-                </button>
-                <button class="btn btn-share share_facebook" data-url="{{ absolute_url(path('front_article', { id: article.id  })) }}">
-                    <img class="logo-share" src="/assets/images/logo-facebook.png">
-                    Partager sur facebook
-                </button>
-                <button class="btn btn-share share_linkedin" data-url="{{ absolute_url(path('front_article', { id: article.id  })) }}">
-                    <img class="logo-share" src="/assets/images/logo-linkedin.png">
-                    Partager sur linkedin
-                </button>
-            </div>
-            <div class="separateur">
-                <img class="d-block w-100" src="/assets/images/separateur.png">
-            </div>
+
+{% if background_pictures == false %}
+     <section>
+        <article class="article-box">
+            <h1 class="collection-title"><span>{{ article.name }}</span></h1>
+            {% for articleContent in articleContents %}
+                <aside class="article-content">
+                    <h2 class="article-title-h2">{{ articleContent.title }}</h2>
+                    <p>{{ articleContent.content }}</p>
+                </aside>
+            {% endfor %}
+            <h3 class="article-title-h3">Partager</h3>
+                <div class="container-social">
+                    <button class="btn btn-share share_twitter" data-url="{{ absolute_url(path('front_article', { id: article.id })) }}">
+                        <img class="logo-share" src="/assets/images/logo-twitter.png">
+                        Partager sur twitter
+                    </button>
+                    <button class="btn btn-share share_facebook" data-url="{{ absolute_url(path('front_article', { id: article.id  })) }}">
+                        <img class="logo-share" src="/assets/images/logo-facebook.png">
+                        Partager sur facebook
+                    </button>
+                    <button class="btn btn-share share_linkedin" data-url="{{ absolute_url(path('front_article', { id: article.id  })) }}">
+                        <img class="logo-share" src="/assets/images/logo-linkedin.png">
+                        Partager sur linkedin
+                    </button>
+                </div>
+                <div class="separateur">
+                    <img class="d-block w-100" src="/assets/images/separateur.png">
+                </div>
+                    
+            {% if is_granted('ROLE_USER') %}
+                <div class="comment-form">
+                    {{form_start(commentForm) }}
+                    {{ form_row(commentForm.comment, {'attr': {'placeholder': 'Commentaire' }}) }}                
+                    <button class="btn comment-btn">Envoyer</button>
+                    {{ form_end(commentForm) }}
+                </div>
+            
+                <div class="separateur">
+                    <img class="d-block w-100" src="/assets/images/separateur.png">
+                </div>
+            {% endif %}
+
+            <h3 class="article-title-h3">Commentaires</h3>
+            {% for comment in comments %}
+                <div class="comments-container">
+                    <div class="comments-username">{{ comment.user.pseudo }} :</div>
+                    <div class="comments-text">{{ comment.comment}}</div>
+                </div>
+            {% endfor %}
+            {% if not is_granted('ROLE_USER') %}
+                <div class="separateur">
+                    <img class="d-block w-100" src="/assets/images/separateur.png">
+                </div>
+                <p class="comment-p">Vous devez être connecté pour pouvoir publier un article</p>
+                <button class="btn comment-post-btn"><a href="{{ path('app_login') }}">Se connecter / s'inscrire</a></button>
+            {% endif %}
+        </article>
+    </section>
+{% else %}
+
+    {% for background_picture in background_pictures %}
+        <section class="background" style="background-image:url( /assets/images/uploads/{{ background_picture.picture }}">
+            <article class="article-box">
+                <h1 class="collection-title"><span>{{ article.name }}</span></h1>
+                {% for articleContent in articleContents %}
+                    <aside class="article-content">
+                        <h2 class="article-title-h2">{{ articleContent.title }}</h2>
+                        <p>{{ articleContent.content }}</p>
+                    </aside>
+                {% endfor %}
+                <h3 class="article-title-h3">Partager</h3>
+                    <div class="container-social">
+                        <button class="btn btn-share share_twitter" data-url="{{ absolute_url(path('front_article', { id: article.id })) }}">
+                            <img class="logo-share" src="/assets/images/logo-twitter.png">
+                            Partager sur twitter
+                        </button>
+                        <button class="btn btn-share share_facebook" data-url="{{ absolute_url(path('front_article', { id: article.id  })) }}">
+                            <img class="logo-share" src="/assets/images/logo-facebook.png">
+                            Partager sur facebook
+                        </button>
+                        <button class="btn btn-share share_linkedin" data-url="{{ absolute_url(path('front_article', { id: article.id  })) }}">
+                            <img class="logo-share" src="/assets/images/logo-linkedin.png">
+                            Partager sur linkedin
+                        </button>
+                    </div>
+                    <div class="separateur">
+                        <img class="d-block w-100" src="/assets/images/separateur.png">
+                    </div>
+                        
+                {% if is_granted('ROLE_USER') %}
+                    <div class="comment-form">
+                        {{form_start(commentForm) }}
+                        {{ form_row(commentForm.comment, {'attr': {'placeholder': 'Commentaire' }}) }}                
+                        <button class="btn comment-btn">Envoyer</button>
+                        {{ form_end(commentForm) }}
+                    </div>
                 
-        {% if is_granted('ROLE_USER') %}
-            <div class="comment-form">
-                {{form_start(commentForm) }}
-                {{ form_row(commentForm.comment, {'attr': {'placeholder': 'Commentaire' }}) }}                
-                <button class="btn comment-btn">Envoyer</button>
-                {{ form_end(commentForm) }}
-            </div>
-        
-            <div class="separateur">
-                <img class="d-block w-100" src="/assets/images/separateur.png">
-            </div>
-        {% endif %}
+                    <div class="separateur">
+                        <img class="d-block w-100" src="/assets/images/separateur.png">
+                    </div>
+                {% endif %}
 
-        <h3 class="article-title-h3">Commentaires</h3>
-        {% for comment in comments %}
-            <div class="comments-container">
-                <div class="comments-username">{{ comment.user.pseudo }} :</div>
-                <div class="comments-text">{{ comment.comment}}</div>
-            </div>
-        {% endfor %}
-        {% if not is_granted('ROLE_USER') %}
-            <div class="separateur">
-                <img class="d-block w-100" src="/assets/images/separateur.png">
-            </div>
-            <p class="comment-p">Vous devez être connecté pour pouvoir publier un article</p>
-            <button class="btn comment-post-btn"><a href="{{ path('app_login') }}">Se connecter / s'inscrire</a></button>
-        {% endif %}
-    </article>
-
-        {% block javascript %}
-            {{ parent() }}
-            {{ encore_entry_script_tags('social') }}
-        {% endblock %}
+                <h3 class="article-title-h3">Commentaires</h3>
+                {% for comment in comments %}
+                    <div class="comments-container">
+                        <div class="comments-username">{{ comment.user.pseudo }} :</div>
+                        <div class="comments-text">{{ comment.comment}}</div>
+                    </div>
+                {% endfor %}
+                {% if not is_granted('ROLE_USER') %}
+                    <div class="separateur">
+                        <img class="d-block w-100" src="/assets/images/separateur.png">
+                    </div>
+                    <p class="comment-p">Vous devez être connecté pour pouvoir publier un article</p>
+                    <button class="btn comment-post-btn"><a href="{{ path('app_login') }}">Se connecter / s'inscrire</a></button>
+                {% endif %}
+            </article>
+        </section>
+    {% endfor %}
+{% endif %}
+   {% block javascript %}
+       {{ parent() }}
+       {{ encore_entry_script_tags('social') }}
+   {% endblock %}
 {% endblock %}
