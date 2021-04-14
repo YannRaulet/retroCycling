@@ -17,7 +17,6 @@ use App\Form\RegistrationFormType;
 use App\Form\ResetPassType;
 use App\Entity\User;
 use App\Repository\UserRepository;
-use App\Repository\BackgroundPictureRepository;
 use Swift_Message;
 use Exception;
 
@@ -26,11 +25,8 @@ class SecurityController extends AbstractController
     /**
      * @Route("/connexion", name="app_login")
      */
-    public function login(
-        AuthenticationUtils $authenticationUtils,
-        UserRepository $userRepository,
-        BackgroundPictureRepository $backgroundRepository
-    ): Response {
+    public function login(AuthenticationUtils $authenticationUtils, UserRepository $userRepository): Response
+    {
         // check if there is no user in database and redirects to initial user creation form
         if (empty($userRepository->findAll())) {
             return $this->redirectToRoute('app_registrer');
@@ -41,11 +37,7 @@ class SecurityController extends AbstractController
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('security/login.html.twig', [
-            'last_username' => $lastUsername,
-            'error' => $error,
-            'background_pictures' => $backgroundRepository->findByName('background-connexion')
-        ]);
+        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }
 
     /**
@@ -67,8 +59,7 @@ class SecurityController extends AbstractController
         EntityManagerInterface $manager,
         UserPasswordEncoderInterface $passwordEncoder,
         TokenGeneratorInterface $tokenGenerator,
-        \Swift_Mailer $mailer,
-        BackgroundPictureRepository $backgroundRepository
+        \Swift_Mailer $mailer
     ): ?Response {
 
         // 1) build the form
@@ -111,7 +102,6 @@ class SecurityController extends AbstractController
 
         return $this->render('security/registrer.html.twig', [
                 'registrationForm' => $form->createView(),
-                'background_pictures' => $backgroundRepository->findByName('background-connexion')
         ]);
     }
 
@@ -125,11 +115,15 @@ class SecurityController extends AbstractController
         //Vérifie si l'utilisateur a un token
         $user = $userRepo->findOneBy(['activationToken' => $token]);
         //Vérifie si c'est le même token
+        /** @phpstan-ignore-next-line */
         $tokenExist = $user->getActivationToken();
-        if($token === $tokenExist) {
+        if ($token === $tokenExist) {
             //Supprime le token
+            /** @phpstan-ignore-next-line */
             $user->setActivationToken(null);
+            /** @phpstan-ignore-next-line */
             $user->setEnabled(true);
+            /** @phpstan-ignore-next-line */
             $manager->persist($user);
             $manager->flush();
             $this->addFlash('success', 'Votre compte est activé, vous pouvez dès maintenant vous connecté');
@@ -137,7 +131,7 @@ class SecurityController extends AbstractController
         } else {
             //Si aucun utilisateur n'est associé à ce token un message d'erreur s'affiche
             return $this->redirectToRoute('front_home');
-        } 
+        }
     }
 
     /**
