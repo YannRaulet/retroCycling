@@ -11,6 +11,7 @@ use App\Repository\ArticleRepository;
 use App\Repository\CommentRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\CyclingShirtRepository;
+use App\Repository\BackgroundPictureRepository;
 use App\Repository\ArticleContentRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,8 +29,11 @@ class FrontController extends AbstractController
      * @Route("/contact", name="contact_us")
      * @return Response
      */
-    public function contactUs(Request $request, \Swift_Mailer $mailer): Response
-    {
+    public function contactUs(
+        Request $request,
+        \Swift_Mailer $mailer,
+        BackgroundPictureRepository $backgroundRepository
+    ): Response {
         $form = $this->createForm(ContactType::class);
         $form->handleRequest($request);
 
@@ -57,6 +61,7 @@ class FrontController extends AbstractController
         }
         return $this->render('front/contact_us.html.twig', [
             'contactForm' => $form ->createView(),
+            'background_pictures' => $backgroundRepository->findByName('background-contact')
         ]);
     }
 
@@ -65,8 +70,18 @@ class FrontController extends AbstractController
      * Displays the page showing cycling shirts from each categories
      * @return Response
      */
-    public function homeCollection(CyclingShirtRepository $shirtRepository): Response
-    {
+    public function homeCollection(
+        CyclingShirtRepository $shirtRepository,
+        ArticleRepository $articleRepository,
+        BackgroundPictureRepository $backgroundRepository
+    ): Response {
+        $articles = $articleRepository->findBy(
+            [],
+            ['createdAt' => 'desc'],
+            3,
+            0
+        );
+
         return $this->render('front/home.html.twig', [
             'cyclingShirts50_60' => $shirtRepository->findBy(
                 ['years' => 'Années 50-60'],
@@ -88,6 +103,8 @@ class FrontController extends AbstractController
                 ['id' => 'DESC'],
                 3
             ),
+            'articles' => $articles,
+            'background_pictures' => $backgroundRepository->findByName('background-main')
         ]);
     }
 
@@ -96,10 +113,13 @@ class FrontController extends AbstractController
      * This controler takes all articles and posters in the blog
      * @return Response
      */
-    public function blog(ArticleRepository $articleRepository): Response
-    {
+    public function blog(
+        ArticleRepository $articleRepository,
+        BackgroundPictureRepository $backgroundRepository
+    ): Response {
         return $this->render('front/blog.html.twig', [
             'articles' => $articleRepository->findAll(),
+            'background_pictures' => $backgroundRepository->findByName('background-main')
         ]);
     }
 
@@ -115,6 +135,7 @@ class FrontController extends AbstractController
         int $id,
         Article $article,
         CommentRepository $commentRepository,
+        BackgroundPictureRepository $backgroundRepository,
         EntityManagerInterface $manager
     ): Response {
 
@@ -141,6 +162,37 @@ class FrontController extends AbstractController
             'articleContents' => $contentRepository->findBy(['article' => $article]),
             'commentForm' => $form->createView(),
             'comments' => $comments,
+            'background_pictures' => $backgroundRepository->findByName('background-main')
         ]);
+    }
+
+    /**
+     * @Route("/mentions-légales", name="legal_notice")
+     * This controler displays the legal notices
+     * @return Response
+     */
+    public function legalNotice(): Response
+    {
+        return $this->render('front/legal_notice.html.twig');
+    }
+
+    /**
+     * @Route("/politique-de-confidentialité", name="privacy_policy")
+     * This controler displays the privacy policy
+     * @return Response
+     */
+    public function privacyPolicy(): Response
+    {
+        return $this->render('front/privacy_policy.html.twig');
+    }
+
+    /**
+     * @Route("/copyright", name="copyright")
+     * This controler displays the copyright page
+     * @return Response
+     */
+    public function copyright(): Response
+    {
+        return $this->render('front/copyright.html.twig');
     }
 }

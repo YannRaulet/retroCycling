@@ -17,6 +17,7 @@ use App\Form\RegistrationFormType;
 use App\Form\ResetPassType;
 use App\Entity\User;
 use App\Repository\UserRepository;
+use App\Repository\BackgroundPictureRepository;
 use Swift_Message;
 use Exception;
 
@@ -25,8 +26,11 @@ class SecurityController extends AbstractController
     /**
      * @Route("/connexion", name="app_login")
      */
-    public function login(AuthenticationUtils $authenticationUtils, UserRepository $userRepository): Response
-    {
+    public function login(
+        AuthenticationUtils $authenticationUtils,
+        UserRepository $userRepository,
+        BackgroundPictureRepository $backgroundRepository
+    ): Response {
         // check if there is no user in database and redirects to initial user creation form
         if (empty($userRepository->findAll())) {
             return $this->redirectToRoute('app_registrer');
@@ -37,7 +41,11 @@ class SecurityController extends AbstractController
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+        return $this->render('security/login.html.twig', [
+            'last_username' => $lastUsername,
+            'error' => $error,
+            'background_pictures' => $backgroundRepository->findByName('background-connexion')
+        ]);
     }
 
     /**
@@ -59,7 +67,8 @@ class SecurityController extends AbstractController
         EntityManagerInterface $manager,
         UserPasswordEncoderInterface $passwordEncoder,
         TokenGeneratorInterface $tokenGenerator,
-        \Swift_Mailer $mailer
+        \Swift_Mailer $mailer,
+        BackgroundPictureRepository $backgroundRepository
     ): ?Response {
 
         // 1) build the form
@@ -102,6 +111,7 @@ class SecurityController extends AbstractController
 
         return $this->render('security/registrer.html.twig', [
                 'registrationForm' => $form->createView(),
+                'background_pictures' => $backgroundRepository->findByName('background-connexion')
         ]);
     }
 

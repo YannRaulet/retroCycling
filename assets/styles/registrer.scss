@@ -1,7 +1,8 @@
 .registrer-h1 {
     text-align: center;
-    font-size: 3rem;
-    margin: 10% 0 10% 0;
+    color: black;
+    padding-top: 20px;
+    font-size: 3em;
 }
 
 .registrer-form {
@@ -10,13 +11,11 @@
     flex-direction: column;
     width: 80%;
     margin: auto;
-    margin-bottom: 4%;
+    margin-top: 3%;
 }
 
 .registrer-form input {
-    border: none ;
-    border-bottom: 2px solid black;;
-    background: none !important;
+    background-color: rgba(0, 0, 0, 0.363) !important;;
     text-align: center;
     font-size: 1.2rem;
     color: white !important;
@@ -26,8 +25,17 @@
     outline: 0 !important;
 }
 
+.registrer-form input::placeholder {
+    color: white !important;
+}
+
 .registrer-form label {
     display: none;
+}
+
+.registrer-field ~ label {
+    display: block !important;
+    color: white;
 }
 
 .registrer-form input:-webkit-autofill,
@@ -35,10 +43,6 @@
 .registrer-form input:-webkit-autofill:focus {
   -webkit-text-fill-color: white;
   transition: background-color 9000s ease-in-out 0s;
-}
-
-.form-check label {
-    display: block;
 }
 
 .registrer-btn {
@@ -52,6 +56,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 3%;
 }
 
 .registrer-btn:hover {
@@ -69,11 +74,6 @@
         width: 50%;
     }
 
-    .registrer-h1 {
-        text-align: center;
-        margin: 15% 0 5% 0;
-    }
-
     .registrer-btn {
         width: 12rem;
         height: 4rem;
@@ -88,10 +88,5 @@
 @media (min-width: 1200px) {
     .registrer-form {
         width: 30%;
-    }
-
-    .registrer-h1 {
-        text-align: center;
-        margin: 5% 0 5% 0;
-    }    
+    }  
 }
