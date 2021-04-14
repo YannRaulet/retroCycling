@@ -114,19 +114,20 @@ class SecurityController extends AbstractController
     {
         //Vérifie si l'utilisateur a un token
         $user = $userRepo->findOneBy(['activationToken' => $token]);
-
-        //Si aucun utilisateur n'est associé à ce token
-        if (!$user) {
-            throw $this->createNotFoundException('Cet utilisateur n\'existe pas');
-        }
-
-        //Supprime le token
-        $user->setActivationToken(null);
-        $manager->persist($user);
-        $manager->flush();
-        $this->addFlash('success', 'Vous avez bien activé votre compte');
-
-        return $this->redirectToRoute('front_home');
+        //Vérifie si c'est le même token
+        $tokenExist = $user->getActivationToken();
+        if($token === $tokenExist) {
+            //Supprime le token
+            $user->setActivationToken(null);
+            $user->setEnabled(true);
+            $manager->persist($user);
+            $manager->flush();
+            $this->addFlash('success', 'Votre compte est activé, vous pouvez dès maintenant vous connecté');
+            return $this->redirectToRoute('front_home');
+        } else {
+            //Si aucun utilisateur n'est associé à ce token un message d'erreur s'affiche
+            return $this->redirectToRoute('front_home');
+        } 
     }
 
     /**
