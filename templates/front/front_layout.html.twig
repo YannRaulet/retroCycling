@@ -46,9 +46,16 @@
                             <a href="#">Connecté<i class="fas fa-caret-down"></i></a>
                             <div class="dropdown">
                                 <ul>
-                                    <li class="dropdown-link">
-                                        <a href="{{path('user_profil')}}">Mon profil</a>
-                                    </li>
+                                    {% if is_granted('ROLE_ADMIN') %}
+                                        <li class="dropdown-link">
+                                            <a href="{{path('admin_dashboard')}}">Admin</a>
+                                        </li>
+                                     {% elseif is_granted('ROLE_USER') %}
+                                        <li class="dropdown-link">
+                                            <a href="{{path('user_profil')}}">Mon profil</a>
+                                        </li>
+                                    {% endif %}
+                                    
                                     <li class="dropdown-link">
                                         <a href="{{path('app_logout')}}">Déconnexion</a>
                                     </li>

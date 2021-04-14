@@ -1,4 +1,4 @@
-/*Taille des formulaires et des tableaux*/
+/*Forms and tables sizes*/
 
 .page-form-edit {
     width: 70%;
@@ -10,7 +10,7 @@
 }
 
 .table-hover {
-    width: 90%;
+    width: 60%;
     margin: auto;
 }
 
@@ -51,4 +51,138 @@ table img {
 
 .title-crud {
     text-align: center;
+}
+
+.table-shirt-name-hidden {
+    display: none;
+}
+
+@media (min-width: 600px) {
+    .table-hover {
+        width: 60%;
+        margin: auto;
+        margin-left: 30%;
+    }
+    
+    #cycling_shirt {
+        width: 70%;
+        margin:auto;
+        margin-right: 5%;
+    }
+
+    #article {
+        width: 70%;
+        margin:auto;
+        margin-right: 5%;
+    }
+
+    #category {
+        width: 70%;
+        margin:auto;
+        margin-right: 5%;
+    }
+
+    #article_content {
+        width: 70%;
+        margin:auto;
+        margin-right: 5%;
+    }
+
+    #background_picture {
+        width: 70%;
+        margin:auto;
+        margin-right: 5%;
+    }
+
+    .admin-create-btn {
+        margin-left: 8rem;
+    }
+
+    .admin-delete-btn {
+        margin-left: 8rem;
+    }
+
+    .page-form-edit a {
+        margin-left: 8rem;
+    }
+
+    .table-shirt-name-hidden {
+        display: block;
+    }
+}
+
+/* Tablet - PC version */
+@media (min-width: 1024px) {
+    #cycling_shirt {
+        width: 70%;
+        margin:auto;
+    }
+
+    #article {
+        width: 70%;
+        margin:auto;
+    }
+
+    #category {
+        width: 70%;
+        margin:auto;
+    }
+
+    #article_content {
+        width: 70%;
+        margin:auto;
+    }
+
+    #background_picture {
+        width: 70%;
+        margin:auto;
+    }
+
+    .admin-create-btn {
+        margin-left: 7rem;
+    }
+
+    .admin-delete-btn {
+        margin-left: 7rem;
+    }
+
+    .page-form-edit a {
+        margin-left: 7rem;
+    }
+
+}
+
+/* Tablet - PC version */
+@media (min-width: 1200px) {
+    .admin-create-btn {
+        margin-left: 8rem;
+    }
+
+    .admin-delete-btn {
+        margin-left: 8rem;
+    }
+
+    .page-form-edit a {
+        margin-left: 8rem;
+    }
+}
+
+/* PC version */
+@media (min-width: 1600px) {
+    .table-hover {
+        width: 60%;
+        margin: auto;
+    }
+
+    .admin-create-btn {
+        margin-left: 12rem;
+    }
+
+    .admin-delete-btn {
+        margin-left: 12rem;
+    }
+
+    .page-form-edit a {
+        margin-left: 12rem;
+    }
 }
