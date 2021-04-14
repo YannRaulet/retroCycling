@@ -85,7 +85,7 @@ class SecurityController extends AbstractController
                 )
             );
 
-            //On génère le token d'activation et chiffre la chaine avec un ID unique
+            // We generate the activation token and encrypt the chain with a unique ID
             $user->setActivationToken($tokenGenerator->generateToken());
 
             // 4) save the User!
@@ -93,7 +93,7 @@ class SecurityController extends AbstractController
             $manager->flush();
             $this->addFlash('message', 'Un email vous a éte envoyé');
 
-            //Créer le message activation du compte
+            // Create the account activation message
             $message = (new Swift_Message('Activation de votre compte'))
                 ->setFrom('admin@monsite.fr')
                 ->setTo($user->getEmail())
@@ -122,13 +122,13 @@ class SecurityController extends AbstractController
      */
     public function activation(string $token, UserRepository $userRepo, EntityManagerInterface $manager): Response
     {
-        //Vérifie si l'utilisateur a un token
+        // Check if the user has a token
         $user = $userRepo->findOneBy(['activationToken' => $token]);
-        //Vérifie si c'est le même token
+        // Check if it's the same token
         /** @phpstan-ignore-next-line */
         $tokenExist = $user->getActivationToken();
         if ($token === $tokenExist) {
-            //Supprime le token
+            // Delete the token
             /** @phpstan-ignore-next-line */
             $user->setActivationToken(null);
             /** @phpstan-ignore-next-line */
@@ -136,10 +136,10 @@ class SecurityController extends AbstractController
             /** @phpstan-ignore-next-line */
             $manager->persist($user);
             $manager->flush();
-            $this->addFlash('success', 'Votre compte est activé, vous pouvez dès maintenant vous connecté');
+            $this->addFlash('success', 'Votre compte est activé, vous pouvez dès maintenant vous connecter');
             return $this->redirectToRoute('front_home');
         } else {
-            //Si aucun utilisateur n'est associé à ce token un message d'erreur s'affiche
+            // If no user is associated with this token, an error message is displayed
             return $this->redirectToRoute('front_home');
         }
     }
@@ -156,32 +156,32 @@ class SecurityController extends AbstractController
         EntityManagerInterface $manager,
         TokenGeneratorInterface $tokenGenerator
     ): Response {
-        // On initialise le formulaire
+        // We initialize the form
         $form = $this->createForm(ResetPassType::class);
 
-        // On traite le formulaire
+        // We process the form
         $form->handleRequest($request);
 
-        // Si le formulaire est valide
+        // If the form is valid
         if ($form->isSubmitted() && $form->isValid()) {
-            // On récupère les données
+            // We recover the data
             $donnees = $form->getData();
 
-            // On cherche un utilisateur ayant cet e-mail
+            // We are looking for a user with this e-mail
             $user = $userRepository->findOneByEmail($donnees['email']);
 
-            // Si l'utilisateur n'existe pas
+            // If the user does not exist
             if (!$user) {
-                // On envoie une alerte disant que l'adresse e-mail est inconnue
+                // We send an alert saying that the e-mail address is unknown
                 $this->addFlash('danger', 'Cette adresse e-mail est inconnue');
-                // On retourne sur la page de connexion
+                // We return to the login page
                 return $this->redirectToRoute('app_login');
             }
 
-            // On génère un token
+            // We generate a token
             $token = $tokenGenerator->generateToken();
 
-            // On écrit le token en base de données
+            // We write the token in the database
             try {
                 $user->setResetToken($token);
                 $manager->persist($user);
@@ -191,7 +191,7 @@ class SecurityController extends AbstractController
                 return $this->redirectToRoute('app_login');
             }
 
-            // On génère l'e-mail du mot de passe oublié
+            // We generate the forgotten password email
             $message = (new Swift_Message('Mot de passe oublié'))
                 ->setFrom('admin@monsite.fr')
                 ->setTo($user->getEmail())
@@ -203,17 +203,17 @@ class SecurityController extends AbstractController
                     'text/html'
                 );
 
-            // On envoie l'e-mail
+            // We send the email
             $mailer->send($message);
 
-            // On crée le message flash de confirmation
+            // We create the confirmation flash message
             $this->addFlash('message', 'E-mail de réinitialisation du mot de passe envoyé !');
 
-            // On redirige vers la page de login
+            // We redirect to the login page
             return $this->redirectToRoute('app_login');
         }
 
-        // On envoie le formulaire à la vue
+        // We send the form to the view
         return $this->render('security/forgotten_password.html.twig', [
             'emailForm' => $form->createView()
         ]);
@@ -231,36 +231,36 @@ class SecurityController extends AbstractController
         UserRepository $userRepository,
         EntityManagerInterface $manager
     ): Response {
-        // On cherche un utilisateur avec le token donné
+        // We are looking for a user with the given token
         $user = $userRepository->findOneBy([
             'resetToken' => $token
         ]);
 
-        // Si l'utilisateur n'existe pas
+        // If the user does not exist
         if (!$user) {
-            // On affiche une erreur
+            // We display an error
             $this->addFlash('danger', 'Token Inconnu');
             return $this->redirectToRoute('app_login');
         }
 
-        // Si le formulaire est envoyé en méthode post
+        // If the form is sent by POST method
         if ($request->isMethod('POST')) {
-            // On supprime le token
+            // We delete token
             $user->setResetToken(null);
 
-            // On chiffre le mot de passe
+            // We encrypt the password
             $user->setPassword($passwordEncoder->encodePassword($user, $request->request->get('password')));
 
-            // On stocke dans l'entité
+            // We store it in the entity
             $manager->persist($user);
             $manager->flush();
 
-            // On crée le message flash
+            // We create the flash message
             $this->addFlash('message', 'Mot de passe mis à jour');
 
             return $this->redirectToRoute('front_home');
         } else {
-            // Si on n'a pas reçu les données, on affiche le formulaire
+            // If we have not received the data, we display the form
             return $this->render('security/reset_password.html.twig', ['token' => $token]);
         }
     }
