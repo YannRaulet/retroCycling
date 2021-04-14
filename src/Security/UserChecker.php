@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Security;
 
 use App\Security\AccountDisabledException;
@@ -9,20 +10,19 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 class UserChecker implements UserCheckerInterface
 {
-    public function checkPreAuth(UserInterface $user)
+    public function checkPreAuth(UserInterface $user): void
     {
         if (!$user instanceof AppUser) {
             return;
         }
 
-            // L’utilisateur n’est pas activé par l’administrateur
-            if (!$user->getEnabled()) {
-                throw new AccountDisabledException();       
-            }
+        // L’utilisateur n’est pas activé par l’administrateur
+        if (!$user->getEnabled()) {
+            throw new AccountDisabledException();
+        }
     }
 
-    public function checkPostAuth(UserInterface $user)
+    public function checkPostAuth(UserInterface $user): void
     {
-        
     }
 }

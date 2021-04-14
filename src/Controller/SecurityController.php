@@ -115,11 +115,15 @@ class SecurityController extends AbstractController
         //Vérifie si l'utilisateur a un token
         $user = $userRepo->findOneBy(['activationToken' => $token]);
         //Vérifie si c'est le même token
+        /** @phpstan-ignore-next-line */
         $tokenExist = $user->getActivationToken();
-        if($token === $tokenExist) {
+        if ($token === $tokenExist) {
             //Supprime le token
+            /** @phpstan-ignore-next-line */
             $user->setActivationToken(null);
+            /** @phpstan-ignore-next-line */
             $user->setEnabled(true);
+            /** @phpstan-ignore-next-line */
             $manager->persist($user);
             $manager->flush();
             $this->addFlash('success', 'Votre compte est activé, vous pouvez dès maintenant vous connecté');
@@ -127,7 +131,7 @@ class SecurityController extends AbstractController
         } else {
             //Si aucun utilisateur n'est associé à ce token un message d'erreur s'affiche
             return $this->redirectToRoute('front_home');
-        } 
+        }
     }
 
     /**

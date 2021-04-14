@@ -63,7 +63,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="boolean")
      */
-    private $enabled = false;
+    private bool $enabled = false;
 
     /**
      * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="user")
