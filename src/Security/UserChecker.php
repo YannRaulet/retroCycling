@@ -16,7 +16,7 @@ class UserChecker implements UserCheckerInterface
             return;
         }
 
-        // L’utilisateur n’est pas activé par l’administrateur
+        // The user is not activated by the administrator
         if (!$user->getEnabled()) {
             throw new AccountDisabledException();
         }
