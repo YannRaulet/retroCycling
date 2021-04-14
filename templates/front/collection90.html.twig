@@ -5,24 +5,48 @@
 {% block title %}{{ parent() }}-Collection{% endblock %}
 
 {% block body %}
-    <section>
-        <div class="background-picture-home"></div>
-    </section>
 
+{% if background_pictures == false %}
     <section>
-        <h1 class="collection-title"><span>Années 90</span></h1>
-        <div class="cycling-shirt-display">
-        {% for cyclingShirt in cyclingShirts90 %}
-            <div class="cycling-shirt-container">
-                <div class="cycling-shirt-hover">
-                    <a href="{{ path('front_shirt_cycling90', { id : cyclingShirt.id }) }}"><img class="cycling-shirt-picture" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="cycling shirt picture"></a>
-                    <div class="overlay overlayFade">
-                        <a href="{{ path('front_shirt_cycling90', { id : cyclingShirt.id }) }}"><div class="text">Voir >></div></a>
+        <article>
+            <h1 class="collection-title"><span>Années 90</span></h1>
+            <div class="cycling-shirt-display">
+            {% for cyclingShirt in cyclingShirts90 %}
+                <div class="cycling-shirt-container">
+                    <div class="cycling-shirt-hover">
+                        <a href="{{ path('front_shirt_cycling90', { id : cyclingShirt.id }) }}"><img class="cycling-shirt-picture" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="cycling shirt picture"></a>
+                        <div class="overlay overlayFade">
+                            <a href="{{ path('front_shirt_cycling90', { id : cyclingShirt.id }) }}"><div class="text">Voir >></div></a>
+                        </div>
                     </div>
+                    <h2>{{ cyclingShirt.name }}</h2>
                 </div>
-                <h2>{{ cyclingShirt.name }}</h2>
+            {% endfor %}
             </div>
-        {% endfor %}
-        </div>
+        </article>
     </section>
+{% else %}
+
+    {% for background_picture in background_pictures %}
+        <section class="background" style="background-image:url( /assets/images/uploads/{{ background_picture.picture }}">
+            <article>
+                <h1 class="collection-title"><span>Années 90</span></h1>
+                <div class="cycling-shirt-display">
+                {% for cyclingShirt in cyclingShirts90 %}
+                    <div class="cycling-shirt-container">
+                        <div class="cycling-shirt-hover">
+                            <a href="{{ path('front_shirt_cycling90', { id : cyclingShirt.id }) }}"><img class="cycling-shirt-picture" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="cycling shirt picture"></a>
+                            <div class="overlay overlayFade">
+                                <a href="{{ path('front_shirt_cycling90', { id : cyclingShirt.id }) }}"><div class="text">Voir >></div></a>
+                            </div>
+                        </div>
+                        <h2>{{ cyclingShirt.name }}</h2>
+                    </div>
+                {% endfor %}
+                </div>
+            </article>
+        </section>
+    {% endfor %}
+{% endif %}
+
 {% endblock %}
