@@ -5,53 +5,127 @@
 {% block title %}{{ parent() }}-Maillot{% endblock %}
 
 {% block body %}
-    <section>
-        <div class="background-picture-home"></div>
-    </section>
 
+{% if background_pictures == false %}
     <section>
-        <h2 class="shirt-description">{{ cyclingShirt80.name }}</h2>
-        <hr class="shirt-details-hr">
-        <div class = "card-wrapper">
-            <div class = "picture-display">
-                <div class = "picture-showcase">
-                    <img class="picture-load" src="/assets/images/uploads/{{ cyclingShirt80.pictureFront }}" alt = "Maillot face avant">
-                    <img class="picture-load" src="/assets/images/uploads/{{ cyclingShirt80.pictureBack }}" alt = "Maillot face arrière">
+        <article>
+            <h2 class="shirt-description">{{ cyclingShirt80.name }}</h2>
+            <hr class="shirt-details-hr">
+            <div class = "card-wrapper">
+                <div class = "picture-display">
+                    <div class = "picture-showcase">
+                        <img class="picture-load" src="/assets/images/uploads/{{ cyclingShirt80.pictureFront }}" alt = "Maillot face avant">
+                        <img class="picture-load" src="/assets/images/uploads/{{ cyclingShirt80.pictureBack }}" alt = "Maillot face arrière">
+                    </div>
+                     {% if app.user %}
+                            <a class="like" href="{{ path('user_favorite', {id: cyclingShirt80.id})}}">
+                                {% if app.user.isInFavorite(cyclingShirt80) %}
+                                    <img class="favorite-icon" src="{{ asset('assets/images/favoriteRed.png') }}">
+                                {% else %}
+                                    <img class="favorite-icon" src="{{ asset('assets/images/favoriteEmpty.png') }}">
+                                {% endif %}
+                            </a>
+                    {% else %}
+                        <a class="like-not-connected" href="{{ path('app_login') }}">
+                            <img class="favorite-icon" src="{{ asset('assets/images/favoriteEmpty.png') }}">
+                        </a>
+                    {% endif %}
+                </div>
+                <div class = "picture-select">
+                    <div class = "picture-item">
+                    <a href = "#" data-id = "1">
+                        <img class="picture-load" class="picture" src="/assets/images/uploads/{{ cyclingShirt80.pictureFront }}" alt = "Maillot face avant">
+                    </a>
+                    </div>
+                    <div class = "picture-item">
+                    <a href = "#" data-id = "2">
+                        <img class="picture-load" src="/assets/images/uploads/{{ cyclingShirt80.pictureBack }}"  alt = "Maillot face arrière">
+                    </a>
+                    </div>
                 </div>
             </div>
-            <div class = "picture-select">
-                <div class = "picture-item">
-                <a href = "#" data-id = "1">
-                    <img class="picture-load" class="picture" src="/assets/images/uploads/{{ cyclingShirt80.pictureFront }}" alt = "Maillot face avant">
-                </a>
+        </article>
+
+        <article>
+            <h2 class="shirt-description">Porté par</h2>
+            <hr class="shirt-details-hr">
+            <p class="shirt-description-p">{{ cyclingShirt80.cyclistName }}</p>
+        </article>
+
+        <article>
+            <h2 class="shirt-description">informations sur l'équipe</h2>
+            <hr class="shirt-details-hr">
+            <p class="shirt-description-p">{{ cyclingShirt80.teamInformations }}</p>
+        </article>
+
+        <article>
+            <h2 class="shirt-description">Résultats notables</h2>
+            <hr class="shirt-details-hr">
+            <p class="shirt-description-p">{{ cyclingShirt80.results }}</p>
+        </article>
+    </section>
+{% else %}
+
+    {% for background_picture in background_pictures %}
+        <section class="background" style="background-image:url( /assets/images/uploads/{{ background_picture.picture }}">
+            <article>
+                <h2 class="shirt-description">{{ cyclingShirt80.name }}</h2>
+                <hr class="shirt-details-hr">
+                <div class = "card-wrapper">
+                    <div class = "picture-display">
+                        <div class = "picture-showcase">
+                            <img class="picture-load" src="/assets/images/uploads/{{ cyclingShirt80.pictureFront }}" alt = "Maillot face avant">
+                            <img class="picture-load" src="/assets/images/uploads/{{ cyclingShirt80.pictureBack }}" alt = "Maillot face arrière">
+                        </div>
+                        {% if app.user %}
+                            <a class="like" href="{{ path('user_favorite', {id: cyclingShirt80.id})}}">
+                                {% if app.user.isInFavorite(cyclingShirt80) %}
+                                    <img class="favorite-icon" src="{{ asset('assets/images/favoriteRed.png') }}">
+                                {% else %}
+                                    <img class="favorite-icon" src="{{ asset('assets/images/favoriteEmpty.png') }}">
+                                {% endif %}
+                            </a>
+                        {% else %}
+                            <a class="like-not-connected" href="{{ path('app_login') }}">
+                                <img class="favorite-icon" src="{{ asset('assets/images/favoriteEmpty.png') }}">
+                            </a>
+                        {% endif %}
+                    </div>
+                    <div class = "picture-select">
+                        <div class = "picture-item">
+                        <a href = "#" data-id = "1">
+                            <img class="picture-load" class="picture" src="/assets/images/uploads/{{ cyclingShirt80.pictureFront }}" alt = "Maillot face avant">
+                        </a>
+                        </div>
+                        <div class = "picture-item">
+                        <a href = "#" data-id = "2">
+                            <img class="picture-load" src="/assets/images/uploads/{{ cyclingShirt80.pictureBack }}"  alt = "Maillot face arrière">
+                        </a>
+                        </div>
+                    </div>
                 </div>
-                <div class = "picture-item">
-                <a href = "#" data-id = "2">
-                    <img class="picture-load" src="/assets/images/uploads/{{ cyclingShirt80.pictureBack }}"  alt = "Maillot face arrière">
-                </a>
-                </div>
-            </div>
-        </div>
-    </section>
+            </article>
 
-    <section>
-        <h2 class="shirt-description">Porté par</h2>
-        <hr class="shirt-details-hr">
-        <p class="shirt-description-p">{{ cyclingShirt80.cyclistName }}</p>
-    </section>
+            <article>
+                <h2 class="shirt-description">Porté par</h2>
+                <hr class="shirt-details-hr">
+                <p class="shirt-description-p">{{ cyclingShirt80.cyclistName }}</p>
+            </article>
 
-    <section>
-        <h2 class="shirt-description">informations sur l'équipe</h2>
-        <hr class="shirt-details-hr">
-        <p class="shirt-description-p">{{ cyclingShirt80.teamInformations }}</p>
-    </section>
+            <article>
+                <h2 class="shirt-description">informations sur l'équipe</h2>
+                <hr class="shirt-details-hr">
+                <p class="shirt-description-p">{{ cyclingShirt80.teamInformations }}</p>
+            </article>
 
-    <section>
-        <h2 class="shirt-description">Résultats notables</h2>
-        <hr class="shirt-details-hr">
-        <p class="shirt-description-p">{{ cyclingShirt80.results }}</p>
-    </section>
-
+            <article>
+                <h2 class="shirt-description">Résultats notables</h2>
+                <hr class="shirt-details-hr">
+                <p class="shirt-description-p">{{ cyclingShirt80.results }}</p>
+            </article>
+        </section>
+    {% endfor %}
+{% endif %}
     {% block javascript %}
         {{parent()}}
         {{ encore_entry_script_tags('switchCyclingShirt') }}

@@ -5,75 +5,162 @@
 {% block title %}{{ parent() }}-Accueil{% endblock %}
 
 {% block body %}
-    <section>
-        <div class="background-picture-home"></div>
-    </section>
 
-    <section>
-        <h1 class="collection-title"><span>Collection</span></h1>
-        <section class="accordions-pictures">
-            <div class="accordions-pictures1">
-                <h2 class="collection-title-h2"><a href="{{path('front_collection50_60')}}">Années 50-60</a></h2 class="collection-title-h2">
-                <div class="accordions-section1">
-                {% for cyclingShirt in cyclingShirts50_60 %}
-                    {% if loop.index == 1 %}
-                        <a class="accordion-a" href="{{ path('front_shirt_cycling50_60', { id : cyclingShirt.id }) }}"><img class="img img1" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="cycling shirt picture"></a>
-                    {% elseif loop.index == 2 %}
-                        <a class="accordion-a" href="{{ path('front_shirt_cycling50_60', { id : cyclingShirt.id }) }}"><img class="img img2" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="cycling shirt picture"></a>
-                    {% elseif loop.index == 3 %}
-                        <a class="accordion-a" href="{{ path('front_shirt_cycling50_60', { id : cyclingShirt.id }) }}"><img class="img img3" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="cycling shirt picture"></a>
-                    {% endif %}
-                {% endfor %}
+{% if background_pictures == false %}
+     <section>
+            <aside>
+                <div class="background-picture-home"></div>
+            </aside>
+            <article>
+                <h1 class="collection-title"><span>Collection</span></h1>
+                <div class="accordions-pictures">
+                    <div class="accordions-pictures1">
+                        <h2 class="collection-title-h2"><a href="{{path('front_collection50_60')}}">Années 50-60</a></h2 class="collection-title-h2">
+                        <div class="accordions-section1">
+                        {% for cyclingShirt in cyclingShirts50_60 %}
+                            {% if loop.index == 1 %}
+                                <a class="accordion-a" href="{{ path('front_shirt_cycling50_60', { id : cyclingShirt.id }) }}"><img class="img img1" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="cycling shirt picture"></a>
+                            {% elseif loop.index == 2 %}
+                                <a class="accordion-a" href="{{ path('front_shirt_cycling50_60', { id : cyclingShirt.id }) }}"><img class="img img2" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="cycling shirt picture"></a>
+                            {% elseif loop.index == 3 %}
+                                <a class="accordion-a" href="{{ path('front_shirt_cycling50_60', { id : cyclingShirt.id }) }}"><img class="img img3" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="cycling shirt picture"></a>
+                            {% endif %}
+                        {% endfor %}
+                        </div>
+                    </div>
+                    <div class="accordions-pictures2">
+                        <h2 class="collection-title-h2"><a href="{{path('front_collection70')}}">Années 70</a></h2 class="collection-title-h2">
+                        <div class="accordions-section2">
+                        {% for cyclingShirt in cyclingShirts70 %}
+                            {% if loop.index == 1 %}
+                                <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}"><img class="img img4" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="cycling shirt picture"></a>
+                            {% elseif loop.index == 2 %}
+                                <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}"><img class="img img5" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="cycling shirt picture"></a>
+                            {% elseif loop.index == 3 %}
+                                <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}"><img class="img img6" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="cycling shirt picture"></a>
+                            {% endif %}
+                        {% endfor %}
+                        </div>
+                    </div>
+            </article>
+            <article class="accordions-pictures">
+                <div class="accordions-pictures1">
+                    <h2 class="collection-title-h2"><a href="{{path('front_collection80')}}">Années 80</a></h2 class="collection-title-h2">
+                    <div class="accordions-section1">
+                    {% for cyclingShirt in cyclingShirts80 %}
+                        {% if loop.index == 1 %}
+                            <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}"><img class="img img1" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="cycling shirt picture"></a>
+                        {% elseif loop.index == 2 %}
+                            <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}"><img class="img img2" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="cycling shirt picture"></a>
+                        {% elseif loop.index == 3 %}
+                            <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}"><img class="img img3" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="cycling shirt picture"></a>
+                        {% endif %}
+                    {% endfor %}
+                    </div>
                 </div>
-            </div>
-            <div class="accordions-pictures2">
-                <h2 class="collection-title-h2"><a href="{{path('front_collection70')}}">Années 70</a></h2 class="collection-title-h2">
-                <div class="accordions-section2">
-                {% for cyclingShirt in cyclingShirts70 %}
-                    {% if loop.index == 1 %}
-                        <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}"><img class="img img4" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="cycling shirt picture"></a>
-                    {% elseif loop.index == 2 %}
-                        <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}"><img class="img img5" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="cycling shirt picture"></a>
-                    {% elseif loop.index == 3 %}
-                        <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}"><img class="img img6" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="cycling shirt picture"></a>
-                    {% endif %}
-                {% endfor %}
+                <div class="accordions-pictures2">
+                    <h2 class="collection-title-h2"><a href="{{path('front_collection90')}}">Années 90</a></h2 class="collection-title-h2">
+                    <div class="accordions-section2">
+                    {% for cyclingShirt in cyclingShirts90 %}
+                        {% if loop.index == 1 %}
+                            <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}"><img class="img img4" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="cycling shirt picture"></a>
+                        {% elseif loop.index == 2 %}
+                            <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}"><img class="img img5" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="cycling shirt picture"></a>
+                        {% elseif loop.index == 3 %}
+                            <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}"><img class="img img6" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="cycling shirt picture"></a>
+                        {% endif %}
+                    {% endfor %}
+                    </div>
                 </div>
-            </div>
+            </article>
         </section>
-        <section class="accordions-pictures">
-            <div class="accordions-pictures1">
-                <h2 class="collection-title-h2"><a href="{{path('front_collection80')}}">Années 80</a></h2 class="collection-title-h2">
-                <div class="accordions-section1">
-                {% for cyclingShirt in cyclingShirts80 %}
-                    {% if loop.index == 1 %}
-                        <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}"><img class="img img1" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="cycling shirt picture"></a>
-                    {% elseif loop.index == 2 %}
-                        <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}"><img class="img img2" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="cycling shirt picture"></a>
-                    {% elseif loop.index == 3 %}
-                        <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}"><img class="img img3" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="cycling shirt picture"></a>
-                    {% endif %}
-                {% endfor %}
-                </div>
-            </div>
-            <div class="accordions-pictures2">
-                <h2 class="collection-title-h2"><a href="{{path('front_collection90')}}">Années 90</a></h2 class="collection-title-h2">
-                <div class="accordions-section2">
-                {% for cyclingShirt in cyclingShirts90 %}
-                    {% if loop.index == 1 %}
-                        <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}"><img class="img img4" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="cycling shirt picture"></a>
-                    {% elseif loop.index == 2 %}
-                        <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}"><img class="img img5" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="cycling shirt picture"></a>
-                    {% elseif loop.index == 3 %}
-                        <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}"><img class="img img6" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="cycling shirt picture"></a>
-                    {% endif %}
-                {% endfor %}
-                </div>
-            </div>
-        </section>
-    </section>
+{% else %}
 
+    {% for background_picture in background_pictures %}
+        <section class="background" style="background-image:url( /assets/images/uploads/{{ background_picture.picture }}">
+            <aside>
+                <div class="background-picture-home"></div>
+            </aside>
+            <article>
+                <h1 class="collection-title"><span>Collection</span></h1>
+                <div class="accordions-pictures">
+                    <div class="accordions-pictures1">
+                        <h2 class="collection-title-h2"><a href="{{path('front_collection50_60')}}">Années 50-60</a></h2 class="collection-title-h2">
+                        <div class="accordions-section1">
+                        {% for cyclingShirt in cyclingShirts50_60 %}
+                            {% if loop.index == 1 %}
+                                <a class="accordion-a" href="{{ path('front_shirt_cycling50_60', { id : cyclingShirt.id }) }}"><img class="img img1" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="cycling shirt picture"></a>
+                            {% elseif loop.index == 2 %}
+                                <a class="accordion-a" href="{{ path('front_shirt_cycling50_60', { id : cyclingShirt.id }) }}"><img class="img img2" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="cycling shirt picture"></a>
+                            {% elseif loop.index == 3 %}
+                                <a class="accordion-a" href="{{ path('front_shirt_cycling50_60', { id : cyclingShirt.id }) }}"><img class="img img3" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="cycling shirt picture"></a>
+                            {% endif %}
+                        {% endfor %}
+                        </div>
+                    </div>
+                    <div class="accordions-pictures2">
+                        <h2 class="collection-title-h2"><a href="{{path('front_collection70')}}">Années 70</a></h2 class="collection-title-h2">
+                        <div class="accordions-section2">
+                        {% for cyclingShirt in cyclingShirts70 %}
+                            {% if loop.index == 1 %}
+                                <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}"><img class="img img4" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="cycling shirt picture"></a>
+                            {% elseif loop.index == 2 %}
+                                <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}"><img class="img img5" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="cycling shirt picture"></a>
+                            {% elseif loop.index == 3 %}
+                                <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}"><img class="img img6" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="cycling shirt picture"></a>
+                            {% endif %}
+                        {% endfor %}
+                        </div>
+                    </div>
+            </article>
+            <article class="accordions-pictures">
+                <div class="accordions-pictures1">
+                    <h2 class="collection-title-h2"><a href="{{path('front_collection80')}}">Années 80</a></h2 class="collection-title-h2">
+                    <div class="accordions-section1">
+                    {% for cyclingShirt in cyclingShirts80 %}
+                        {% if loop.index == 1 %}
+                            <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}"><img class="img img1" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="cycling shirt picture"></a>
+                        {% elseif loop.index == 2 %}
+                            <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}"><img class="img img2" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="cycling shirt picture"></a>
+                        {% elseif loop.index == 3 %}
+                            <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}"><img class="img img3" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="cycling shirt picture"></a>
+                        {% endif %}
+                    {% endfor %}
+                    </div>
+                </div>
+                <div class="accordions-pictures2">
+                    <h2 class="collection-title-h2"><a href="{{path('front_collection90')}}">Années 90</a></h2 class="collection-title-h2">
+                    <div class="accordions-section2">
+                    {% for cyclingShirt in cyclingShirts90 %}
+                        {% if loop.index == 1 %}
+                            <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}"><img class="img img4" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="cycling shirt picture"></a>
+                        {% elseif loop.index == 2 %}
+                            <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}"><img class="img img5" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="cycling shirt picture"></a>
+                        {% elseif loop.index == 3 %}
+                            <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}"><img class="img img6" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="cycling shirt picture"></a>
+                        {% endif %}
+                    {% endfor %}
+                    </div>
+                </div>
+            </article>
+        </section>
+    {% endfor %}
+{% endif %}
     <section class="home-articles">
-        <h1 class="home-articles-title"><span>A la une</span></h1>
+        <h2 class="home-article-title"><span>A la une</span></h1>
+            <article class="box-article">
+                {% for article in articles %}
+                    <div class="card-article">
+                        <div class="image-article">
+                            <a href="{{ path('front_article', { id : article.id }) }}">
+                                <img class=" picture-article d-block w-100" src=" /assets/images/uploads/{{ article.picture }}">  
+                            </a>
+                        </div>
+                            <h3 class="card-article-title">{{ article.name }}</h3>
+                            <a class="btn btn-article" href="{{ path('front_article', { id : article.id }) }}" role="button">Lire >></a>
+                    </div>
+                {% endfor %}
+            </article> 
+            <a class="btn btn-blog" href="{{ path('front_blog') }}" role="button">Voir tous les articles</a>
     </section>
 {% endblock %}

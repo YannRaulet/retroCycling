@@ -41,10 +41,32 @@
     margin-top: 4%;
 }
 
+.profil-favorite {
+    display: flex;
+    justify-content: center;
+}
+
+.no-favorites {
+    text-align: center;
+    margin: 5%;
+}
+
+.favorites-title {
+    text-align: center;
+
+}
+
 .my-comments {
     width: 90%;
     margin: auto;
     margin-top: 4%;
+}
+
+@media (min-width: 600px) {
+    .picture-favorite {
+        width: 20rem;
+        height: auto;
+    }
 }
 
 /* Tablet - PC version */

@@ -3,7 +3,7 @@
 }
 
 .shirt-description {
-    margin-top: 3rem;
+    padding-top: 3rem;
     font-size: 2rem;
 }
 
@@ -57,10 +57,20 @@
     padding-bottom: 5%;
 }
 
+.favorite-icon {
+    position: absolute;
+    left: 80%;
+    width: 2rem;
+}
+
 /* Tablet version */
 @media (min-width: 600px) {
     .card-wrapper{
         width: 25rem;
+    }
+
+    .favorite-icon {
+        width: 2.5rem;
     }
 }
 
@@ -125,5 +135,10 @@
 
     .picture-item {
         width: 60%;
+    }
+
+    .favorite-icon {
+        left: 75%;
+        width: 3rem;
     }
 }
