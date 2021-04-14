@@ -4,7 +4,6 @@
 
 {% block body %}
 
-
     <h1 class="title-crud">Liste des maillots</h1>
     <a class="btn btn-success btn-created" href="{{ path('admin_cycling_shirt_new') }}">Créer un maillot</a>
 
@@ -13,7 +12,7 @@
             <tr>
                 <th>Image avant</th>
                 <th>Image arrière</th>
-                <th>Nom </th>
+                <th class="table-shirt-name-hidden">Nom </th>
                 <th>Années</th>
                 <th>Actions</th>
             </tr>
@@ -23,7 +22,7 @@
             <tr>
                 <td><img src="/assets/images/uploads/{{ cycling_shirt.pictureFront }}"></td>
                 <td><img src="/assets/images/uploads/{{ cycling_shirt.pictureBack }}"></td>
-                <td>{{ cycling_shirt.name }}</td>
+                <td class="table-shirt-name-hidden">{{ cycling_shirt.name }}</td>
                 <td>{{ cycling_shirt.years }}</td>
                 <td>
                     <a class="btn btn-outline-dark" href="{{ path('admin_cycling_shirt_show', {'id': cycling_shirt.id}) }}" role="button">Détails</a>

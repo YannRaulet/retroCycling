@@ -73,80 +73,61 @@
     </nav>
 
     {# This part dispays the left dashboard navigation bar #}
-    <div id="translateId" class="admin-left-dashboard">
-        <input type="checkbox" name="checkbox" id="check">
-        
-        <div class="dashboard-links">
-            <i class="fas fa-angle-double-left rotate" onClick="translateFunction()"></i>                
-            <ul class="dashboard-links-ul">
-                <li class="dashboard-link" style="--i: .85s">
-                    <a href="#">Maillots</a>
-                </li>
-                <div class="dashboard-dropdown">
-                    <ul>
-                        <li class="dashboard-dropdown-link">
-                            <a href="{{path('admin_cycling_shirts')}}">Ajouter / modifier <br>un maillot</a>
-                        </li>
-                    </ul>
+    <div class="menu-button">
+        <input id="dropdown-button" type="checkbox" class="dropdown-toggle" />
+        <label class="dropdown-label" for="dropdown-button"></label>
+        <div class="menu-slide-from-left" id="menu">
+            <div class="inner-menu-slide-from-left">
+                <div id="translateId" class="admin-left-dashboard">
+                    <input type="checkbox" name="checkbox" id="check">
+                    <div class="dashboard-links">
+                        <ul class="dashboard-links-ul">
+                            <li class="dashboard-link" style="--i: .85s">
+                                <a href="#">Maillots</a>
+                            </li>
+                            <div class="dashboard-dropdown">
+                                <ul>
+                                    <li class="dashboard-dropdown-link">
+                                        <a href="{{path('admin_cycling_shirts')}}">Ajouter / modifier <br>un maillot</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <li class="dashboard-link" style="--i: .85s">
+                                <a href="#">Blog</a>
+                            </li>
+                            <p class="dashboard-p">Ajouter / modifier :</p>
+                            <div class="dashboard-dropdown">
+                                <ul>
+                                    <li class="dashboard-dropdown-link">
+                                        <a href="{{path('admin_categories')}}">- Une catégorie</a>
+                                    </li>
+                                    <li class="dashboard-dropdown-link">
+                                        <a href="{{path('admin_articles')}}">- Un article</a>
+                                    </li>
+                                    <li class="dashboard-dropdown-link">
+                                        <a href="{{path('admin_contents')}}">- Le contenu <br>de l'article</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <li class="dashboard-link" style="--i: .85s">
+                                <a href="#">Images de fond</a>
+                            </li>
+                            <div class="dashboard-dropdown">
+                                <ul>
+                                    <li class="dashboard-dropdown-link">
+                                        <a href="{{path('admin_background_pictures')}}">Ajouter / modifier<br> une image de fond</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </ul>
+                    </div>
                 </div>
-                <li class="dashboard-link" style="--i: .85s">
-                    <a href="#">Blog</a>
-                </li>
-                <p class="dashboard-p">Ajouter / modifier :</p>
-                <div class="dashboard-dropdown">
-                    <ul>
-                        <li class="dashboard-dropdown-link">
-                            <a href="{{path('admin_categories')}}">- Une catégorie</a>
-                        </li>
-                        <li class="dashboard-dropdown-link">
-                            <a href="{{path('admin_articles')}}">- Un article</a>
-                        </li>
-                        <li class="dashboard-dropdown-link">
-                            <a href="{{path('admin_contents')}}">- Le contenu <br>de l'article</a>
-                        </li>
-                    </ul>
-                </div>
-                <li class="dashboard-link" style="--i: .85s">
-                    <a href="#">Images de fond</a>
-                </li>
-                <div class="dashboard-dropdown">
-                    <ul>
-                        <li class="dashboard-dropdown-link">
-                            <a href="{{path('admin_background_pictures')}}">Ajouter / modifier<br> une image de fond</a>
-                        </li>
-                    </ul>
-                </div>
-            </ul>
+            </div>
         </div>
     </div>
-{#}
-<script type="text/javascript">
-    function showElement() {
-        element = document.querySelector('.container');
-        element.style.visibility = 'visible';
-    }
 
-    function hideElement() {
-        element = document.querySelector('.dashboard-links');
-        element.style.visibility = 'hidden';
-    }
-</script>
-#}
-
-<script>
-
-function translateFunction() {
-    document.getElementById("translateId").style.transform="translateX(-190px)";
-    document.getElementById("translateId").style.transition=" all 0.4s";
-}
-
-$(".rotate").click(function () {
-    $(this).toggleClass("down");
-})
-
-</script>
-{% endblock %}
-
-{% block javascript %}
-    {{ encore_entry_script_tags('app') }}
+    {% block javascript %}
+        {{parent()}}
+        {{ encore_entry_script_tags('adminLeft') }}
+    {% endblock %}
 {% endblock %}
