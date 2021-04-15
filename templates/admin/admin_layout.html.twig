@@ -10,6 +10,9 @@
                     <li class="nav-link" style="--i: .6s">
                         <a href="{{path('front_home')}}" class="active">Accueil</a>
                     </li>
+                    <li class="nav-link" style="--i: 1.1s">
+                        <a href="#">A la une</a>
+                    </li>
                     <li class="nav-link" style="--i: .85s">
                         <a href="#">Collection<i class="fas fa-caret-down"></i></a>
                         <div class="dropdown">
@@ -28,9 +31,6 @@
                                 </li>
                             </ul>
                         </div>
-                    </li>
-                    <li class="nav-link" style="--i: 1.1s">
-                        <a href="#">A la une</a>
                     </li>
                     <li class="nav-link" style="--i: 1.35s">
                         <a href="{{path('front_home')}}" class="logo-a"><img class="logo" src="/assets/images/logo-retro.png" alt="logo-retro"></a>
@@ -82,30 +82,32 @@
                     <input type="checkbox" name="checkbox" id="check">
                     <div class="dashboard-links">
                         <ul class="dashboard-links-ul">
+                            <li class="dashboard-link-title" style="--i: .85s">
+                                <a href="#" id="dashboard-link-title">Ajouter / modifier</a>
+                            </li>
                             <li class="dashboard-link" style="--i: .85s">
                                 <a href="#">Maillots</a>
                             </li>
                             <div class="dashboard-dropdown">
                                 <ul>
                                     <li class="dashboard-dropdown-link">
-                                        <a href="{{path('admin_cycling_shirts')}}">Ajouter / modifier <br>un maillot</a>
+                                        <a href="{{path('admin_cycling_shirts')}}">Un maillot</a>
                                     </li>
                                 </ul>
                             </div>
                             <li class="dashboard-link" style="--i: .85s">
                                 <a href="#">Blog</a>
                             </li>
-                            <p class="dashboard-p">Ajouter / modifier :</p>
                             <div class="dashboard-dropdown">
                                 <ul>
                                     <li class="dashboard-dropdown-link">
-                                        <a href="{{path('admin_categories')}}">- Une catégorie</a>
+                                        <a href="{{path('admin_categories')}}">Une catégorie</a>
                                     </li>
                                     <li class="dashboard-dropdown-link">
-                                        <a href="{{path('admin_articles')}}">- Un article</a>
+                                        <a href="{{path('admin_articles')}}">Un article</a>
                                     </li>
                                     <li class="dashboard-dropdown-link">
-                                        <a href="{{path('admin_contents')}}">- Le contenu <br>de l'article</a>
+                                        <a href="{{path('admin_contents')}}">Le contenu de l'article</a>
                                     </li>
                                 </ul>
                             </div>
@@ -115,7 +117,7 @@
                             <div class="dashboard-dropdown">
                                 <ul>
                                     <li class="dashboard-dropdown-link">
-                                        <a href="{{path('admin_background_pictures')}}">Ajouter / modifier<br> une image de fond</a>
+                                        <a href="{{path('admin_background_pictures')}}">Une image de fond</a>
                                     </li>
                                 </ul>
                             </div>
