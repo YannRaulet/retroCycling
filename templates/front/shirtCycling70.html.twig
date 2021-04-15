@@ -9,6 +9,19 @@
 {% if background_pictures == false %}
     <section>
         <article>
+            {% if app.user %}
+                <a class="like" href="{{ path('user_favorite', {id: cyclingShirt70.id})}}">
+                    {% if app.user.isInFavorite(cyclingShirt70) %}
+                        <img class="favorite-icon" src="{{ asset('assets/images/favoriteRed.png') }}">
+                    {% else %}
+                        <img class="favorite-icon" src="{{ asset('assets/images/favoriteEmpty.png') }}">
+                    {% endif %}
+                </a>
+            {% else %}
+                <a class="like-not-connected" href="{{ path('app_login') }}">
+                    <img class="favorite-icon" src="{{ asset('assets/images/favoriteEmpty.png') }}">
+                </a>
+            {% endif %}
             <h2 class="shirt-description">{{ cyclingShirt70.name }}</h2>
             <hr class="shirt-details-hr">
             <div class = "card-wrapper">
@@ -17,19 +30,7 @@
                         <img class="picture-load" src="/assets/images/uploads/{{ cyclingShirt70.pictureFront }}" alt = "Maillot face avant">
                         <img class="picture-load" src="/assets/images/uploads/{{ cyclingShirt70.pictureBack }}" alt = "Maillot face arrière">
                     </div>
-                    {% if app.user %}
-                        <a class="like" href="{{ path('user_favorite', {id: cyclingShirt70.id})}}">
-                            {% if app.user.isInFavorite(cyclingShirt70) %}
-                                <img class="favorite-icon" src="{{ asset('assets/images/favoriteRed.png') }}">
-                            {% else %}
-                                <img class="favorite-icon" src="{{ asset('assets/images/favoriteEmpty.png') }}">
-                            {% endif %}
-                        </a>
-                    {% else %}
-                        <a class="like-not-connected" href="{{ path('app_login') }}">
-                            <img class="favorite-icon" src="{{ asset('assets/images/favoriteEmpty.png') }}">
-                        </a>
-                    {% endif %}
+
                 </div>
                 <div class = "picture-select">
                     <div class = "picture-item">
@@ -69,6 +70,19 @@
     {% for background_picture in background_pictures %}
         <section class="background" style="background-image:url( /assets/images/uploads/{{ background_picture.picture }}">
             <article>
+                {% if app.user %}
+                    <a class="like" href="{{ path('user_favorite', {id: cyclingShirt70.id})}}">
+                        {% if app.user.isInFavorite(cyclingShirt70) %}
+                            <img class="favorite-icon" src="{{ asset('assets/images/favoriteRed.png') }}">
+                        {% else %}
+                            <img class="favorite-icon" src="{{ asset('assets/images/favoriteEmpty.png') }}">
+                        {% endif %}
+                    </a>
+                {% else %}
+                    <a class="like-not-connected" href="{{ path('app_login') }}">
+                        <img class="favorite-icon" src="{{ asset('assets/images/favoriteEmpty.png') }}">
+                    </a>
+                {% endif %}
                 <h2 class="shirt-description">{{ cyclingShirt70.name }}</h2>
                 <hr class="shirt-details-hr">
                 <div class = "card-wrapper">
@@ -77,19 +91,6 @@
                             <img class="picture-load" src="/assets/images/uploads/{{ cyclingShirt70.pictureFront }}" alt = "Maillot face avant">
                             <img class="picture-load" src="/assets/images/uploads/{{ cyclingShirt70.pictureBack }}" alt = "Maillot face arrière">
                         </div>
-                        {% if app.user %}
-                            <a class="like" href="{{ path('user_favorite', {id: cyclingShirt70.id})}}">
-                                {% if app.user.isInFavorite(cyclingShirt70) %}
-                                    <img class="favorite-icon" src="{{ asset('assets/images/favoriteRed.png') }}">
-                                {% else %}
-                                    <img class="favorite-icon" src="{{ asset('assets/images/favoriteEmpty.png') }}">
-                                {% endif %}
-                            </a>
-                        {% else %}
-                            <a class="like-not-connected" href="{{ path('app_login') }}">
-                                <img class="favorite-icon" src="{{ asset('assets/images/favoriteEmpty.png') }}">
-                            </a>
-                        {% endif %}
                     </div>
                     <div class = "picture-select">
                         <div class = "picture-item">

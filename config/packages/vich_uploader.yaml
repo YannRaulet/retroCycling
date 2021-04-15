@@ -8,7 +8,7 @@ vich_uploader:
             # Path to the storage folder
             upload_destination: '%upload_directory%'
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
-            inject_on_load: true
+            inject_on_load: false
             delete_on_update: true
             delete_on_remove: true
 
@@ -16,7 +16,7 @@ vich_uploader:
             uri_prefix: /assets/images/
             upload_destination: '%upload_directory%'
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
-            inject_on_load: true
+            inject_on_load: false
             delete_on_update: true
             delete_on_remove: true
 
@@ -24,7 +24,7 @@ vich_uploader:
             uri_prefix: /assets/images/
             upload_destination: '%upload_directory%'
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
-            inject_on_load: true
+            inject_on_load: false
             delete_on_update: true
             delete_on_remove: true
 
@@ -32,6 +32,6 @@ vich_uploader:
             uri_prefix: /assets/images/
             upload_destination: '%upload_directory%'
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
-            inject_on_load: true
+            inject_on_load: false
             delete_on_update: true
             delete_on_remove: true

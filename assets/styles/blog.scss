@@ -96,7 +96,7 @@
     .blog-article {
         width: 90%;
         height: auto;
-        margin: 30px auto;
+        margin: auto;
         display: grid;
         grid-template-columns: repeat(auto-fill, 400px);
         justify-content: center;
@@ -142,7 +142,7 @@
     .blog-article {
         width: 90%;
         height: auto;
-        margin: 30px auto;
+        margin: auto;
         display: grid;
         grid-template-columns: repeat(auto-fill, 500px);
         justify-content: center;
@@ -154,3 +154,22 @@
         height: 100vh;
     }
 }
+
+/* Large PC */
+@media (min-width: 1200px) {
+    .blog-article {
+        width: 90%;
+        height: auto;
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 500px);
+        justify-content: center;
+        grid-gap: 70px;
+    }
+    
+    .bloc-article {
+        width: 500px;
+        height: 70vh;
+    }
+}
+
