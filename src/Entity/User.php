@@ -6,6 +6,7 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Types\Boolean;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -58,6 +59,11 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=50, nullable=true)
      */
     private ?string $resetToken;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private bool $enabled = false;
 
     /**
      * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="user")
@@ -198,6 +204,18 @@ class User implements UserInterface
     public function setResetToken(?string $resetToken): self
     {
         $this->resetToken = $resetToken;
+
+        return $this;
+    }
+
+    public function getEnabled(): ?bool
+    {
+        return $this->enabled;
+    }
+
+    public function setEnabled(bool $enabled): self
+    {
+        $this->enabled = $enabled;
 
         return $this;
     }

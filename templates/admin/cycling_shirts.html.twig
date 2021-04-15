@@ -3,17 +3,17 @@
 {% block title %}{{ parent() }}-Admin-Les maillots{% endblock %}
 
 {% block body %}
+
     <h1 class="title-crud">Liste des maillots</h1>
     <a class="btn btn-success btn-created" href="{{ path('admin_cycling_shirt_new') }}">Créer un maillot</a>
 
     <table class="table table-hover">
         <thead>
             <tr>
-                <th>Image avant du maillot</th>
-                <th>Image arrière du maillot</th>
-                <th>Nom du maillot</th>
+                <th>Image avant</th>
+                <th>Image arrière</th>
+                <th class="table-shirt-name-hidden">Nom </th>
                 <th>Années</th>
-                <th>Nom du cycliste</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -22,9 +22,8 @@
             <tr>
                 <td><img src="/assets/images/uploads/{{ cycling_shirt.pictureFront }}"></td>
                 <td><img src="/assets/images/uploads/{{ cycling_shirt.pictureBack }}"></td>
-                <td>{{ cycling_shirt.name }}</td>
+                <td class="table-shirt-name-hidden">{{ cycling_shirt.name }}</td>
                 <td>{{ cycling_shirt.years }}</td>
-                <td>{{ cycling_shirt.cyclistName }}</td>
                 <td>
                     <a class="btn btn-outline-dark" href="{{ path('admin_cycling_shirt_show', {'id': cycling_shirt.id}) }}" role="button">Détails</a>
                     <a class="btn btn-outline-dark"href="{{ path('admin_cycling_shirt_edit', {'id': cycling_shirt.id}) }}" role="button">Modifier</a>
