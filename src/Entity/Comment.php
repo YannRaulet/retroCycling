@@ -25,7 +25,7 @@ class Comment
     /**
      * @ORM\Column(type="datetime")
      */
-    private $createdAt;
+    private \DateTimeInterface $createdAt;
 
     /**
      * @ORM\ManyToOne(targetEntity=Article::class, inversedBy="comments")
@@ -56,7 +56,7 @@ class Comment
         return $this;
     }
 
-   public function getCreatedAt(): ?\DateTimeInterface
+    public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
     }
