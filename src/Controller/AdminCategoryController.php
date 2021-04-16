@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Category;
 use App\Form\CategoryType;
+use App\Repository\BackgroundPictureRepository;
 use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,10 +23,13 @@ class AdminCategoryController extends AbstractController
      * Display the page with the all categories
      * @return Response
      */
-    public function categories(CategoryRepository $categoryRepository): Response
-    {
+    public function categories(
+        CategoryRepository $categoryRepository,
+        BackgroundPictureRepository $backgroundRepository
+    ): Response {
         return $this->render('admin/categories.html.twig', [
             'categories' => $categoryRepository->findAll(),
+            'background_pictures' => $backgroundRepository->findByName('background-admin')
         ]);
     }
 
@@ -34,8 +38,11 @@ class AdminCategoryController extends AbstractController
      * Display the page for add a category
      * @return Response
      */
-    public function newCategory(Request $request, EntityManagerInterface $manager): Response
-    {
+    public function newCategory(
+        Request $request,
+        EntityManagerInterface $manager,
+        BackgroundPictureRepository $backgroundRepository
+    ): Response {
         $category = new Category();
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
@@ -49,6 +56,7 @@ class AdminCategoryController extends AbstractController
 
         return $this->render('admin/category_new.html.twig', [
             'form' => $form->createView(),
+            'background_pictures' => $backgroundRepository->findByName('background-admin')
         ]);
     }
 
@@ -57,8 +65,12 @@ class AdminCategoryController extends AbstractController
      * Display the page for edit a category
      * @return Response
      */
-    public function editCategory(Request $request, Category $category, EntityManagerInterface $manager): Response
-    {
+    public function editCategory(
+        Request $request,
+        Category $category,
+        EntityManagerInterface $manager,
+        BackgroundPictureRepository $backgroundRepository
+    ): Response {
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
 
@@ -72,6 +84,7 @@ class AdminCategoryController extends AbstractController
         return $this->render('admin/category_edit.html.twig', [
             'category' => $category,
             'form' => $form->createView(),
+            'background_pictures' => $backgroundRepository->findByName('background-admin')
         ]);
     }
 

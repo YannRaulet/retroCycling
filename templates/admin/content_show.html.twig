@@ -3,35 +3,78 @@
 {% block title %}{{ parent() }}-Admin-Le contenu{% endblock %}
 
 {% block body %}
-    <h1 class="title-crud">Contenu</h1>
 
-    <table class="table table-hover">
-        <tbody>
-            <tr>
-                <th scope="col">Id</th>
-                <td>{{ article_content.id }}</td>
-            </tr>
-            <tr>
-                <th scope="col">Nom de l'article</th>
-                <td>{{ article_content.article }}</td>
-            </tr>
-            <tr>
-                <th scope="col">Titre</th>
-                <td>{{ article_content.title }}</td>
-            </tr>
-            <tr>
-                <th scope="col">Contenu</th>
-                <td>{{ article_content.content }}</td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <th>
-                <a href="{{ path('admin_contents') }}">Retour aux contenus</a>
-            </th>
-        </tfoot>
-    </table>
-    <div class="button-action">
-        <a class="btn btn-success" href="{{ path('admin_content_edit', {'id': article_content.id}) }}" role="button">Modifier</a>
-        {{ include('admin/content_delete_form.html.twig') }}
-    </div>
+{% if background_pictures == false %}
+    <section>
+        <h1 class="title-crud">Contenu</h1>
+
+        <table class="table table-hover">
+            <tbody>
+                <tr>
+                    <th scope="col">Id</th>
+                    <td>{{ article_content.id }}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Nom de l'article</th>
+                    <td>{{ article_content.article }}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Titre</th>
+                    <td>{{ article_content.title }}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Contenu</th>
+                    <td>{{ article_content.content }}</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <th>
+                    <a href="{{ path('admin_contents') }}">Retour aux contenus</a>
+                </th>
+            </tfoot>
+        </table>
+        <div class="button-action">
+            <a class="btn btn-success" href="{{ path('admin_content_edit', {'id': article_content.id}) }}" role="button">Modifier</a>
+            {{ include('admin/content_delete_form.html.twig') }}
+        </div>
+    </section>
+{% else %}
+
+    {% for background_picture in background_pictures %}
+        <section class="background" style="background-image:url( /assets/images/uploads/{{ background_picture.picture }}">
+            <h1 class="title-crud">Contenu</h1>
+
+            <table class="table table-hover">
+                <tbody>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <td>{{ article_content.id }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Nom de l'article</th>
+                        <td>{{ article_content.article }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Titre</th>
+                        <td>{{ article_content.title }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Contenu</th>
+                        <td>{{ article_content.content }}</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <th>
+                        <a href="{{ path('admin_contents') }}">Retour aux contenus</a>
+                    </th>
+                </tfoot>
+            </table>
+            <div class="button-action">
+                <a class="btn btn-success" href="{{ path('admin_content_edit', {'id': article_content.id}) }}" role="button">Modifier</a>
+                {{ include('admin/content_delete_form.html.twig') }}
+            </div>
+        </section>
+    {% endfor %}
+{% endif %}
+
 {% endblock %}

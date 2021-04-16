@@ -4,12 +4,13 @@ namespace App\Controller;
 
 use App\Entity\CyclingShirt;
 use App\Form\CyclingShirtType;
+use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\CyclingShirtRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use App\Repository\BackgroundPictureRepository;
 use Symfony\Component\Routing\Annotation\Route;
-use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/admin", name="admin_")
@@ -22,10 +23,13 @@ class AdminCyclingShirtController extends AbstractController
      * Display the page with the all cycling shirts
      * @return Response
      */
-    public function cyclingShirts(CyclingShirtRepository $shirtRepository): Response
-    {
+    public function cyclingShirts(
+        CyclingShirtRepository $shirtRepository,
+        BackgroundPictureRepository $backgroundRepository
+    ): Response {
         return $this->render('admin/cycling_shirts.html.twig', [
             'cycling_shirts' => $shirtRepository->findAll(),
+            'background_pictures' => $backgroundRepository->findByName('background-main')
         ]);
     }
 
@@ -34,8 +38,11 @@ class AdminCyclingShirtController extends AbstractController
      * Display the page for add a cycling shirt
      * @return Response
      */
-    public function newCyclingShirt(Request $request, EntityManagerInterface $manager): Response
-    {
+    public function newCyclingShirt(
+        Request $request,
+        EntityManagerInterface $manager,
+        BackgroundPictureRepository $backgroundRepository
+    ): Response {
         $cyclingShirt = new CyclingShirt();
         $form = $this->createForm(CyclingShirtType::class, $cyclingShirt);
         $form->handleRequest($request);
@@ -50,6 +57,7 @@ class AdminCyclingShirtController extends AbstractController
         return $this->render('admin/cycling_shirt_new.html.twig', [
             'cycling_shirt' => $cyclingShirt,
             'form' => $form->createView(),
+            'background_pictures' => $backgroundRepository->findByName('background-main'),
         ]);
     }
 
@@ -58,10 +66,13 @@ class AdminCyclingShirtController extends AbstractController
      * Displays the page view cycling shirt details
      * @return Response
      */
-    public function showCyclingShirt(CyclingShirt $cyclingShirt): Response
-    {
+    public function showCyclingShirt(
+        CyclingShirt $cyclingShirt,
+        BackgroundPictureRepository $backgroundRepository
+    ): Response {
         return $this->render('admin/cycling_shirt_show.html.twig', [
             'cycling_shirt' => $cyclingShirt,
+            'background_pictures' => $backgroundRepository->findByName('background-main')
         ]);
     }
 
@@ -73,7 +84,8 @@ class AdminCyclingShirtController extends AbstractController
     public function editCyclingShirt(
         Request $request,
         CyclingShirt $cyclingShirt,
-        EntityManagerInterface $manager
+        EntityManagerInterface $manager,
+        BackgroundPictureRepository $backgroundRepository
     ): Response {
         $form = $this->createForm(CyclingShirtType::class, $cyclingShirt);
         $form->handleRequest($request);
@@ -88,6 +100,7 @@ class AdminCyclingShirtController extends AbstractController
         return $this->render('admin/cycling_shirt_edit.html.twig', [
             'cycling_shirt' => $cyclingShirt,
             'form' => $form->createView(),
+            'background_pictures' => $backgroundRepository->findByName('background-main')
         ]);
     }
 

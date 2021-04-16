@@ -3,9 +3,27 @@
 {% block title %}{{ parent() }}-Admin-Nouvel article{% endblock %}
 
 {% block body %}
-    <h1 class="title-crud">Créer un article</h1>
-    <div class="page-form-edit">
-        {{ include('admin/article_form.html.twig', { button_label: 'Créer'}) }}
-        <a href="{{ path('admin_articles') }}">retour sur les articles</a>
-    </div>
+
+{% if background_pictures == false %}
+    <section>
+        <h1 class="title-crud">Créer un article</h1>
+        <div class="page-form-edit">
+            {{ include('admin/article_form.html.twig', { button_label: 'Créer'}) }}
+            <a href="{{ path('admin_articles') }}">retour sur les articles</a>
+        </div>
+    </section>
+{% else %}
+
+    {% for background_picture in background_pictures %}
+        <section class="background" style="background-image:url( /assets/images/uploads/{{ background_picture.picture }}">
+            <h1 class="title-crud">Créer un article</h1>
+            <div class="page-form-edit">
+                {{ include('admin/article_form.html.twig', { button_label: 'Créer'}) }}
+                <a href="{{ path('admin_articles') }}">retour sur les articles</a>
+            </div>
+        </section>
+    {% endfor %}
+{% endif %}
+
 {% endblock %}
+

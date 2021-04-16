@@ -57,6 +57,10 @@ table img {
     display: none;
 }
 
+#article_content_content {
+    height: 40vh;
+}
+
 @media (min-width: 600px) {
     .table-hover {
         width: 60%;
@@ -184,5 +188,13 @@ table img {
 
     .page-form-edit a {
         margin-left: 12rem;
+    }
+
+    .button-action {
+        display: flex;
+        justify-content: flex-start;
+        margin: auto;
+        margin-top: 30px;
+        width: 60%;
     }
 }

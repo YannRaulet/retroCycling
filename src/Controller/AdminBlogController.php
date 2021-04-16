@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Article;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
+use App\Repository\BackgroundPictureRepository;
 use App\Entity\ArticleContent;
 use App\Form\ArticleContentType;
 use App\Repository\ArticleContentRepository;
@@ -25,10 +26,13 @@ class AdminBlogController extends AbstractController
      * Display the page with the all articles
      * @return Response
      */
-    public function articles(ArticleRepository $articleRepository): Response
-    {
+    public function articles(
+        ArticleRepository $articleRepository,
+        BackgroundPictureRepository $backgroundRepository
+    ): Response {
         return $this->render('admin/articles.html.twig', [
             'articles' => $articleRepository->findAll(),
+            'background_pictures' => $backgroundRepository->findByName('background-admin')
         ]);
     }
 
@@ -37,8 +41,11 @@ class AdminBlogController extends AbstractController
      * Displays the page for add a new article
      * @return Response
      */
-    public function newArticle(Request $request, EntityManagerInterface $manager): Response
-    {
+    public function newArticle(
+        Request $request,
+        EntityManagerInterface $manager,
+        BackgroundPictureRepository $backgroundRepository
+    ): Response {
         $article = new Article();
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
@@ -52,6 +59,7 @@ class AdminBlogController extends AbstractController
 
         return $this->render('admin/article_new.html.twig', [
             'form' => $form->createView(),
+            'background_pictures' => $backgroundRepository->findByName('background-admin')
         ]);
     }
 
@@ -60,10 +68,13 @@ class AdminBlogController extends AbstractController
      * Displays the page view article details
      * @return Response
      */
-    public function showArticle(Article $article): Response
-    {
+    public function showArticle(
+        Article $article,
+        BackgroundPictureRepository $backgroundRepository
+    ): Response {
         return $this->render('/admin/article_show.html.twig', [
             'article' => $article,
+            'background_pictures' => $backgroundRepository->findByName('background-admin')
         ]);
     }
 
@@ -72,8 +83,12 @@ class AdminBlogController extends AbstractController
      * Displays the page view for edit an article
      * @return Response
      */
-    public function editArticle(Request $request, Article $article, EntityManagerInterface $manager): Response
-    {
+    public function editArticle(
+        Request $request,
+        Article $article,
+        EntityManagerInterface $manager,
+        BackgroundPictureRepository $backgroundRepository
+    ): Response {
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
 
@@ -87,6 +102,7 @@ class AdminBlogController extends AbstractController
         return $this->render('admin/article_edit.html.twig', [
             'article' => $article,
             'form' => $form->createView(),
+            'background_pictures' => $backgroundRepository->findByName('background-admin')
         ]);
     }
 
@@ -95,8 +111,11 @@ class AdminBlogController extends AbstractController
      * Displays the page view for delete an article
      * @return Response
      */
-    public function deleteArticle(Request $request, Article $article, EntityManagerInterface $manager): Response
-    {
+    public function deleteArticle(
+        Request $request,
+        Article $article,
+        EntityManagerInterface $manager
+    ): Response {
         if ($this->isCsrfTokenValid('delete' . $article->getId(), $request->request->get('_token'))) {
             $manager->remove($article);
             $manager->flush();
@@ -110,10 +129,13 @@ class AdminBlogController extends AbstractController
      * Displays the page with the all contents article
      * @return Response
      */
-    public function contents(ArticleContentRepository $contentRepository): Response
-    {
+    public function contents(
+        ArticleContentRepository $contentRepository,
+        BackgroundPictureRepository $backgroundRepository
+    ): Response {
         return $this->render('admin/contents.html.twig', [
             'article_contents' => $contentRepository->findAll(),
+            'background_pictures' => $backgroundRepository->findByName('background-admin')
         ]);
     }
 
@@ -122,8 +144,11 @@ class AdminBlogController extends AbstractController
      * Displays the page for create a content
      * @return Response
      */
-    public function newContent(Request $request, EntityManagerInterface $manager): Response
-    {
+    public function newContent(
+        Request $request,
+        EntityManagerInterface $manager,
+        BackgroundPictureRepository $backgroundRepository
+    ): Response {
         $articleContent = new ArticleContent();
         $form = $this->createForm(ArticleContentType::class, $articleContent);
         $form->handleRequest($request);
@@ -137,6 +162,7 @@ class AdminBlogController extends AbstractController
 
         return $this->render('admin/content_new.html.twig', [
             'form' => $form->createView(),
+            'background_pictures' => $backgroundRepository->findByName('background-admin')
         ]);
     }
 
@@ -145,10 +171,13 @@ class AdminBlogController extends AbstractController
      * Displays the page view content details
      * @return Response
      */
-    public function showContent(ArticleContent $articleContent): Response
-    {
+    public function showContent(
+        ArticleContent $articleContent,
+        BackgroundPictureRepository $backgroundRepository
+    ): Response {
         return $this->render('admin/content_show.html.twig', [
             'article_content' => $articleContent,
+            'background_pictures' => $backgroundRepository->findByName('background-admin')
         ]);
     }
 
@@ -160,7 +189,8 @@ class AdminBlogController extends AbstractController
     public function editContent(
         Request $request,
         ArticleContent $articleContent,
-        EntityManagerInterface $manager
+        EntityManagerInterface $manager,
+        BackgroundPictureRepository $backgroundRepository
     ): Response {
         $form = $this->createForm(ArticleContentType::class, $articleContent);
         $form->handleRequest($request);
@@ -175,6 +205,7 @@ class AdminBlogController extends AbstractController
         return $this->render('admin/content_edit.html.twig', [
             'article_content' => $articleContent,
             'form' => $form->createView(),
+            'background_pictures' => $backgroundRepository->findByName('background-admin')
         ]);
     }
 

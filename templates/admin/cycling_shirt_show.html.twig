@@ -3,52 +3,110 @@
 {% block title %}{{ parent() }}-Admin-Le maillot{% endblock %}
 
 {% block body %}
-    <h1 class="title-crud">Détails du maillot</h1>
 
-    <table class="table table-hover">
-        <tbody>
-            <tr>
-                <th scope="col">Id</th>
-                <td>{{ cycling_shirt.id }}</td>
-            </tr>
-            <tr>
-                <th scope="col">Image du maillot</th>
-                <td><img src="/assets/images/uploads/{{ cycling_shirt.pictureFront }}"></td>
-            </tr>
-            <tr>
-                <th scope="col">Image du maillot</th>
-                <td><img src="/assets/images/uploads/{{ cycling_shirt.pictureBack }}"></td>
-            </tr>
-            <tr>
-                <th  scope="col">Nom du maillot</th>
-                <td>{{ cycling_shirt.name }}</td>
-            </tr>
-            <tr>
-                <th  scope="col">Années</th>
-                <td>{{ cycling_shirt.years }}</td>
-            </tr
-            <tr>
-                <th scope="col">Nom du cycliste</th>
-                <td>{{ cycling_shirt.cyclistName }}</td>
-            </tr>
-            <tr>
-                <th scope="col">Information sur l'équipe</th>
-                <td>{{ cycling_shirt.teamInformations }}</td>
-            </tr>
-            <tr>
-                <th scope="col">Résultats notables</th>
-                <td>{{ cycling_shirt.results }}</td>
-            </tr>
-        </tbody>
-         <tfoot>
-            <th>
-                <a href="{{ path('admin_cycling_shirts') }}">Retour sur les maillots</a>
-            </th>
-        </tfoot>
-    </table>
-    <div class="button-action">
-        <a class="btn btn-success" href="{{ path('admin_cycling_shirt_edit', {'id': cycling_shirt.id}) }}" role="button">Modifier</a>
-        {{ include('admin/cycling_shirt_delete_form.html.twig') }}
-    </div>
+{% if background_pictures == false %}
+    <section>
+        <h1 class="title-crud">Détails du maillot</h1>
+
+        <table class="table table-hover">
+            <tbody>
+                <tr>
+                    <th scope="col">Id</th>
+                    <td>{{ cycling_shirt.id }}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Image du maillot</th>
+                    <td><img src="/assets/images/uploads/{{ cycling_shirt.pictureFront }}"></td>
+                </tr>
+                <tr>
+                    <th scope="col">Image du maillot</th>
+                    <td><img src="/assets/images/uploads/{{ cycling_shirt.pictureBack }}"></td>
+                </tr>
+                <tr>
+                    <th  scope="col">Nom du maillot</th>
+                    <td>{{ cycling_shirt.name }}</td>
+                </tr>
+                <tr>
+                    <th  scope="col">Années</th>
+                    <td>{{ cycling_shirt.years }}</td>
+                </tr
+                <tr>
+                    <th scope="col">Nom du cycliste</th>
+                    <td>{{ cycling_shirt.cyclistName }}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Information sur l'équipe</th>
+                    <td>{{ cycling_shirt.teamInformations }}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Résultats notables</th>
+                    <td>{{ cycling_shirt.results }}</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <th>
+                    <a href="{{ path('admin_cycling_shirts') }}">Retour sur les maillots</a>
+                </th>
+            </tfoot>
+        </table>
+        <div class="button-action">
+            <a class="btn btn-success" href="{{ path('admin_cycling_shirt_edit', {'id': cycling_shirt.id}) }}" role="button">Modifier</a>
+            {{ include('admin/cycling_shirt_delete_form.html.twig') }}
+        </div>
+    </section>
+{% else %}
+
+    {% for background_picture in background_pictures %}
+        <section class="background" style="background-image:url( /assets/images/uploads/{{ background_picture.picture }}">
+            <h1 class="title-crud">Détails du maillot</h1>
+
+            <table class="table table-hover">
+                <tbody>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <td>{{ cycling_shirt.id }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Image du maillot</th>
+                        <td><img src="/assets/images/uploads/{{ cycling_shirt.pictureFront }}"></td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Image du maillot</th>
+                        <td><img src="/assets/images/uploads/{{ cycling_shirt.pictureBack }}"></td>
+                    </tr>
+                    <tr>
+                        <th  scope="col">Nom du maillot</th>
+                        <td>{{ cycling_shirt.name }}</td>
+                    </tr>
+                    <tr>
+                        <th  scope="col">Années</th>
+                        <td>{{ cycling_shirt.years }}</td>
+                    </tr
+                    <tr>
+                        <th scope="col">Nom du cycliste</th>
+                        <td>{{ cycling_shirt.cyclistName }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Information sur l'équipe</th>
+                        <td>{{ cycling_shirt.teamInformations }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Résultats notables</th>
+                        <td>{{ cycling_shirt.results }}</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <th>
+                        <a href="{{ path('admin_cycling_shirts') }}">Retour sur les maillots</a>
+                    </th>
+                </tfoot>
+            </table>
+            <div class="button-action">
+                <a class="btn btn-success" href="{{ path('admin_cycling_shirt_edit', {'id': cycling_shirt.id}) }}" role="button">Modifier</a>
+                {{ include('admin/cycling_shirt_delete_form.html.twig') }}
+            </div>
+         </section>
+    {% endfor %}
+{% endif %}
 
 {% endblock %}

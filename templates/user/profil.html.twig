@@ -34,12 +34,11 @@
     </section>
     <section class="my-comments">
         <h3 class="title-crud">Mes derniers commentaires</h3>
-
     </section>
 {% else %}
 
     {% for background_picture in background_pictures %}
-        <section class="background my-info" style="background-image:url( /assets/images/uploads/{{ background_picture.picture }}">
+        <section class="my-info" style="background-image:url( /assets/images/uploads/{{ background_picture.picture }}">
         <h1 class="collection-title"><span>Bienvenue {{ app.user.pseudo }}</span></h1>
             <h2 class="title-crud">Mes infos</h2>
                 <ul class="list-group">
