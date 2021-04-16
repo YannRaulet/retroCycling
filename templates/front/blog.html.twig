@@ -22,7 +22,11 @@
                         <h3 class="detail-article"><span class="elipse"></span>{{ article.category }}</h3>
                         <h3 class="detail-article"><span class="elipse"></span>{{ article.createdAt|date('Y-M-d') }}</h3>
                     </div>
-                    <h3 class="detail-article"><span class="elipse"></span>Aucun commentaire</h5>
+                     {% if app.user %}
+                            <h3 class="detail-article"><span class="elipse"></span>{{ article.comments|length }} commentaires</h5>
+                        {% else %}
+                            <h3 class="detail-article"><span class="elipse"></span>Aucun commentaires</h5>
+                        {% endif %}
                     <a class="btn btn-article" href="{{ path('front_article', { id : article.id }) }}" role="button">Lire >></a>
                 </div>
             {% endfor %}
@@ -46,7 +50,11 @@
                             <h3 class="detail-article"><span class="elipse"></span>{{ article.category }}</h3>
                             <h3 class="detail-article"><span class="elipse"></span>{{ article.createdAt|date('Y-M-d') }}</h3>
                         </div>
-                        <h3 class="detail-article"><span class="elipse"></span>Aucun commentaire</h5>
+                        {% if app.user %}
+                            <h3 class="detail-article"><span class="elipse"></span>{{ article.comments|length }} commentaires</h5>
+                        {% else %}
+                            <h3 class="detail-article"><span class="elipse"></span>Aucun commentaires</h5>
+                        {% endif %}
                         <a class="btn btn-article" href="{{ path('front_article', { id : article.id }) }}" role="button">Lire >></a>
                     </div>
                 {% endfor %}

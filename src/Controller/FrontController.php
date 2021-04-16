@@ -17,6 +17,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use DateTime;
 
 /**
  * Creates views showing the three last cycling shirts for each category
@@ -146,6 +147,7 @@ class FrontController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $user = $this->getUser();
             $comment->setUser($user); /** @phpstan-ignore-line */
+            $comment->setCreatedAt(new DateTime());
             $comment->setArticle($article);
 
             $manager->persist($comment);
