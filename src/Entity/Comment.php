@@ -23,6 +23,11 @@ class Comment
     private string $comment;
 
     /**
+     * @ORM\Column(type="datetime")
+     */
+    private \DateTimeInterface $createdAt;
+
+    /**
      * @ORM\ManyToOne(targetEntity=Article::class, inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -47,6 +52,18 @@ class Comment
     public function setComment(string $comment): self
     {
         $this->comment = $comment;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }

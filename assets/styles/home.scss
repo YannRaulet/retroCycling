@@ -127,8 +127,9 @@
 
 .home-articles {
     width: 100%;
-    height: 138vh;
+    height: 144vh;
     background-color: var(--main-background-color);
+    margin-bottom: 8%;
 }
 
 .home-article-title {
@@ -140,7 +141,7 @@
 .card-article {
     background-color: white;
     width: 85%;
-    height: 38vh;
+    height: 40vh;
     margin: auto;
     margin-top: 4%;
     border-radius: 5px;
@@ -382,7 +383,7 @@
     
     .card-article {
         width: 390px;
-        height: 50vh;
+        height: 80vh;
     }
 }
 

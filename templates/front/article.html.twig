@@ -35,35 +35,53 @@
                     <img class="d-block w-100" src="/assets/images/separateur.png">
                 </div>
                     
-            {% if is_granted('ROLE_USER') %}
-                <div class="comment-form">
-                    {{form_start(commentForm) }}
-                    {{ form_row(commentForm.comment, {'attr': {'placeholder': 'Commentaire' }}) }}                
-                    <button class="btn comment-btn">Envoyer</button>
-                    {{ form_end(commentForm) }}
-                </div>
-            
-                <div class="separateur">
-                    <img class="d-block w-100" src="/assets/images/separateur.png">
-                </div>
-            {% endif %}
+             {% if not is_granted('ROLE_USER') %}
+                    <div class="comments">
+                        <h3 class="article-title-h3">Votre commentaire</h3>
+                        <div class="info-banner info">
+                            <div class="icon fas fa-info-circle"></div>
+                            <div class="content">
+                            Vous devez être connecté pour poster un commentaire. <a href="{{ path('app_login') }}">Se connecter</a> ou <a href="{{ path('app_registrer') }}">Créer un compte</a>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="separateur">
+                        <img class="d-block w-100" src="/assets/images/separateur.png">
+                    </div>
+                {% endif %}
 
-            <h3 class="article-title-h3">Commentaires</h3>
-            {% for comment in comments %}
-                <div class="comments-container">
-                    <div class="comments-username">{{ comment.user.pseudo }} :</div>
-                    <div class="comments-text">{{ comment.comment}}</div>
-                </div>
-            {% endfor %}
-            {% if not is_granted('ROLE_USER') %}
-                <div class="separateur">
-                    <img class="d-block w-100" src="/assets/images/separateur.png">
-                </div>
-                <p class="comment-p">Vous devez être connecté pour pouvoir publier un article</p>
-                <button class="btn comment-post-btn"><a href="{{ path('app_login') }}">Se connecter / s'inscrire</a></button>
-            {% endif %}
-        </article>
-    </section>
+                {% if is_granted('ROLE_USER') %}
+                    <div class="comment-form">
+                        {{form_start(commentForm) }}
+                        {{ form_row(commentForm.comment, {'attr': {'placeholder': 'Commentaire' }}) }}                
+                        <button class="btn comment-btn">Envoyer</button>
+                        {{ form_end(commentForm) }}
+                    </div>
+                
+                    <div class="separateur">
+                        <img class="d-block w-100" src="/assets/images/separateur.png">
+                    </div>
+                {% endif %}
+
+            <div class="bloc-comments">
+                <h3 class="article-title-h3"><img src="/assets/images/chat.png">{{ article.comments|length }} commentaires</h3>
+                {% for comment in comments %}
+                    <div class="comments-container">
+                        <div class="comment-by">
+                            <div class="avatar">
+                                <img class="d-block w-100" src="/assets/images/avatar.png">
+                            </div>
+                            <div class="comments-username">
+                                <p class="comment-user"><span>{{ comment.user.pseudo }}</span> </br>
+                                Le {{ comment.createdAt|date("d/m/Y à H:i") }}</p>
+                            </div>
+                        </div>
+                        <p class="comments-text">{{ comment.comment}}</p>
+                    </div>
+                {% endfor %}
+            </div>
+            </article>
+        </section>
 {% else %}
 
     {% for background_picture in background_pictures %}
@@ -94,7 +112,22 @@
                     <div class="separateur">
                         <img class="d-block w-100" src="/assets/images/separateur.png">
                     </div>
-                        
+
+                {% if not is_granted('ROLE_USER') %}
+                    <div class="comments">
+                        <h3 class="article-title-h3">Votre commentaire</h3>
+                        <div class="info-banner info">
+                            <div class="icon fas fa-info-circle"></div>
+                            <div class="content">
+                            Vous devez être connecté pour poster un commentaire.<br><a href="{{ path('app_login') }}">Se connecter</a> ou <a href="{{ path('app_registrer') }}">Créer un compte</a>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="separateur">
+                        <img class="d-block w-100" src="/assets/images/separateur.png">
+                    </div>
+                {% endif %}
+
                 {% if is_granted('ROLE_USER') %}
                     <div class="comment-form">
                         {{form_start(commentForm) }}
@@ -108,20 +141,23 @@
                     </div>
                 {% endif %}
 
-                <h3 class="article-title-h3">Commentaires</h3>
+            <div class="bloc-comments">
+                <h3 class="article-title-h3"><img src="/assets/images/chat.png">{{ article.comments|length }} commentaires</h3>
                 {% for comment in comments %}
                     <div class="comments-container">
-                        <div class="comments-username">{{ comment.user.pseudo }} :</div>
-                        <div class="comments-text">{{ comment.comment}}</div>
+                        <div class="comment-by">
+                            <div class="avatar">
+                                <img class="d-block w-100" src="/assets/images/avatar.png">
+                            </div>
+                            <div class="comments-username">
+                                <p class="comment-user"><span>{{ comment.user.pseudo }}</span> </br>
+                                Le {{ comment.createdAt|date("d/m/Y à H:i") }}</p>
+                            </div>
+                        </div>
+                        <p class="comments-text">{{ comment.comment}}</p>
                     </div>
                 {% endfor %}
-                {% if not is_granted('ROLE_USER') %}
-                    <div class="separateur">
-                        <img class="d-block w-100" src="/assets/images/separateur.png">
-                    </div>
-                    <p class="comment-p">Vous devez être connecté pour pouvoir publier un article</p>
-                    <button class="btn comment-post-btn"><a href="{{ path('app_login') }}">Se connecter / s'inscrire</a></button>
-                {% endif %}
+            </div>
             </article>
         </section>
     {% endfor %}
