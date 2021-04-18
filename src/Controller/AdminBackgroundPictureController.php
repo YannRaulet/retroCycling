@@ -34,8 +34,11 @@ class AdminBackgroundPictureController extends AbstractController
      * Display the page that adds a background picture
      * @return Response
      */
-    public function newBackgroundPicture(Request $request, EntityManagerInterface $manager): Response
-    {
+    public function newBackgroundPicture(
+        Request $request,
+        EntityManagerInterface $manager,
+        BackgroundPictureRepository $backgroundRepository
+    ): Response {
         $backgroundPicture = new BackgroundPicture();
         $form = $this->createForm(BackgroundPictureType::class, $backgroundPicture);
         $form->handleRequest($request);
@@ -50,6 +53,8 @@ class AdminBackgroundPictureController extends AbstractController
         return $this->render('admin/background_picture_new.html.twig', [
             'background_picture' => $backgroundPicture,
             'form' => $form->createView(),
+            'background_pictures' => $backgroundRepository->findByName('background-admin')
+
         ]);
     }
 
@@ -58,10 +63,13 @@ class AdminBackgroundPictureController extends AbstractController
      * Display the page that show a background picture
      * @return Response
      */
-    public function showBackgroundPicture(BackgroundPicture $backgroundPicture): Response
-    {
+    public function showBackgroundPicture(
+        BackgroundPicture $backgroundPicture,
+        BackgroundPictureRepository $backgroundRepository
+    ): Response {
         return $this->render('admin/background_picture_show.html.twig', [
             'background_picture' => $backgroundPicture,
+            'background_pictures' => $backgroundRepository->findByName('background-admin')
         ]);
     }
 
@@ -73,7 +81,8 @@ class AdminBackgroundPictureController extends AbstractController
     public function editBackgroundPicture(
         Request $request,
         BackgroundPicture $backgroundPicture,
-        EntityManagerInterface $manager
+        EntityManagerInterface $manager,
+        BackgroundPictureRepository $backgroundRepository
     ): Response {
         $form = $this->createForm(BackgroundPictureType::class, $backgroundPicture);
         $form->handleRequest($request);
@@ -88,6 +97,7 @@ class AdminBackgroundPictureController extends AbstractController
         return $this->render('admin/background_picture_edit.html.twig', [
             'background_picture' => $backgroundPicture,
             'form' => $form->createView(),
+            'background_pictures' => $backgroundRepository->findByName('background-admin')
         ]);
     }
 

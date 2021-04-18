@@ -32,3 +32,31 @@ main {
     --second-background-color : #fff;
     --third-background-color : #B99867;
 }
+
+/* Tablet - PC version */
+@media (min-width: 768px) {
+    .background {
+        min-height: 60vh;
+    }
+}
+
+/* Tablet - PC version */
+@media (min-width: 1024px) {
+    .background {
+        min-height: 70vh;
+    }
+}
+
+/* Large PC */
+@media (min-width: 1200px) {
+    .background {
+        min-height: 80vh;
+    }
+}
+
+/* Large PC */
+@media (min-width: 1600px) {
+    .background {
+        min-height: 90vh;
+    }
+}

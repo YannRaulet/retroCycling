@@ -3,9 +3,26 @@
 {% block title %}{{ parent() }}-Admin-Nouvelle catégorie{% endblock %}
 
 {% block body %}
-    <h1 class="title-crud">Creér une catégorie</h1>
-    <div class="page-form-edit">
-        {{ include('admin/category_form.html.twig', { button_label: 'Créer'}) }}
-        <a href="{{ path('admin_categories') }}">Retour aux catégories</a>
-    </div>
+
+{% if background_pictures == false %}
+    <section>
+        <h1 class="title-crud">Creér une catégorie</h1>
+        <div class="page-form-edit">
+            {{ include('admin/category_form.html.twig', { button_label: 'Créer'}) }}
+            <a href="{{ path('admin_categories') }}">Retour aux catégories</a>
+        </div>
+    </section>
+{% else %}
+
+    {% for background_picture in background_pictures %}
+        <section class="background" style="background-image:url( /assets/images/uploads/{{ background_picture.picture }}">
+            <h1 class="title-crud">Creér une catégorie</h1>
+            <div class="page-form-edit">
+                {{ include('admin/category_form.html.twig', { button_label: 'Créer'}) }}
+                <a href="{{ path('admin_categories') }}">Retour aux catégories</a>
+            </div>
+        </section>
+    {% endfor %}
+{% endif %}
+
 {% endblock %}

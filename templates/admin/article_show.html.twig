@@ -3,39 +3,84 @@
 {% block title %}{{ parent() }}-Admin-L'article{% endblock %}
 
 {% block body %}
-    <h1 class="title-crud">Détails de l'article</h1>
 
-    <table class="table table-hover">
-        <tbody>
-            <tr>
-                <th scope="col">Id</th>
-                <td>{{ article.id }}</td>
-            </tr>
-            <tr>
-                <th scope="col">Image article</th>
-                <td><img src="/assets/images/uploads/{{ article.picture }}"></td>
-            </tr>
-            <tr>
-                <th scope="col">Nom</th>
-                <td>{{ article.name }}</td>
-            </tr>
-                <th scope="col">Catégorie</th>
-                <td>{{ article.category }}</td>
-            </tr>
-            <tr>
-                <th scope="col">Date de création</th>
-                <td>{{ article.createdAt ? article.createdAt|date('Y-M-d') : '' }}</td>
-            </tr>
-        </tbody>
-         <tfoot>
-            <th>
-                <a href="{{ path('admin_articles') }}">Retour sur les articles</a>
-            </th>
-        </tfoot>
-    </table>
-    <div class="button-action">
-        <a class="btn btn-success" href="{{ path('admin_article_edit', {'id': article.id}) }}" role="button">Modifier</a>
-        {{ include('admin/article_delete_form.html.twig') }}
-    </div>
+{% if background_pictures == false %}
+    <section>
+        <h1 class="title-crud">Détails de l'article</h1>
+
+        <table class="table table-hover">
+            <tbody>
+                <tr>
+                    <th scope="col">Id</th>
+                    <td>{{ article.id }}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Image article</th>
+                    <td><img src="/assets/images/uploads/{{ article.picture }}"></td>
+                </tr>
+                <tr>
+                    <th scope="col">Nom</th>
+                    <td>{{ article.name }}</td>
+                </tr>
+                    <th scope="col">Catégorie</th>
+                    <td>{{ article.category }}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Date de création</th>
+                    <td>{{ article.createdAt ? article.createdAt|date('Y-M-d') : '' }}</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <th>
+                    <a href="{{ path('admin_articles') }}">Retour sur les articles</a>
+                </th>
+            </tfoot>
+        </table>
+        <div class="button-action">
+            <a class="btn btn-success" href="{{ path('admin_article_edit', {'id': article.id}) }}" role="button">Modifier</a>
+            {{ include('admin/article_delete_form.html.twig') }}
+        </div>
+    </section>
+{% else %}
+
+    {% for background_picture in background_pictures %}
+        <section class="background" style="background-image:url( /assets/images/uploads/{{ background_picture.picture }}">
+            <h1 class="title-crud">Détails de l'article</h1>
+
+            <table class="table table-hover">
+                <tbody>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <td>{{ article.id }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Image article</th>
+                        <td><img src="/assets/images/uploads/{{ article.picture }}"></td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Nom</th>
+                        <td>{{ article.name }}</td>
+                    </tr>
+                        <th scope="col">Catégorie</th>
+                        <td>{{ article.category }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Date de création</th>
+                        <td>{{ article.createdAt ? article.createdAt|date('Y-M-d') : '' }}</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <th>
+                        <a href="{{ path('admin_articles') }}">Retour sur les articles</a>
+                    </th>
+                </tfoot>
+            </table>
+            <div class="button-action">
+                <a class="btn btn-success" href="{{ path('admin_article_edit', {'id': article.id}) }}" role="button">Modifier</a>
+                {{ include('admin/article_delete_form.html.twig') }}
+            </div>
+        </section>
+    {% endfor %}
+{% endif %}
 
 {% endblock %}

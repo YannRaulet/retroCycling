@@ -3,14 +3,37 @@
 {% block title %}{{ parent() }}-Admin-Modifier le maillot{% endblock %}
 
 {% block body %}
-<div class="page-form-edit">
-    <h1 class="title-crud">Modifier le maillot</h1>
-    <div class="form-edit">
-        {{ include('admin/cycling_shirt_form.html.twig') }}
-    </div>
-    <div class="form-edit">
-        {{ include('admin/cycling_shirt_delete_form.html.twig') }}
-    </div>
-    <a href="{{ path('admin_cycling_shirts') }}">Retour aux maillots</a>
-</div>
+
+{% if background_pictures == false %}
+    <section>
+        <div class="page-form-edit">
+            <h1 class="title-crud">Modifier le maillot</h1>
+            <div class="form-edit">
+                {{ include('admin/cycling_shirt_form.html.twig') }}
+            </div>
+            <div class="form-edit">
+                {{ include('admin/cycling_shirt_delete_form.html.twig') }}
+            </div>
+            <a href="{{ path('admin_cycling_shirts') }}">Retour aux maillots</a>
+        </div>
+    </section>
+
+{% else %}
+
+    {% for background_picture in background_pictures %}
+        <section class="background" style="background-image:url( /assets/images/uploads/{{ background_picture.picture }}">
+            <div class="page-form-edit">
+                <h1 class="title-crud">Modifier le maillot</h1>
+                <div class="form-edit">
+                    {{ include('admin/cycling_shirt_form.html.twig') }}
+                </div>
+                <div class="form-edit">
+                    {{ include('admin/cycling_shirt_delete_form.html.twig') }}
+                </div>
+                <a href="{{ path('admin_cycling_shirts') }}">Retour aux maillots</a>
+            </div>
+         </section>
+    {% endfor %}
+{% endif %}
+
 {% endblock %}
