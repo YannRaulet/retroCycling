@@ -20,12 +20,14 @@
                     </div>
                     <div class="description-article">
                         <h3 class="detail-article"><span class="elipse"></span>{{ article.category }}</h3>
-                        <h3 class="detail-article"><span class="elipse"></span>{{ article.createdAt|date('Y-M-d') }}</h3>
+                        <h3 class="detail-article"><span class="elipse"></span>{{ article.createdAt|date('d M Y') }}</h3>
                     </div>
-                     {% if app.user %}
-                            <h3 class="detail-article"><span class="elipse"></span>{{ article.comments|length }} commentaires</h5>
+                        {% if article.comments|length == 0 %}
+                            <h3 class="detail-article"><span class="elipse"></span>Aucun commentaire</h5>
+                        {% elseif article.comments|length == 1 %}
+                            <h3 class="detail-article"><span class="elipse"></span>1 commentaire</h5>
                         {% else %}
-                            <h3 class="detail-article"><span class="elipse"></span>Aucun commentaires</h5>
+                            <h3 class="detail-article"><span class="elipse"></span>{{ article.comments|length }} commentaires</h5>
                         {% endif %}
                     <a class="btn btn-article" href="{{ path('front_article', { id : article.id }) }}" role="button">Lire >></a>
                 </div>
@@ -48,12 +50,14 @@
                         </div>
                         <div class="description-article">
                             <h3 class="detail-article"><span class="elipse"></span>{{ article.category }}</h3>
-                            <h3 class="detail-article"><span class="elipse"></span>{{ article.createdAt|date('Y-M-d') }}</h3>
+                            <h3 class="detail-article"><span class="elipse"></span>{{ article.createdAt|date('d M Y') }}</h3>
                         </div>
-                        {% if app.user %}
-                            <h3 class="detail-article"><span class="elipse"></span>{{ article.comments|length }} commentaires</h5>
+                        {% if article.comments|length == 0 %}
+                            <h3 class="detail-article"><span class="elipse"></span>Aucun commentaire</h5>
+                        {% elseif article.comments|length == 1 %}
+                            <h3 class="detail-article"><span class="elipse"></span>1 commentaire</h5>
                         {% else %}
-                            <h3 class="detail-article"><span class="elipse"></span>Aucun commentaires</h5>
+                            <h3 class="detail-article"><span class="elipse"></span>{{ article.comments|length }} commentaires</h5>
                         {% endif %}
                         <a class="btn btn-article" href="{{ path('front_article', { id : article.id }) }}" role="button">Lire >></a>
                     </div>

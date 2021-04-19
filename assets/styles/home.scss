@@ -127,9 +127,9 @@
 
 .home-articles {
     width: 100%;
-    height: 144vh;
     background-color: var(--main-background-color);
-    margin-bottom: 8%;
+    margin-bottom: 5%;
+    padding-bottom: 5%;
 }
 
 .home-article-title {
@@ -183,7 +183,6 @@
 
     .home-articles {
         width: 100%;
-        height: 182vh;
         background-color: var(--main-background-color);
     }
 
@@ -226,10 +225,6 @@
     .accordions-section1 .img, .accordions-section2 .img {
         width: 10rem;
         height: 16rem;
-    }
-
-    .home-articles {
-        height: 128vh;
     }
 
     .card-article {
@@ -359,10 +354,6 @@
         transition: all 0.5s ease-in-out;
     }
 
-    .home-articles {
-        height: 120vh;
-    }
-
     .home-articles-title{
         color: var(--second-background-color);
     }
@@ -383,7 +374,7 @@
     
     .card-article {
         width: 390px;
-        height: 80vh;
+        height: 450px;
     }
 }
 
