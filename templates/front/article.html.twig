@@ -64,7 +64,15 @@
                 {% endif %}
 
             <div class="bloc-comments">
-                <h3 class="article-title-h3"><img src="/assets/images/chat.png">{{ article.comments|length }} commentaires</h3>
+                <h3 class="article-title-h3"><img src="/assets/images/chat.png">
+                        {% if article.comments|length == 0 %}
+                            Aucun commentaire
+                        {% elseif article.comments|length == 1 %}
+                            1 commentaire
+                        {% else %}
+                            {{ article.comments|length }} commentaires
+                        {% endif %}
+                </h3>
                 {% for comment in comments %}
                     <div class="comments-container">
                         <div class="comment-by">
@@ -142,7 +150,15 @@
                 {% endif %}
 
             <div class="bloc-comments">
-                <h3 class="article-title-h3"><img src="/assets/images/chat.png">{{ article.comments|length }} commentaires</h3>
+                <h3 class="article-title-h3"><img src="/assets/images/chat.png">
+                        {% if article.comments|length == 0 %}
+                            Aucun commentaire
+                        {% elseif article.comments|length == 1 %}
+                            1 commentaire
+                        {% else %}
+                            {{ article.comments|length }} commentaires
+                        {% endif %}
+                </h3>
                 {% for comment in comments %}
                     <div class="comments-container">
                         <div class="comment-by">
