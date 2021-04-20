@@ -16,6 +16,12 @@
     text-align: center;
 }
 
+.article-p {
+    width: 90%;
+    margin: auto;
+    text-align: justify;
+}
+
 .article-title-h3 {
     font-size: 2rem;
     color: var(--third-background-color);
@@ -33,12 +39,8 @@
 }
 
 .container-social {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 240px);
-    justify-content: center;
-    grid-gap: 15px;
     margin: auto;
-    width: 98%;
+    width: 97%;
 }
 
 .logo-share {
@@ -67,6 +69,15 @@
     width: 90%;
     margin-top: 8%;
     margin-bottom: 8%;
+}
+
+.comment-title-h3 {
+    font-size: 2rem;
+    color: var(--third-background-color);
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    margin-bottom: 10%;
 }
 
 .comment-form label {
@@ -118,12 +129,14 @@
 }
 
 #comment_comment {
-    width: 70%;
+    width: 90%;
     margin: auto;
     height: 14vh;
 }
 
 .comments-container {
+    margin-bottom: 10%;
+    border-left: 1px solid #000;
     width: 90%;
 }
 
@@ -180,7 +193,7 @@
 .comment-by {
     display: flex;
     align-items: center;
-    width: 100%;
+    width: 90%;
     margin: auto;
 }
 
@@ -190,14 +203,16 @@
 
  .comment-user span {
     font-weight: bold;
-    font-size: 1.3em;
+    font-size: 1.5em;
     color: var(--third-background-color);
 }
 
  .comments-text{
     width: 90%;
-    margin-left: 20%;
+    margin: auto;
     text-align: justify;
+    box-sizing: content-box;
+    padding: 5% 0;
 }
 
 .content {
@@ -212,20 +227,87 @@
     color: var(--third-background-color);
 }
 
- 
-/* Tablet version */
-@media (min-width: 600px) {
-    .comments-text{
-        margin-left: 13%;
-    }
+.btn-comment {
+    background: rgba(185, 152, 103, 0.788);
+    color: black;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-left: 5%;
+}
 
+.btn-comment:hover {
+    background-color: var(--third-background-color);
+    transition: all 1s ease-out;
+}
+
+.reply-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: auto;
+    margin-bottom: 10%;
+    border-left: 1px solid #000;
+    width: 90%;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.reply-by {
+    display: flex;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+}
+
+.reply-username {
+    display: flex;
+    justify-content: center;
+}
+
+.replies-text{
+    width: 90%;
+    margin: auto;
+    text-align: justify;
+    box-sizing: content-box;
+    padding: 5% 0;
+}
+
+/* Tablet version */
+@media (min-width: 600px) {    
+    .container-social {
+        display: flex;
+        justify-content: space-evenly;
+        margin: auto;
+    }
+    
     .comments {
         width: 80%;
+    }
+
+    .reply-container {
+        margin-bottom: 5%;
+        width: 70%;
+    }
+
+    .comments-container {
+        width: 70%;
+        margin-bottom: 5%;
+
+    }
+
+    .replies-text{
+        margin: auto;
     }
 }
 
 /* Tablet - PC version */
 @media (min-width: 1024px) {
+    .article-p {
+        width: 70%;
+    }
+    
+    #comment_comment {
+        width: 70%;
+    }
+
     .container-social {
         display: flex;
     }
@@ -243,8 +325,8 @@
         text-align: center;
     }
 
-    .comments-text{
-        margin-left: 12%;
+    .bloc-comments {
+        width: 70%;
     }
 
     .comments {
@@ -254,20 +336,51 @@
 
 /* Large PC */
 @media (min-width: 1200px) {
+    .container-social {
+        width: 80%;
+    }
+
     .btn-share {
         width: 25%;
     }
 
-    .comments-container, #comment_comment  {
+    .comments-container {
+        width: 60%;
+    }
+
+    #comment_comment {
+        height: 20vh;
+    }
+
+    .reply-container {
         width: 60%;
     }
 }
 
 /* Large PC */
 @media (min-width: 1600px) {
+    .container-social {
+        width: 50%;
+        display: flex;
+        justify-content: space-between;
+        margin: auto;
+    }
+
+    .article-p {
+        width: 50%;
+    }
+
     .separateur {
         width: 50%;
         margin-top: 4%;
         margin-bottom: 4%;
+    }
+
+    #comment_comment {
+        width: 50%;
+    }
+
+    .bloc-comments {
+        width: 50%;
     }
 }
