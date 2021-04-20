@@ -111,7 +111,7 @@ class SecurityController extends AbstractController
 
         return $this->render('security/registrer.html.twig', [
                 'registrationForm' => $form->createView(),
-                'background_pictures' => $backgroundRepository->findByName('background-connexion')
+                'background_pictures' => $backgroundRepository->findByName('background-main')
         ]);
     }
 
