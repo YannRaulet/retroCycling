@@ -20,7 +20,34 @@
                     <div class="container-social">
                         <button class="btn btn-share share_twitter" data-url="{{ absolute_url(path('front_article', { id: article.id })) }}">
                             <img class="logo-share" src="/assets/images/logo-twitter.png">
-                            Twitter
+                            Twitter                <div class="bloc-comments">
+71
+ 
+                    <h3 class="article-title-h3"><img src="/assets/images/chat.png">
+72
+ 
+                            {% if article.comments|length == 0 %}
+73
+ 
+                                Aucun commentaire
+74
+ 
+                            {% elseif article.comments|length == 1 %}
+75
+ 
+                                1 commentaire
+76
+ 
+                            {% else %}
+77
+ 
+                                {{ article.comments|length }} commentaires
+78
+ 
+                            {% endif %}
+79
+ 
+                    </h3>
                         </button>
                         <button class="btn btn-share share_facebook" data-url="{{ absolute_url(path('front_article', { id: article.id  })) }}">
                             <img class="logo-share" src="/assets/images/logo-facebook.png">
@@ -64,42 +91,47 @@
                 {% endif %}
 
                 <div class="bloc-comments">
-                    <h3 class="comment-title-h3"><img src="/assets/images/chat.png"> {{ article.comments|length }} commentaires</h3>
-                {% for comment in comments %}
-                    {% if comment.parent == null %}
-                        <div class="comments-container">
-                            <div class="comment-by">
-                                <div class="avatar">
-                                    <img class="d-block w-100" src="/assets/images/avatar.png">
-                                </div>
-                                <div class="comments-username">
-                                    <p class="comment-user">Publié par <span>{{ comment.user.pseudo }}</span> </br>
-                                    - Le {{ comment.createdAt|date("d/m/Y à H:i") }} -</p>
-                           
-                                </div>
-                            </div>
-                            <p class="comments-text">{{ comment.comment}}</p>
-                            <p><a href="#add-comment" data-reply data-id="{{ comment.id }}" class="btn btn-comment">Répondre</a></p>
-                        </div>
-                        {# we display the answers #}
-                        {% for reply in comment.replies %}
-                            <div class="reply-container">
-                                <div class="reply-by">
+                    <h3 class="article-title-h3"><img src="/assets/images/chat.png">
+                        {% if article.comments|length == 0 %}
+                            Aucun commentaire
+                        {% elseif article.comments|length == 1 %}
+                            1 commentaire
+                        {% else %}
+                            {{ article.comments|length }} commentaires
+                        {% endif %}
+                    </h3>
+                    {% for comment in comments %}
+                        {% if comment.parent == null %}
+                            <div class="comments-container">
+                                <div class="comment-by">
                                     <div class="avatar">
                                         <img class="d-block w-100" src="/assets/images/avatar.png">
                                     </div>
-                                    <div class="reply-username">
-                    
-                                        <p class="comment-user">Réponse publiée par <span>{{ reply.user.pseudo }}</span> </br>
-                                        - Le {{ reply.createdAt|date("d/m/Y à H:i") }} -</p>
-                                        
+                                    <div class="comments-username">
+                                        <p class="comment-user">Publié par <span>{{ comment.user.pseudo }}</span> </br>
+                                        - Le {{ comment.createdAt|date("d/m/Y à H:i") }} -</p>
                                     </div>
                                 </div>
-                                <p class="replies-text">{{ reply.comment}}</p>
+                                <p class="comments-text">{{ comment.comment}}</p>
+                                <p><a href="#add-comment" data-reply data-id="{{ comment.id }}" class="btn btn-comment">Répondre</a></p>
                             </div>
-                        {% endfor %}
-                    {% endif %}
-                {% endfor %}
+                            {# we display the answers #}
+                            {% for reply in comment.replies %}
+                                <div class="reply-container">
+                                    <div class="reply-by">
+                                        <div class="avatar">
+                                            <img class="d-block w-100" src="/assets/images/avatar.png">
+                                        </div>
+                                        <div class="reply-username">
+                                            <p class="comment-user">Réponse publiée par <span>{{ reply.user.pseudo }}</span> </br>
+                                            - Le {{ reply.createdAt|date("d/m/Y à H:i") }} -</p>
+                                        </div>
+                                    </div>
+                                    <p class="replies-text">{{ reply.comment}}</p>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
                 </div>
             </article>
         </section>
@@ -161,44 +193,49 @@
                         <img class="d-block w-100" src="/assets/images/separateur.png">
                     </div>
                 {% endif %}
-
+                
                 <div class="bloc-comments">
-                    <h3 class="comment-title-h3"><img src="/assets/images/chat.png"> {{ article.comments|length }} commentaires</h3>
-                {% for comment in comments %}
-                    {% if comment.parent == null %}
-                        <div class="comments-container">
-                            <div class="comment-by">
-                                <div class="avatar">
-                                    <img class="d-block w-100" src="/assets/images/avatar.png">
-                                </div>
-                                <div class="comments-username">
-                                    <p class="comment-user">Publié par <span>{{ comment.user.pseudo }}</span> </br>
-                                    - Le {{ comment.createdAt|date("d/m/Y à H:i") }} -</p>
-                           
-                                </div>
-                            </div>
-                            <p class="comments-text">{{ comment.comment}}</p>
-                            <p><a href="#add-comment" data-reply data-id="{{ comment.id }}" class="btn btn-comment">Répondre</a></p>
-                        </div>
-                        {# we display the answers #}
-                        {% for reply in comment.replies %}
-                            <div class="reply-container">
-                                <div class="reply-by">
+                    <h3 class="article-title-h3"><img src="/assets/images/chat.png">
+                        {% if article.comments|length == 0 %}
+                            Aucun commentaire
+                        {% elseif article.comments|length == 1 %}
+                            1 commentaire
+                        {% else %}
+                            {{ article.comments|length }} commentaires
+                        {% endif %}
+                    </h3>
+                    {% for comment in comments %}
+                        {% if comment.parent == null %}
+                            <div class="comments-container">
+                                <div class="comment-by">
                                     <div class="avatar">
                                         <img class="d-block w-100" src="/assets/images/avatar.png">
                                     </div>
-                                    <div class="reply-username">
-                    
-                                        <p class="comment-user">Réponse publiée par <span>{{ reply.user.pseudo }}</span> </br>
-                                        - Le {{ reply.createdAt|date("d/m/Y à H:i") }} -</p>
-                                        
+                                    <div class="comments-username">
+                                        <p class="comment-user">Publié par <span>{{ comment.user.pseudo }}</span> </br>
+                                        - Le {{ comment.createdAt|date("d/m/Y à H:i") }} -</p>
                                     </div>
                                 </div>
-                                <p class="replies-text">{{ reply.comment}}</p>
+                                <p class="comments-text">{{ comment.comment}}</p>
+                                <p><a href="#add-comment" data-reply data-id="{{ comment.id }}" class="btn btn-comment">Répondre</a></p>
                             </div>
-                        {% endfor %}
-                    {% endif %}
-                {% endfor %}
+                            {# we display the answers #}
+                            {% for reply in comment.replies %}
+                                <div class="reply-container">
+                                    <div class="reply-by">
+                                        <div class="avatar">
+                                            <img class="d-block w-100" src="/assets/images/avatar.png">
+                                        </div>
+                                        <div class="reply-username">
+                                            <p class="comment-user">Réponse publiée par <span>{{ reply.user.pseudo }}</span> </br>
+                                            - Le {{ reply.createdAt|date("d/m/Y à H:i") }} -</p>
+                                        </div>
+                                    </div>
+                                    <p class="replies-text">{{ reply.comment}}</p>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
                 </div>
             </article>
         </section>
