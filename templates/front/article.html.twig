@@ -20,34 +20,7 @@
                     <div class="container-social">
                         <button class="btn btn-share share_twitter" data-url="{{ absolute_url(path('front_article', { id: article.id })) }}">
                             <img class="logo-share" src="/assets/images/logo-twitter.png">
-                            Twitter                <div class="bloc-comments">
-71
- 
-                    <h3 class="article-title-h3"><img src="/assets/images/chat.png">
-72
- 
-                            {% if article.comments|length == 0 %}
-73
- 
-                                Aucun commentaire
-74
- 
-                            {% elseif article.comments|length == 1 %}
-75
- 
-                                1 commentaire
-76
- 
-                            {% else %}
-77
- 
-                                {{ article.comments|length }} commentaires
-78
- 
-                            {% endif %}
-79
- 
-                    </h3>
+                            Twitter
                         </button>
                         <button class="btn btn-share share_facebook" data-url="{{ absolute_url(path('front_article', { id: article.id  })) }}">
                             <img class="logo-share" src="/assets/images/logo-facebook.png">
