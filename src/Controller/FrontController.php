@@ -150,6 +150,16 @@ class FrontController extends AbstractController
             $comment->setCreatedAt(new DateTime());
             $comment->setArticle($article);
 
+            // We retrieve the content of the parentid field
+            $parentid = $form->get("parentid")->getData();
+            if ($parentid != null) {
+                // we will look for the corresponding comment
+                $parent = $manager->getRepository(Comment::class)->find($parentid);
+            }
+
+            // we define the parrent
+            $comment->setParent($parent ?? null);
+
             $manager->persist($comment);
             $manager->flush();
 
@@ -157,6 +167,7 @@ class FrontController extends AbstractController
         }
 
         $comments = $commentRepository->findBy(['article' => $article]);
+
         return $this->render('front/article.html.twig', [
             'article' => $articleRepository->findOneBy(
                 ['id' => $id]
