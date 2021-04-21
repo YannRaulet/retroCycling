@@ -73,7 +73,16 @@ class SecurityController extends AbstractController
 
         // 1) build the form
         $user = new User();
-        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form = $this->createForm(RegistrationFormType::class, $user, array(
+            // Time protection
+            'antispam_time'     => true,
+            'antispam_time_min' => 10,
+            'antispam_time_max' => 80,
+            // Honeypot protection
+            'antispam_honeypot'       => true,
+            'antispam_honeypot_class' => 'hide-me',
+            'antispam_honeypot_field' => 'email-repeat',
+        ));
 
         // 2) handle the submit (will only happen on POST)
         $form->handleRequest($request);

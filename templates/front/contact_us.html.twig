@@ -13,7 +13,7 @@
                     <div class="col">{{ form_row(contactForm.name, {'attr': {'placeholder': 'Nom' }}) }}</div>
                 </div>
                 <div class="row">
-                    <div class="col">{{ form_row(contactForm.email, {'attr': {'placeholder': 'Adresse mail' }}) }}</div>
+                    <div class="col">{{ form_row(contactForm.email, {'attr': {'placeholder': 'Adresse mail'|antispam(true) }}) }}</div>
                 </div>
                 <div class="row">
                     <div class="col">{{ form_row(contactForm.message, {'attr': {'placeholder': 'Message' }}) }}</div>
