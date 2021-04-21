@@ -39,7 +39,7 @@ class FrontController extends AbstractController
             // Time protection
             'antispam_time'     => true,
             'antispam_time_min' => 10,
-            'antispam_time_max' => 60,
+            'antispam_time_max' => 120,
             // Honeypot protection
             'antispam_honeypot'       => true,
             'antispam_honeypot_class' => 'hide-me',
