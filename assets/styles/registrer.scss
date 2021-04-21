@@ -11,7 +11,7 @@
     flex-direction: column;
     width: 80%;
     margin: auto;
-    margin-top: 3%;
+    margin-top: 1%;
 }
 
 .registrer-form input {
@@ -30,12 +30,12 @@
 }
 
 .registrer-form label {
-    display: none;
+    color: transparent;
 }
 
 .registrer-field ~ label {
     display: block !important;
-    color: white;
+    color:black;
 }
 
 .registrer-form input:-webkit-autofill,

@@ -34,7 +34,7 @@ class User implements UserInterface
      /**
      * @ORM\Column(type="string", length=255, nullable=false)
      * @Assert\NotBlank()
-     * @Assert\Length(min=2, minMessage="Le nom d'utilisateur doit faire plus de 2 caractères")
+     * @Assert\Length(min=3, minMessage="Le nom d'utilisateur doit faire plus de 3 caractères")
      */
     private string $pseudo;
 
