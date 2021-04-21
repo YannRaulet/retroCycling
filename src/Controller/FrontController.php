@@ -35,7 +35,16 @@ class FrontController extends AbstractController
         \Swift_Mailer $mailer,
         BackgroundPictureRepository $backgroundRepository
     ): Response {
-        $form = $this->createForm(ContactType::class);
+        $form = $this->createForm(ContactType::class, null, array(
+            // Time protection
+            'antispam_time'     => true,
+            'antispam_time_min' => 10,
+            'antispam_time_max' => 60,
+            // Honeypot protection
+            'antispam_honeypot'       => true,
+            'antispam_honeypot_class' => 'hide-me',
+            'antispam_honeypot_field' => 'subject',
+        ));
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
