@@ -148,20 +148,18 @@
 {% endif %}
     <a href="#ancre"></a>
     <section class="home-articles">
-        <h2 id ="a-la-une" class="home-article-title ancre"><span>A la une</span></h1>
-            <article class="box-article">
-                {% for article in articles %}
-                    <div class="card-article">
-                        <div class="image-article">
-                            <a href="{{ path('front_article', { id : article.id }) }}">
-                                <img class=" picture-article d-block w-100" src=" /assets/images/uploads/{{ article.picture }}">  
-                            </a>
-                        </div>
-                            <h3 class="card-article-title">{{ article.name }}</h3>
-                            <a class="btn btn-article" href="{{ path('front_article', { id : article.id }) }}" role="button">Lire >></a>
-                    </div>
-                {% endfor %}
-            </article> 
-            <a class="btn btn-blog" href="{{ path('front_blog') }}" role="button">Voir tous les articles</a>
+        <h2 id ="a-la-une" class="home-article-title ancre"><span>Derniers articles publiés</span></h1>
+        <article class="box-article">
+            {% for article in articles %}
+                <div class="image-article">
+                    <a href="{{ path('front_article', { id : article.id }) }}">
+                        <img class=" picture-article-home d-block w-100" src=" /assets/images/uploads/{{ article.picture }}">  
+                    </a>
+                    <p class="card-article-title">{{ article.name }}</p>
+                    <a class="btn btn-article-home" href="{{ path('front_article', { id : article.id }) }}" role="button">Lire >></a>
+                </div>
+            {% endfor %}
+        </article> 
+        <a class="btn btn-blog" href="{{ path('front_blog') }}" role="button">Voir tous les articles</a>
     </section>
 {% endblock %}

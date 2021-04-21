@@ -128,7 +128,7 @@
 .home-articles {
     width: 100%;
     background-color: var(--main-background-color);
-    margin-bottom: 5%;
+    margin-bottom: 5px;
     padding-bottom: 5%;
 }
 
@@ -138,29 +138,47 @@
     padding-top: 2%;
 }
 
-.card-article {
-    background-color: white;
-    width: 85%;
-    height: 40vh;
-    margin: auto;
-    margin-top: 4%;
-    border-radius: 5px;
-    box-shadow: 6px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
 .image-article {
-    width: 100%;
+    position: relative;
+    width: 85%;
     margin: auto;
-    box-shadow: 6px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-top: 10%;
+    border-radius: 5%;
 }
 
 .card-article-title {
-    color: black;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+    position: absolute;
     text-align: center;
-    font-size: 1.5rem;
-    margin-top: 6%;
-    margin-bottom: 5%;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: Georgia;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 5%;
+    color: white;
+    width: 80%;
+}
+
+.picture-article-home {
+    height: 16rem;
+    object-fit: cover;
+    border-radius: 5%;
+    box-shadow: 6px 4px 4px rgba(0, 0, 0, 0.80);
+}
+
+.btn-article-home {
+    background-color: var(--third-background-color);
+    color: black;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 30%;
+    display: block;
+    margin: auto;
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 80%;
 }
 
 .btn-blog {
@@ -171,7 +189,7 @@
     padding: 10px;
     display: block;
     margin: auto;
-    margin-top: 25px;
+    margin-top: 10%;
 }
 
 /* Tablet version */
@@ -186,22 +204,24 @@
         background-color: var(--main-background-color);
     }
 
-    .card-article {
-        height: 52vh;
-    }
-
     .card-article-title  {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
 
-    .picture-article {
-        height: 350px;
-        object-fit: cover;
+    .image-article {
+        width: 60%;
+    }
+
+    .picture-article-home {
+        border-radius: 25px;
+    }
+
+    .btn-article-home {
+        width: 20%;
     }
 
     .btn-blog {
         width: 30%;
-        margin-top: 30px;
         font-size: 1.4em;
     }
 }
@@ -227,18 +247,26 @@
         height: 16rem;
     }
 
-    .card-article {
-        width: 60%;
-        height: 35vh; 
+    .box-article {
+        display: grid;
+        grid-template-columns: 50% 50%;
     }
 
-    .picture-article {
-        height: 260px;
-        object-fit: cover;
+    .image-article {
+        width: 90%;
+    }
+
+    .picture-article-home {
+        height: 300px;
     }
 
     .card-article-title {
         font-size: 2rem;
+    }
+
+    .btn-article-home {
+        width: 30%;
+        font-size: 1.5rem;
     }
 
     .btn-blog {
@@ -295,7 +323,7 @@
         transform-origin: bottom right;
         transition: transform 0.4s ease-in-out;
     }
-        
+
     .collection-title-h2 a:hover::before {
         transform: scaleX(1);
         transform-origin: bottom left;
@@ -354,27 +382,16 @@
         transition: all 0.5s ease-in-out;
     }
 
+    .home-articles {
+        margin-bottom: 1%;
+    }
+
     .home-articles-title{
         color: var(--second-background-color);
     }
 
     .home-articles-title span::before {
         background-color: var(--second-background-color);
-    }
-
-    .box-article {
-        width: 100%;
-        height: auto;
-        margin: 30px auto;
-        display: grid;
-        grid-template-columns: repeat(auto-fill, 390px);
-        justify-content: center;
-        grid-gap: 35px;
-    }
-    
-    .card-article {
-        width: 390px;
-        height: 450px;
     }
 }
 
@@ -383,5 +400,18 @@
     .accordions-section1 .img, .accordions-section2 .img {
         width: 18rem;
         height: 28rem;
+    }
+
+    .btn-blog {
+        width: 15%;
+        margin-top: 7%;
+    }
+
+    .box-article {
+        margin: auto;
+        display: grid;
+        grid-template-columns: 40% 40%;
+        margin-left: 10%;
+        column-gap: 10%;
     }
 }
