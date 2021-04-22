@@ -382,6 +382,30 @@
         transition: all 0.5s ease-in-out;
     }
 
+    .home-article-title  span {
+        font-size: 5rem;
+        display: inline-block;
+        position: relative;
+    }
+
+    .home-article-title span::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: -2px;
+        left: 0;
+        background-color: var(--second-background-color);
+        transform-origin: bottom right;
+        transition: transform 0.4s ease-in-out;
+    }
+
+    .home-article-title span:hover::before {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+    }
+
     .home-articles {
         margin-bottom: 1%;
     }

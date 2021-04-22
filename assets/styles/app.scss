@@ -31,6 +31,26 @@ main {
     margin: auto;
 }
 
+.btnHigh {
+    height: 30px;
+    width: 30px;
+    position: fixed;
+    right: 0px;
+    bottom: 30px;
+    cursor: pointer;
+}
+
+#btnScroll {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
 :root{
     --main-background-color: #2D4655;
     --second-background-color : #fff;
