@@ -88,7 +88,7 @@ class FrontController extends AbstractController
         $articles = $articleRepository->findBy(
             [],
             ['createdAt' => 'desc'],
-            3,
+            4,
             0
         );
 

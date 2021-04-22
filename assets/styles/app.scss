@@ -28,8 +28,27 @@ body {
 
 main {
     width: 100%;
-    min-height: 100%;
     margin: auto;
+}
+
+.btnHigh {
+    height: 30px;
+    width: 30px;
+    position: fixed;
+    right: 0px;
+    bottom: 30px;
+    cursor: pointer;
+}
+
+#btnScroll {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    cursor: pointer;
 }
 
 :root{
@@ -62,6 +81,6 @@ main {
 /* Large PC */
 @media (min-width: 1600px) {
     .background {
-        min-height: 90vh;
+        min-height: 100vh;
     }
 }
