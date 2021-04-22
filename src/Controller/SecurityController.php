@@ -265,7 +265,7 @@ class SecurityController extends AbstractController
             $manager->flush();
 
             // We create the flash message
-            $this->addFlash('message', 'Mot de passe mis à jour');
+            $this->addFlash('success', 'Mot de passe mis à jour');
 
             return $this->redirectToRoute('front_home');
         } else {
