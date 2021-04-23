@@ -45,4 +45,4 @@ function topFunction() {
     document.documentElement.scrollTop = 0;
 }
 
-document.addEventListener("click", topFunction);
+btnScroll.addEventListener("click", topFunction);
