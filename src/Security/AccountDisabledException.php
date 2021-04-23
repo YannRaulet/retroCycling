@@ -11,6 +11,6 @@ class AccountDisabledException extends AccountStatusException
      */
     public function getMessageKey()
     {
-        return 'Votre compte n\'est pas activé.';
+        return 'Your account is not actived.';
     }
 }
