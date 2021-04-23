@@ -1,5 +1,49 @@
 /* Mobile version */
 
+.article-title {
+    margin-bottom: 5%;
+    text-align: center;
+    color: var(--main-background-color);
+}
+
+.categories-display {
+    display: flex;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 5%;
+}
+
+.category-p{
+    font-size: 20px;
+    border: 1px solid #000;
+    padding: 1%;
+    color: var(--second-background-color);
+    background-color: var(--main-background-color);
+    margin-right: 2%;
+}
+
+.filterButtons {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.filterButtons button {
+    width: 9rem;
+    padding: 10px 10px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    margin: 10px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.filterButtons button:hover {
+    background: var(--main-background-color);
+    color: #fff;
+}
+
 .blog-article {
     display: flex;
     flex-direction: column;
@@ -79,9 +123,8 @@
 
     .title-article {
         font-size: 1.8rem;
-       
     }
-    
+
     .detail-article {
         font-size: 1.5rem;
     }
@@ -103,7 +146,7 @@
         justify-content: center;
         grid-gap: 50px;
     }
-    
+
     .bloc-article {
         width: 400px;
         height: 42vh;   
@@ -136,6 +179,26 @@
     .detail-article {
         font-size: 1.5rem;
     }
+
+    .filterButtons {
+        text-align: center;
+        margin-top: 50px;
+        margin-bottom: 30px;
+    }
+
+    .filterButtons button {
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        margin: 0 10px;
+        cursor: pointer;
+        transition: .3s;
+    }
+
+    .filterButtons button:hover {
+        background: var(--main-background-color);
+        color: #fff;
+    }
 }
 
 /* Large PC */
@@ -149,7 +212,7 @@
         justify-content: center;
         grid-gap: 70px;
     }
-    
+
     .bloc-article {
         width: 500px;
         height: 104vh;
@@ -167,16 +230,43 @@
         justify-content: center;
         grid-gap: 70px;
     }
-    
+
     .bloc-article {
         width: 500px;
         height: 550px;
+    }
+
+    .article-title span {
+        font-size: 5rem;
+        display: inline-block;
+        position: relative;
+    }
+
+    .article-title span::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: -2px;
+        left: 0;
+        background-color: var(--main-background-color);
+        transform-origin: bottom right;
+        transition: transform 0.4s ease-in-out;
+    }
+
+    .article-title span:hover::before {
+        transform: scaleX(1);
+        transform-origin: bottom left;
     }
 }
 
 /* Large PC */
 @media (min-width: 1400px) {
-    
+    .article-title {
+        margin-bottom: 1%;
+    }
+
     .bloc-article {
         width: 500px;
         height: 600px;

@@ -8,38 +8,16 @@
 
 {% if background_pictures == false %}
     <section>
-        <h1 class="collection-title"><span>Les articles</span></h1>
-            <article class="blog-article">
-            {% for article in articles %}
-                <div class="bloc-article">
-                    <h2 class="title-article">{{ article.name }}</h2>
-                    <div class="img-article">
-                        <a href="{{ path('front_article', { id : article.id }) }}">
-                            <img class=" picture-article d-block w-100" src=" /assets/images/uploads/{{ article.picture }}">  
-                        </a>
-                    </div>
-                    <div class="description-article">
-                        <h3 class="detail-article"><span class="elipse"></span>{{ article.category }}</h3>
-                        <h3 class="detail-article"><span class="elipse"></span>{{ article.createdAt|date('d M Y') }}</h3>
-                    </div>
-                        {% if article.comments|length == 0 %}
-                            <h3 class="detail-article"><span class="elipse"></span>Aucun commentaire</h5>
-                        {% elseif article.comments|length == 1 %}
-                            <h3 class="detail-article"><span class="elipse"></span>1 commentaire</h5>
-                        {% else %}
-                            <h3 class="detail-article"><span class="elipse"></span>{{ article.comments|length }} commentaires</h5>
-                        {% endif %}
-                    <a class="btn btn-article" href="{{ path('front_article', { id : article.id }) }}" role="button">Lire >></a>
-                </div>
-            {% endfor %}
-            </article>
-    </section>
-{% else %}
+        <h1 class="article-title"><span>Les articles</span></h1>
+        <div class="filterButtons">
+            <button type="button" id="allArticles">Tous les articles</button>
+            <button type="button" id="switchCyclist">Coureurs d'antan</button>
+            <button type="button" id="switchCyclingShirt">Maillots d'antan</button>
+            <button type="button" id="switchTours">Tours d'antan</button>
+        </div>
 
-    {% for background_picture in background_pictures %}
-        <section class="background" style="background-image:url( /assets/images/uploads/{{ background_picture.picture }}">
-            <h1 class="collection-title"><span>Les articles</span></h1>
-                <article class="blog-article">
+        <article id="blogArticles">
+            <div class="blog-article">
                 {% for article in articles %}
                     <div class="bloc-article">
                         <h2 class="title-article">{{ article.name }}</h2>
@@ -62,9 +40,228 @@
                         <a class="btn btn-article" href="{{ path('front_article', { id : article.id }) }}" role="button">Lire >></a>
                     </div>
                 {% endfor %}
-                </article>
+            </div>
+        </article>
+
+        <article id="blogCyclingShirt" style="display:none">
+            <div class="blog-article">
+                {% for article in articles %}
+                    {% if article.category == "Maillots d'antan" %}
+                        <div class="bloc-article">
+                            <h2 class="title-article">{{ article.name }}</h2>
+                            <div class="img-article">
+                                <a href="{{ path('front_article', { id : article.id }) }}">
+                                    <img class=" picture-article d-block w-100" src=" /assets/images/uploads/{{ article.picture }}">  
+                                </a>
+                            </div>
+                            <div class="description-article">
+                                <h3 class="detail-article"><span class="elipse"></span>{{ article.category }}</h3>
+                                <h3 class="detail-article"><span class="elipse"></span>{{ article.createdAt|date('d M Y') }}</h3>
+                            </div>
+                            {% if article.comments|length == 0 %}
+                                <h3 class="detail-article"><span class="elipse"></span>Aucun commentaire</h5>
+                            {% elseif article.comments|length == 1 %}
+                                <h3 class="detail-article"><span class="elipse"></span>1 commentaire</h5>
+                            {% else %}
+                                <h3 class="detail-article"><span class="elipse"></span>{{ article.comments|length }} commentaires</h5>
+                            {% endif %}
+                            <a class="btn btn-article" href="{{ path('front_article', { id : article.id }) }}" role="button">Lire >></a>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </article>
+
+        <article id="blogCyclist" style="display:none">
+            <div class="blog-article">
+                {% for article in articles %}
+                    {% if article.category == "Coureurs d'antan" %}
+                        <div class="bloc-article">
+                            <h2 class="title-article">{{ article.name }}</h2>
+                            <div class="img-article">
+                                <a href="{{ path('front_article', { id : article.id }) }}">
+                                    <img class=" picture-article d-block w-100" src=" /assets/images/uploads/{{ article.picture }}">  
+                                </a>
+                            </div>
+                            <div class="description-article">
+                                <h3 class="detail-article"><span class="elipse"></span>{{ article.category }}</h3>
+                                <h3 class="detail-article"><span class="elipse"></span>{{ article.createdAt|date('d M Y') }}</h3>
+                            </div>
+                            {% if article.comments|length == 0 %}
+                                <h3 class="detail-article"><span class="elipse"></span>Aucun commentaire</h5>
+                            {% elseif article.comments|length == 1 %}
+                                <h3 class="detail-article"><span class="elipse"></span>1 commentaire</h5>
+                            {% else %}
+                                <h3 class="detail-article"><span class="elipse"></span>{{ article.comments|length }} commentaires</h5>
+                            {% endif %}
+                            <a class="btn btn-article" href="{{ path('front_article', { id : article.id }) }}" role="button">Lire >></a>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </article>
+
+        <article id="blogTour" style="display:none">
+            <div class="blog-article">
+                {% for article in articles %}
+                    {% if article.category == "Tours d'antan" %}
+                        <div class="bloc-article">
+                            <h2 class="title-article">{{ article.name }}</h2>
+                            <div class="img-article">
+                                <a href="{{ path('front_article', { id : article.id }) }}">
+                                    <img class=" picture-article d-block w-100" src=" /assets/images/uploads/{{ article.picture }}">  
+                                </a>
+                            </div>
+                            <div class="description-article">
+                                <h3 class="detail-article"><span class="elipse"></span>{{ article.category }}</h3>
+                                <h3 class="detail-article"><span class="elipse"></span>{{ article.createdAt|date('d M Y') }}</h3>
+                            </div>
+                            {% if article.comments|length == 0 %}
+                                <h3 class="detail-article"><span class="elipse"></span>Aucun commentaire</h5>
+                            {% elseif article.comments|length == 1 %}
+                                <h3 class="detail-article"><span class="elipse"></span>1 commentaire</h5>
+                            {% else %}
+                                <h3 class="detail-article"><span class="elipse"></span>{{ article.comments|length }} commentaires</h5>
+                            {% endif %}
+                            <a class="btn btn-article" href="{{ path('front_article', { id : article.id }) }}" role="button">Lire >></a>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </article>
+    </section>
+{% else %}
+
+    {% for background_picture in background_pictures %}
+        <section class="background" style="background-image:url( /assets/images/uploads/{{ background_picture.picture }}">
+            <h1 class="article-title"><span>Les articles</span></h1>
+
+            <div class="filterButtons">
+                <button type="button" id="allArticles">Tous les articles</button>
+                <button type="button" id="switchCyclist">Coureurs d'antan</button>
+                <button type="button" id="switchCyclingShirt">Maillots d'antan</button>
+                <button type="button" id="switchTours">Tours d'antan</button>
+            </div>
+
+            <article id="blogArticles">
+                <div class="blog-article">
+                    {% for article in articles %}
+                        <div class="bloc-article">
+                            <h2 class="title-article">{{ article.name }}</h2>
+                            <div class="img-article">
+                                <a href="{{ path('front_article', { id : article.id }) }}">
+                                    <img class=" picture-article d-block w-100" src=" /assets/images/uploads/{{ article.picture }}">  
+                                </a>
+                            </div>
+                            <div class="description-article">
+                                <h3 class="detail-article"><span class="elipse"></span>{{ article.category }}</h3>
+                                <h3 class="detail-article"><span class="elipse"></span>{{ article.createdAt|date('d M Y') }}</h3>
+                            </div>
+                            {% if article.comments|length == 0 %}
+                                <h3 class="detail-article"><span class="elipse"></span>Aucun commentaire</h5>
+                            {% elseif article.comments|length == 1 %}
+                                <h3 class="detail-article"><span class="elipse"></span>1 commentaire</h5>
+                            {% else %}
+                                <h3 class="detail-article"><span class="elipse"></span>{{ article.comments|length }} commentaires</h5>
+                            {% endif %}
+                            <a class="btn btn-article" href="{{ path('front_article', { id : article.id }) }}" role="button">Lire >></a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </article>
+
+            <article id="blogCyclingShirt" style="display:none">
+                <div class="blog-article">
+                    {% for article in articles %}
+                        {% if article.category == "Maillots d'antan" %}
+                            <div class="bloc-article">
+                                <h2 class="title-article">{{ article.name }}</h2>
+                                <div class="img-article">
+                                    <a href="{{ path('front_article', { id : article.id }) }}">
+                                        <img class=" picture-article d-block w-100" src=" /assets/images/uploads/{{ article.picture }}">  
+                                    </a>
+                                </div>
+                                <div class="description-article">
+                                    <h3 class="detail-article"><span class="elipse"></span>{{ article.category }}</h3>
+                                    <h3 class="detail-article"><span class="elipse"></span>{{ article.createdAt|date('d M Y') }}</h3>
+                                </div>
+                                {% if article.comments|length == 0 %}
+                                    <h3 class="detail-article"><span class="elipse"></span>Aucun commentaire</h5>
+                                {% elseif article.comments|length == 1 %}
+                                    <h3 class="detail-article"><span class="elipse"></span>1 commentaire</h5>
+                                {% else %}
+                                    <h3 class="detail-article"><span class="elipse"></span>{{ article.comments|length }} commentaires</h5>
+                                {% endif %}
+                                <a class="btn btn-article" href="{{ path('front_article', { id : article.id }) }}" role="button">Lire >></a>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </article>
+
+            <article id="blogCyclist" style="display:none">
+                <div class="blog-article">
+                    {% for article in articles %}
+                        {% if article.category == "Coureurs d'antan" %}
+                            <div class="bloc-article">
+                                <h2 class="title-article">{{ article.name }}</h2>
+                                <div class="img-article">
+                                    <a href="{{ path('front_article', { id : article.id }) }}">
+                                        <img class=" picture-article d-block w-100" src=" /assets/images/uploads/{{ article.picture }}">  
+                                    </a>
+                                </div>
+                                <div class="description-article">
+                                    <h3 class="detail-article"><span class="elipse"></span>{{ article.category }}</h3>
+                                    <h3 class="detail-article"><span class="elipse"></span>{{ article.createdAt|date('d M Y') }}</h3>
+                                </div>
+                                {% if article.comments|length == 0 %}
+                                    <h3 class="detail-article"><span class="elipse"></span>Aucun commentaire</h5>
+                                {% elseif article.comments|length == 1 %}
+                                    <h3 class="detail-article"><span class="elipse"></span>1 commentaire</h5>
+                                {% else %}
+                                    <h3 class="detail-article"><span class="elipse"></span>{{ article.comments|length }} commentaires</h5>
+                                {% endif %}
+                                <a class="btn btn-article" href="{{ path('front_article', { id : article.id }) }}" role="button">Lire >></a>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </article>
+
+            <article id="blogTour" style="display:none">
+                <div class="blog-article">
+                    {% for article in articles %}
+                        {% if article.category == "Tours d'antan" %}
+                            <div class="bloc-article">
+                                <h2 class="title-article">{{ article.name }}</h2>
+                                <div class="img-article">
+                                    <a href="{{ path('front_article', { id : article.id }) }}">
+                                        <img class=" picture-article d-block w-100" src=" /assets/images/uploads/{{ article.picture }}">  
+                                    </a>
+                                </div>
+                                <div class="description-article">
+                                    <h3 class="detail-article"><span class="elipse"></span>{{ article.category }}</h3>
+                                    <h3 class="detail-article"><span class="elipse"></span>{{ article.createdAt|date('d M Y') }}</h3>
+                                </div>
+                                {% if article.comments|length == 0 %}
+                                    <h3 class="detail-article"><span class="elipse"></span>Aucun commentaire</h5>
+                                {% elseif article.comments|length == 1 %}
+                                    <h3 class="detail-article"><span class="elipse"></span>1 commentaire</h5>
+                                {% else %}
+                                    <h3 class="detail-article"><span class="elipse"></span>{{ article.comments|length }} commentaires</h5>
+                                {% endif %}
+                                <a class="btn btn-article" href="{{ path('front_article', { id : article.id }) }}" role="button">Lire >></a>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </article>
         </section>
     {% endfor %}
 {% endif %}
 
+    {% block javascript %}
+        {{parent()}}
+        {{ encore_entry_script_tags('blogFilter') }}
+    {% endblock %}
 {% endblock %}
