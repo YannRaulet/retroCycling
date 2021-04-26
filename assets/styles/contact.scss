@@ -106,6 +106,14 @@
         width: 25%;
     }
 
+    .form-contact {
+        padding-top: 10%;
+    }
+
+    .contact-title {
+        margin-bottom: 5%;
+    }
+
     .form-contact input {
         font-size: 1.3em;
     }
@@ -115,3 +123,17 @@
     }
 }
 
+/* Tablet - PC version */
+@media (min-width: 1200px) {
+   .form-contact {
+       padding-top: 2%;
+   }
+}
+
+/* Tablet - PC version */
+@media (min-width: 1600px) {
+    .form-contact {
+        padding-top: 5%;
+    }
+ }
+ 
