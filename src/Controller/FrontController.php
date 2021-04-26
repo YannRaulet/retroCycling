@@ -13,6 +13,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\CyclingShirtRepository;
 use App\Repository\BackgroundPictureRepository;
 use App\Repository\ArticleContentRepository;
+use App\Repository\CategoryRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -125,10 +126,12 @@ class FrontController extends AbstractController
      */
     public function blog(
         ArticleRepository $articleRepository,
+        CategoryRepository $categoryRepository,
         BackgroundPictureRepository $backgroundRepository
     ): Response {
         return $this->render('front/blog.html.twig', [
             'articles' => $articleRepository->findAll(),
+            'categories' => $categoryRepository->findAll(),
             'background_pictures' => $backgroundRepository->findByName('background-main')
         ]);
     }
