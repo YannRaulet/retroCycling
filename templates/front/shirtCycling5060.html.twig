@@ -9,7 +9,9 @@
 {% if background_pictures == false %}
     <section>
         <article>
-            {% if app.user %}
+            <h2 class="shirt-description">{{ cyclingShirt50_60.name }}</h2>
+            <hr class="shirt-details-hr">
+             {% if app.user %}
                 <a class="like" href="{{ path('user_favorite', {id: cyclingShirt50_60.id})}}">
                     {% if app.user.isInFavorite(cyclingShirt50_60) %}
                         <img class="favorite-icon" src="{{ asset('assets/images/favoriteRed.png') }}">
@@ -22,8 +24,7 @@
                     <img class="favorite-icon" src="{{ asset('assets/images/favoriteEmpty.png') }}">
                 </a>
             {% endif %}
-            <h2 class="shirt-description">{{ cyclingShirt50_60.name }}</h2>
-            <hr class="shirt-details-hr">
+            <p class="likes-number">{{ cyclingShirt50_60.userLikes|length }}</p>
             <div class = "card-wrapper">
                 <div class = "picture-display">
                     <div class = "picture-showcase">
@@ -69,6 +70,8 @@
     {% for background_picture in background_pictures %}
         <section class="background" style="background-image:url( /assets/images/uploads/{{ background_picture.picture }}">
             <article>
+                <h2 class="shirt-description">{{ cyclingShirt50_60.name }}</h2>
+                <hr class="shirt-details-hr">
                 {% if app.user %}
                     <a class="like" href="{{ path('user_favorite', {id: cyclingShirt50_60.id})}}">
                         {% if app.user.isInFavorite(cyclingShirt50_60) %}
@@ -82,8 +85,7 @@
                         <img class="favorite-icon" src="{{ asset('assets/images/favoriteEmpty.png') }}">
                     </a>
                 {% endif %}
-                <h2 class="shirt-description">{{ cyclingShirt50_60.name }}</h2>
-                <hr class="shirt-details-hr">
+                <p class="likes-number">{{ cyclingShirt50_60.userLikes|length }}</p>
                 <div class = "card-wrapper">
                     <div class = "picture-display">
                         <div class = "picture-showcase">

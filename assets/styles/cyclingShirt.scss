@@ -55,13 +55,21 @@
 .shirt-details-hr {
     width: 70%;
     margin: auto;
-    padding-bottom: 5%;
+    padding-bottom: 2%;
 }
 
 .favorite-icon {
     position: absolute;
-    left: 80%;
+    left: 85%;
     width: 2rem;
+}
+
+.likes-number {
+    position: absolute;
+    left: 91%;
+    margin-top: 30px;
+    margin-left: 4px;
+    font-size: 1.2rem;
 }
 
 /* Tablet version */
@@ -71,7 +79,13 @@
     }
 
     .favorite-icon {
+        position: absolute;
+        left: 80%;
         width: 2.5rem;
+    }
+
+    .likes-number {
+        left: 85%;
     }
 }
 
@@ -106,6 +120,18 @@
     .picture-item {
         width: 50%;
     }
+
+    .favorite-icon {
+        left: 72%;
+    }
+
+    .likes-number {
+        position: absolute;
+        left: 75%;
+        margin-top: 20px;
+        margin-left: 10px;
+        font-size: 1.2rem;
+    }
 }
 
 /* Tablet - PC version */
@@ -139,7 +165,15 @@
     }
 
     .favorite-icon {
-        left: 75%;
+        left: 70%;
         width: 3rem;
+    }
+
+    .likes-number {
+        position: absolute;
+        left: 72%;
+        margin-top: 25px;
+        margin-left: 15px;
+        font-size: 1.2rem;
     }
 }
