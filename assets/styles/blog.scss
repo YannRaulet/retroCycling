@@ -114,6 +114,7 @@
 /* Tablet version */
 @media (min-width: 600px) {
     .bloc-article {
+        width: 60%;
         height: 64vh;
     }
 
@@ -131,7 +132,6 @@
 
     .picture-article {
         height: 350px;
-        object-fit: cover;
     }
 }
 
@@ -141,20 +141,12 @@
         width: 90%;
         height: auto;
         margin: auto;
-        display: grid;
-        grid-template-columns: repeat(auto-fill, 400px);
         justify-content: center;
-        grid-gap: 50px;
     }
 
     .bloc-article {
-        width: 400px;
-        height: 42vh;   
-    }
-
-    .picture-article {
-        height: 260px;
-        object-fit: cover;
+        width: 500px;
+        height: auto;   
     }
 
     .description-article {
@@ -170,10 +162,6 @@
     .elipse {
         width: 16px;
         height: 16px;
-    }
-
-    .title-article {
-        font-size: 1.8rem;
     }
 
     .detail-article {
@@ -207,34 +195,10 @@
         width: 90%;
         height: auto;
         margin: auto;
-        display: grid;
-        grid-template-columns: repeat(auto-fill, 500px);
         justify-content: center;
-        grid-gap: 70px;
     }
 
-    .bloc-article {
-        width: 500px;
-        height: 104vh;
-    }
-}
 
-/* Large PC */
-@media (min-width: 1200px) {
-    .blog-article {
-        width: 90%;
-        height: auto;
-        margin: auto;
-        display: grid;
-        grid-template-columns: repeat(auto-fill, 500px);
-        justify-content: center;
-        grid-gap: 70px;
-    }
-
-    .bloc-article {
-        width: 500px;
-        height: 550px;
-    }
 
     .article-title span {
         font-size: 5rem;
@@ -259,6 +223,10 @@
         transform: scaleX(1);
         transform-origin: bottom left;
     }
+
+    .title-article {
+        font-size: 2rem;
+    }
 }
 
 /* Large PC */
@@ -268,7 +236,22 @@
     }
 
     .bloc-article {
-        width: 500px;
-        height: 600px;
+        width: 600px;
+        height: auto;
+
+        margin-top: 4%;
+        padding-top: 2%;
+        border-radius: 5px;
+        box-shadow: 6px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .title-article {
+        font-size: 2.5rem;
+    }
+
+    .btn-article {
+        width: 30%;
+        margin-top: 50px;
+        font-size: 1.5rem;
     }
 }
