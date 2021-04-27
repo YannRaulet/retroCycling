@@ -187,7 +187,7 @@ class FrontController extends AbstractController
             'articleContents' => $contentRepository->findBy(['article' => $article]),
             'commentForm' => $form->createView(),
             'comments' => $comments,
-            'background_pictures' => $backgroundRepository->findByName('background-main')
+            'background_pictures' => $backgroundRepository->findByName('background-main'),
         ]);
     }
 

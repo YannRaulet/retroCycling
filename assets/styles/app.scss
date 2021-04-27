@@ -59,6 +59,11 @@ main {
 
 .alert {
     text-align: center;
+    margin-bottom: 0 !important;
+}
+
+.custom-file-input ~ .custom-file-label::after {
+    content: "Choisir un fichier" !important;
 }
 
 /* Tablet - PC version */
