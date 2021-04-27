@@ -23,12 +23,12 @@
                         <h2 class="title-article">{{ article.name }}</h2>
                         <div class="img-article">
                             <a href="{{ path('front_article', { id : article.id }) }}">
-                                <img class=" picture-article d-block w-100" src=" /assets/images/uploads/{{ article.picture }}">  
+                                <img class="blog-blog-picture-article d-block w-100" src=" /assets/images/uploads/{{ article.picture }}">  
                             </a>
                         </div>
                         <div class="description-article">
                             <h3 class="detail-article"><span class="elipse"></span>{{ article.category }}</h3>
-                            <h3 class="detail-article"><span class="elipse"></span>{{ article.createdAt|date('d M Y') }}</h3>
+                                <h3 class="detail-article"><span class="elipse"></span>{{ article.createdAt|date("d/m/Y") }}</h3>
                         </div>
                         {% if article.comments|length == 0 %}
                             <h3 class="detail-article"><span class="elipse"></span>Aucun commentaire</h5>
@@ -51,12 +51,12 @@
                             <h2 class="title-article">{{ article.name }}</h2>
                             <div class="img-article">
                                 <a href="{{ path('front_article', { id : article.id }) }}">
-                                    <img class=" picture-article d-block w-100" src=" /assets/images/uploads/{{ article.picture }}">  
+                                    <img class=" blog-picture-article d-block w-100" src=" /assets/images/uploads/{{ article.picture }}">  
                                 </a>
                             </div>
                             <div class="description-article">
                                 <h3 class="detail-article"><span class="elipse"></span>{{ article.category }}</h3>
-                                <h3 class="detail-article"><span class="elipse"></span>{{ article.createdAt|date('d M Y') }}</h3>
+                                <h3 class="detail-article"><span class="elipse"></span>{{ article.createdAt|date("d/m/Y") }}</h3>
                             </div>
                             {% if article.comments|length == 0 %}
                                 <h3 class="detail-article"><span class="elipse"></span>Aucun commentaire</h5>
@@ -80,12 +80,12 @@
                             <h2 class="title-article">{{ article.name }}</h2>
                             <div class="img-article">
                                 <a href="{{ path('front_article', { id : article.id }) }}">
-                                    <img class=" picture-article d-block w-100" src=" /assets/images/uploads/{{ article.picture }}">  
+                                    <img class=" blog-picture-article d-block w-100" src=" /assets/images/uploads/{{ article.picture }}">  
                                 </a>
                             </div>
                             <div class="description-article">
                                 <h3 class="detail-article"><span class="elipse"></span>{{ article.category }}</h3>
-                                <h3 class="detail-article"><span class="elipse"></span>{{ article.createdAt|date('d M Y') }}</h3>
+                                <h3 class="detail-article"><span class="elipse"></span>{{ article.createdAt|date("d/m/Y") }}</h3>
                             </div>
                             {% if article.comments|length == 0 %}
                                 <h3 class="detail-article"><span class="elipse"></span>Aucun commentaire</h5>
@@ -109,12 +109,12 @@
                             <h2 class="title-article">{{ article.name }}</h2>
                             <div class="img-article">
                                 <a href="{{ path('front_article', { id : article.id }) }}">
-                                    <img class=" picture-article d-block w-100" src=" /assets/images/uploads/{{ article.picture }}">  
+                                    <img class=" blog-picture-article d-block w-100" src=" /assets/images/uploads/{{ article.picture }}">  
                                 </a>
                             </div>
                             <div class="description-article">
                                 <h3 class="detail-article"><span class="elipse"></span>{{ article.category }}</h3>
-                                <h3 class="detail-article"><span class="elipse"></span>{{ article.createdAt|date('d M Y') }}</h3>
+                                <h3 class="detail-article"><span class="elipse"></span>{{ article.createdAt|date("d/m/Y") }}</h3>
                             </div>
                             {% if article.comments|length == 0 %}
                                 <h3 class="detail-article"><span class="elipse"></span>Aucun commentaire</h5>
@@ -150,12 +150,12 @@
                             <h2 class="title-article">{{ article.name }}</h2>
                             <div class="img-article">
                                 <a href="{{ path('front_article', { id : article.id }) }}">
-                                    <img class=" picture-article d-block w-100" src=" /assets/images/uploads/{{ article.picture }}">  
+                                    <img class=" blog-picture-article d-block w-100" src=" /assets/images/uploads/{{ article.picture }}">  
                                 </a>
                             </div>
                             <div class="description-article">
                                 <h3 class="detail-article"><span class="elipse"></span>{{ article.category }}</h3>
-                                <h3 class="detail-article"><span class="elipse"></span>{{ article.createdAt|date('d M Y') }}</h3>
+                                <h3 class="detail-article"><span class="elipse"></span>{{ article.createdAt|date("d/m/Y") }}</h3>
                             </div>
                             {% if article.comments|length == 0 %}
                                 <h3 class="detail-article"><span class="elipse"></span>Aucun commentaire</h5>
@@ -178,12 +178,12 @@
                                 <h2 class="title-article">{{ article.name }}</h2>
                                 <div class="img-article">
                                     <a href="{{ path('front_article', { id : article.id }) }}">
-                                        <img class=" picture-article d-block w-100" src=" /assets/images/uploads/{{ article.picture }}">  
+                                        <img class=" blog-picture-article d-block w-100" src=" /assets/images/uploads/{{ article.picture }}">  
                                     </a>
                                 </div>
                                 <div class="description-article">
                                     <h3 class="detail-article"><span class="elipse"></span>{{ article.category }}</h3>
-                                    <h3 class="detail-article"><span class="elipse"></span>{{ article.createdAt|date('d M Y') }}</h3>
+                                    <h3 class="detail-article"><span class="elipse"></span>{{ article.createdAt|date("d/m/Y") }}</h3>
                                 </div>
                                 {% if article.comments|length == 0 %}
                                     <h3 class="detail-article"><span class="elipse"></span>Aucun commentaire</h5>
@@ -207,12 +207,12 @@
                                 <h2 class="title-article">{{ article.name }}</h2>
                                 <div class="img-article">
                                     <a href="{{ path('front_article', { id : article.id }) }}">
-                                        <img class=" picture-article d-block w-100" src=" /assets/images/uploads/{{ article.picture }}">  
+                                        <img class="blog-picture-article d-block w-100" src=" /assets/images/uploads/{{ article.picture }}">  
                                     </a>
                                 </div>
                                 <div class="description-article">
                                     <h3 class="detail-article"><span class="elipse"></span>{{ article.category }}</h3>
-                                    <h3 class="detail-article"><span class="elipse"></span>{{ article.createdAt|date('d M Y') }}</h3>
+                                    <h3 class="detail-article"><span class="elipse"></span>{{ article.createdAt|date("d/m/Y") }}</h3>
                                 </div>
                                 {% if article.comments|length == 0 %}
                                     <h3 class="detail-article"><span class="elipse"></span>Aucun commentaire</h5>
@@ -236,12 +236,12 @@
                                 <h2 class="title-article">{{ article.name }}</h2>
                                 <div class="img-article">
                                     <a href="{{ path('front_article', { id : article.id }) }}">
-                                        <img class=" picture-article d-block w-100" src=" /assets/images/uploads/{{ article.picture }}">  
+                                        <img class=" blog-picture-article d-block w-100" src=" /assets/images/uploads/{{ article.picture }}">  
                                     </a>
                                 </div>
                                 <div class="description-article">
                                     <h3 class="detail-article"><span class="elipse"></span>{{ article.category }}</h3>
-                                    <h3 class="detail-article"><span class="elipse"></span>{{ article.createdAt|date('d M Y') }}</h3>
+                                    <h3 class="detail-article"><span class="elipse"></span>{{ article.createdAt|date("d/m/Y") }}</h3>
                                 </div>
                                 {% if article.comments|length == 0 %}
                                     <h3 class="detail-article"><span class="elipse"></span>Aucun commentaire</h5>

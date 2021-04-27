@@ -1,5 +1,16 @@
 /*Mobile version*/
 
+.background-picture-article {
+    width: 100%;
+    height: 25vh;
+    background-image: url("../images/home-picture.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    z-index: 2;
+}
+
 .article-box {
     width: 100%;
     margin: auto;
@@ -336,6 +347,20 @@
 
 /* Large PC */
 @media (min-width: 1200px) {
+    .background-picture-article {
+        height: 35vh;
+    }
+
+    .picture-article {
+        height: 35vh;
+        object-fit: cover;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        z-index: 2;
+    }
+
     .container-social {
         width: 80%;
     }

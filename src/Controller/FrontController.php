@@ -19,6 +19,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use DateTime;
+use Symfony\Component\Intl\Languages;
+use Twig\Extra\Intl\IntlExtension;
+
+
 
 /**
  * Creates views showing the three last cycling shirts for each category
@@ -187,7 +191,7 @@ class FrontController extends AbstractController
             'articleContents' => $contentRepository->findBy(['article' => $article]),
             'commentForm' => $form->createView(),
             'comments' => $comments,
-            'background_pictures' => $backgroundRepository->findByName('background-main')
+            'background_pictures' => $backgroundRepository->findByName('background-main'),
         ]);
     }
 
