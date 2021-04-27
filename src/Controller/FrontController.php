@@ -19,10 +19,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use DateTime;
-use Symfony\Component\Intl\Languages;
-use Twig\Extra\Intl\IntlExtension;
-
-
 
 /**
  * Creates views showing the three last cycling shirts for each category
