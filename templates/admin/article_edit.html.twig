@@ -1,0 +1,40 @@
+{% extends 'admin/admin_layout.html.twig' %}
+
+{% block title %}{{ parent() }}-Admin-Modifier l'article{% endblock %}
+
+{% block body %}
+
+{% if background_pictures == false %}
+    <section>
+        <div class="page-form-edit">
+            <h1 class="title-crud">Modifier l'article</h1>
+            <div class="form-edit">
+                {{ include('admin/article_form.html.twig') }}
+            </div>
+            <div class="form-edit">
+                {{ include('admin/article_delete_form.html.twig') }}
+            </div>
+            
+            <a href="{{ path('admin_articles') }}">Retour sur les articles</a>
+        </div>
+    </section>
+{% else %}
+
+    {% for background_picture in background_pictures %}
+        <section class="background" style="background-image:url( /assets/images/uploads/{{ background_picture.picture }}">
+            <div class="page-form-edit">
+                <h1 class="title-crud">Modifier l'article</h1>
+                <div class="form-edit">
+                    {{ include('admin/article_form.html.twig') }}
+                </div>
+                <div class="form-edit">
+                    {{ include('admin/article_delete_form.html.twig') }}
+                </div>
+                
+                <a href="{{ path('admin_articles') }}">Retour sur les articles</a>
+            </div>
+        </section>
+    {% endfor %}
+{% endif %}
+
+{% endblock %}

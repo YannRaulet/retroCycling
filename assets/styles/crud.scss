@@ -1,0 +1,193 @@
+/*Forms and tables sizes*/
+
+.page-form-edit {
+    width: 70%;
+    margin: auto;
+}
+
+.form-edit {
+    margin-bottom: 10px;
+}
+
+.table-hover {
+    width: 60%;
+    margin: auto;
+}
+
+.table thead th{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.button-action {
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+    margin-top: 30px;
+    width: 60%;
+}
+
+.btn-created {
+    display: block;
+    margin: auto;
+    margin-bottom: 4%;
+    width: 180px;
+    margin-top: 10px;
+}
+
+.btn-edit {
+    display: block;
+    display: flex;
+}
+
+.btn-delete {
+    margin-right: 5px;
+}
+
+table img {
+    max-width: 55%;
+    max-height: 55%;
+}
+
+.title-crud {
+    text-align: center;
+}
+
+.table-shirt-name-hidden {
+    display: none;
+}
+
+#article_content_content {
+    height: 40vh;
+}
+
+@media (min-width: 600px) {
+    .table-hover {
+        width: 60%;
+        margin: auto;
+        margin-left: 30%;
+    }
+    
+    #cycling_shirt {
+        width: 70%;
+        margin:auto;
+        margin-right: 5%;
+    }
+
+    #article {
+        width: 70%;
+        margin:auto;
+        margin-right: 5%;
+    }
+
+    #category {
+        width: 70%;
+        margin:auto;
+        margin-right: 5%;
+    }
+
+    #article_content {
+        width: 70%;
+        margin:auto;
+        margin-right: 5%;
+    }
+
+    #background_picture {
+        width: 70%;
+        margin:auto;
+        margin-right: 5%;
+    }
+
+    .admin-create-btn {
+        margin-left: 8rem;
+    }
+
+    .admin-delete-btn {
+        margin-left: 8rem;
+    }
+
+    .page-form-edit a {
+        margin-left: 8rem;
+    }
+
+    .table-shirt-name-hidden {
+        display: block;
+    }
+}
+
+/* Tablet - PC version */
+@media (min-width: 1024px) {
+    #cycling_shirt {
+        width: 70%;
+        margin:auto;
+    }
+
+    #article {
+        width: 70%;
+        margin:auto;
+    }
+
+    #category {
+        width: 70%;
+        margin:auto;
+    }
+
+    #article_content {
+        width: 70%;
+        margin:auto;
+    }
+
+    #background_picture {
+        width: 70%;
+        margin:auto;
+    }
+
+    .admin-create-btn {
+        margin-left: 7rem;
+    }
+
+    .admin-delete-btn {
+        margin-left: 7rem;
+    }
+
+    .page-form-edit a {
+        margin-left: 7rem;
+    }
+
+}
+
+/* Tablet - PC version */
+@media (min-width: 1200px) {
+    .admin-create-btn {
+        margin-left: 8rem;
+    }
+
+    .admin-delete-btn {
+        margin-left: 8rem;
+    }
+
+    .page-form-edit a {
+        margin-left: 8rem;
+    }
+}
+
+/* PC version */
+@media (min-width: 1600px) {
+    .table-hover {
+        width: 60%;
+        margin: auto;
+    }
+
+    .button-action {
+        display: flex;
+        justify-content: flex-start;
+        margin: auto;
+        margin-top: 30px;
+        width: 60%;
+    }
+
+    .page-form-edit {
+        width: 50%;
+        margin: auto;
+    }
+}

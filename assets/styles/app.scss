@@ -1,0 +1,95 @@
+@import '~bootstrap/scss/bootstrap';
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    font-family: 'Rokkitt', serif;
+    width: 100%;
+    height: 100%;
+}
+
+.background {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: auto;
+    padding-bottom: 3%;
+    z-index: 1;
+}
+
+main {
+    width: 100%;
+    margin: auto;
+}
+
+.btnHigh {
+    height: 30px;
+    width: 30px;
+    position: fixed;
+    right: 15px;
+    bottom: 10px;
+    cursor: pointer;
+}
+
+#btnScroll {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+:root{
+    --main-background-color: #2D4655;
+    --second-background-color : #fff;
+    --third-background-color : #B99867;
+}
+
+.alert {
+    text-align: center;
+    margin-bottom: 0 !important;
+}
+
+.custom-file-input ~ .custom-file-label::after {
+    content: "Choisir un fichier" !important;
+}
+
+/* Tablet - PC version */
+@media (min-width: 768px) {
+    .background {
+        min-height: 60vh;
+    }
+}
+
+/* Tablet - PC version */
+@media (min-width: 1024px) {
+    .background {
+        min-height: 70vh;
+    }
+}
+
+/* Large PC */
+@media (min-width: 1200px) {
+    .background {
+        min-height: 80vh;
+    }
+}
+
+/* Large PC */
+@media (min-width: 1600px) {
+    .background {
+        min-height: 100vh;
+    }
+}

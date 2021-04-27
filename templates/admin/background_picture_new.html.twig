@@ -1,0 +1,28 @@
+{% extends 'admin/admin_layout.html.twig' %}
+
+{% block title %}{{ parent() }}- Admin-Images de fond{% endblock %}
+
+{% block body %}
+
+{% if background_pictures == false %}
+    <section>
+        <h1 class="title-crud">Ajouter une image de fond</h1>
+        <div class="page-form-edit">
+            {{ include('admin/background_picture_form.html.twig', { button_label: 'Créer'}) }}
+            <a href="{{ path('admin_background_pictures') }}">Retour à l'accueil administrateur</a>
+        </div>
+    </section>
+{% else %}
+
+    {% for background_picture in background_pictures %}
+        <section class="background" style="background-image:url( /assets/images/uploads/{{ background_picture.picture }}">
+            <h1 class="title-crud">Ajouter une image de fond</h1>
+            <div class="page-form-edit">
+                {{ include('admin/background_picture_form.html.twig', { button_label: 'Créer'}) }}
+                <a href="{{ path('admin_background_pictures') }}">Retour à l'accueil administrateur</a>
+            </div>
+        </section>
+    {% endfor %}
+{% endif %}
+
+{% endblock %}

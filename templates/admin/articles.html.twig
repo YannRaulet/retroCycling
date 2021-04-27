@@ -1,0 +1,78 @@
+{% extends 'admin/admin_layout.html.twig' %}
+
+{% block title %}{{ parent() }}-Admin-Les articles{% endblock %}
+
+{% block body %}
+
+{% if background_pictures == false %}
+    <section>
+        <h1 class="title-crud">Liste des articles</h1>
+        <a class="btn btn-success btn-created" href="{{ path('admin_article_new') }}" role="button">Creér un article</a>
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Image article</th>
+                    <th scope="col">Nom de l'article</th>
+                    <th scope="col">Catégorie</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for article in articles %}
+                <tr>
+                    <td><img src="/assets/images/uploads/{{ article.picture }}"></td>
+                    <td>{{ article.name }}</td>
+                    <td>{{ article.category }}</td>
+                    <td>
+                        <a class="btn btn-outline-dark" href="{{ path('admin_article_show', {'id': article.id}) }}" role="button">Details</a>
+                        <a class="btn btn-outline-dark" href="{{ path('admin_article_edit', {'id': article.id}) }}" role="button">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="14">Aucun article trouvé</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
+{% else %}
+
+    {% for background_picture in background_pictures %}
+        <section class="background" style="background-image:url( /assets/images/uploads/{{ background_picture.picture }}">
+            <h1 class="title-crud">Liste des articles</h1>
+            <a class="btn btn-success btn-created" href="{{ path('admin_article_new') }}" role="button">Creér un article</a>
+
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Image article</th>
+                        <th scope="col">Nom de l'article</th>
+                        <th scope="col">Catégorie</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for article in articles %}
+                    <tr>
+                        <td><img src="/assets/images/uploads/{{ article.picture }}"></td>
+                        <td>{{ article.name }}</td>
+                        <td>{{ article.category }}</td>
+                        <td>
+                            <a class="btn btn-outline-dark" href="{{ path('admin_article_show', {'id': article.id}) }}" role="button">Details</a>
+                            <a class="btn btn-outline-dark" href="{{ path('admin_article_edit', {'id': article.id}) }}" role="button">Modifier</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="14">Aucun article trouvé</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    {% endfor %}
+{% endif %}
+
+{% endblock %}

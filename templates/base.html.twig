@@ -5,7 +5,13 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Retro-Cycling{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Rokkitt:wght@600&display=swap" rel="stylesheet"> 
+    <title>{% block title %}Retro Cycling{% endblock %}</title>
     {{ encore_entry_link_tags('app') }}
 </head>
 <body>
@@ -14,15 +20,41 @@
     {% endblock %}
     </header>
 
+    {% for message in app.flashes('message') %}
+        <div class="alert alert-primary">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+    {% endfor %}
+    {% for message in app.flashes('danger') %}
+        <div class="alert alert-danger">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('warning') %}
+        <div class="alert alert-warning">
+            {{ message }}
+        </div>
+    {% endfor %}
+    
     <main>
     {% block body %}
     {% endblock %}
     </main>
 
+    <button onclick="topFunction()" id="btnScroll" title="Retourner en haut"><img class="btnHigh" src="{{ asset('assets/images/Top.png') }}" alt="Retourner en haut"></button>
+
     <footer>
     {% block footer %}
     {% endblock %}
     </footer>
-    {{ encore_entry_script_tags('app') }}
+
+    {% block javascript %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
 </body>
 </html>

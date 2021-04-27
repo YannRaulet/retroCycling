@@ -1,0 +1,50 @@
+{% extends 'front/front_layout.html.twig' %}
+
+{% block title %}{{ parent() }}-Inscription{% endblock %}
+
+{% block body %}
+
+{% if background_pictures == false %}
+    <section>
+        <h1 class="registrer-h1">Inscription</h1>
+    <div class="registrer-form">
+        {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.pseudo, {'label': 'Nom d\'utilisateur',
+        'attr': {'placeholder': 'Nom d\'utilisateur' }}) }}
+        {{ form_row(registrationForm.email, {'label': 'Adresse email',
+        'attr': {'placeholder': 'Adresse mail' }}) }}
+        {{ form_row(registrationForm.plainPassword.first, {'label': 'Mot de passe',
+        'attr': {'placeholder': 'Mot de passe !' }}) }}
+        {{ form_row(registrationForm.plainPassword.second, {'label': 'Confirmer le mot de passe',
+        'attr': {'placeholder': 'Veuillez répéter le mot de passe' }}) }}
+        {{ form_row(registrationForm.termsAccepted, {'label': 'J\'accepte les conditions d\'utilisations',
+        'attr': {'class': 'registrer-field' }}) }}
+            <button class="btn registrer-btn" type="submit">S'inscrire</button>
+        {{ form_end(registrationForm) }}
+    </div>
+    </section>
+{% else %}
+
+{% for background_picture in background_pictures %}
+    <section class="background" style="background-image:url( /assets/images/uploads/{{ background_picture.picture }}">
+        <h1 class="registrer-h1">Inscription</h1>
+        <div class="registrer-form">
+            {{ form_start(registrationForm) }}
+            {{ form_row(registrationForm.pseudo, {'label': 'Nom d\'utilisateur',
+            'attr': {'placeholder': 'Nom d\'utilisateur' }}) }}
+            {{ form_row(registrationForm.email, {'label': 'Adresse email',
+            'attr': {'placeholder': 'Adresse mail' }}) }}
+            {{ form_row(registrationForm.plainPassword.first, {'label': 'Mot de passe',
+            'attr': {'placeholder': 'Mot de passe !' }}) }}
+            {{ form_row(registrationForm.plainPassword.second, {'label': 'Confirmer le mot de passe',
+            'attr': {'placeholder': 'Veuillez répéter le mot de passe' }}) }}
+            {{ form_row(registrationForm.termsAccepted, {'label': 'J\'accepte les conditions d\'utilisations',
+            'attr': {'class': 'registrer-field' }}) }}
+                <button class="btn registrer-btn" type="submit">S'inscrire</button>
+            {{ form_end(registrationForm) }}
+        </div>
+    </section>
+    {% endfor %}
+{% endif %}
+
+{% endblock %}

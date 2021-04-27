@@ -1,0 +1,28 @@
+{% extends 'admin/admin_layout.html.twig' %}
+
+{% block title %}{{ parent() }}-Admin-Nouveau maillot{% endblock %}
+
+{% block body %}
+
+{% if background_pictures == false %}
+    <section>
+        <h1 class="title-crud">Ajouter un maillot</h1>
+        <div class="page-form-edit">
+            {{ include('admin/cycling_shirt_form.html.twig', { button_label: 'Créer'}) }}
+            <a href="{{ path('admin_cycling_shirts') }}">Retour aux maillots</a>
+        </div>
+    </section>
+{% else %}
+
+    {% for background_picture in background_pictures %}
+        <section class="background" style="background-image:url( /assets/images/uploads/{{ background_picture.picture }}">
+            <h1 class="title-crud">Ajouter un maillot</h1>
+            <div class="page-form-edit">
+                {{ include('admin/cycling_shirt_form.html.twig', { button_label: 'Créer'}) }}
+                <a href="{{ path('admin_cycling_shirts') }}">Retour aux maillots</a>
+            </div>
+        </section>
+    {% endfor %}
+{% endif %}
+
+{% endblock %}

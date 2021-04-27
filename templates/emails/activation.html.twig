@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Nouvelle demande d'informations</title>
+    </head>
+    <body>
+        <h1>Activation de votre compte</h1>
+            <p>Vous avez crée un compte sur retro-cycling.fr, veuillez cliquer sur le lien ci-dessous pour l'activer</p>
+            <p><a href="{{ absolute_url(path('activation', {'token': token })) }}">Activer mon compte</a></p>
+    </body>
+</html>

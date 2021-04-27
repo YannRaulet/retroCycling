@@ -1,0 +1,257 @@
+/* Mobile version */
+
+.article-title {
+    margin-bottom: 5%;
+    text-align: center;
+    color: var(--main-background-color);
+}
+
+.categories-display {
+    display: flex;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 5%;
+}
+
+.category-p{
+    font-size: 20px;
+    border: 1px solid #000;
+    padding: 1%;
+    color: var(--second-background-color);
+    background-color: var(--main-background-color);
+    margin-right: 2%;
+}
+
+.filterButtons {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.filterButtons button {
+    width: 9rem;
+    padding: 10px 10px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    margin: 10px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.filterButtons button:hover {
+    background: var(--main-background-color);
+    color: #fff;
+}
+
+.blog-article {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 30px;
+}
+
+.bloc-article {
+    background-color: var(--main-background-color);
+    width: 85%;
+    height: 52vh;
+    margin: auto;
+    margin-top: 4%;
+    padding: 2%;
+    border-radius: 5px;
+    box-shadow: 6px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.img-article {
+    width: 80%;
+    margin: auto;
+    box-shadow: 6px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.blog-picture-article {
+    height: 175px;
+    object-fit: cover;
+}
+
+.title-article {
+    color: var(--third-background-color);
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 7%;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.detail-article {
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.description-article {
+    display: flex;
+    justify-content: space-around;
+    margin: 6% 0% 2% 0%;
+}
+
+.elipse {
+    width: 12px;
+    height: 12px;
+    background-color: var(--third-background-color);
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 3px;
+}
+
+.btn-article {
+    background-color: var(--third-background-color);
+    color: black;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 30%;
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+}
+
+/* Tablet version */
+@media (min-width: 600px) {
+    .bloc-article {
+        width: 60%;
+        height: 64vh;
+    }
+
+    .btn-article {
+        width: 20%;
+    }
+
+    .title-article {
+        font-size: 1.8rem;
+    }
+
+    .detail-article {
+        font-size: 1.5rem;
+    }
+
+    .blog-picture-article {
+        height: 350px;
+    }
+}
+
+/* Tablet - PC version */
+@media (min-width: 1024px) {
+    .blog-article {
+        width: 90%;
+        height: auto;
+        margin: auto;
+        justify-content: center;
+    }
+
+    .bloc-article {
+        width: 500px;
+        height: auto;   
+    }
+
+    .description-article {
+        margin: 8% 0% 2% 0%;
+    }
+
+    .btn-article {
+        width: 30%;
+        margin-top: 30px;
+        font-size: 1.5rem;
+    }
+
+    .elipse {
+        width: 16px;
+        height: 16px;
+    }
+
+    .detail-article {
+        font-size: 1.5rem;
+    }
+
+    .filterButtons {
+        text-align: center;
+        margin-top: 50px;
+        margin-bottom: 30px;
+    }
+
+    .filterButtons button {
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        margin: 0 10px;
+        cursor: pointer;
+        transition: .3s;
+    }
+
+    .filterButtons button:hover {
+        background: var(--main-background-color);
+        color: #fff;
+    }
+}
+
+/* Large PC */
+@media (min-width: 1200px) {
+    .blog-article {
+        width: 90%;
+        height: auto;
+        margin: auto;
+        justify-content: center;
+    }
+
+
+
+    .article-title span {
+        font-size: 5rem;
+        display: inline-block;
+        position: relative;
+    }
+
+    .article-title span::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: -2px;
+        left: 0;
+        background-color: var(--main-background-color);
+        transform-origin: bottom right;
+        transition: transform 0.4s ease-in-out;
+    }
+
+    .article-title span:hover::before {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+    }
+
+    .title-article {
+        font-size: 2rem;
+    }
+}
+
+/* Large PC */
+@media (min-width: 1400px) {
+    .article-title {
+        margin-bottom: 1%;
+    }
+
+    .bloc-article {
+        width: 600px;
+        height: auto;
+
+        margin-top: 4%;
+        padding-top: 2%;
+        border-radius: 5px;
+        box-shadow: 6px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .title-article {
+        font-size: 2.5rem;
+    }
+
+    .btn-article {
+        width: 30%;
+        margin-top: 50px;
+        font-size: 1.5rem;
+    }
+}

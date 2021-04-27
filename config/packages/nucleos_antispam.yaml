@@ -1,0 +1,9 @@
+# config/packages/nucleos_antispam.yaml
+
+nucleos_antispam:
+    # Twig mail filter
+    twig:
+        mail:
+            css_class: 'custom_class'
+            at_text:   [ '[AT]', '(AT)', '[ÄT]' ]
+            dot_text:  [ '[DOT]', '(DOT)', '[.]' ]

@@ -1,0 +1,5 @@
+<form method="post" action="{{ path('admin_cycling_shirt_delete', {'id': cycling_shirt.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer ce maillot?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ cycling_shirt.id) }}">
+    <button class="btn btn-danger admin-delete-btn">Supprimer</button>
+</form>

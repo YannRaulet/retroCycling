@@ -1,0 +1,50 @@
+{% extends 'front/front_layout.html.twig' %}
+
+{% block title %}{{ parent() }}-Contact{% endblock %}
+
+{% block body %}
+
+{% if background_pictures == false %}
+    <section>
+        <div class="form-contact">
+            <h1 class="contact-title">Contactez-nous</h1>
+            {{ form_start(contactForm) }}
+                <div class="row">
+                    <div class="col">{{ form_row(contactForm.name, {'attr': {'placeholder': 'Nom' }}) }}</div>
+                </div>
+                <div class="row">
+                    <div class="col">{{ form_row(contactForm.email, {'attr': {'placeholder': 'Adresse mail'|antispam(true) }}) }}</div>
+                </div>
+                <div class="row">
+                    <div class="col">{{ form_row(contactForm.message, {'attr': {'placeholder': 'Message' }}) }}</div>
+                </div>
+                {{ form_widget(contactForm) }}
+                <button class="btn btn-contact">Envoyer</button>
+            {{ form_end(contactForm) }}
+        </div>
+    </section>
+{% else %}
+
+    {% for background_picture in background_pictures %}
+        <section class="background" style="background-image:url( /assets/images/uploads/{{ background_picture.picture }}">
+            <div class="form-contact">
+                <h1 class="contact-title">Contactez-nous</h1>
+                {{ form_start(contactForm) }}
+                    <div class="row">
+                        <div class="col">{{ form_row(contactForm.name, {'attr': {'placeholder': 'Nom' }}) }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col">{{ form_row(contactForm.email, {'attr': {'placeholder': 'Adresse mail' }}) }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col">{{ form_row(contactForm.message, {'attr': {'placeholder': 'Message' }}) }}</div>
+                    </div>
+                    {{ form_widget(contactForm) }}
+                    <button class="btn btn-contact">Envoyer</button>
+                {{ form_end(contactForm) }}
+            </div>
+        </section>
+    {% endfor %}
+{% endif %}
+
+{% endblock %} 

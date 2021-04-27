@@ -1,0 +1,70 @@
+{% extends 'front/front_layout.html.twig' %}
+
+{% block title %}{{ parent() }}-Profil de {{ app.user.pseudo }}{% endblock %}
+
+{% block body %}
+
+{% if background_pictures == false %}
+    <section>
+        <article class="my-infos">
+        <h1 class="collection-title"><span>Bienvenue {{ app.user.pseudo }}</span></h1>
+            <h2 class="info-title">Mes infos</h2>
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-dark"><span>Pseudo :</span> {{ app.user.pseudo }}</li>
+                <li class="list-group-item list-group-item-dark"><span>Adresse mail :</span> {{ app.user.email }}</li>
+                <li class="user-modif list-group-item list-group-item-dark"><span>Je veux modifier :</span>
+                    <a class="btn btn-user" href="{{ path('user_edit_profil') }}">Mon profil</a>
+                    <a class="btn btn-user" href="{{ path('user_edit_password') }}">Mon mot de passe</a>
+                </li>
+            </ul>
+        </article>
+        <article>
+            <h3 class="favorites-title">Mes Favoris</h3>
+                <div class="favorites-display">
+                    {% for cyclingShirts in app.user.likes|reverse %}
+                        <div class="favorites-container">
+                            <figure class="profil-favorite">
+                                <img class="favorite-picture" src="/assets/images/uploads/{{ cyclingShirts.pictureFront }}" alt = "Maillot face avant 50-60">
+                            </figure>
+                        </div>
+                    {% else %}
+                        <p class="no-favorites">Vous n'avez encore rien posté</p>
+                    {% endfor %}
+                </div>
+        </article>
+    </section>
+{% else %}
+
+    {% for background_picture in background_pictures %}
+        <section class="background my-info" style="background-image:url( /assets/images/uploads/{{ background_picture.picture }}">
+            <article class="my-infos">
+            <h1 class="collection-title"><span>Bienvenue {{ app.user.pseudo }}</span></h1>
+                <h2 class="info-title">Mes infos</h2>
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-dark"><span>Pseudo :</span> {{ app.user.pseudo }}</li>
+                    <li class="list-group-item list-group-item-dark"><span>Adresse mail :</span> {{ app.user.email }}</li>
+                    <li class="user-modif list-group-item list-group-item-dark"><span>Je veux modifier :</span>
+                        <a class="btn btn-user" href="{{ path('user_edit_profil') }}">Mon profil</a>
+                        <a class="btn btn-user" href="{{ path('user_edit_password') }}">Mon mot de passe</a>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h3 class="favorites-title">Mes Favoris</h3>
+                    <div class="favorites-display">
+                        {% for cyclingShirts in app.user.likes|reverse %}
+                            <div class="favorites-container">
+                                <figure class="profil-favorite">
+                                    <img class="favorite-picture" src="/assets/images/uploads/{{ cyclingShirts.pictureFront }}" alt = "Maillot face avant ">
+                                </figure>
+                            </div>
+                        {% else %}
+                            <p class="no-favorites">Vous n'avez encore rien posté</p>
+                        {% endfor %}
+                    </div>
+            </article>
+        </section>
+    {% endfor %}
+{% endif %}
+
+{% endblock %}

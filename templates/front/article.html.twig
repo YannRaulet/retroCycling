@@ -1,14 +1,222 @@
+{# This is the page that will display the details of an article #}
+
 {% extends 'front/front_layout.html.twig' %}
 
-{% block title %}{{ parent() }} - Article{% endblock %}
+{% block title %}{{ parent() }}-Article-{{ article.name }}{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Article ✅</h1>
-</div>
+<div class="background-picture-article" style="background-image: url('/assets/images/uploads/{{ article.picture }}');"></div>
+{% if background_pictures == false %}       
+    <article class="article-box">
+        <h1 class="collection-title"><span>{{ article.name }}</span></h1>
+            {% for articleContent in articleContents %}
+                <aside class="article-content">
+                    <h2 class="article-title-h2">{{ articleContent.title }}</h2>
+                    <p class="article-p">{{ articleContent.content }}</p>
+                </aside>
+            {% endfor %}
+            <h3 class="article-title-h3">Partager</h3>
+                <div class="container-social">
+                    <button class="btn btn-share share_twitter" data-url="{{ absolute_url(path('front_article', { id: article.id })) }}">
+                        <img class="logo-share" src="/assets/images/logo-twitter.png">
+                        Twitter
+                    </button>
+                    <button class="btn btn-share share_facebook" data-url="{{ absolute_url(path('front_article', { id: article.id  })) }}">
+                        <img class="logo-share" src="/assets/images/logo-facebook.png">
+                        Facebook
+                    </button>
+                    <button class="btn btn-share share_linkedin" data-url="{{ absolute_url(path('front_article', { id: article.id  })) }}">
+                        <img class="logo-share" src="/assets/images/logo-linkedin.png">
+                        Linkedin
+                    </button>
+                </div>
+                <div class="separateur">
+                    <img class="d-block w-100" src="/assets/images/separateur.png">
+                </div>
+
+            {% if not is_granted('ROLE_USER') %}
+                <div class="comments" id="add-comment">
+                    <h3 class="article-title-h3">Votre commentaire</h3>
+                    <div class="info-banner info">
+                        <div class="icon fas fa-info-circle"></div>
+                        <div class="content">
+                        Vous devez être connecté pour poster un commentaire.<br><a href="{{ path('app_login') }}">Se connecter</a> ou <a href="{{ path('app_registrer') }}">Créer un compte</a>
+                        </div>
+                    </div>
+                </div>
+                    <div class="separateur">
+                    <img class="d-block w-100" src="/assets/images/separateur.png">
+                </div>
+            {% endif %}
+
+            {% if is_granted('ROLE_USER') %}
+                <div class="comment-form"  id="add-comment">
+                    {{form_start(commentForm) }}
+                    {{ form_row(commentForm.comment, {'attr': {'placeholder': 'Commentaire' }}) }}                
+                    <button class="btn comment-btn">Envoyer</button>
+                    {{ form_end(commentForm) }}
+                </div>
+            
+                <div class="separateur">
+                    <img class="d-block w-100" src="/assets/images/separateur.png">
+                </div>
+            {% endif %}
+
+            <div class="bloc-comments">
+                <h3 class="article-title-h3"><img src="/assets/images/chat.png">
+                    {% if article.comments|length == 0 %}
+                        Aucun commentaire
+                    {% elseif article.comments|length == 1 %}
+                        1 commentaire
+                    {% else %}
+                        {{ article.comments|length }} commentaires
+                    {% endif %}
+                </h3>
+                {% for comment in comments %}
+                    {% if comment.parent == null %}
+                        <div class="comments-container">
+                            <div class="comment-by">
+                                <div class="avatar">
+                                    <img class="d-block w-100" src="/assets/images/avatar.png">
+                                </div>
+                                <div class="comments-username">
+                                    <p class="comment-user">Publié par <span>{{ comment.user.pseudo }}</span> </br>
+                                    - Le {{ comment.createdAt|date("d/m/Y à H:i") }} -</p>
+                                </div>
+                            </div>
+                            <p class="comments-text">{{ comment.comment}}</p>
+                            <p><a href="#add-comment" data-reply data-id="{{ comment.id }}" class="btn btn-comment">Répondre</a></p>
+                        </div>
+                        {# we display the answers #}
+                        {% for reply in comment.replies %}
+                            <div class="reply-container">
+                                <div class="reply-by">
+                                    <div class="avatar">
+                                        <img class="d-block w-100" src="/assets/images/avatar.png">
+                                    </div>
+                                    <div class="reply-username">
+                                        <p class="comment-user">Réponse publiée par <span>{{ reply.user.pseudo }}</span> </br>
+                                        - Le {{ reply.createdAt|date("d/m/Y à H:i") }} -</p>
+                                    </div>
+                                </div>
+                                <p class="replies-text">{{ reply.comment}}</p>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </article>
+    </section>
+{% else %}
+
+    {% for background_picture in background_pictures %}
+        <section class="background" style="background-image:url( /assets/images/uploads/{{ background_picture.picture }}">
+            <article class="article-box">
+                <h1 class="collection-title"><span>{{ article.name }}</span></h1>
+                {% for articleContent in articleContents %}
+                    <aside class="article-content">
+                        <h2 class="article-title-h2">{{ articleContent.title }}</h2>
+                        <p class="article-p">{{ articleContent.content }}</p>
+                    </aside>
+                {% endfor %}
+                <h3 class="article-title-h3">Partager</h3>
+                    <div class="container-social">
+                        <button class="btn btn-share share_twitter" data-url="{{ absolute_url(path('front_article', { id: article.id })) }}">
+                            <img class="logo-share" src="/assets/images/logo-twitter.png">
+                            Twitter
+                        </button>
+                        <button class="btn btn-share share_facebook" data-url="{{ absolute_url(path('front_article', { id: article.id  })) }}">
+                            <img class="logo-share" src="/assets/images/logo-facebook.png">
+                            Facebook
+                        </button>
+                        <button class="btn btn-share share_linkedin" data-url="{{ absolute_url(path('front_article', { id: article.id  })) }}">
+                            <img class="logo-share" src="/assets/images/logo-linkedin.png">
+                            Linkedin
+                        </button>
+                    </div>
+                    <div class="separateur">
+                        <img class="d-block w-100" src="/assets/images/separateur.png">
+                    </div>
+
+                {% if not is_granted('ROLE_USER') %}
+                    <div class="comments" id="add-comment">
+                        <h3 class="article-title-h3">Votre commentaire</h3>
+                        <div class="info-banner info">
+                            <div class="icon fas fa-info-circle"></div>
+                            <div class="content">
+                            Vous devez être connecté pour poster un commentaire.<br><a href="{{ path('app_login') }}">Se connecter</a> ou <a href="{{ path('app_registrer') }}">Créer un compte</a>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="separateur">
+                        <img class="d-block w-100" src="/assets/images/separateur.png">
+                    </div>
+                {% endif %}
+
+                {% if is_granted('ROLE_USER') %}
+                    <div class="comment-form"  id="add-comment">
+                        {{form_start(commentForm) }}
+                        {{ form_row(commentForm.comment, {'attr': {'placeholder': 'Commentaire' }}) }}                
+                        <button class="btn comment-btn">Envoyer</button>
+                        {{ form_end(commentForm) }}
+                    </div>
+                
+                    <div class="separateur">
+                        <img class="d-block w-100" src="/assets/images/separateur.png">
+                    </div>
+                {% endif %}
+                
+                <div class="bloc-comments">
+                    <h3 class="article-title-h3"><img src="/assets/images/chat.png">
+                        {% if article.comments|length == 0 %}
+                            Aucun commentaire
+                        {% elseif article.comments|length == 1 %}
+                            1 commentaire
+                        {% else %}
+                            {{ article.comments|length }} commentaires
+                        {% endif %}
+                    </h3>
+                    {% for comment in comments %}
+                        {% if comment.parent == null %}
+                            <div class="comments-container">
+                                <div class="comment-by">
+                                    <div class="avatar">
+                                        <img class="d-block w-100" src="/assets/images/avatar.png">
+                                    </div>
+                                    <div class="comments-username">
+                                        <p class="comment-user">Publié par <span>{{ comment.user.pseudo }}</span> </br>
+                                        - Le {{ comment.createdAt|date("d/m/Y à H:i") }} -</p>
+                                    </div>
+                                </div>
+                                <p class="comments-text">{{ comment.comment}}</p>
+                                <p><a href="#add-comment" data-reply data-id="{{ comment.id }}" class="btn btn-comment">Répondre</a></p>
+                            </div>
+                            {# we display the answers #}
+                            {% for reply in comment.replies %}
+                                <div class="reply-container">
+                                    <div class="reply-by">
+                                        <div class="avatar">
+                                            <img class="d-block w-100" src="/assets/images/avatar.png">
+                                        </div>
+                                        <div class="reply-username">
+                                            <p class="comment-user">Réponse publiée par <span>{{ reply.user.pseudo }}</span> </br>
+                                            - Le {{ reply.createdAt|date("d/m/Y à H:i") }} -</p>
+                                        </div>
+                                    </div>
+                                    <p class="replies-text">{{ reply.comment}}</p>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </article>
+        </section>
+    {% endfor %}
+{% endif %}
+
+   {% block javascript %}
+       {{ parent() }}
+       {{ encore_entry_script_tags('social') }}
+   {% endblock %}
 {% endblock %}

@@ -1,0 +1,74 @@
+{% extends 'admin/admin_layout.html.twig' %}
+
+{% block title %}{{ parent() }}-Admin-Les catégories{% endblock %}
+
+{% block body %}
+
+{% if background_pictures == false %}
+    <section>
+        <h1 class="title-crud">Les catégories</h1>
+        <a class="btn btn-success btn-created" href="{{ path('admin_category_new') }}" role="button">Créer une catégorie</a>
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nom de la catégorie</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for category in categories %}
+                <tr>
+                    <td>{{ category.id }}</td>
+                    <td>{{ category.name }}</td>
+                    <td class="btn-edit">
+                        <div class="btn-delete">{{ include('admin/category_delete_form.html.twig') }}</div>
+                        <a class="btn btn-outline-dark" href="{{ path('admin_category_edit', {'id': category.id}) }}" role="button">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="14">Aucune catégorie trouvée</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
+{% else %}
+
+    {% for background_picture in background_pictures %}
+        <section class="background" style="background-image:url( /assets/images/uploads/{{ background_picture.picture }}">
+            <h1 class="title-crud">Les catégories</h1>
+            <a class="btn btn-success btn-created" href="{{ path('admin_category_new') }}" role="button">Créer une catégorie</a>
+
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nom de la catégorie</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for category in categories %}
+                    <tr>
+                        <td>{{ category.id }}</td>
+                        <td>{{ category.name }}</td>
+                        <td class="btn-edit">
+                            <div class="btn-delete">{{ include('admin/category_delete_form.html.twig') }}</div>
+                            <a class="btn btn-outline-dark" href="{{ path('admin_category_edit', {'id': category.id}) }}" role="button">Modifier</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="14">Aucune catégorie trouvée</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    {% endfor %}
+{% endif %}
+
+{% endblock %}

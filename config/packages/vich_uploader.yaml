@@ -1,0 +1,37 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        article_picture:
+            # alias that allows us to access our images from the browser
+            uri_prefix: /assets/images/
+            # Path to the storage folder
+            upload_destination: '%upload_directory%'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+
+        cycling_shirt_picture_front:
+            uri_prefix: /assets/images/
+            upload_destination: '%upload_directory%'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+
+        cycling_shirt_picture_back:
+            uri_prefix: /assets/images/
+            upload_destination: '%upload_directory%'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+
+        background_picture:
+            uri_prefix: /assets/images/
+            upload_destination: '%upload_directory%'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
