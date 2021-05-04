@@ -1,0 +1,18 @@
+#legal-notices {
+    width: 90%;
+    margin: auto;
+}
+
+#legal-notices h1{
+    text-align: center;
+}
+
+#legal-notices p{
+    text-align: justify;
+}
+
+@media (min-width: 600px) {
+    #legal-notices {
+        width: 60%;
+    }
+}
