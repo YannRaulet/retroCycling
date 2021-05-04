@@ -80,7 +80,7 @@
     background: rgba(185, 152, 103, 0.788);
     color: black;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    width: 40%;
+    width: 54%;
     display: block;
     margin: auto;
     margin-top: 10px;
@@ -128,12 +128,16 @@
    .form-contact {
        padding-top: 2%;
    }
+
+   .btn-contact {
+        width: 25%;
+    }
 }
 
-/* Tablet - PC version */
+/* PC version */
 @media (min-width: 1600px) {
     .form-contact {
         padding-top: 5%;
     }
- }
+}
  
