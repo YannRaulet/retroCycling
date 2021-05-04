@@ -1,29 +1,51 @@
-.logo-connexion {
-    width: 40%;
-    height: auto;
-    margin: auto;
-    margin-top: 5%;
-    margin-bottom: 4%;
+.registrer-h1 {
+    text-align: center;
+    color: black;
+    padding-top: 20px;
+    font-size: 3em;
 }
 
-.login-form {
+.registrer-form {
     display: flex;
     justify-content: center;
     flex-direction: column;
     width: 80%;
     margin: auto;
-    margin-bottom: 3%;
+    margin-top: 1%;
 }
 
-.login-container-btn {
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    //margin-top: 4%;
-    padding-bottom: 5%;
+.registrer-form input {
+    background-color: rgba(0, 0, 0, 0.363) !important;;
+    text-align: center;
+    font-size: 1.2rem;
+    color: white !important;
 }
 
-.login-btn {
+.registrer-form:focus {
+    outline: 0 !important;
+}
+
+.registrer-form input::placeholder {
+    color: white !important;
+}
+
+.registrer-form label {
+    color: transparent;
+}
+
+.registrer-field ~ label {
+    display: block !important;
+    color:black;
+}
+
+.registrer-form input:-webkit-autofill,
+.registrer-form input:-webkit-autofill:hover, 
+.registrer-form input:-webkit-autofill:focus {
+  -webkit-text-fill-color: white;
+  transition: background-color 9000s ease-in-out 0s;
+}
+
+.registrer-btn {
     width: 8rem;
     height: 3rem;
     background: rgba(185, 152, 103, 0.788);
@@ -31,144 +53,44 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     margin: auto;
     border-radius: 50px;
-}
-
-.login-btn:hover {
-    background-color: var(--third-background-color);
-    transition: all 1s ease-out;
-}
-
-.hr-separator {
-    margin: auto;
-    width: 90%;
-    margin-top: 8%;
-    margin-bottom: 8%;
-}
-
-.login-input {
-    width: 100%;
-    margin: 5% 0;
-    box-sizing: border-box;
-    text-align: center;
-    font-size: 1.4rem;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.363);
-    border: 1px solid #ced4da;
-    border-radius: 0.25rem;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
-.login-input:focus {
-    outline: 0 !important;
-    border: 1px solid black;
-}
-
-.login-input:-webkit-autofill,
-.login-input:-webkit-autofill:hover, 
-.login-input:-webkit-autofill:focus {
-  -webkit-text-fill-color: white;
-  transition: background-color 9000s ease-in-out 0s;
-}
-
-.register {
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: center;
-}
-
-.title-register {
-    text-align: center;
-    color: white;
-    font-size: 20px;
-}
-
-.login-input::placeholder {
-    color: white;
-}
-
-.forgot-pass {
-    width: 50%;
-    margin: auto;
-    margin-top: 20px;
-    text-align: center;
-    display: block;
-    color:white;
-    font-size: 1.2em;
-}
-
-.forgot-pass:hover {
-    color: black !important;
-    text-decoration: none;
-}
-
-.forgotpass-form {
-    width: 50%;
-    margin: auto;
-}
-
-.form-reset {
-    justify-content: center;
-    width: 70%;
-    margin: auto;
     margin-bottom: 3%;
 }
 
-.resetpass-title-h2 {
-    font-size: 2rem;
-    color: var(--third-background-color);
-    margin-bottom: 2%;
-    text-align: center;
+.registrer-btn:hover {
+    background: rgb(185, 152, 103);
+    transition: all 1s ease-out;
 }
 
-/* Tablet version */
+.registrer-btn:hover {
+    background-color: var(--third-background-color);
+    color: #000;
+}
+
+.registrer-form .hide-me {
+    display: none;
+}
+
 @media (min-width: 600px) {
-    .login-form {
+    .registrer-form {
         width: 50%;
     }
 
-    .login-input {
-        font-size: 1.7rem;
-    }
-
-    .login-btn {
+    .registrer-btn {
         width: 12rem;
         height: 4rem;
         font-size: 1.4rem;
     }
 
-    .title-register {
-        font-size: 30px;
+    .registrer-form input {
+        font-size: 1.4rem;
     }
 }
 
-/* Tablet - PC version */
-@media (min-width: 1024px) {
-    .login-form {
-        width: 40%;
-    }
-
-    .hr-separator {
-        margin: auto;
-        width: 90%;
-        margin-top: 5%;
-        margin-bottom: 5%;
-    }
-}
-
-/* Large PC */
 @media (min-width: 1200px) {
-    .login-form {
+    .registrer-form {
         width: 30%;
-    }
-}
-
-/* Large PC */
-@media (min-width: 1600px) {
-    .login-container-btn {
-        display: flex;
-        flex-direction: column;
-        margin: auto;
-        margin-top: 4%;
-        padding-bottom: 0;
-    }
+    }  
 }
