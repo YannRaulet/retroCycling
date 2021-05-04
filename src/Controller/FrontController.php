@@ -210,14 +210,4 @@ class FrontController extends AbstractController
     {
         return $this->render('front/privacy_policy.html.twig');
     }
-
-    /**
-     * @Route("/copyright", name="copyright")
-     * This controler displays the copyright page
-     * @return Response
-     */
-    public function copyright(): Response
-    {
-        return $this->render('front/copyright.html.twig');
-    }
 }
