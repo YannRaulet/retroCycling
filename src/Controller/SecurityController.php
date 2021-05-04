@@ -104,7 +104,7 @@ class SecurityController extends AbstractController
 
             // Create the account activation message
             $message = (new Swift_Message('Activation de votre compte'))
-                ->setFrom('admin@monsite.fr')
+                ->setFrom('retrocyclingcontact@gmail.com')
                 ->setTo($user->getEmail())
                 ->setBody(
                     $this->renderView(
@@ -202,7 +202,7 @@ class SecurityController extends AbstractController
 
             // We generate the forgotten password email
             $message = (new Swift_Message('Mot de passe oublié'))
-                ->setFrom('admin@monsite.fr')
+                ->setFrom('retrocyclingcontact@gmail.com')
                 ->setTo($user->getEmail())
                 ->setBody(
                     $this->renderView(

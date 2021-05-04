@@ -54,7 +54,7 @@ class FrontController extends AbstractController
             //send mail
             $message = (new Swift_Message('Nouveau Contact'))
                 ->setFrom($contact['email'])
-                ->setTo('admin@monsite.fr')
+                ->setTo('retrocyclingcontact@gmail.com')
 
                 //Create the message and send it to the emails template
                 ->setBody(
