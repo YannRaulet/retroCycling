@@ -23,7 +23,7 @@ class UserFixtures extends Fixture
          $admin->setEmail('admin@monsite.fr');
          $admin->setPseudo('admin');
          $admin->setRoles(['ROLE_ADMIN']);
-         $admin->setPassword($this->passwordEncoder->encodePassword($admin, 'Retrocyling4ever-'));
+         $admin->setPassword($this->passwordEncoder->encodePassword($admin, 'adminpassword'));
         //checks if the account is validated
          $admin->setEnabled(true);
         //Add a user in the database
