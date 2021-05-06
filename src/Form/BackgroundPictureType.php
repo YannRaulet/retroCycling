@@ -25,7 +25,7 @@ class BackgroundPictureType extends AbstractType
 
             ->add('name', ChoiceType::class, [
                 'choices' => [
-                    'Pages accueil / collection / blog du site et espace utilisateur' => 'background-main',
+                    'Pages accueil / collection / blog / mentions légales et espace utilisateur' => 'background-main',
                     'Page de connexion' => 'background-connexion',
                     'Page contact' => 'background-contact',
                     'Espace de gestion du site (administrateur)' => 'background-admin',
