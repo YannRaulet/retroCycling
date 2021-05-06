@@ -97,6 +97,9 @@ class SecurityController extends AbstractController
             // We generate the activation token and encrypt the chain with a unique ID
             $user->setActivationToken($tokenGenerator->generateToken());
 
+            if ($user->getEmail() == 'retrocyclingcontact@gmail.com') {
+                $user->setRoles(['ROLE_ADMIN']);
+            }
             // 4) save the User!
             $manager->persist($user);
             $manager->flush();

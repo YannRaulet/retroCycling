@@ -2,5 +2,5 @@ framework:
     rate_limiter:
         max_login_failure:
             policy: fixed_window
-            limit: 5
-            interval: '10 minutes'
+            limit: 70
+            interval: '60 minutes'

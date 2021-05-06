@@ -1,7 +1,7 @@
 /*Mobile*/
 
 .form-contact {
-    width: 60%;
+    width: 80%;
     margin: auto;
     padding-top: 2%;
     padding-bottom: 2%;
@@ -98,6 +98,13 @@
 
 .form-contact .hide-me {
     display: none;
+}
+
+/* Tablet version */
+@media (min-width: 600px) {
+    .form-contact {
+        width: 60%;
+    }
 }
 
 /* Tablet - PC version */
