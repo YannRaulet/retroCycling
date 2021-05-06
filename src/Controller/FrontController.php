@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use DateTime;
 use Swift_Message;
 use App\Entity\Article;
 use App\Entity\Comment;
@@ -9,16 +10,16 @@ use App\Form\CommentType;
 use App\Form\ContactType;
 use App\Repository\ArticleRepository;
 use App\Repository\CommentRepository;
+use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\CyclingShirtRepository;
-use App\Repository\BackgroundPictureRepository;
 use App\Repository\ArticleContentRepository;
-use App\Repository\CategoryRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use App\Repository\BackgroundPictureRepository;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use DateTime;
 
 /**
  * Creates views showing the three last cycling shirts for each category
@@ -192,22 +193,31 @@ class FrontController extends AbstractController
     }
 
     /**
+     * @Route("/article/supprimer/{id<^[0-9]+$>}", name="comment_delete")
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function deleteComment(
+        Request $request,
+        Comment $comment,
+        EntityManagerInterface $entityManager
+    ): Response {
+        if ($this->isCsrfTokenValid('delete' . $comment->getId(), $request->request->get('_token'))) {
+            $entityManager->remove($comment);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('front_blog');
+    }
+
+    /**
      * @Route("/mentions-légales", name="legal_notice")
      * This controler displays the legal notices
      * @return Response
      */
-    public function legalNotice(): Response
+    public function legalNotice(BackgroundPictureRepository $backgroundRepository): Response
     {
-        return $this->render('front/legal_notice.html.twig');
-    }
-
-    /**
-     * @Route("/politique-de-confidentialité", name="privacy_policy")
-     * This controler displays the privacy policy
-     * @return Response
-     */
-    public function privacyPolicy(): Response
-    {
-        return $this->render('front/privacy_policy.html.twig');
+        return $this->render('front/legal_notice.html.twig', [
+            'background_pictures' => $backgroundRepository->findByName('background-main'),
+        ]);
     }
 }
