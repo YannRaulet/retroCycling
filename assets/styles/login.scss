@@ -1,10 +1,4 @@
-.logo-connexion {
-    width: 40%;
-    height: auto;
-    margin: auto;
-    margin-top: 5%;
-    margin-bottom: 4%;
-}
+/*Mobile version*/
 
 .login-form {
     display: flex;
@@ -12,6 +6,7 @@
     flex-direction: column;
     width: 80%;
     margin: auto;
+    padding-top: 10%;
     margin-bottom: 3%;
 }
 
@@ -19,7 +14,7 @@
     display: flex;
     flex-direction: column;
     margin: auto;
-    //margin-top: 4%;
+    margin-top: 6%;
     padding-bottom: 5%;
 }
 
@@ -38,12 +33,6 @@
     transition: all 1s ease-out;
 }
 
-.hr-separator {
-    margin: auto;
-    width: 90%;
-    margin-top: 8%;
-    margin-bottom: 8%;
-}
 
 .login-input {
     width: 100%;
@@ -93,7 +82,7 @@
     text-align: center;
     display: block;
     color:white;
-    font-size: 1.2em;
+    font-size: 1em;
 }
 
 .forgot-pass:hover {
@@ -145,13 +134,11 @@
 @media (min-width: 1024px) {
     .login-form {
         width: 40%;
+        padding-top: 15%;
     }
 
-    .hr-separator {
-        margin: auto;
-        width: 90%;
-        margin-top: 5%;
-        margin-bottom: 5%;
+    .login-container-btn {
+        margin-top: 10%;
     }
 }
 
@@ -159,7 +146,8 @@
 @media (min-width: 1200px) {
     .login-form {
         width: 30%;
-    }
+        padding-top: 10%;
+    } 
 }
 
 /* Large PC */
