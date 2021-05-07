@@ -4,47 +4,108 @@
 
 {% block body %}
 
-{% if background_pictures == false %}
-    <section>
-        <div class="form-contact">
+    {% if background_pictures == false %}    
+        <section class="top-background-contact">
             <h1 class="contact-title">Contactez-nous</h1>
-            {{ form_start(contactForm) }}
-                <div class="row">
-                    <div class="col">{{ form_row(contactForm.name, {'attr': {'placeholder': 'Nom' }}) }}</div>
-                </div>
-                <div class="row">
-                    <div class="col">{{ form_row(contactForm.email, {'attr': {'placeholder': 'Adresse mail'|antispam(true) }}) }}</div>
-                </div>
-                <div class="row">
-                    <div class="col">{{ form_row(contactForm.message, {'attr': {'placeholder': 'Message' }}) }}</div>
-                </div>
-                {{ form_widget(contactForm) }}
-                <button class="btn btn-contact">Envoyer</button>
-            {{ form_end(contactForm) }}
-        </div>
-    </section>
-{% else %}
-
-    {% for background_picture in background_pictures %}
-        <section class="background" style="background-image:url( /assets/images/uploads/{{ background_picture.picture }}">
-            <div class="form-contact">
-                <h1 class="contact-title">Contactez-nous</h1>
-                {{ form_start(contactForm) }}
-                    <div class="row">
-                        <div class="col">{{ form_row(contactForm.name, {'attr': {'placeholder': 'Nom' }}) }}</div>
-                    </div>
-                    <div class="row">
-                        <div class="col">{{ form_row(contactForm.email, {'attr': {'placeholder': 'Adresse mail' }}) }}</div>
-                    </div>
-                    <div class="row">
-                        <div class="col">{{ form_row(contactForm.message, {'attr': {'placeholder': 'Message' }}) }}</div>
-                    </div>
-                    {{ form_widget(contactForm) }}
-                    <button class="btn btn-contact">Envoyer</button>
-                {{ form_end(contactForm) }}
-            </div>
+            <p class="contact-title-p"> Vous souhaitez :<br> - poser une question ? <br> - faire une remarque ? <br> - entrer en contact avec les développeurs ? <br> ...</p>
         </section>
-    {% endfor %}
-{% endif %}
 
+        <section class="contact-container">
+            <article class="contact-article-left">
+                <h2 class="contact-title-h2">Laissez-nous un message</h2>
+                <hr class="hr-contact">
+                <div class="form-contact">
+                    {{ form_start(contactForm) }}
+                        <div class="row">
+                            <div class="col">{{ form_row(contactForm.name, {'attr': {'placeholder': 'Nom' }}) }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col">{{ form_row(contactForm.email, {'attr': {'placeholder': 'Adresse mail'|antispam(true) }}) }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col">{{ form_row(contactForm.message, {'attr': {'placeholder': 'Message' }}) }}</div>
+                        </div>
+                        {{ form_widget(contactForm) }}
+                        <button class="btn btn-contact">Envoyer</button>
+                    {{ form_end(contactForm) }}
+                </div>
+            </article>
+
+            <article class="contact-article-right">
+                <h2 class="contact-title-h2">Ou contactez les développeurs</h2>
+                <hr class="hr-contact">
+                <div class="developer-container">
+                    <div class="developer-contact">
+                        <img class="developer-picture" src="/assets/images/yann.jpg">
+                        <ul class="social-icons">
+                            <li><p>Yann RAULET</p></li>
+                            <li><a href="https://www.linkedin.com/in/yann-raulet37" target="_blank"><img src="/assets/images/linkedin.png"></a></li>   
+                        </ul>
+                    </div>
+
+                    <div class="developer-contact">
+                        <img class="developer-picture" src="/assets/images/kevin.jpg">
+                        <ul>
+                            <li><p>Kévin FRANCISCO</p></li>
+                            <li><a href="https://www.linkedin.com/in/k%C3%A9vin-francisco-223178116/" target="_blank"><img src="/assets/images/linkedin.png"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+        </section>
+    {% else %}
+
+        {% for background_picture in background_pictures %}
+            <section class="top-background-contact">
+                <h1 class="contact-title">Contactez-nous</h1>
+                <p class="contact-title-p"> Vous souhaitez :<br> - poser une question ? <br> - faire une remarque ? <br> - entrer en contact avec les développeurs ? <br> ...</p>
+            </section>
+
+            <section class="background" style="background-image:url( /assets/images/uploads/{{ background_picture.picture }}">
+                <div class="contact-container">
+                    <article class="contact-article-left">
+                        <h2 class="contact-title-h2">Laissez-nous un message</h2>
+                        <hr class="hr-contact">
+                        <div class="form-contact">
+                            {{ form_start(contactForm) }}
+                                <div class="row">
+                                    <div class="col">{{ form_row(contactForm.name, {'attr': {'placeholder': 'Nom' }}) }}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">{{ form_row(contactForm.email, {'attr': {'placeholder': 'Adresse mail'|antispam(true) }}) }}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">{{ form_row(contactForm.message, {'attr': {'placeholder': 'Message' }}) }}</div>
+                                </div>
+                                {{ form_widget(contactForm) }}
+                                <button class="btn btn-contact">Envoyer</button>
+                            {{ form_end(contactForm) }}
+                        </div>
+                    </article>
+
+                    <article class="contact-article-right">
+                        <h2 class="contact-title-h2">Ou contactez les développeurs</h2>
+                        <hr class="hr-contact">
+                        <div class="developer-container">
+                            <div class="developer-contact">
+                                <img class="developer-picture" src="/assets/images/yann.jpg">
+                                <ul class="social-icons">
+                                    <li><p>Yann RAULET</p></li>
+                                    <li><a href="https://www.linkedin.com/in/yann-raulet37" target="_blank"><img src="/assets/images/linkedin.png"></a></li>   
+                                </ul>
+                            </div>
+
+                            <div class="developer-contact">
+                                <img class="developer-picture" src="/assets/images/kevin.jpg">
+                                <ul>
+                                    <li><p>Kévin FRANCISCO</p></li>
+                                    <li><a href="https://www.linkedin.com/in/k%C3%A9vin-francisco-223178116/" target="_blank"><img src="/assets/images/linkedin.png"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        {% endfor %}
+    {% endif %}
 {% endblock %} 

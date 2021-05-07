@@ -1,15 +1,46 @@
 /*Mobile*/
 
-.form-contact {
-    width: 80%;
-    margin: auto;
-    padding-top: 2%;
-    padding-bottom: 2%;
+.top-background-contact {
+    width: 100%;
+    background-image: url("../images/contact.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 80%;
 }
 
 .contact-title {
-    color: white;
+    font-size: 50px;
+    color: #fff;
     text-align: center;
+    padding-top: 50px;
+    z-index: 2;
+    position: relative;
+}
+
+.contact-title-p {
+    font-size: 25px;
+    color: #fff;
+    text-align: center;
+    padding-bottom: 2rem;
+    margin-bottom: 0;
+    z-index: 2;
+}
+
+.contact-title-h2 {
+    text-align: center;
+    padding-top: 10%;
+}
+
+.form-contact {
+    width: 80%;
+    padding-top: 10%;
+    padding-bottom: 2%;
+    margin: auto;
+}
+
+.hr-contact {
+    width: 80%;
+    margin: auto;
 }
 
 .form-control:focus {
@@ -100,25 +131,61 @@
     display: none;
 }
 
+.developer-container {
+    padding-top: 10%;
+}
+
+.developer-contact {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 150px);
+    margin-left: 10%;
+    margin-bottom: 10%;
+}
+
+.developer-picture {
+    width: 120px;
+    height: 120px;
+    border-radius: 60px;
+}
+
 /* Tablet version */
 @media (min-width: 600px) {
     .form-contact {
         width: 60%;
     }
+
+    .developer-contact {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 300px);
+        margin-left: 10%;
+        margin-bottom: 10%;
+    }
+
+    .developer-picture {
+        margin-left: 50%;
+    }
 }
 
 /* Tablet - PC version */
 @media (min-width: 1024px) {
-     .btn-contact {
+    .contact-title {
+        padding-top: 5%;
+    }
+
+    .contact-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 450px);
+        justify-content: center;
+        grid-gap: 2.5rem;
+    }
+
+    .btn-contact {
         width: 25%;
     }
 
     .form-contact {
-        padding-top: 10%;
-    }
-
-    .contact-title {
-        margin-bottom: 5%;
+        //padding-top: 10%;
+        width: 90%;
     }
 
     .form-contact input {
@@ -128,27 +195,24 @@
     .form-contact textarea {
         font-size: 1.3em;
     }
-}
 
-/* Tablet - PC version */
-@media (min-width: 1200px) {
-   .form-contact {
-       padding-top: 2%;
-   }
+    .developer-contact {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 200px);
+        margin-bottom: 10%;
+    }
 
-   .btn-contact {
-        width: 25%;
+    .developer-picture {
+        margin-left: 30%;
     }
 }
 
 /* PC version */
 @media (min-width: 1600px) {
-    .form-contact {
-        padding-top: 5%;
-    }
-
-    .form-contact {
-        width: 50%;
+    .contact-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 600px);
+        justify-content: center;
+        grid-gap: 2.5rem;
     }
 }
- 
