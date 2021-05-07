@@ -64,7 +64,19 @@
 }
 
 .developped-by-text {
+    padding-top: 15px;
     font-size: 20px;
+}
+
+.github-link:hover img {
+    transform: scale(1.2);
+    -webkit-transition:all .2s linear;
+    -o-transition:all .2s linear;
+    transition:all .2s linear
+}
+
+.logo-github {
+    padding-left: 10px;
 }
 
 /* Tablet - PC version */
