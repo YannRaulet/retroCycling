@@ -49,14 +49,17 @@ class CyclingShirtType extends AbstractType
 
             ->add('cyclistName', TextType::class, [
                 'label' => 'Nom du cycliste',
+                'required' => false,
             ])
 
             ->add('teamInformations', TextareaType::class, [
                 'label' => 'Informations sur l\'équipe',
+                'required' => false,
             ])
 
             ->add('results', TextareaType::class, [
                 'label' => 'Résultats notables : ',
+                'required' => false,
             ])
         ;
     }
