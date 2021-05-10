@@ -14,14 +14,14 @@
             {% if app.user %}
                 <a class="like" href="{{ path('user_favorite', {id: cyclingShirt70.id})}}">
                     {% if app.user.isInFavorite(cyclingShirt70) %}
-                        <img class="favorite-icon" src="{{ asset('assets/images/favoriteRed.png') }}">
+                        <img class="favorite-icon" src="{{ asset('assets/images/favoriteRed.png') }}" title="logo-ajout-favoris" alt="logo-ajout-favoris">
                     {% else %}
-                        <img class="favorite-icon" src="{{ asset('assets/images/favoriteEmpty.png') }}">
+                        <img class="favorite-icon" src="{{ asset('assets/images/favoriteEmpty.png') }}" title="logo-ajout-favoris" alt="logo-ajout-favoris">
                     {% endif %}
                 </a>
             {% else %}
                 <a class="like-not-connected" href="{{ path('app_login') }}">
-                    <img class="favorite-icon" src="{{ asset('assets/images/favoriteEmpty.png') }}">
+                    <img class="favorite-icon" src="{{ asset('assets/images/favoriteEmpty.png') }}" title="logo-ajout-favoris" alt="logo-ajout-favoris">
                 </a>
             {% endif %}
             <p class="likes-number">{{ cyclingShirt70.userLikes|length }}</p>
@@ -65,6 +65,7 @@
             <hr class="shirt-details-hr">
             <p class="shirt-description-p">{{ cyclingShirt70.results }}</p>
         </article>
+        <a class="btn btn-return" href=javascript:history.go(-1)>Retour page collection</a>
     </section>
 {% else %}
 
@@ -76,14 +77,14 @@
                 {% if app.user %}
                     <a class="like" href="{{ path('user_favorite', {id: cyclingShirt70.id})}}">
                         {% if app.user.isInFavorite(cyclingShirt70) %}
-                            <img class="favorite-icon" src="{{ asset('assets/images/favoriteRed.png') }}">
+                            <img class="favorite-icon" src="{{ asset('assets/images/favoriteRed.png') }}" title="logo-ajout-favoris" alt="logo-ajout-favoris">
                         {% else %}
-                            <img class="favorite-icon" src="{{ asset('assets/images/favoriteEmpty.png') }}">
+                            <img class="favorite-icon" src="{{ asset('assets/images/favoriteEmpty.png') }}" title="logo-ajout-favoris" alt="logo-ajout-favoris">
                         {% endif %}
                     </a>
                 {% else %}
                     <a class="like-not-connected" href="{{ path('app_login') }}">
-                        <img class="favorite-icon" src="{{ asset('assets/images/favoriteEmpty.png') }}">
+                        <img class="favorite-icon" src="{{ asset('assets/images/favoriteEmpty.png') }}" title="logo-ajout-favoris" alt="logo-ajout-favoris">
                     </a>
                 {% endif %}
                 <p class="likes-number">{{ cyclingShirt70.userLikes|length }}</p>
@@ -126,6 +127,7 @@
                 <hr class="shirt-details-hr">
                 <p class="shirt-description-p">{{ cyclingShirt70.results }}</p>
             </article>
+            <a class="btn btn-return" href=javascript:history.go(-1)>Retour page collection</a>
         </section>
     {% endfor %}
 {% endif %}
