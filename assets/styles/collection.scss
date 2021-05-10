@@ -20,6 +20,57 @@
     display: none;
 }
 
+.nav-mobile-links {
+    width: 50%;
+    margin: auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+}
+
+.nav-mobile-links ul li {
+    font-size: 1rem;
+    padding: 20px;
+    position: relative;
+}
+  
+.nav-mobile-links ul li ul {
+    display: none;
+}
+
+.nav-mobile-links ul li:hover {
+    cursor: pointer;
+    background-color: #f2f2f2;
+}
+  
+.nav-mobile-links ul li:hover ul {
+    display: block;
+    margin-top: 15px;
+    width: 188px;
+    text-align: center;
+    left: 0;
+    position: absolute;
+}
+
+.nav-mobile-links ul li:hover ul li {
+    display: block;
+    background-color: #e7e7e7;
+}
+
+.nav-mobile-links ul li:hover a {
+    color: #B99867;
+    text-decoration: none;
+}
+
+.nav-mobile-links ul li:hover ul li:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.2);
+    transition: .4s ease-in-out;
+}
+
+.nav-mobile-title {
+    text-align: center;
+}
+
 @media (min-width: 768px) {
     .cycling-shirt-display {
         width: 95%;
@@ -39,6 +90,20 @@
     .cycling-shirt-picture {
         width: 100%;
         height: auto;
+    }
+
+    .nav-mobile-links {
+        width: 24%;
+    }
+
+    .nav-mobile-links ul li:hover ul {
+        width: 185px;
+    }
+}
+
+@media (min-width: 920px) {
+    .nav-mobile-links {
+        display: none;
     }
 }
 
