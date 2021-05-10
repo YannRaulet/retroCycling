@@ -51,28 +51,20 @@
 
 .container-social {
     margin: auto;
-    width: 97%;
+    display: flex;
+    justify-content: center;
 }
 
 .logo-share {
-    padding-right: 8px;
+    width: 50px;
+    height: auto;
 }
 
-.btn-share {
-    padding: 11px;
-    color: white;
-}
-
-.share_twitter {
-    background-color: #55ACEE;
-}
-
-.share_facebook {
-    background-color: #4267B2;
-}
-
-.share_linkedin {
-    background-color: #0177B5;
+.logo-share:hover {
+    transform: scale(1.2);
+    -webkit-transition:all .2s linear;
+    -o-transition:all .2s linear;
+    transition:all .2s linear
 }
 
 .separateur {
@@ -288,11 +280,9 @@
 }
 
 /* Tablet version */
-@media (min-width: 600px) {    
-    .container-social {
-        display: flex;
-        justify-content: space-evenly;
-        margin: auto;
+@media (min-width: 600px) {
+    .logo-share {
+        width: auto;
     }
     
     .comments {
@@ -368,7 +358,7 @@
     }
 
     .container-social {
-        width: 80%;
+        width: 30%;
     }
 
     .btn-share {
@@ -390,13 +380,6 @@
 
 /* Large PC */
 @media (min-width: 1600px) {
-    .container-social {
-        width: 50%;
-        display: flex;
-        justify-content: space-between;
-        margin: auto;
-    }
-
     .article-p {
         width: 50%;
     }
