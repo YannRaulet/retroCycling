@@ -94,7 +94,7 @@ class FrontController extends AbstractController
             4,
             0
         );
-        
+
         return $this->render('front/home.html.twig', [
             'cyclingShirts50_60' => $shirtRepository->findBy(
                 ['years' => 'Années 50-60'],
@@ -117,8 +117,8 @@ class FrontController extends AbstractController
                 3
             ),
              'shirts50_60' => $shirtRepository->findBy(
-                ['years' => 'Années 50-60'],
-            ),
+                 ['years' => 'Années 50-60'],
+             ),
             'shirts70' => $shirtRepository->findBy(
                 ['years' => 'Années 70'],
             ),

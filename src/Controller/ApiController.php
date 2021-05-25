@@ -18,9 +18,9 @@ class ApiController extends AbstractController
      * Collect all years cycling shirts
      * @return Response
      */
-    public function map(CyclingShirtRepository $cyclingShirtRepository): Response
+    public function map(CyclingShirtRepository $shirtsRepository): Response
     {
-        $cyclingShirt = $cyclingShirtRepository->findAll();
+        $cyclingShirt = $shirtsRepository->findAll();
         return $this->json($cyclingShirt, 200);
     }
 
@@ -29,10 +29,10 @@ class ApiController extends AbstractController
     * Collect cycling shirts 50s and 60s
     * @return Response
     */
-    public function filter50_60(CyclingShirtRepository $cyclingShirtRepository): Response
+    public function filter5060(CyclingShirtRepository $shirtsRepository): Response
     {
-        $filter50_60 = $cyclingShirtRepository->findByYears('Années 50-60');
-        return $this->json($filter50_60, 200);
+        $filter5060 = $shirtsRepository->findByYears('Années 50-60');
+        return $this->json($filter5060, 200);
     }
 
     /**
@@ -40,9 +40,9 @@ class ApiController extends AbstractController
     * Collect cycling shirts 70s
     * @return Response
     */
-    public function filter70(CyclingShirtRepository $cyclingShirtRepository): Response
+    public function filter70(CyclingShirtRepository $shirtsRepository): Response
     {
-        $filter70 = $cyclingShirtRepository->findByYears('Années 70');
+        $filter70 = $shirtsRepository->findByYears('Années 70');
         return $this->json($filter70, 200);
     }
 
@@ -51,9 +51,9 @@ class ApiController extends AbstractController
     * Collect cycling shirts 80s
     * @return Response
     */
-    public function filter80(CyclingShirtRepository $cyclingShirtRepository): Response
+    public function filter80(CyclingShirtRepository $shirtsRepository): Response
     {
-        $filter80 = $cyclingShirtRepository->findByYears('Années 80');
+        $filter80 = $shirtsRepository->findByYears('Années 80');
         return $this->json($filter80, 200);
     }
 
@@ -62,9 +62,9 @@ class ApiController extends AbstractController
     * Collect cycling shirts 90s
     * @return Response
     */
-    public function filter90(CyclingShirtRepository $cyclingShirtRepository): Response
+    public function filter90(CyclingShirtRepository $shirtsRepository): Response
     {
-        $filter90 = $cyclingShirtRepository->findByYears('Années 90');
+        $filter90 = $shirtsRepository->findByYears('Années 90');
         return $this->json($filter90, 200);
     }
 }
