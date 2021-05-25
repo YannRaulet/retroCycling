@@ -18,6 +18,7 @@ class FrontCollectionController extends AbstractController
     /**
      * @Route("/collection50_60", name="collection50_60")
      * Displays the page showing cycling shirts from the 50s and 60s
+     * @return Response
      */
     public function collection5060(
         CyclingShirtRepository $shirtRepository,
@@ -32,6 +33,7 @@ class FrontCollectionController extends AbstractController
     /**
      * @Route("/collection70", name="collection70")
      * Displays the page showing cycling shirts from the 70s
+     * @return Response
      */
     public function collection70(
         CyclingShirtRepository $shirtRepository,
@@ -46,6 +48,7 @@ class FrontCollectionController extends AbstractController
     /**
      * @Route("/collection80", name="collection80")
      * Displays the page showing cycling shirts from the 80s
+     * @return Response
      */
     public function collection80(
         CyclingShirtRepository $shirtRepository,
@@ -60,6 +63,7 @@ class FrontCollectionController extends AbstractController
     /**
      * @Route("/collection90", name="collection90")
      * Displays the page showing cycling shirts from the 90s
+     * @return Response
      */
     public function collection90(
         CyclingShirtRepository $shirtRepository,
@@ -74,6 +78,7 @@ class FrontCollectionController extends AbstractController
     /**
      * @Route("/collection50_60/{id}", name="shirt_cycling50_60")
      * Displays the page featuring the selected cycling shirt from the 50s and 60s
+     * @return Response
      */
     public function shirtCycling5060(
         CyclingShirtRepository $shirtRepository,
@@ -110,6 +115,7 @@ class FrontCollectionController extends AbstractController
     /**
      * @Route("/collection80/{id}", name="shirt_cycling80")
      * Displays the page featuring the selected cycling shirt from the 80s
+     * @return Response
      */
     public function shirtCycling80(
         CyclingShirtRepository $shirtRepository,
@@ -128,6 +134,7 @@ class FrontCollectionController extends AbstractController
     /**
      * @Route("/collection90/{id}", name="shirt_cycling90")
      * Displays the page featuring the selected cycling shirt from the 90s
+     * @return Response
      */
     public function shirtCycling90(
         CyclingShirtRepository $shirtRepository,

@@ -11,6 +11,24 @@
     z-index: 2;
 }
 
+.home-presentation-texts {
+    text-align: center;
+}
+
+.home-presentation-text1 {
+    color: var(--main-background-color);
+    font-size: 40px;
+    letter-spacing: 8px;
+    margin-bottom:  20px;
+    animation: text 3s 1;
+}
+
+.home-presentation-text2{
+    margin: auto;
+    text-align: justify;
+    width: 90%;
+}
+
 .collection-title {
     text-align: center;
     margin-bottom: 5%;
@@ -128,7 +146,6 @@
 .home-articles {
     width: 100%;
     background-color: var(--main-background-color);
-    margin-bottom: 5px;
     padding-bottom: 5%;
 }
 
@@ -192,8 +209,30 @@
     margin-top: 10%;
 }
 
+.map-title {
+    color: var(--main-background-color);
+    text-align: center;
+    padding-top: 2%;
+    margin-bottom: 2%;
+}
+
+.map-title-h3{
+    color: var(--main-background-color);
+    text-align: center;
+}
+
 /* Tablet version */
 @media (min-width: 600px) {
+    // keyframes for home-presentation-texts animation
+    @keyframes text {
+        30% {
+            letter-spacing: 30px;
+        }
+        85% {
+            letter-spacing : 8px;
+        }
+    }
+
     .accordions-section1 .img, .accordions-section2 .img {
         width: 18rem;
         height: 18rem;
@@ -233,6 +272,14 @@
 
 /* Tablet - PC version */
 @media (min-width: 1024px) {
+    .home-presentation-text2{
+        width: 80%;
+    }
+
+    .home-presentation-text1 {
+        font-size: 50px;
+    }
+
     .accordions-pictures{
         display: grid;
     }
@@ -282,10 +329,14 @@
 
 /* PC version */
 @media (min-width: 1200px) {
+    .home-presentation-text2{
+        font-size: 20px;
+        width: 70%;
+    }
+
     .background-picture-home {
         height: 40vh;
         background-position: 35% 0%;
-
     }
 
     .collection-title span {
@@ -389,7 +440,7 @@
         transition: all 0.5s ease-in-out;
     }
 
-    .home-article-title  span {
+    .home-article-title span {
         font-size: 3rem;
         display: inline-block;
         position: relative;
@@ -413,16 +464,36 @@
         transform-origin: bottom left;
     }
 
-    .home-articles {
-        margin-bottom: 1%;
-    }
-
-    .home-articles-title{
+    .home-articles-title {
         color: var(--second-background-color);
     }
 
     .home-articles-title span::before {
         background-color: var(--second-background-color);
+    }
+
+    .map-title span {
+        font-size: 3rem;
+        display: inline-block;
+        position: relative;
+    }
+
+    .map-title span::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: -2px;
+        left: 0;
+        background-color: var(--main-background-color);
+        transform-origin: bottom right;
+        transition: transform 0.4s ease-in-out;
+    }
+
+    .map-title span:hover::before {
+        transform: scaleX(1);
+        transform-origin: bottom left;
     }
 }
 

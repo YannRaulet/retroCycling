@@ -90,6 +90,31 @@ class CyclingShirt
      */
     private ?User $owner;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private ?string $city;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private ?float $latitude;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private ?float $longitude;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private ?string $departmentName;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private ?int $departmentNumber;
+
     public function __construct()
     {
         $this->favorites = new ArrayCollection();
@@ -294,6 +319,66 @@ class CyclingShirt
     public function setOwner(?User $owner): self
     {
         $this->owner = $owner;
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(?string $city): self
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    public function getLatitude(): ?float
+    {
+        return $this->latitude;
+    }
+
+    public function setLatitude(?float $latitude): self
+    {
+        $this->latitude = $latitude;
+
+        return $this;
+    }
+
+    public function getLongitude(): ?float
+    {
+        return $this->longitude;
+    }
+
+    public function setLongitude(?float $longitude): self
+    {
+        $this->longitude = $longitude;
+
+        return $this;
+    }
+
+    public function getDepartmentName(): ?string
+    {
+        return $this->departmentName;
+    }
+
+    public function setDepartmentName(?string $departmentName): self
+    {
+        $this->departmentName = $departmentName;
+
+        return $this;
+    }
+
+    public function getDepartmentNumber(): ?int
+    {
+        return $this->departmentNumber;
+    }
+
+    public function setDepartmentNumber(?int $departmentNumber): self
+    {
+        $this->departmentNumber = $departmentNumber;
 
         return $this;
     }

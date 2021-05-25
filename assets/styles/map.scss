@@ -1,0 +1,57 @@
+#mapId {
+    height: 600px;
+}
+
+.pop-up-leaflet span {
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+}
+
+.leaflet-control { 
+    color: #555;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    padding: 10px;
+}
+
+.leaflet-popup-content-wrapper {
+    padding: 10px;
+    text-align: center;
+    border-radius: 12px;
+    background: transparent;
+    backdrop-filter: blur(10px);
+}
+
+.img-hover-zoom {
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0,0,0,0.8);
+}
+
+.picturePopup {
+    width: 80px;
+    height: auto;
+    display: flex;
+    margin: auto;
+    transition: transform .4s ease-in-out;
+}
+
+.picturePopup:hover {
+    transform: scale(1.4);
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+    color: #000;
+}
+
+.cluster {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    text-align: center;
+    color: var(--main-background-color);
+    border: 3px solid var(--main-background-color);
+    font-size: 20px;
+    backdrop-filter: blur(5px);
+}

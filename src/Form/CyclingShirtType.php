@@ -4,12 +4,13 @@ namespace App\Form;
 
 use App\Entity\CyclingShirt;
 use Symfony\Component\Form\AbstractType;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Vich\UploaderBundle\Form\Type\VichFileType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class CyclingShirtType extends AbstractType
 {
@@ -59,6 +60,33 @@ class CyclingShirtType extends AbstractType
 
             ->add('results', TextareaType::class, [
                 'label' => 'Résultats notables : ',
+                'required' => false,
+            ])
+
+            ->add('city', TextType::class, [
+                'label' => 'Ville d\'origine du club',
+                'required' => false,
+            ])
+
+            ->add('latitude', NumberType::class, [
+                'label' => 'latitude',
+                'required' => false,
+                'scale' => 7,
+            ])
+
+            ->add('longitude', NumberType::class, [
+                'label' => 'longitude',
+                'required' => false,
+                'scale' => 7,
+            ])
+
+            ->add('departmentName', TextType::class, [
+                'label' => 'nom du département',
+                'required' => false,
+            ])
+
+            ->add('departmentNumber', NumberType::class, [
+                'label' => 'numéro du département',
                 'required' => false,
             ])
         ;
