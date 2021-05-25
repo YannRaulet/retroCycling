@@ -18,6 +18,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Repository\BackgroundPictureRepository;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -93,7 +94,7 @@ class FrontController extends AbstractController
             4,
             0
         );
-
+        
         return $this->render('front/home.html.twig', [
             'cyclingShirts50_60' => $shirtRepository->findBy(
                 ['years' => 'Années 50-60'],
@@ -115,6 +116,19 @@ class FrontController extends AbstractController
                 ['id' => 'DESC'],
                 3
             ),
+             'shirts50_60' => $shirtRepository->findBy(
+                ['years' => 'Années 50-60'],
+            ),
+            'shirts70' => $shirtRepository->findBy(
+                ['years' => 'Années 70'],
+            ),
+            'shirts80' => $shirtRepository->findBy(
+                ['years' => 'Années 80'],
+            ),
+            'shirts90' => $shirtRepository->findBy(
+                ['years' => 'Années 90'],
+            ),
+
             'articles' => $articles,
             'background_pictures' => $backgroundRepository->findByName('background-main')
         ]);
@@ -195,6 +209,7 @@ class FrontController extends AbstractController
     /**
      * @Route("/article/supprimer/{id<^[0-9]+$>}", name="comment_delete")
      * @IsGranted("ROLE_ADMIN")
+     * @return Response
      */
     public function deleteComment(
         Request $request,
