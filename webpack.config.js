@@ -23,6 +23,7 @@ Encore
     .addEntry('adminLeft', './assets/adminLeft.js')
     .addEntry('app', './assets/app.js')
     .addEntry('blogFilter', './assets/blogFilter.js')
+    .addEntry('map', './assets/map.js')
     .addEntry('social', './assets/social.js')
     .addEntry('switchCyclingShirt', './assets/switchCyclingShirt.js')
 

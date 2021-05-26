@@ -20,6 +20,7 @@ import './styles/registrer.scss';
 import './styles/contact.scss';
 import './styles/user.scss';
 import './styles/legalNotices.scss';
+import './styles/map.scss';
 
 // start the Stimulus application
 require('bootstrap');
