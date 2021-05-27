@@ -8,26 +8,26 @@
 
 {% if background_pictures == false %}
     <section>
+        <h1 class="collection-title"><span>Années 90</span></h1>
         <article>
-            <h1 class="collection-title"><span>Années 90</span></h1>
-                  <div class="nav-mobile-links">
-                        <ul>
-                            <li class="nav-mobile-title">Autres collections<i class="fas fa-caret-down"></i>
-                                <ul>
-                                    <li><a href="{{path('front_collection50_60')}}">Années 50-60</a></li>
-                                    <li><a href="{{path('front_collection70')}}">Années 70</a></li>
-                                    <li><a href="{{path('front_collection80')}}">Années 80</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="nav-mobile-links">
+                    <ul>
+                        <li class="nav-mobile-title">Autres collections<i class="fas fa-caret-down"></i>
+                            <ul>
+                                <li><a href="{{path('front_collection50_60')}}" title="Voir collection années 1950-1960">Années 50-60</a></li>
+                                <li><a href="{{path('front_collection70')}}" title="Voir collection années 1970">Années 70</a></li>
+                                <li><a href="{{path('front_collection80')}}" title="Voir collection années 1980">Années 80</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             <div class="cycling-shirt-display">
             {% for cyclingShirt in cyclingShirts90 %}
                 <div class="cycling-shirt-container">
                     <div class="cycling-shirt-hover">
-                        <a href="{{ path('front_shirt_cycling90', { id : cyclingShirt.id }) }}"><img class="cycling-shirt-picture" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="cycling shirt picture"></a>
+                        <a href="{{ path('front_shirt_cycling90', { id : cyclingShirt.id }) }}"><img class="cycling-shirt-picture" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
                         <div class="overlay overlayFade">
-                            <a href="{{ path('front_shirt_cycling90', { id : cyclingShirt.id }) }}"><div class="text">Voir >></div></a>
+                            <a href="{{ path('front_shirt_cycling90', { id : cyclingShirt.id }) }}" title="Voir le maillot {{ cyclingShirt.name }}"><div class="text">Voir >></div></a>
                         </div>
                     </div>
                     <h2>{{ cyclingShirt.name }}</h2>
@@ -40,15 +40,15 @@
 
     {% for background_picture in background_pictures %}
         <section class="background" style="background-image:url( /assets/images/uploads/{{ background_picture.picture }}">
+            <h1 class="collection-title"><span>Années 90</span></h1>
             <article>
-                <h1 class="collection-title"><span>Années 90</span></h1>
                     <div class="nav-mobile-links">
                         <ul>
                             <li class="nav-mobile-title">Autres collections<i class="fas fa-caret-down"></i>
                                 <ul>
-                                    <li><a href="{{path('front_collection50_60')}}">Années 50-60</a></li>
-                                    <li><a href="{{path('front_collection70')}}">Années 70</a></li>
-                                    <li><a href="{{path('front_collection80')}}">Années 80</a></li>
+                                    <li><a href="{{path('front_collection50_60')}}" title="Voir collection années 1950-1960">Années 50-60</a></li>
+                                    <li><a href="{{path('front_collection70')}}" title="Voir collection années 1970">Années 70</a></li>
+                                    <li><a href="{{path('front_collection80')}}" title="Voir collection années 1980">Années 80</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -57,9 +57,9 @@
                 {% for cyclingShirt in cyclingShirts90 %}
                     <div class="cycling-shirt-container">
                         <div class="cycling-shirt-hover">
-                            <a href="{{ path('front_shirt_cycling90', { id : cyclingShirt.id }) }}"><img class="cycling-shirt-picture" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="cycling shirt picture"></a>
+                            <a href="{{ path('front_shirt_cycling90', { id : cyclingShirt.id }) }}"><img class="cycling-shirt-picture" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
                             <div class="overlay overlayFade">
-                                <a href="{{ path('front_shirt_cycling90', { id : cyclingShirt.id }) }}"><div class="text">Voir >></div></a>
+                                <a href="{{ path('front_shirt_cycling90', { id : cyclingShirt.id }) }}" alt="Voir le maillot {{ cyclingShirt.name }}"><div class="text">Voir >></div></a>
                             </div>
                         </div>
                         <h2>{{ cyclingShirt.name }}</h2>
