@@ -31,7 +31,7 @@ class ContactType extends AbstractType
             ])
 
             ->add('message', TextareaType::class, [
-                'required' => false,
+                'required' => true,
             ])
         ;
     }
