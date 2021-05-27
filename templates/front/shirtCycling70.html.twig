@@ -9,19 +9,19 @@
 {% if background_pictures == false %}
     <section>
         <article>
-            <h2 class="shirt-description">{{ cyclingShirt70.name }}</h2>
+            <h1 class="shirt-description">{{ cyclingShirt70.name }}</h1>
             <hr class="shirt-details-hr">
             {% if app.user %}
                 <a class="like" href="{{ path('user_favorite', {id: cyclingShirt70.id})}}">
                     {% if app.user.isInFavorite(cyclingShirt70) %}
-                        <img class="favorite-icon" src="{{ asset('assets/images/favoriteRed.png') }}" title="logo-ajout-favoris" alt="logo-ajout-favoris">
+                        <img class="favorite-icon" src="{{ asset('assets/images/favoriteRed.png') }}" title="j'aime" alt="logo ajout favoris">
                     {% else %}
-                        <img class="favorite-icon" src="{{ asset('assets/images/favoriteEmpty.png') }}" title="logo-ajout-favoris" alt="logo-ajout-favoris">
+                        <img class="favorite-icon" src="{{ asset('assets/images/favoriteEmpty.png') }}" title="j'aime" alt="logo ajout favoris">
                     {% endif %}
                 </a>
             {% else %}
                 <a class="like-not-connected" href="{{ path('app_login') }}">
-                    <img class="favorite-icon" src="{{ asset('assets/images/favoriteEmpty.png') }}" title="logo-ajout-favoris" alt="logo-ajout-favoris">
+                    <img class="favorite-icon" src="{{ asset('assets/images/favoriteEmpty.png') }}" title="j'aime" alt="logo ajout favoris">
                 </a>
             {% endif %}
             <p class="likes-number">{{ cyclingShirt70.userLikes|length }}</p>
@@ -55,13 +55,13 @@
         </article>
 
         <article>
-            <h2 class="shirt-description">informations sur l'équipe</h2>
+            <h3 class="shirt-description">informations sur l'équipe</h3>
             <hr class="shirt-details-hr">
             <p class="shirt-description-p">{{ cyclingShirt70.teamInformations }}</p>
         </article>
 
         <article>
-            <h2 class="shirt-description">Résultats notables</h2>
+            <h3 class="shirt-description">Résultats notables</h3>
             <hr class="shirt-details-hr">
             <p class="shirt-description-p">{{ cyclingShirt70.results }}</p>
         </article>
@@ -72,19 +72,19 @@
     {% for background_picture in background_pictures %}
         <section class="background" style="background-image:url( /assets/images/uploads/{{ background_picture.picture }}">
             <article>
-                <h2 class="shirt-description">{{ cyclingShirt70.name }}</h2>
+                <h1 class="shirt-description">{{ cyclingShirt70.name }}</h1>
                 <hr class="shirt-details-hr">
                 {% if app.user %}
                     <a class="like" href="{{ path('user_favorite', {id: cyclingShirt70.id})}}">
                         {% if app.user.isInFavorite(cyclingShirt70) %}
-                            <img class="favorite-icon" src="{{ asset('assets/images/favoriteRed.png') }}" title="logo-ajout-favoris" alt="logo-ajout-favoris">
+                            <img class="favorite-icon" src="{{ asset('assets/images/favoriteRed.png') }}" title="j'aime" alt="logo-ajout-favoris">
                         {% else %}
-                            <img class="favorite-icon" src="{{ asset('assets/images/favoriteEmpty.png') }}" title="logo-ajout-favoris" alt="logo-ajout-favoris">
+                            <img class="favorite-icon" src="{{ asset('assets/images/favoriteEmpty.png') }}" title="j'aime" alt="logo-ajout-favoris">
                         {% endif %}
                     </a>
                 {% else %}
                     <a class="like-not-connected" href="{{ path('app_login') }}">
-                        <img class="favorite-icon" src="{{ asset('assets/images/favoriteEmpty.png') }}" title="logo-ajout-favoris" alt="logo-ajout-favoris">
+                        <img class="favorite-icon" src="{{ asset('assets/images/favoriteEmpty.png') }}" title="logo ajout favoris" alt="logo ajout favoris">
                     </a>
                 {% endif %}
                 <p class="likes-number">{{ cyclingShirt70.userLikes|length }}</p>
@@ -103,7 +103,7 @@
                         </div>
                         <div class = "picture-item">
                         <a href = "#" data-id = "2">
-                            <img class="picture-load" src="/assets/images/uploads/{{ cyclingShirt70.pictureBack }}"  alt = "Maillot face arrière">
+                            <img class="picture-load" src="/assets/images/uploads/{{ cyclingShirt70.pictureBack }}" alt = "Maillot face arrière">
                         </a>
                         </div>
                     </div>
@@ -117,13 +117,13 @@
             </article>
 
             <article>
-                <h2 class="shirt-description">informations sur l'équipe</h2>
+                <h3 class="shirt-description">informations sur l'équipe</h3>
                 <hr class="shirt-details-hr">
                 <p class="shirt-description-p">{{ cyclingShirt70.teamInformations }}</p>
             </article>
 
             <article>
-                <h2 class="shirt-description">Résultats notables</h2>
+                <h3 class="shirt-description">Résultats notables</h3>
                 <hr class="shirt-details-hr">
                 <p class="shirt-description-p">{{ cyclingShirt70.results }}</p>
             </article>
