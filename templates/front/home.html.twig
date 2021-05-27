@@ -6,25 +6,23 @@
 
 {% block body %}
 
+<h1 class="h1-home">retro-cycling accueil</h1>
 {% if background_pictures == false %}
-    <section>
-        <article>
+    <section class="background" style="background-image:url( /assets/images/uploads/{{ background_picture.picture }};">
+        <article class="home-presentation-picture-texts">
             <div class="background-picture-home"></div>
-                <div class="home-presentation-texts">
-                    <p class="home-presentation-text1">Bienvenue sur <br>Retro-cycling</p>
-                    <p class="home-presentation-text2"> Blog d'un collectionneur qui vous partage son aventure dans le monde du cyclisme.
-                Vous retrouverez une galerie  de maillots datant des années 1950 à 1990, des informations sur chaque maillot ainsi que des articles présentant des anecdotes sur le cyclisme d'antan</p>
-                </div>
-            </div>
-            <div class="separateur">
-                <img class="d-block w-100" src="/assets/images/separateur.png" alt="séparateur">
+            <div class="home-presentation-texts">
+                <h2 class="home-presentation-text1">RETRO-CYCLING</h2>
+                <h3 class="home-presentation-text2"> Bienvenue sur le blog d'un collectionneur grand amateur de cyclisme. Vous retrouverez une galerie  de maillots datant des années 1950 à 1990,
+                des informations sur chaque maillot ainsi que des articles présentant des anecdotes sur le cyclisme d'antan</h3>
             </div>
         </article>
+
         <article>
-            <h1 class="collection-title"><span>Une collection de maillots francais et européens des années 1950 à 1990</span></h1>
+        <h4 class="collection-title"><span>Collection de maillots - par catégories</span></h4>
             <div class="accordions-pictures">
                 <div class="accordions-pictures1">
-                    <h2 class="collection-title-h2"><a href="{{path('front_collection50_60')}}">Années 50-60</a></h2>
+                    <h5 class="collection-title-h5"><a href="{{path('front_collection50_60')}}">Années 50-60</a></h5>
                     <div class="accordions-section1">
                     {% for cyclingShirt in cyclingShirts50_60 %}
                         {% if loop.index == 1 %}
@@ -38,7 +36,7 @@
                     </div>
                 </div>
                 <div class="accordions-pictures2">
-                    <h2 class="collection-title-h2"><a href="{{path('front_collection70')}}">Années 70</a></h2>
+                    <h5 class="collection-title-h5"><a href="{{path('front_collection70')}}">Années 70</a></h5>
                     <div class="accordions-section2">
                     {% for cyclingShirt in cyclingShirts70 %}
                         {% if loop.index == 1 %}
@@ -55,7 +53,7 @@
         </article>
         <article class="accordions-pictures">
             <div class="accordions-pictures1">
-                <h2 class="collection-title-h2"><a href="{{path('front_collection80')}}">Années 80</a></h2>
+                <h5 class="collection-title-h5"><a href="{{path('front_collection80')}}">Années 80</a></h5>
                 <div class="accordions-section1">
                 {% for cyclingShirt in cyclingShirts80 %}
                     {% if loop.index == 1 %}
@@ -69,7 +67,7 @@
                 </div>
             </div>
             <div class="accordions-pictures2">
-                <h2 class="collection-title-h2"><a href="{{path('front_collection90')}}">Années 90</a></h2>
+                <h5 class="collection-title-h5"><a href="{{path('front_collection90')}}">Années 90</a></h5>
                 <div class="accordions-section2">
                 {% for cyclingShirt in cyclingShirts90 %}
                     {% if loop.index == 1 %}
@@ -85,7 +83,7 @@
         </article>
         <a href="#ancre"></a>
         <article class="home-articles">
-            <h1 id ="a-la-une" class="home-article-title ancre"><span>Derniers articles publiés</span></h1>
+            <h5 id ="a-la-une" class="home-article-title ancre"><span>Derniers articles publiés</span></h5>
             <aside class="box-article">
                 {% for article in articles %}
                     <div class="image-article">
@@ -101,8 +99,8 @@
         </article>
 
         <article>
-            <h2 class="map-title"><span>Une collection de maillots francais et européens</span></h2>
-            <h3 class="map-title-h3">Villes d'origine des équipes</h3>
+            <h5 class="map-title"><span>Une collection de maillots francais et européens</span></h5>
+            <h5 class="map-title-h5">Villes d'origine des équipes</h5>
             {# Add leaflet map #}
             <div id="mapId">
             </div>
@@ -111,24 +109,21 @@
 {% else %}
 
     {% for background_picture in background_pictures %}
-        <section class="background" style="background-image:url( /assets/images/uploads/{{ background_picture.picture }}">
-            <article>
+        <section class="background" style="background-image:url( /assets/images/uploads/{{ background_picture.picture }};">
+            <article class="home-presentation-picture-texts">
                 <div class="background-picture-home"></div>
-                    <div class="home-presentation-texts">
-                        <p class="home-presentation-text1">Bienvenue sur <br>Retro-cycling</p>
-                        <p class="home-presentation-text2"> Blog d'un collectionneur qui vous partage son aventure dans le monde du cyclisme.
-                    Vous retrouverez une galerie  de maillots datant des années 1950 à 1990, des informations sur chaque maillot ainsi que des articles présentant des anecdotes sur le cyclisme d'antan</p>
-                    </div>
-                </div>
-                <div class="separateur">
-                    <img class="d-block w-100" src="/assets/images/separateur.png" alt="séparateur">
+                <div class="home-presentation-texts">
+                    <h2 class="home-presentation-text1">RETRO-CYCLING</h2>
+                    <h3 class="home-presentation-text2"> Bienvenue sur le blog d'un collectionneur grand amateur de cyclisme. Vous retrouverez une galerie  de maillots datant des années 1950 à 1990,
+                    des informations sur chaque maillot ainsi que des articles présentant des anecdotes sur le cyclisme d'antan</h3>
                 </div>
             </article>
+
             <article>
-            <h1 class="collection-title"><span>Collection de maillots - par catégories</span></h1>
+            <h4 class="collection-title"><span>Collection de maillots - par catégories</span></h4>
                 <div class="accordions-pictures">
                     <div class="accordions-pictures1">
-                        <h2 class="collection-title-h2"><a href="{{path('front_collection50_60')}}">Années 50-60</a></h2>
+                        <h5 class="collection-title-h5"><a href="{{path('front_collection50_60')}}">Années 50-60</a></h5>
                         <div class="accordions-section1">
                         {% for cyclingShirt in cyclingShirts50_60 %}
                             {% if loop.index == 1 %}
@@ -142,7 +137,7 @@
                         </div>
                     </div>
                     <div class="accordions-pictures2">
-                        <h2 class="collection-title-h2"><a href="{{path('front_collection70')}}">Années 70</a></h2>
+                        <h5 class="collection-title-h5"><a href="{{path('front_collection70')}}">Années 70</a></h5>
                         <div class="accordions-section2">
                         {% for cyclingShirt in cyclingShirts70 %}
                             {% if loop.index == 1 %}
@@ -159,7 +154,7 @@
             </article>
             <article class="accordions-pictures">
                 <div class="accordions-pictures1">
-                    <h2 class="collection-title-h2"><a href="{{path('front_collection80')}}">Années 80</a></h2>
+                    <h5 class="collection-title-h5"><a href="{{path('front_collection80')}}">Années 80</a></h5>
                     <div class="accordions-section1">
                     {% for cyclingShirt in cyclingShirts80 %}
                         {% if loop.index == 1 %}
@@ -173,7 +168,7 @@
                     </div>
                 </div>
                 <div class="accordions-pictures2">
-                    <h2 class="collection-title-h2"><a href="{{path('front_collection90')}}">Années 90</a></h2>
+                    <h5 class="collection-title-h5"><a href="{{path('front_collection90')}}">Années 90</a></h5>
                     <div class="accordions-section2">
                     {% for cyclingShirt in cyclingShirts90 %}
                         {% if loop.index == 1 %}
@@ -189,7 +184,7 @@
             </article>
             <a href="#ancre"></a>
             <article class="home-articles">
-                <h1 id ="a-la-une" class="home-article-title ancre"><span>Derniers articles publiés</span></h1>
+                <h5 id ="a-la-une" class="home-article-title ancre"><span>Derniers articles publiés</span></h5>
                 <aside class="box-article">
                     {% for article in articles %}
                         <div class="image-article">
@@ -205,8 +200,8 @@
             </article>
 
             <article>
-                <h2 class="map-title"><span>Une collection de maillots francais et européens</span></h2>
-                <h3 class="map-title-h3">Villes d'origine des équipes</h3>
+                <h5 class="map-title"><span>Une collection de maillots francais et européens</span></h5>
+                <h5 class="map-title-h5">Villes d'origine des équipes</h5>
                 {# Add leaflet map #}
                 <div id="mapId">
                 </div>
