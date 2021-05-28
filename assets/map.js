@@ -9,7 +9,7 @@ let iconPicture = L.icon ({
  function initMap() {
     var map = L.map('mapId').setView([48.833, 2.333], 10); 
 
-    var osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { 
+    var osmLayer = L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', { 
         attribution: '© OpenStreetMap contributors',
         minZoom: 2,
         maxZoom: 13
