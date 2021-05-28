@@ -8,7 +8,7 @@
 
 <h1 class="h1-home">retro-cycling accueil</h1>
 {% if background_pictures == false %}
-    <section class="background" style="background-image:url( /assets/images/uploads/{{ background_picture.picture }};">
+    <section>
         <article class="home-presentation-picture-texts">
             <div class="background-picture-home"></div>
             <div class="home-presentation-texts">
@@ -100,7 +100,7 @@
 
         <article>
             <h5 class="map-title"><span>Une collection de maillots francais et européens</span></h5>
-            <h5 class="map-title-h5">Villes d'origine des équipes</h5>
+            <p class="map-title-p">Villes d'origine des équipes</p>
             {# Add leaflet map #}
             <div id="mapId">
             </div>
@@ -109,7 +109,7 @@
 {% else %}
 
     {% for background_picture in background_pictures %}
-        <section class="background" style="background-image:url( /assets/images/uploads/{{ background_picture.picture }};">
+        <section class="background" style="background-image:url( /assets/images/uploads/{{ background_picture.picture }}">
             <article class="home-presentation-picture-texts">
                 <div class="background-picture-home"></div>
                 <div class="home-presentation-texts">
@@ -203,7 +203,7 @@
 
             <article>
                 <h5 class="map-title"><span>Une collection de maillots francais et européens</span></h5>
-                <h5 class="map-title-h5">Villes d'origine des équipes</h5>
+                <p class="map-title-p">Villes d'origine des équipes</p>
                 {# Add leaflet map #}
                 <div id="mapId">
                 </div>
