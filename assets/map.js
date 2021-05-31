@@ -9,11 +9,12 @@ let iconPicture = L.icon ({
  function initMap() {
     var map = L.map('mapId').setView([48.833, 2.333], 10); 
 
-    var osmLayer = L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', { 
-        attribution: '© OpenStreetMap contributors',
+    var osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
         minZoom: 2,
-        maxZoom: 13
+        maxZoom: 13,
+        attribution: '&copy; OpenStreetMap France | &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     });
+
     map.addLayer(osmLayer);
 
     //Checkbox for filters by years
