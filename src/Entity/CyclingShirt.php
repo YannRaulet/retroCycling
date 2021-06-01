@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use DateTime;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=CyclingShirtRepository::class)
@@ -20,16 +21,19 @@ class CyclingShirt
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("cyclingShirt:read")
      */
     private int $id;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("cyclingShirt:read")
      */
     private ?string $pictureFront = "";
 
     /**
      * @Vich\UploadableField(mapping="cycling_shirt_picture_front", fileNameProperty="pictureFront")
+     * @Groups("cyclingShirt:read")
      */
     private ?File $shirtPictureFront = null;
 
@@ -45,12 +49,14 @@ class CyclingShirt
 
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="datetime")
+     * @Groups("cyclingShirt:read")
      */
     private DateTime $updatedAt;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("cyclingShirt:read")
      */
     private string $name;
 
@@ -76,6 +82,7 @@ class CyclingShirt
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("cyclingShirt:read")
      */
     private string $years;
 
@@ -92,16 +99,19 @@ class CyclingShirt
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("cyclingShirt:read")
      */
     private ?string $city;
 
     /**
      * @ORM\Column(type="float", nullable=true)
+     * @Groups("cyclingShirt:read")
      */
     private ?float $latitude;
 
     /**
      * @ORM\Column(type="float", nullable=true)
+     * @Groups("cyclingShirt:read")
      */
     private ?float $longitude;
 
