@@ -59,7 +59,7 @@ let iconPicture = L.icon ({
             })
         }
     });
-
+/*
     var markersGroup50_60 = L.markerClusterGroup({
         //Added options from the github documentation
         disableClusteringAtZoom: 13,
@@ -124,6 +124,47 @@ let iconPicture = L.icon ({
         }
     });
 
+    // 'checkboxAll' checked at the begining
+    document.getElementById('checkboxAll').checked = true;
+    if (cyclingShirts.checked === true) {
+        // get the method map form the apiController
+        fetch("/api/map")
+        .then(response => {
+            return response.json()
+        })
+        .then(result => {
+            result.forEach( element => {
+                //Get the coordinates from the Promise to add them to the LayerGroup
+                layerGroup = new L.marker([element.latitude, element.longitude], {icon: iconPicture})
+                    .bindPopup(function (layer) {
+                        if (element.years == 'Années 50-60') {
+                            return "<span>" + element.name + "</span>" + "<br>" +  "<div class='img-hover-zoom'>" + "<a href=" + "/collection50_60/" + element.id + ">" + "<img class='picturePopup' src=/assets/images/uploads/" + element.pictureFront + ">" + "</a>" + "</div>" +
+                            "<br>" + element.city +"<br>" + "<a href=" + "/collection50_60" + ">" + element.years + "</a>"
+                        }
+                        else if (element.years == 'Années 70') {
+                            return "<span>" + element.name + "</span>" + "<br>" +  "<div class='img-hover-zoom'>" + "<a href=" + "/collection70/" + element.id + ">" + "<img class='picturePopup' src=/assets/images/uploads/" + element.pictureFront + ">" + "</a>" + "</div>" +
+                            "<br>" + element.city +"<br>" + "<a href=" + "/collection70" + ">" + element.years + "</a>"
+                        }
+                        else if (element.years == 'Années 80') {
+                            return "<span>" + element.name + "</span>" + "<br>" +  "<div class='img-hover-zoom'>" + "<a href=" + "/collection80/" + element.id + ">" + "<img class='picturePopup' src=/assets/images/uploads/" + element.pictureFront + ">" + "</a>" + "</div>" +
+                            "<br>" + element.city +"<br>" + "<a href=" + "/collection80" + ">" + element.years + "</a>"
+                        }
+                        else if (element.years == 'Années 90') {
+                            return "<span>" + element.name + "</span>" + "<br>" +  "<div class='img-hover-zoom'>" + "<a href=" + "/collection90/" + element.id + ">" + "<img class='picturePopup' src=/assets/images/uploads/" + element.pictureFront + ">" + "</a>" + "</div>" +
+                            "<br>" + element.city +"<br>" + "<a href=" + "/collection90" + ">" + element.years + "</a>"
+                        }
+                }, {className: 'pop-up-leaflet', direction: 'top'},
+                )
+                markersGroup.addLayer(layerGroup);
+            });
+            //Adds all markers to the clusterGroup
+            map.addLayer(markersGroup);
+        })
+        .catch(() => console.error('error'));
+    }
+*/
+    //-----------------------------------------------------------------------------------------------------------
+
     //Function for add or remove the markers on the map
     function filterAll() {
         //If the checkbox is checked then we add the markers on the map
@@ -186,7 +227,7 @@ let iconPicture = L.icon ({
     document.getElementById('checkboxAll').addEventListener('click', filterAll, false);
 
     //-----------------------------------------------------------------------------------------------------------
-
+/*
     function filter50_60() {
         if (cyclingShirts50_60.checked === true) {
             document.getElementById('checkboxAll').checked = false;
@@ -360,6 +401,7 @@ let iconPicture = L.icon ({
         }
     }
     document.getElementById('checkbox90').addEventListener('click', filter90, false);
+*/
 }
 
 window.onload = function(){
