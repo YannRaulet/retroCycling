@@ -2,11 +2,14 @@
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <title>Nouvelle demande d'informations</title>
+        <title>Deamande d'inscription à retro-cycling</title>
     </head>
     <body>
-        <h1>Activation de votre compte</h1>
-            <p>Vous avez crée un compte sur retro-cycling.fr, veuillez cliquer sur le lien ci-dessous pour l'activer</p>
-            <p><a href="{{ absolute_url(path('activation', {'token': token })) }}">Activer mon compte</a></p>
+        <h1>Activation de votre compte sur retro-cycling</h1>
+            <p>Un dernier coup de reins avant la ligne d'arrivée !!</p>
+            <p>Vous venez de crée votre compte, veuillez cliquer sur le lien ci-dessous pour l'activer</p>
+            <p><a style="font-size:20px" href="{{ absolute_url(path('activation', {'token': token })) }}">Activer mon compte</a></p>
+            <p>Rejoignez nous sur le podium, l'équipe retro-cycling.</p>
+            <div><img src="https://retro-cycling.fr/assets/images/logo-retro.png" alt="Logo retro-cycling" width="120" height="auto"></div>
     </body>
 </html>
