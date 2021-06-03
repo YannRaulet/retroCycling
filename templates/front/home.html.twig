@@ -13,16 +13,34 @@
             <div class="background-picture-home"></div>
             <div class="home-presentation-texts">
                 <h2 class="home-presentation-text1">RETRO-CYCLING</h2>
-                <h3 class="home-presentation-text2"> Bienvenue sur le blog d'un collectionneur grand amateur de cyclisme. Vous retrouverez une galerie  de maillots datant des années 1950 à 1990,
-                des informations sur chaque maillot ainsi que des articles présentant des anecdotes sur le cyclisme d'antan</h3>
+                <h3 class="home-presentation-text2"> Bienvenue sur le blog d'un collectionneur grand amateur de cyclisme. Vous retrouverez des photos d'expositions, une galerie de maillots datant des années 1950 à 1990,
+                des informations sur chaque maillot ainsi que des articles présentant des anecdotes sur le cyclisme d'antan.</h3>
             </div>
         </article>
 
         <article>
-        <h4 class="collection-title"><span>Collection de maillots - par catégories</span></h4>
+            <h4 class="exhibition-title"><span>Les dernières expositions</span></h4>
+            <p class="exhibition-title-p">Juin 2021 - Josselin</p>
+            <div class="exhibition-pictures">
+                <img class="exhibition-picture" src="/assets/images/exposition1.jpg" alt="Photo exposition">
+                <img class="exhibition-picture" src="/assets/images/exposition2.jpg" alt="Photo exposition">
+                <img class="exhibition-picture" src="/assets/images/exposition3.jpg" alt="Photo exposition">
+                <img class="exhibition-picture" src="/assets/images/exposition4.jpg" alt="Photo exposition">
+            </div>
+            <p class="exhibition-title-p">Novembre 2019 - Aucaleuc</p>
+            <div class="exhibition-pictures">
+                <img class="exhibition-picture" src="/assets/images/exposition5.jpg" alt="Photo exposition">
+                <img class="exhibition-picture" src="/assets/images/exposition6.jpg" alt="Photo exposition">
+                <img class="exhibition-picture" src="/assets/images/exposition7.jpg" alt="Photo exposition">
+                <img class="exhibition-picture" src="/assets/images/exposition8.jpg" alt="Photo exposition">
+            </div>
+        </article>
+
+        <article>
+        <h4 class="collection-title"><span>La collection de maillots - par catégories</span></h4>
             <div class="accordions-pictures">
                 <div class="accordions-pictures1">
-                    <h5 class="collection-title-h5"><a href="{{path('front_collection50_60')}}" title="Maillot collection années 50-60">Années 50-60</a></h5>
+                    <p class="collection-title-p"><a href="{{path('front_collection50_60')}}" title="Maillot collection années 50-60">Années 50-60</a></p>
                     <div class="accordions-section1">
                     {% for cyclingShirt in cyclingShirts50_60 %}
                         {% if loop.index == 1 %}
@@ -36,7 +54,7 @@
                     </div>
                 </div>
                 <div class="accordions-pictures2">
-                    <h5 class="collection-title-h5"><a href="{{path('front_collection70')}}" title="Maillot collection années 70">Années 70</a></h5>
+                    <p class="collection-title-p"><a href="{{path('front_collection70')}}" title="Maillot collection années 70">Années 70</a></p>
                     <div class="accordions-section2">
                     {% for cyclingShirt in cyclingShirts70 %}
                         {% if loop.index == 1 %}
@@ -54,7 +72,7 @@
 
         <article class="accordions-pictures">
             <div class="accordions-pictures1">
-                <h5 class="collection-title-h5"><a href="{{path('front_collection80')}}" title="Maillot collection années 80">Années 80</a></h5>
+                <p class="collection-title-p"><a href="{{path('front_collection80')}}" title="Maillot collection années 80">Années 80</a></p>
                 <div class="accordions-section1">
                 {% for cyclingShirt in cyclingShirts80 %}
                     {% if loop.index == 1 %}
@@ -68,7 +86,7 @@
                 </div>
             </div>
             <div class="accordions-pictures2">
-                <h5 class="collection-title-h5"><a href="{{path('front_collection90')}}" title="Maillot collection années 90">Années 90</a></h5>
+                <p class="collection-title-p"><a href="{{path('front_collection90')}}" title="Maillot collection années 90">Années 90</a></p>
                 <div class="accordions-section2">
                 {% for cyclingShirt in cyclingShirts90 %}
                     {% if loop.index == 1 %}
@@ -85,7 +103,7 @@
 
         <a href="#ancre"></a>
         <article class="home-articles">
-            <h5 id ="a-la-une" class="home-article-title ancre"><span>Derniers articles publiés</span></h5>
+            <h4 id ="a-la-une" class="home-article-title ancre"><span>Derniers articles publiés</span></h4>
             <aside class="box-article">
                 {% for article in articles %}
                     <div class="image-article">
@@ -101,9 +119,8 @@
         </article>
 
         <article>
-            <h5 class="map-title"><span>Une collection de maillots francais et européens</span></h5>
-            <p class="map-title-p">Villes d'origine des équipes</p>
-            {# Add leaflet map #}
+            <h4 class="map-title"><span>Des équipes venants de toute la france</span></h4>
+             {# Add leaflet map #}
             <div id="mapId">
             </div>
         </article>
@@ -116,16 +133,34 @@
                 <div class="background-picture-home"></div>
                 <div class="home-presentation-texts">
                     <h2 class="home-presentation-text1">RETRO-CYCLING</h2>
-                    <h3 class="home-presentation-text2"> Bienvenue sur le blog d'un collectionneur grand amateur de cyclisme. Vous retrouverez une galerie  de maillots datant des années 1950 à 1990,
-                    des informations sur chaque maillot ainsi que des articles présentant des anecdotes sur le cyclisme d'antan</h3>
+                    <h3 class="home-presentation-text2"> Bienvenue sur le blog d'un collectionneur grand amateur de cyclisme. Vous retrouverez des photos d'expositions, une galerie de maillots datant des années 1950 à 1990,
+                    des informations sur chaque maillot ainsi que des articles présentant des anecdotes sur le cyclisme d'antan.</h3>
                 </div>
             </article>
 
             <article>
-            <h4 class="collection-title"><span>Collection de maillots - par catégories</span></h4>
+                <h4 class="exhibition-title"><span>Les dernières expositions</span></h4>
+                <p class="exhibition-title-p">Juin 2021 - Josselin</p>
+                <div class="exhibition-pictures">
+                    <img class="exhibition-picture" src="/assets/images/exposition1.jpg" alt="Photo exposition">
+                    <img class="exhibition-picture" src="/assets/images/exposition2.jpg" alt="Photo exposition">
+                    <img class="exhibition-picture" src="/assets/images/exposition3.jpg" alt="Photo exposition">
+                    <img class="exhibition-picture" src="/assets/images/exposition4.jpg" alt="Photo exposition">
+                </div>
+                <p class="exhibition-title-p">Novembre 2019 - Aucaleuc</p>
+                <div class="exhibition-pictures">
+                    <img class="exhibition-picture" src="/assets/images/exposition5.jpg" alt="Photo exposition">
+                    <img class="exhibition-picture" src="/assets/images/exposition6.jpg" alt="Photo exposition">
+                    <img class="exhibition-picture" src="/assets/images/exposition7.jpg" alt="Photo exposition">
+                    <img class="exhibition-picture" src="/assets/images/exposition8.jpg" alt="Photo exposition">
+                </div>
+            </article>
+
+            <article>
+            <h4 class="collection-title"><span>La collection de maillots - par catégories</span></h4>
                 <div class="accordions-pictures">
                     <div class="accordions-pictures1">
-                        <h5 class="collection-title-h5"><a href="{{path('front_collection50_60')}}" title="Maillot collection années 50-60">Années 50-60</a></h5>
+                        <p class="collection-title-p"><a href="{{path('front_collection50_60')}}" title="Maillot collection années 50-60">Années 50-60</a></p>
                         <div class="accordions-section1">
                         {% for cyclingShirt in cyclingShirts50_60 %}
                             {% if loop.index == 1 %}
@@ -139,7 +174,7 @@
                         </div>
                     </div>
                     <div class="accordions-pictures2">
-                        <h5 class="collection-title-h5"><a href="{{path('front_collection70')}}" title="Maillot collection années 70">Années 70</a></h5>
+                        <p class="collection-title-p"><a href="{{path('front_collection70')}}" title="Maillot collection années 70">Années 70</a></p>
                         <div class="accordions-section2">
                         {% for cyclingShirt in cyclingShirts70 %}
                             {% if loop.index == 1 %}
@@ -157,7 +192,7 @@
 
             <article class="accordions-pictures">
                 <div class="accordions-pictures1">
-                    <h5 class="collection-title-h5"><a href="{{path('front_collection80')}}" title="Maillot collection années 80">Années 80</a></h5>
+                    <p class="collection-title-p"><a href="{{path('front_collection80')}}" title="Maillot collection années 80">Années 80</a></p>
                     <div class="accordions-section1">
                     {% for cyclingShirt in cyclingShirts80 %}
                         {% if loop.index == 1 %}
@@ -171,7 +206,7 @@
                     </div>
                 </div>
                 <div class="accordions-pictures2">
-                    <h5 class="collection-title-h5"><a href="{{path('front_collection90')}}" title="Maillot collection années 90">Années 90</a></h5>
+                    <p class="collection-title-p"><a href="{{path('front_collection90')}}" title="Maillot collection années 90">Années 90</a></p>
                     <div class="accordions-section2">
                     {% for cyclingShirt in cyclingShirts90 %}
                         {% if loop.index == 1 %}
@@ -188,7 +223,7 @@
 
             <a href="#ancre"></a>
             <article class="home-articles">
-                <h5 id ="a-la-une" class="home-article-title ancre"><span>Derniers articles publiés</span></h5>
+                <h4 id ="a-la-une" class="home-article-title ancre"><span>Derniers articles publiés</span></h4>
                 <aside class="box-article">
                     {% for article in articles %}
                         <div class="image-article">
@@ -204,8 +239,7 @@
             </article>
 
             <article>
-                <h5 class="map-title"><span>Une collection de maillots francais et européens</span></h5>
-                <p class="map-title-p">Villes d'origine des équipes</p>
+                <h4 class="map-title"><span>Des équipes venants de toute la france</span></h4>
                 {# Add leaflet map #}
                 <div id="mapId">
                 </div>
