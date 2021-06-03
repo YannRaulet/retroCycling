@@ -30,7 +30,6 @@ class ApiController extends AbstractController
     * Collect cycling shirts 50s and 60s
     * @return Response
     */
-    
     public function filter5060(CyclingShirtRepository $shirtsRepository): Response
     {
         $filter5060 = $shirtsRepository->findByYears('Années 50-60');
