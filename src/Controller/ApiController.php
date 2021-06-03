@@ -21,6 +21,7 @@ class ApiController extends AbstractController
     public function map(CyclingShirtRepository $shirtsRepository): Response
     {
         $cyclingShirt = $shirtsRepository->findAll();
+        // Groups are for the serialization
         return $this->json($cyclingShirt, 200, [], ['groups' => 'cyclingShirt:read']);
     }
 
@@ -29,6 +30,7 @@ class ApiController extends AbstractController
     * Collect cycling shirts 50s and 60s
     * @return Response
     */
+    
     public function filter5060(CyclingShirtRepository $shirtsRepository): Response
     {
         $filter5060 = $shirtsRepository->findByYears('Années 50-60');
