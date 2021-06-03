@@ -1,4 +1,3 @@
-
 {# This is the base that all other views will extend #}
 
 <!DOCTYPE html>
@@ -6,31 +5,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <meta name="google-site-verification" content="Z4E0iywnaUCQYDd5whDL0jUpciKyUGntqoMOs_kblN0" />
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5H5J84NTT3"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-5H5J84NTT3');
-    </script>
-    <!-- END- Google Analytics -->
     <meta name="description" content="Retro-Cycling.com est un site communautaire visant les passioné(e)s de cyclisme avant tout.
-    Retro-Cycling se concentre sur l'histoire du cyclisme, les maillots, les coureurs, les grands tours etc...">
-    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+        Retro-Cycling se concentre sur l'histoire du cyclisme, les maillots, les coureurs, les grands tours etc...">
+    <meta name="google-site-verification" content="Z4E0iywnaUCQYDd5whDL0jUpciKyUGntqoMOs_kblN0" />
+     <script type="text/javascript" src="https://tarteaucitron.io/load.js"></script>
+     <script>
+        tarteaucitron.init({ "privacyUrl": "{{path('front_legal_notice')}}" , /* URL de la politique de confidentialité */ 
+
+    	  "hashtag": "#tarteaucitron", /* Ouvrir le panneau avec ce hashtag */ 
+    	  "cookieName": "tarteaucitron", /* Nom du cookie */ 
+    
+    	  "orientation": "middle", /* Position de la bannière (haut - bas) */ 
+       
+          "groupServices": false, /* Regrouper les services par catégorie */ 
+                           
+    	  "showAlertSmall": false,/* Afficher le petit bandeau en bas à droite */ 
+    	  "cookieslist": true,/* Afficher la liste des cookies */ 
+                           
+          "closePopup": true, /* Afficher un X de fermeture sur la bannière */ 
+
+          "showIcon": false, /* Afficher l'icône cookie pour gérer les cookies */ 
+          //"iconSrc": "", /* Optionnel : URL ou image encodée en base64 */ 
+          "iconPosition": "BottomRight", /* BottomRight, BottomLeft, TopRight et TopLeft */ 
+
+    	  "adblocker": false, /* Afficher un avertissement si un adblocker est détecté */ 
+                           
+          "DenyAllCta " : true, /* Affiche le bouton Refuser tout */ 
+          "AcceptAllCta" : true,/* Afficher le bouton accepter tout lorsque highPrivacy on */ 
+          "highPrivacy": true,/* FORTEMENT RECOMMANDÉ Désactiver le consentement automatique */ 
+                           
+    	  "handleBrowserDNTRequest": false, /* Si Do Not Track == 1, tout interdire */ 
+
+    	  "removeCredit": false, /* Supprimer le lien de crédit */ 
+    	  "moreInfoLink": true, /* Lien Afficher plus d'infos */ 
+
+          "useExternalCss": false, /* Si false, le fichier tarteaucitron.css sera chargé */ 
+          "useExternalJs": false, /* Si false, le fichier tarteaucitron.js sera chargé */ 
+
+    	  // "cookieDomain": ".my-multisite-domaine.fr", /* Cookie partagé pour multisite */ 
+                          
+          "readmoreLink": "",/* Changer le lien readmore par défaut */ 
+
+          "mandatory": true,/* Afficher un message sur les cookies obligatoires */ 
+        });
+
+        tarteaucitron.user.gtagUa = 'G-5H5J84NTT3';
+        tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */ };
+        (tarteaucitron.job = tarteaucitron.job || []).push('gtag');
+    </script>
+   
+   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+    <link href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" rel="stylesheet">
     <link rel="canonical" href="https://www.retro-cycling.fr" />
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
     <link rel="icon" type="image/png" href="{{ asset('assets/images/logo-retro.png') }}" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rokkitt:wght@600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-
-   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-   crossorigin=""/>
-
+    
     <title>{% block title %}Retro Cycling{% endblock %}</title>
     {{ encore_entry_link_tags('app') }}
 </head>

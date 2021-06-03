@@ -21,6 +21,7 @@ class ApiController extends AbstractController
     public function map(CyclingShirtRepository $shirtsRepository): Response
     {
         $cyclingShirt = $shirtsRepository->findAll();
+        // Groups are for the serialization
         return $this->json($cyclingShirt, 200, [], ['groups' => 'cyclingShirt:read']);
     }
 

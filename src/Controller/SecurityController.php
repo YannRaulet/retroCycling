@@ -103,7 +103,7 @@ class SecurityController extends AbstractController
             // 4) save the User!
             $manager->persist($user);
             $manager->flush();
-            $this->addFlash('message', 'Un email vous a éte envoyé');
+            $this->addFlash('message', 'Un message d\'activation vous a éte envoyé sur votre boîte mail');
 
             // Create the account activation message
             $message = (new Swift_Message('Activation de votre compte'))
