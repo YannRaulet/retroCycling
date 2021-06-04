@@ -123,7 +123,7 @@ let iconPicture = L.icon ({
             })
         }
     });
-
+/*
     // 'checkboxAll' checked at the begining
     document.getElementById('checkboxAll').checked = true;
     if (cyclingShirts.checked === true) {
@@ -162,7 +162,7 @@ let iconPicture = L.icon ({
         })
         .catch(() => console.error('error'));
     }
-
+*/
     //-----------------------------------------------------------------------------------------------------------
 
     //Function for add or remove the markers on the map
