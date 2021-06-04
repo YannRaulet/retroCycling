@@ -123,7 +123,7 @@ let iconPicture = L.icon ({
             })
         }
     });
-/*
+
     // 'checkboxAll' checked at the begining
     document.getElementById('checkboxAll').checked = true;
     if (cyclingShirts.checked === true) {
@@ -162,7 +162,7 @@ let iconPicture = L.icon ({
         })
         .catch(() => console.error('error'));
     }
-*/
+
     //-----------------------------------------------------------------------------------------------------------
 
     //Function for add or remove the markers on the map
@@ -233,7 +233,6 @@ let iconPicture = L.icon ({
 
     function filter50_60() {
         if (cyclingShirts50_60.checked === true) {
-            /*
              document.getElementById('checkboxAll').checked = false;
             fetch("/api/map")
             .then(response => {
@@ -243,7 +242,7 @@ let iconPicture = L.icon ({
                 markersGroup.clearLayers();
             })
             .catch(() => console.error('error'));
-            */
+
             fetch("/api/filter50_60")
             .then(response => { 
                 return response.json()
@@ -278,7 +277,6 @@ let iconPicture = L.icon ({
 
     function filter70() {
         if (cyclingShirts70.checked === true) {
-            /*
             document.getElementById('checkboxAll').checked = false;
             fetch("/api/map")
             .then(response => {
@@ -288,7 +286,7 @@ let iconPicture = L.icon ({
                 markersGroup.clearLayers();
             })
             .catch(() => console.error('error'));
-            */
+
             fetch("/api/filter70")
             .then(response => { 
                 return response.json()
@@ -323,7 +321,6 @@ let iconPicture = L.icon ({
 
     function filter80() {
         if (cyclingShirts80.checked === true) {
-            /*
            document.getElementById('checkboxAll').checked = false;
             fetch("/api/map")
             .then(response => {
@@ -333,7 +330,7 @@ let iconPicture = L.icon ({
                 markersGroup.clearLayers();
             })
             .catch(() => console.error('error'));
-            */
+
             fetch("/api/filter80")
             .then(response => { 
                 return response.json()
@@ -368,7 +365,7 @@ let iconPicture = L.icon ({
 
     function filter90() {
         if (cyclingShirts90.checked === true) {
-            /*
+
            document.getElementById('checkboxAll').checked = false;
             fetch("/api/map")
             .then(response => {
@@ -378,7 +375,7 @@ let iconPicture = L.icon ({
                 markersGroup.clearLayers();
             })
             .catch(() => console.error('error'));
-            */
+
             fetch("/api/filter90")
             .then(response => { 
                 return response.json()
