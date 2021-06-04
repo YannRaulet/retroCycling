@@ -9,7 +9,7 @@
 <div class="background-picture-article" style="background-image: url('/assets/images/uploads/{{ article.picture }}')"></div>
 {% if background_pictures == false %}       
     <article class="article-box">
-        <h1 class="collection-title"><span>{{ article.name }}</span></h1>
+        <h1 class="article-title"><span>{{ article.name }}</span></h1>
             {% for articleContent in articleContents %}
                 <aside class="article-content">
                     <h2 class="article-title-h2">{{ articleContent.title }}</h2>
@@ -126,13 +126,13 @@
     {% for background_picture in background_pictures %}
         <section class="background" style="background-image:url( /assets/images/uploads/{{ background_picture.picture }}">
             <article class="article-box">
-                <h1 class="collection-title"><span>{{ article.name }}</span></h1>
-                {% for articleContent in articleContents %}
-                    <aside class="article-content">
-                        <h2 class="article-title-h2">{{ articleContent.title }}</h2>
-                        <p class="article-p">{{ articleContent.content }}</p>
-                    </aside>
-                {% endfor %}
+                <h1 class="article-title"><span>{{ article.name }}</span></h1>
+                    {% for articleContent in articleContents %}
+                        <aside class="article-content">
+                            <h2 class="article-title-h2">{{ articleContent.title }}</h2>
+                            <p class="article-p">{{ articleContent.content }}</p>
+                        </aside>
+                    {% endfor %}
                 <h3 class="article-title-h3">Partager</h3>
                 <div class="container-social">
                     <button class="btn btn-share share_twitter" data-url="{{ absolute_url(path('front_article', { id: article.id })) }}">

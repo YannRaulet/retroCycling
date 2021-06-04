@@ -1,6 +1,6 @@
 /* Mobile version */
 
-.article-title {
+.articles-title {
     margin-bottom: 5%;
     text-align: center;
     color: var(--main-background-color);
@@ -200,13 +200,13 @@
 
 
 
-    .article-title span {
+    .articles-title span {
         font-size: 5rem;
         display: inline-block;
         position: relative;
     }
 
-    .article-title span::before {
+    .articles-title span::before {
         content: '';
         position: absolute;
         width: 100%;
@@ -219,7 +219,7 @@
         transition: transform 0.4s ease-in-out;
     }
 
-    .article-title span:hover::before {
+    .articles-title span:hover::before {
         transform: scaleX(1);
         transform-origin: bottom left;
     }
@@ -231,7 +231,7 @@
 
 /* Large PC */
 @media (min-width: 1400px) {
-    .article-title {
+    .articles-title {
         margin-bottom: 1%;
     }
 
