@@ -8,7 +8,7 @@
 
 {% if background_pictures == false %}
     <section>
-        <h1 class="article-title"><span>Les articles</span></h1>
+        <h1 class="articles-title"><span>Les articles</span></h1>
         <div class="filterButtons">
             <button type="button" id="allArticles">Tous les articles</button>
             <button type="button" id="switchCyclist">Coureurs d'antan</button>
@@ -134,7 +134,7 @@
 
     {% for background_picture in background_pictures %}
         <section class="background" style="background-image:url( /assets/images/uploads/{{ background_picture.picture }}">
-            <h1 class="article-title"><span>Les articles</span></h1>
+            <h1 class="articles-title"><span>Les articles</span></h1>
 
             <div class="filterButtons">
                 <button type="button" id="allArticles">Tous les articles</button>

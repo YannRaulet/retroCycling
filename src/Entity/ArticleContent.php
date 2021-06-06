@@ -18,9 +18,9 @@ class ArticleContent
     private int $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private string $title;
+    private ?string $title;
 
     /**
      * @ORM\Column(type="text")
@@ -43,7 +43,7 @@ class ArticleContent
         return $this->title;
     }
 
-    public function setTitle(string $title): self
+    public function setTitle(?string $title): self
     {
         $this->title = $title;
 
