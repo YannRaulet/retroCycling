@@ -22,17 +22,17 @@
             <h4 class="exhibition-title"><span>Les dernières expositions</span></h4>
             <p class="exhibition-title-p">Juin 2021 - Josselin</p>
             <div class="exhibition-pictures">
-                <img class="exhibition-picture" src="/assets/images/exposition1.jpg" alt="Photo exposition">
-                <img class="exhibition-picture" src="/assets/images/exposition2.jpg" alt="Photo exposition">
-                <img class="exhibition-picture" src="/assets/images/exposition3.jpg" alt="Photo exposition">
-                <img class="exhibition-picture" src="/assets/images/exposition4.jpg" alt="Photo exposition">
+                <img data-src="/assets/images/exposition1.jpg" class="lazy exhibition-picture" alt="Photo exposition">
+                <img data-src="/assets/images/exposition2.jpg" class="lazy exhibition-picture" alt="Photo exposition">
+                <img data-src="/assets/images/exposition3.jpg" class="lazy exhibition-picture" alt="Photo exposition">
+                <img data-src="/assets/images/exposition4.jpg" class="lazy exhibition-picture" alt="Photo exposition">
             </div>
             <p class="exhibition-title-p">Novembre 2019 - Aucaleuc</p>
             <div class="exhibition-pictures">
-                <img class="exhibition-picture" src="/assets/images/exposition5.jpg" alt="Photo exposition">
-                <img class="exhibition-picture" src="/assets/images/exposition6.jpg" alt="Photo exposition">
-                <img class="exhibition-picture" src="/assets/images/exposition7.jpg" alt="Photo exposition">
-                <img class="exhibition-picture" src="/assets/images/exposition8.jpg" alt="Photo exposition">
+                <img data-src="/assets/images/exposition5.jpg" class="lazy exhibition-picture" alt="Photo exposition">
+                <img data-src="/assets/images/exposition6.jpg" class="lazy exhibition-picture" alt="Photo exposition">
+                <img data-src="/assets/images/exposition7.jpg" class="lazy exhibition-picture" alt="Photo exposition">
+                <img data-src="/assets/images/exposition8.jpg" class="lazy exhibition-picture" alt="Photo exposition">
             </div>
         </article>
 
@@ -142,17 +142,17 @@
                 <h4 class="exhibition-title"><span>Les dernières expositions</span></h4>
                 <p class="exhibition-title-p">Juin 2021 - Josselin</p>
                 <div class="exhibition-pictures">
-                    <img class="exhibition-picture" src="/assets/images/exposition1.jpg" alt="Photo exposition">
-                    <img class="exhibition-picture" src="/assets/images/exposition2.jpg" alt="Photo exposition">
-                    <img class="exhibition-picture" src="/assets/images/exposition3.jpg" alt="Photo exposition">
-                    <img class="exhibition-picture" src="/assets/images/exposition4.jpg" alt="Photo exposition">
+                    <img data-src="/assets/images/exposition1.jpg" class="lazy exhibition-picture" alt="Photo exposition">
+                    <img data-src="/assets/images/exposition2.jpg" class="lazy exhibition-picture" alt="Photo exposition">
+                    <img data-src="/assets/images/exposition3.jpg" class="lazy exhibition-picture" alt="Photo exposition">
+                    <img data-src="/assets/images/exposition4.jpg" class="lazy exhibition-picture" alt="Photo exposition">
                 </div>
                 <p class="exhibition-title-p">Novembre 2019 - Aucaleuc</p>
                 <div class="exhibition-pictures">
-                    <img class="exhibition-picture" src="/assets/images/exposition5.jpg" alt="Photo exposition">
-                    <img class="exhibition-picture" src="/assets/images/exposition6.jpg" alt="Photo exposition">
-                    <img class="exhibition-picture" src="/assets/images/exposition7.jpg" alt="Photo exposition">
-                    <img class="exhibition-picture" src="/assets/images/exposition8.jpg" alt="Photo exposition">
+                    <img data-src="/assets/images/exposition5.jpg" class="lazy exhibition-picture" alt="Photo exposition">
+                    <img data-src="/assets/images/exposition6.jpg" class="lazy exhibition-picture" alt="Photo exposition">
+                    <img data-src="/assets/images/exposition7.jpg" class="lazy exhibition-picture" alt="Photo exposition">
+                    <img data-src="/assets/images/exposition8.jpg" class="lazy exhibition-picture" alt="Photo exposition">
                 </div>
             </article>
 
@@ -256,6 +256,7 @@
         crossorigin="">
         </script>
         <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+
         {{ encore_entry_script_tags('map') }}
     {% endblock %}
 {% endblock %}
