@@ -22,33 +22,33 @@
             <h4 class="exhibition-title"><span>Les dernières expositions</span></h4>
             <p class="exhibition-title-p">Juin 2021 - Josselin</p>
             <div class="exhibition-pictures">
-                <img class="exhibition-picture" src="/assets/images/exposition1.jpg" alt="Photo exposition">
-                <img class="exhibition-picture" src="/assets/images/exposition2.jpg" alt="Photo exposition">
-                <img class="exhibition-picture" src="/assets/images/exposition3.jpg" alt="Photo exposition">
-                <img class="exhibition-picture" src="/assets/images/exposition4.jpg" alt="Photo exposition">
+                <img data-src="/assets/images/exposition1.jpg" class="lazy exhibition-picture" alt="Photo exposition">
+                <img data-src="/assets/images/exposition2.jpg" class="lazy exhibition-picture" alt="Photo exposition">
+                <img data-src="/assets/images/exposition3.jpg" class="lazy exhibition-picture" alt="Photo exposition">
+                <img data-src="/assets/images/exposition4.jpg" class="lazy exhibition-picture" alt="Photo exposition">
             </div>
             <p class="exhibition-title-p">Novembre 2019 - Aucaleuc</p>
             <div class="exhibition-pictures">
-                <img class="exhibition-picture" src="/assets/images/exposition5.jpg" alt="Photo exposition">
-                <img class="exhibition-picture" src="/assets/images/exposition6.jpg" alt="Photo exposition">
-                <img class="exhibition-picture" src="/assets/images/exposition7.jpg" alt="Photo exposition">
-                <img class="exhibition-picture" src="/assets/images/exposition8.jpg" alt="Photo exposition">
+                <img data-src="/assets/images/exposition5.jpg" class="lazy exhibition-picture" alt="Photo exposition">
+                <img data-src="/assets/images/exposition6.jpg" class="lazy exhibition-picture" alt="Photo exposition">
+                <img data-src="/assets/images/exposition7.jpg" class="lazy exhibition-picture" alt="Photo exposition">
+                <img data-src="/assets/images/exposition8.jpg" class="lazy exhibition-picture" alt="Photo exposition">
             </div>
         </article>
 
         <article>
-        <h4 class="collection-title"><span>La collection de maillots - par catégories</span></h4>
+            <h4 class="collection-title"><span>La collection de maillots - par catégories</span></h4>
             <div class="accordions-pictures">
                 <div class="accordions-pictures1">
                     <p class="collection-title-p"><a href="{{path('front_collection50_60')}}" title="Maillot collection années 50-60">Années 50-60</a></p>
                     <div class="accordions-section1">
                     {% for cyclingShirt in cyclingShirts50_60 %}
                         {% if loop.index == 1 %}
-                            <a class="accordion-a" href="{{ path('front_shirt_cycling50_60', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="img img1" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
+                            <a class="accordion-a" href="{{ path('front_shirt_cycling50_60', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="lazy img img1" data-src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
                         {% elseif loop.index == 2 %}
-                            <a class="accordion-a" href="{{ path('front_shirt_cycling50_60', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="img img2" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
+                            <a class="accordion-a" href="{{ path('front_shirt_cycling50_60', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="lazy img img2" data-src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
                         {% elseif loop.index == 3 %}
-                            <a class="accordion-a" href="{{ path('front_shirt_cycling50_60', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="img img3" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
+                            <a class="accordion-a" href="{{ path('front_shirt_cycling50_60', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="lazy img img3" data-src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
                         {% endif %}
                     {% endfor %}
                     </div>
@@ -58,11 +58,11 @@
                     <div class="accordions-section2">
                     {% for cyclingShirt in cyclingShirts70 %}
                         {% if loop.index == 1 %}
-                            <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="img img4" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
+                            <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="lazy img img4" data-src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
                         {% elseif loop.index == 2 %}
-                            <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="img img5" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
+                            <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="lazy img img5" data-src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
                         {% elseif loop.index == 3 %}
-                            <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="img img6" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
+                            <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="lazy img img6" data-src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
                         {% endif %}
                     {% endfor %}
                     </div>
@@ -76,11 +76,11 @@
                 <div class="accordions-section1">
                 {% for cyclingShirt in cyclingShirts80 %}
                     {% if loop.index == 1 %}
-                        <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="img img1" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
+                        <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="lazy img img1" data-src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
                     {% elseif loop.index == 2 %}
-                        <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="img img2" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
+                        <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="lazy img img2" data-src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
                     {% elseif loop.index == 3 %}
-                        <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="img img3" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
+                        <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="lazy img img3" data-src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
                     {% endif %}
                 {% endfor %}
                 </div>
@@ -90,11 +90,11 @@
                 <div class="accordions-section2">
                 {% for cyclingShirt in cyclingShirts90 %}
                     {% if loop.index == 1 %}
-                        <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="img img4" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
+                        <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="lazy img img4" data-src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
                     {% elseif loop.index == 2 %}
-                        <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="img img5" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
+                        <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="lazy img img5" data-src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
                     {% elseif loop.index == 3 %}
-                        <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="img img6" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
+                        <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="lazy img img6" data-src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
                     {% endif %}
                 {% endfor %}
                 </div>
@@ -142,33 +142,33 @@
                 <h4 class="exhibition-title"><span>Les dernières expositions</span></h4>
                 <p class="exhibition-title-p">Juin 2021 - Josselin</p>
                 <div class="exhibition-pictures">
-                    <img class="exhibition-picture" src="/assets/images/exposition1.jpg" alt="Photo exposition">
-                    <img class="exhibition-picture" src="/assets/images/exposition2.jpg" alt="Photo exposition">
-                    <img class="exhibition-picture" src="/assets/images/exposition3.jpg" alt="Photo exposition">
-                    <img class="exhibition-picture" src="/assets/images/exposition4.jpg" alt="Photo exposition">
+                    <img data-src="/assets/images/exposition1.jpg" class="lazy exhibition-picture" alt="Photo exposition">
+                    <img data-src="/assets/images/exposition2.jpg" class="lazy exhibition-picture" alt="Photo exposition">
+                    <img data-src="/assets/images/exposition3.jpg" class="lazy exhibition-picture" alt="Photo exposition">
+                    <img data-src="/assets/images/exposition4.jpg" class="lazy exhibition-picture" alt="Photo exposition">
                 </div>
                 <p class="exhibition-title-p">Novembre 2019 - Aucaleuc</p>
                 <div class="exhibition-pictures">
-                    <img class="exhibition-picture" src="/assets/images/exposition5.jpg" alt="Photo exposition">
-                    <img class="exhibition-picture" src="/assets/images/exposition6.jpg" alt="Photo exposition">
-                    <img class="exhibition-picture" src="/assets/images/exposition7.jpg" alt="Photo exposition">
-                    <img class="exhibition-picture" src="/assets/images/exposition8.jpg" alt="Photo exposition">
+                    <img data-src="/assets/images/exposition5.jpg" class="lazy exhibition-picture" alt="Photo exposition">
+                    <img data-src="/assets/images/exposition6.jpg" class="lazy exhibition-picture" alt="Photo exposition">
+                    <img data-src="/assets/images/exposition7.jpg" class="lazy exhibition-picture" alt="Photo exposition">
+                    <img data-src="/assets/images/exposition8.jpg" class="lazy exhibition-picture" alt="Photo exposition">
                 </div>
             </article>
 
             <article>
-            <h4 class="collection-title"><span>La collection de maillots - par catégories</span></h4>
+                <h4 class="collection-title"><span>La collection de maillots - par catégories</span></h4>
                 <div class="accordions-pictures">
                     <div class="accordions-pictures1">
                         <p class="collection-title-p"><a href="{{path('front_collection50_60')}}" title="Maillot collection années 50-60">Années 50-60</a></p>
                         <div class="accordions-section1">
                         {% for cyclingShirt in cyclingShirts50_60 %}
                             {% if loop.index == 1 %}
-                                <a class="accordion-a" href="{{ path('front_shirt_cycling50_60', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="img img1" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
+                                <a class="accordion-a" href="{{ path('front_shirt_cycling50_60', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="lazy img img1" data-src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
                             {% elseif loop.index == 2 %}
-                                <a class="accordion-a" href="{{ path('front_shirt_cycling50_60', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="img img2" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
+                                <a class="accordion-a" href="{{ path('front_shirt_cycling50_60', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="lazy img img2" data-src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
                             {% elseif loop.index == 3 %}
-                                <a class="accordion-a" href="{{ path('front_shirt_cycling50_60', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="img img3" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
+                                <a class="accordion-a" href="{{ path('front_shirt_cycling50_60', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="lazy img img3" data-src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
                             {% endif %}
                         {% endfor %}
                         </div>
@@ -178,11 +178,11 @@
                         <div class="accordions-section2">
                         {% for cyclingShirt in cyclingShirts70 %}
                             {% if loop.index == 1 %}
-                                <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="img img4" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
+                                <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="lazy img img4" data-src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
                             {% elseif loop.index == 2 %}
-                                <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="img img5" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
+                                <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="lazy img img5" data-src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
                             {% elseif loop.index == 3 %}
-                                <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="img img6" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
+                                <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="lazy img img6" data-src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
                             {% endif %}
                         {% endfor %}
                         </div>
@@ -196,11 +196,11 @@
                     <div class="accordions-section1">
                     {% for cyclingShirt in cyclingShirts80 %}
                         {% if loop.index == 1 %}
-                            <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="img img1" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
+                            <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="lazy img img1" data-src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
                         {% elseif loop.index == 2 %}
-                            <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="img img2" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
+                            <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="lazy img img2" data-src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
                         {% elseif loop.index == 3 %}
-                            <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="img img3" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
+                            <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="lazy img img3" data-src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
                         {% endif %}
                     {% endfor %}
                     </div>
@@ -210,11 +210,11 @@
                     <div class="accordions-section2">
                     {% for cyclingShirt in cyclingShirts90 %}
                         {% if loop.index == 1 %}
-                            <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="img img4" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
+                            <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="lazy img img4" data-src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
                         {% elseif loop.index == 2 %}
-                            <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="img img5" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
+                            <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="lazy img img5" data-src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
                         {% elseif loop.index == 3 %}
-                            <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="img img6" src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
+                            <a class="accordion-a" href="{{ path('front_shirt_cycling70', { id : cyclingShirt.id }) }}" title="Détail du maillot"><img class="lazy img img6" data-src="/assets/images/uploads/{{ cyclingShirt.pictureFront }}" alt="{{ cyclingShirt.name }}"></a>
                         {% endif %}
                     {% endfor %}
                     </div>
@@ -256,6 +256,7 @@
         crossorigin="">
         </script>
         <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+
         {{ encore_entry_script_tags('map') }}
     {% endblock %}
 {% endblock %}
