@@ -21,6 +21,7 @@ class ArticleContentType extends AbstractType
 
             ->add('title', TextType::class, [
                 'label' => 'Titre de l\'article',
+                'required' => false,
             ])
 
             ->add('content', TextareaType::class, [
