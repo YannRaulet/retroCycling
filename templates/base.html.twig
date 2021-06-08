@@ -4,15 +4,11 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
     <meta name="description" content="Retro-Cycling.com est un site communautaire visant les passioné(e)s de cyclisme avant tout.
         Retro-Cycling se concentre sur l'histoire du cyclisme, les maillots, les coureurs, les grands tours etc...">
     <meta name="google-site-verification" content="Z4E0iywnaUCQYDd5whDL0jUpciKyUGntqoMOs_kblN0" />
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-    crossorigin=""/>
-    <link href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" rel="stylesheet" />
     <script type="text/javascript" src="https://tarteaucitron.io/load.js"></script>
     <script>
         tarteaucitron.init({ "privacyUrl": "{{path('front_legal_notice')}}" , /* URL de la politique de confidentialité */ 
@@ -109,7 +105,13 @@
     </footer>
 
     {% block javascript %}
+    
         {{ encore_entry_script_tags('app') }}
     {% endblock %}
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+    <link href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" rel="stylesheet" />
 </body>
 </html>

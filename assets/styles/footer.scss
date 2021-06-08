@@ -77,6 +77,8 @@
 
 .logo-github {
     padding-left: 10px;
+    width: 40px;
+    height: auto;
 }
 
 /* Tablet - PC version */
@@ -87,6 +89,11 @@
 
     .nav-footer .copyright-text,.nav-footer {
       text-align:center;
+    }
+
+    .logo-github {
+        width: 32px;
+        height: auto;
     }
 
 }
