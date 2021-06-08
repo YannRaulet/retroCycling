@@ -1,5 +1,5 @@
 //Icon of the jerseys on the map
-let iconPicture = L.icon ({
+var iconPicture = L.icon ({
     iconUrl: '/assets/images/cycling.png',
     iconSize: [25, 25],
     popupAnchor:  [0, -10]
@@ -34,12 +34,12 @@ let iconPicture = L.icon ({
     //Add leaflet legend control
     command.addTo(map);
 
-    //Constant for checkbox filters
-    const cyclingShirts = document.getElementById('checkboxAll');
-    const cyclingShirts50_60 = document.getElementById('checkbox50_60');
-    const cyclingShirts70 = document.getElementById('checkbox70');
-    const cyclingShirts80 = document.getElementById('checkbox80');
-    const cyclingShirts90 = document.getElementById('checkbox90');
+    //Variable for checkbox filters
+    var cyclingShirts = document.getElementById('checkboxAll');
+    var cyclingShirts50_60 = document.getElementById('checkbox50_60');
+    var cyclingShirts70 = document.getElementById('checkbox70');
+    var cyclingShirts80 = document.getElementById('checkbox80');
+    var cyclingShirts90 = document.getElementById('checkbox90');
 
     //Creating layers and clusters with leaflet class
     var layerGroup = L.layerGroup().addTo(map);
@@ -176,9 +176,6 @@ let iconPicture = L.icon ({
             //Asynchronously retrieves data with the server and returns an object of type Promise
             fetch("/api/map")
             .then(response => {
-                if (!response.ok) {
-                    throw Error(response.statusText);
-                }
                 return response.json()
             })
             .then(result => {
