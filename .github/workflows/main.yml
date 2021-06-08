@@ -25,6 +25,7 @@ jobs:
         ./vendor/bin/phpcs
         ./vendor/bin/phpstan analyse src --level max
         ./vendor/bin/phpmd src text phpmd.xml
+        ./node_modules/.bin/eslint assets/js
     
     - name: phpunit
       run: bin/phpunit
