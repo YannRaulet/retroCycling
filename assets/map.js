@@ -7,12 +7,12 @@ var iconPicture = L.icon({
 
 //Card initialization function
 function initMap() {
-    var map = L.map("mapId").setView([48.833, 2.333], 10); 
+    var map = L.map("mapId").setView([48.833, 2.333], 5); 
 
     L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-        minZoom: 2,
-        maxZoom: 13,
+        minZoom: 5,
+        maxZoom: 10,
         id: "mapbox/streets-v11",
         tileSize: 512,
         zoomOffset: -1,
@@ -46,7 +46,7 @@ function initMap() {
 
     var markersGroup = L.markerClusterGroup({
         //Added options from the github documentation
-        disableClusteringAtZoom: 13,
+        disableClusteringAtZoom: 10,
         spiderfyOnMaxZoom: false,
         removeOutsideVisibleBounds: true,
         showCoverageOnHover: false,
@@ -62,7 +62,7 @@ function initMap() {
 
     var markersGroup50_60 = L.markerClusterGroup({
         //Added options from the github documentation
-        disableClusteringAtZoom: 13,
+        disableClusteringAtZoom: 10,
         spiderfyOnMaxZoom: false,
         removeOutsideVisibleBounds: true,
         showCoverageOnHover: false,
@@ -78,7 +78,7 @@ function initMap() {
 
     var markersGroup70 = L.markerClusterGroup({
         //Added options from the github documentation
-        disableClusteringAtZoom: 13,
+        disableClusteringAtZoom: 10,
         spiderfyOnMaxZoom: false,
         removeOutsideVisibleBounds: true,
         showCoverageOnHover: false,
@@ -94,7 +94,7 @@ function initMap() {
 
     var markersGroup80 = L.markerClusterGroup({
         //Added options from the github documentation
-        disableClusteringAtZoom: 13,
+        disableClusteringAtZoom: 10,
         spiderfyOnMaxZoom: false,
         removeOutsideVisibleBounds: true,
         showCoverageOnHover: false,
@@ -110,7 +110,7 @@ function initMap() {
 
     var markersGroup90 = L.markerClusterGroup({
         //Added options from the github documentation
-        disableClusteringAtZoom: 13,
+        disableClusteringAtZoom: 10,
         spiderfyOnMaxZoom: false,
         removeOutsideVisibleBounds: true,
         showCoverageOnHover: false,
@@ -123,45 +123,6 @@ function initMap() {
             });
         }
     });
-
-    // 'checkboxAll' checked at the begining
-    document.getElementById("checkboxAll").checked = true;
-    if (cyclingShirts.checked === true) {
-        // get the method map form the apiController
-        fetch("/api/map")
-        .then(response => {
-            return response.json();
-        })
-        .then(result => {
-            result.forEach( element => {
-                //Get the coordinates from the Promise to add them to the LayerGroup
-                layerGroup = new L.marker([element.latitude, element.longitude], {icon: iconPicture})
-                    .bindPopup(function () {
-                        if (element.years == "Années 50-60") {
-                            return "<span>" + element.name + "</span>" + "<br>" +  "<div class='img-hover-zoom'>" + "<a href=" + "/collection50_60/" + element.id + ">" + "<img class='picturePopup' src=/assets/images/uploads/" + element.pictureFront + ">" + "</a>" + "</div>" +
-                            "<br>" + element.city +"<br>" + "<a href=" + "/collection50_60" + ">" + element.years + "</a>";
-                        }
-                        else if (element.years == "Années 70") {
-                            return "<span>" + element.name + "</span>" + "<br>" +  "<div class='img-hover-zoom'>" + "<a href=" + "/collection70/" + element.id + ">" + "<img class='picturePopup' src=/assets/images/uploads/" + element.pictureFront + ">" + "</a>" + "</div>" +
-                            "<br>" + element.city +"<br>" + "<a href=" + "/collection70" + ">" + element.years + "</a>";
-                        }
-                        else if (element.years == "Années 80") {
-                            return "<span>" + element.name + "</span>" + "<br>" +  "<div class='img-hover-zoom'>" + "<a href=" + "/collection80/" + element.id + ">" + "<img class='picturePopup' src=/assets/images/uploads/" + element.pictureFront + ">" + "</a>" + "</div>" +
-                            "<br>" + element.city +"<br>" + "<a href=" + "/collection80" + ">" + element.years + "</a>";
-                        }
-                        else if (element.years == "Années 90") {
-                            return "<span>" + element.name + "</span>" + "<br>" +  "<div class='img-hover-zoom'>" + "<a href=" + "/collection90/" + element.id + ">" + "<img class='picturePopup' src=/assets/images/uploads/" + element.pictureFront + ">" + "</a>" + "</div>" +
-                            "<br>" + element.city +"<br>" + "<a href=" + "/collection90" + ">" + element.years + "</a>";
-                        }
-                }, {className: "pop-up-leaflet", direction: "top"},
-                );
-                markersGroup.addLayer(layerGroup);
-            });
-            //Adds all markers to the clusterGroup
-            map.addLayer(markersGroup);
-        })
-        .catch(() => console.error("error"));
-    }
 
     //-----------------------------------------------------------------------------------------------------------
 
