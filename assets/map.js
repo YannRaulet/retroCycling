@@ -110,7 +110,6 @@ function initMap() {
             });
         }
     });
-
     var markersGroup70 = L.markerClusterGroup({
         //Added options from the github documentation
         disableClusteringAtZoom: 10,
@@ -126,7 +125,6 @@ function initMap() {
             });
         }
     });
-
     var markersGroup80 = L.markerClusterGroup({
         //Added options from the github documentation
         disableClusteringAtZoom: 10,
@@ -142,7 +140,6 @@ function initMap() {
             });
         }
     });
-
     var markersGroup90 = L.markerClusterGroup({
         //Added options from the github documentation
         disableClusteringAtZoom: 10,
@@ -158,9 +155,7 @@ function initMap() {
             });
         }
     });
-
     //-----------------------------------------------------------------------------------------------------------
-
     //Function for add or remove the markers on the map
     function filterAll() {
         //If the checkbox is checked then we add the markers on the map
@@ -221,9 +216,7 @@ function initMap() {
         }
     }
     document.getElementById("checkboxAll").addEventListener("click", filterAll, false);
-
     //-----------------------------------------------------------------------------------------------------------
-
     function filter50_60() {
         if (cyclingShirts50_60.checked === true) {
              document.getElementById("checkboxAll").checked = false;
@@ -235,7 +228,6 @@ function initMap() {
                 markersGroup.clearLayers();
             })
             .catch(() => console.error("error"));
-
             fetch("/api/filter50_60")
             .then(response => { 
                 return response.json();
@@ -265,9 +257,7 @@ function initMap() {
         }
     }
     document.getElementById("checkbox50_60").addEventListener("click", filter50_60, false);
-
     //-----------------------------------------------------------------------------------------------------------
-
     function filter70() {
         if (cyclingShirts70.checked === true) {
             document.getElementById("checkboxAll").checked = false;
@@ -279,7 +269,6 @@ function initMap() {
                 markersGroup.clearLayers();
             })
             .catch(() => console.error("error"));
-
             fetch("/api/filter70")
             .then(response => { 
                 return response.json();
@@ -309,9 +298,7 @@ function initMap() {
         }
     }
     document.getElementById("checkbox70").addEventListener("click", filter70, false);
-
     //-----------------------------------------------------------------------------------------------------------
-
     function filter80() {
         if (cyclingShirts80.checked === true) {
            document.getElementById("checkboxAll").checked = false;
@@ -323,7 +310,6 @@ function initMap() {
                 markersGroup.clearLayers();
             })
             .catch(() => console.error("error"));
-
             fetch("/api/filter80")
             .then(response => { 
                 return response.json();
@@ -353,12 +339,9 @@ function initMap() {
         }
     }
     document.getElementById("checkbox80").addEventListener("click", filter80, false);
-
     //-----------------------------------------------------------------------------------------------------------
-
     function filter90() {
         if (cyclingShirts90.checked === true) {
-
            document.getElementById("checkboxAll").checked = false;
             fetch("/api/map")
             .then(response => {
@@ -368,7 +351,6 @@ function initMap() {
                 markersGroup.clearLayers();
             })
             .catch(() => console.error("error"));
-
             fetch("/api/filter90")
             .then(response => { 
                 return response.json();
