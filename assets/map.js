@@ -33,14 +33,14 @@ function initMap() {
     };
     //Add leaflet legend control
     command.addTo(map);
-
+/*
     //Constant for checkbox filters
     var cyclingShirts = document.getElementById("checkboxAll");
     var cyclingShirts50_60 = document.getElementById("checkbox50_60");
     var cyclingShirts70 = document.getElementById("checkbox70");
     var cyclingShirts80 = document.getElementById("checkbox80");
     var cyclingShirts90 = document.getElementById("checkbox90");
-
+*/
     //Creating layers and clusters with leaflet class
     var layerGroup = L.layerGroup().addTo(map);
 
@@ -60,6 +60,41 @@ function initMap() {
         }
     });
 
+        fetch("/api/map")
+        .then(response => {
+            return response.json();
+        })
+        .then(result => {
+            result.forEach( element => {
+                //Get the coordinates from the Promise to add them to the LayerGroup
+                layerGroup = new L.marker([element.latitude, element.longitude], {icon: iconPicture})
+                    .bindPopup(function () {
+                        if (element.years == "Années 50-60") {
+                            return "<span>" + element.name + "</span>" + "<br>" +  "<div class='img-hover-zoom'>" + "<a href=" + "/collection50_60/" + element.id + ">" + "<img class='picturePopup' src=/assets/images/uploads/" + element.pictureFront + ">" + "</a>" + "</div>" +
+                            "<br>" + element.city +"<br>" + "<a href=" + "/collection50_60" + ">" + element.years + "</a>";
+                        }
+                        else if (element.years == "Années 70") {
+                            return "<span>" + element.name + "</span>" + "<br>" +  "<div class='img-hover-zoom'>" + "<a href=" + "/collection70/" + element.id + ">" + "<img class='picturePopup' src=/assets/images/uploads/" + element.pictureFront + ">" + "</a>" + "</div>" +
+                            "<br>" + element.city +"<br>" + "<a href=" + "/collection70" + ">" + element.years + "</a>";
+                        }
+                        else if (element.years == "Années 80") {
+                            return "<span>" + element.name + "</span>" + "<br>" +  "<div class='img-hover-zoom'>" + "<a href=" + "/collection80/" + element.id + ">" + "<img class='picturePopup' src=/assets/images/uploads/" + element.pictureFront + ">" + "</a>" + "</div>" +
+                            "<br>" + element.city +"<br>" + "<a href=" + "/collection80" + ">" + element.years + "</a>";
+                        }
+                        else if (element.years == "Années 90") {
+                            return "<span>" + element.name + "</span>" + "<br>" +  "<div class='img-hover-zoom'>" + "<a href=" + "/collection90/" + element.id + ">" + "<img class='picturePopup' src=/assets/images/uploads/" + element.pictureFront + ">" + "</a>" + "</div>" +
+                            "<br>" + element.city +"<br>" + "<a href=" + "/collection90" + ">" + element.years + "</a>";
+                        }
+                }, {className: "pop-up-leaflet", direction: "top"},
+                );
+                markersGroup.addLayer(layerGroup);
+            });
+            //Adds all markers to the clusterGroup
+            map.addLayer(markersGroup);
+        })
+        .catch(() => console.error("error"));
+    }
+/*
     var markersGroup50_60 = L.markerClusterGroup({
         //Added options from the github documentation
         disableClusteringAtZoom: 10,
@@ -364,7 +399,7 @@ function initMap() {
     }
     document.getElementById("checkbox90").addEventListener("click", filter90, false);
 }
-
+*/
 window.onload = function(){
     // Initialization function that runs when the DOM is loaded
     initMap();
