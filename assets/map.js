@@ -212,7 +212,7 @@ function initMap() {
                 markersGroup80.clearLayers();
                 markersGroup90.clearLayers();
             })
-            .catch(() => console.error("error"));
+            .catch(e=>console.log(e.message));
         //If the box is not checked, we delete the markers on the map
         } else if (cyclingShirts.checked === false) {
             window.fetch("/api/map")
@@ -249,7 +249,7 @@ function initMap() {
                 markersGroup.clearLayers();
             })
             .catch(() => console.error("error"));
-*/
+            */
             window.fetch("/api/filter50_60")
             .then((response) => {
                 if (response.status >= 200 && response.status <= 299) {
@@ -272,6 +272,9 @@ function initMap() {
             })
             .catch(() => console.error("error"));
         }  else if (cyclingShirts.checked === false) {
+            markersGroup50_60.clearLayers();
+
+            /*
             window.fetch("/api/filter50_60")
             .then((response) => {
                 if (response.status >= 200 && response.status <= 299) {
@@ -284,6 +287,7 @@ function initMap() {
                 markersGroup50_60.clearLayers();
             })
             .catch(() => console.error("error"));
+            */
         }
     }
     document.getElementById("checkbox50_60").addEventListener("click", filter50_60, false);
@@ -327,8 +331,11 @@ function initMap() {
                 });
                 map.addLayer(markersGroup70);
             })
-            .catch(() => console.error("error"));  
+            .catch(() => console.error("error"));
+
         }  else if (cyclingShirts.checked === false) {
+            markersGroup70.clearLayers();
+            /*
             window.fetch("/api/filter70")
             .then((response) => {
                 if (response.status >= 200 && response.status <= 299) {
@@ -341,6 +348,7 @@ function initMap() {
                 markersGroup70.clearLayers();
             })
             .catch(() => console.error("error"));
+            */
         }
     }
     document.getElementById("checkbox70").addEventListener("click", filter70, false);
@@ -386,6 +394,8 @@ function initMap() {
             })
             .catch(() => console.error("error"));  
         }  else if (cyclingShirts.checked === false) {
+            markersGroup80.clearLayers();
+            /*
             window.fetch("/api/filter80")
             .then((response) => {
                 if (response.status >= 200 && response.status <= 299) {
@@ -398,6 +408,7 @@ function initMap() {
                 markersGroup80.clearLayers();
             })
             .catch(() => console.error("error"));
+            */
         }
     }
     document.getElementById("checkbox80").addEventListener("click", filter80, false);
@@ -443,6 +454,8 @@ function initMap() {
             })
             .catch(() => console.error("error"));  
         }  else if (cyclingShirts.checked === false) {
+                markersGroup90.clearLayers();
+            /*
             window.fetch("/api/filter90")
             .then((response) => {
                 if (response.status >= 200 && response.status <= 299) {
@@ -455,6 +468,7 @@ function initMap() {
                 markersGroup90.clearLayers();
             })
             .catch(() => console.error("error"));
+            */
         }
     }
     document.getElementById("checkbox90").addEventListener("click", filter90, false);
