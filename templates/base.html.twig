@@ -1,5 +1,4 @@
 {# This is the base that all other views will extend #}
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -8,7 +7,6 @@
     <meta name="description" content="Retro-Cycling.com est un site communautaire visant les passioné(e)s de cyclisme avant tout.
         Retro-Cycling se concentre sur l'histoire du cyclisme, les maillots, les coureurs, les grands tours etc...">
     <meta name="google-site-verification" content="Z4E0iywnaUCQYDd5whDL0jUpciKyUGntqoMOs_kblN0" />
-
     <script type="text/javascript" src="https://tarteaucitron.io/load.js"></script>
     <script>
         tarteaucitron.init({ "privacyUrl": "{{path('front_legal_notice')}}" , /* URL de la politique de confidentialité */ 
@@ -49,14 +47,13 @@
 
           "mandatory": true,/* Afficher un message sur les cookies obligatoires */ 
         });
-
         tarteaucitron.user.gtagUa = 'G-5H5J84NTT3';
         tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */ };
         (tarteaucitron.job = tarteaucitron.job || []).push('gtag');
     </script>
-   
     <link rel="canonical" href="https://www.retro-cycling.fr" />
-  
+    <link rel="icon" type="image/png" href="{{ asset('assets/images/logo-retro.png') }}" />
+
     <title>{% block title %}Retro Cycling{% endblock %}</title>
     {{ encore_entry_link_tags('app') }}
 </head>
@@ -92,7 +89,7 @@
     {% endblock %}
     </main>
 
-    <button onclick="topFunction()" id="btnScroll" title="Retourner en haut"><img class="btnHigh" src="{{ asset('assets/images/Top.png') }}" alt="Retourner en haut"></button>
+    <button title="Back to top" id="btnScroll" class="scroll"><img class="btnHigh" src="{{ asset('assets/images/Top.png') }}" alt="Retourner en haut"></button>
 
     <footer>
     {% block footer %}
@@ -100,12 +97,10 @@
     </footer>
 
     {% block javascript %}
-    
         {{ encore_entry_script_tags('app') }}
     {% endblock %}
 
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
-    <link rel="icon" type="image/png" href="{{ asset('assets/images/logo-retro.png') }}" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Rokkitt:wght@600&display=swap" rel="stylesheet" />
