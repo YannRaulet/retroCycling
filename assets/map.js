@@ -123,7 +123,7 @@ function initMap() {
     document.getElementById("checkboxAll").checked = true;
     if (cyclingShirts.checked === true) {
         // get the method map form the apiController
-        fetch("/api/map")
+        window.fetch("/api/map")
         .then((response) => {
             if (response.status >= 200 && response.status <= 299) {
                 return response.json();
@@ -170,7 +170,7 @@ function initMap() {
             document.getElementById("checkbox80").checked = false;
             document.getElementById("checkbox90").checked = false;
             //Asynchronously retrieves data with the server and returns an object of type Promise
-            fetch("/api/map")
+            window.fetch("/api/map")
             .then((response) => {
                 if (response.status >= 200 && response.status <= 299) {
                     return response.json();
@@ -214,7 +214,7 @@ function initMap() {
             .catch(() => console.error("error"));
         //If the box is not checked, we delete the markers on the map
         } else if (cyclingShirts.checked === false) {
-            fetch("/api/map")
+            window.fetch("/api/map")
             .then((response) => {
                 if (response.status >= 200 && response.status <= 299) {
                     return response.json();
@@ -233,7 +233,7 @@ function initMap() {
     function filter50_60() {
         if (cyclingShirts50_60.checked === true) {
              document.getElementById("checkboxAll").checked = false;
-            fetch("/api/map")
+            window.fetch("/api/map")
             .then((response) => {
                 if (response.status >= 200 && response.status <= 299) {
                     return response.json();
@@ -245,7 +245,7 @@ function initMap() {
                 markersGroup.clearLayers();
             })
             .catch(() => console.error("error"));
-            fetch("/api/filter50_60")
+            window.fetch("/api/filter50_60")
             .then((response) => {
                 if (response.status >= 200 && response.status <= 299) {
                     return response.json();
@@ -267,7 +267,7 @@ function initMap() {
             })
             .catch(() => console.error("error"));
         }  else if (cyclingShirts.checked === false) {
-            fetch("/api/filter50_60")
+            window.fetch("/api/filter50_60")
             .then((response) => {
                 if (response.status >= 200 && response.status <= 299) {
                     return response.json();
@@ -286,7 +286,7 @@ function initMap() {
     function filter70() {
         if (cyclingShirts70.checked === true) {
             document.getElementById("checkboxAll").checked = false;
-            fetch("/api/map")
+            window.fetch("/api/map")
             .then((response) => {
                 if (response.status >= 200 && response.status <= 299) {
                     return response.json();
@@ -298,7 +298,7 @@ function initMap() {
                 markersGroup.clearLayers();
             })
             .catch(() => console.error("error"));
-            fetch("/api/filter70")
+            window.fetch("/api/filter70")
             .then((response) => {
                 if (response.status >= 200 && response.status <= 299) {
                     return response.json();
@@ -320,7 +320,7 @@ function initMap() {
             })
             .catch(() => console.error("error"));  
         }  else if (cyclingShirts.checked === false) {
-            fetch("/api/filter70")
+            window.fetch("/api/filter70")
             .then((response) => {
                 if (response.status >= 200 && response.status <= 299) {
                     return response.json();
@@ -339,7 +339,7 @@ function initMap() {
     function filter80() {
         if (cyclingShirts80.checked === true) {
            document.getElementById("checkboxAll").checked = false;
-            fetch("/api/map")
+            window.fetch("/api/map")
             .then((response) => {
                 if (response.status >= 200 && response.status <= 299) {
                     return response.json();
@@ -351,7 +351,7 @@ function initMap() {
                 markersGroup.clearLayers();
             })
             .catch(() => console.error("error"));
-            fetch("/api/filter80")
+            window.fetch("/api/filter80")
             .then((response) => {
                 if (response.status >= 200 && response.status <= 299) {
                     return response.json();
@@ -373,7 +373,7 @@ function initMap() {
             })
             .catch(() => console.error("error"));  
         }  else if (cyclingShirts.checked === false) {
-            fetch("/api/filter80")
+            window.fetch("/api/filter80")
             .then((response) => {
                 if (response.status >= 200 && response.status <= 299) {
                     return response.json();
@@ -392,7 +392,7 @@ function initMap() {
     function filter90() {
         if (cyclingShirts90.checked === true) {
            document.getElementById("checkboxAll").checked = false;
-            fetch("/api/map")
+            window.fetch("/api/map")
             .then((response) => {
                 if (response.status >= 200 && response.status <= 299) {
                     return response.json();
@@ -404,7 +404,7 @@ function initMap() {
                 markersGroup.clearLayers();
             })
             .catch(() => console.error("error"));
-            fetch("/api/filter90")
+            window.fetch("/api/filter90")
             .then((response) => {
                 if (response.status >= 200 && response.status <= 299) {
                     return response.json();
@@ -426,7 +426,7 @@ function initMap() {
             })
             .catch(() => console.error("error"));  
         }  else if (cyclingShirts.checked === false) {
-            fetch("/api/filter90")
+            window.fetch("/api/filter90")
             .then((response) => {
                 if (response.status >= 200 && response.status <= 299) {
                     return response.json();
