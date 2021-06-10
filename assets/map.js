@@ -118,7 +118,7 @@ function initMap() {
             });
         }
     });
-    /*
+
     // 'checkboxAll' checked at the begining
     document.getElementById("checkboxAll").checked = true;
     if (cyclingShirts.checked === true) {
@@ -133,35 +133,37 @@ function initMap() {
         })
         .then(result => {
             result.forEach( element => {
-                //Get the coordinates from the Promise to add them to the LayerGroup
-                layerGroup = new L.marker([element.latitude, element.longitude], {icon: iconPicture})
-                    .bindPopup(function () {
-                        if (element.years == "Années 50-60") {
-                            return "<span>" + element.name + "</span>" + "<br>" +  "<div class='img-hover-zoom'>" + "<a href=" + "/collection50_60/" + element.id + ">" + "<img class='picturePopup' src=/assets/images/uploads/" + element.pictureFront + ">" + "</a>" + "</div>" +
-                            "<br>" + element.city +"<br>" + "<a href=" + "/collection50_60" + ">" + element.years + "</a>"
-                        }
-                        else if (element.years == "Années 70") {
-                            return "<span>" + element.name + "</span>" + "<br>" +  "<div class='img-hover-zoom'>" + "<a href=" + "/collection70/" + element.id + ">" + "<img class='picturePopup' src=/assets/images/uploads/" + element.pictureFront + ">" + "</a>" + "</div>" +
-                            "<br>" + element.city +"<br>" + "<a href=" + "/collection70" + ">" + element.years + "</a>"
-                        }
-                        else if (element.years == "Années 80") {
-                            return "<span>" + element.name + "</span>" + "<br>" +  "<div class='img-hover-zoom'>" + "<a href=" + "/collection80/" + element.id + ">" + "<img class='picturePopup' src=/assets/images/uploads/" + element.pictureFront + ">" + "</a>" + "</div>" +
-                            "<br>" + element.city +"<br>" + "<a href=" + "/collection80" + ">" + element.years + "</a>"
-                        }
-                        else if (element.years == "Années 90") {
-                            return "<span>" + element.name + "</span>" + "<br>" +  "<div class='img-hover-zoom'>" + "<a href=" + "/collection90/" + element.id + ">" + "<img class='picturePopup' src=/assets/images/uploads/" + element.pictureFront + ">" + "</a>" + "</div>" +
-                            "<br>" + element.city +"<br>" + "<a href=" + "/collection90" + ">" + element.years + "</a>"
-                        }
-                }, {className: "pop-up-leaflet", direction: "top"},
-                );
-                markersGroup.addLayer(layerGroup);
+                if (element.latitude && element.longitude != null) {
+                    //Get the coordinates from the Promise to add them to the LayerGroup
+                    layerGroup = new L.marker([element.latitude, element.longitude], {icon: iconPicture})
+                        .bindPopup(function () {
+                            if (element.years == "Années 50-60") {
+                                return "<span>" + element.name + "</span>" + "<br>" +  "<div class='img-hover-zoom'>" + "<a href=" + "/collection50_60/" + element.id + ">" + "<img class='picturePopup' src=/assets/images/uploads/" + element.pictureFront + ">" + "</a>" + "</div>" +
+                                "<br>" + element.city +"<br>" + "<a href=" + "/collection50_60" + ">" + element.years + "</a>"
+                            }
+                            else if (element.years == "Années 70") {
+                                return "<span>" + element.name + "</span>" + "<br>" +  "<div class='img-hover-zoom'>" + "<a href=" + "/collection70/" + element.id + ">" + "<img class='picturePopup' src=/assets/images/uploads/" + element.pictureFront + ">" + "</a>" + "</div>" +
+                                "<br>" + element.city +"<br>" + "<a href=" + "/collection70" + ">" + element.years + "</a>"
+                            }
+                            else if (element.years == "Années 80") {
+                                return "<span>" + element.name + "</span>" + "<br>" +  "<div class='img-hover-zoom'>" + "<a href=" + "/collection80/" + element.id + ">" + "<img class='picturePopup' src=/assets/images/uploads/" + element.pictureFront + ">" + "</a>" + "</div>" +
+                                "<br>" + element.city +"<br>" + "<a href=" + "/collection80" + ">" + element.years + "</a>"
+                            }
+                            else if (element.years == "Années 90") {
+                                return "<span>" + element.name + "</span>" + "<br>" +  "<div class='img-hover-zoom'>" + "<a href=" + "/collection90/" + element.id + ">" + "<img class='picturePopup' src=/assets/images/uploads/" + element.pictureFront + ">" + "</a>" + "</div>" +
+                                "<br>" + element.city +"<br>" + "<a href=" + "/collection90" + ">" + element.years + "</a>"
+                            }
+                    }, {className: "pop-up-leaflet", direction: "top"},
+                    );
+                    markersGroup.addLayer(layerGroup);
+                }
             });
             //Adds all markers to the clusterGroup
             map.addLayer(markersGroup);
         })
         .catch(() => console.error('error'));
     }
-    */
+
     //Function for add or remove the markers on the map
     function filterAll() {
         //If the checkbox is checked then we add the markers on the map
