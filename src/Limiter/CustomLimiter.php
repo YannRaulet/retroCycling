@@ -25,7 +25,7 @@ class CustomLimiter extends AbstractController
 
         // you can also use the ensureAccepted() method - which throws a
         // RateLimitExceededException if the limit has been reached
-        $limiter->consume(1)->ensureAccepted();
+        //$limiter->consume(1)->ensureAccepted();
 
         // ...
     }
