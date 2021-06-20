@@ -33,5 +33,3 @@ services:
 
     app.custom.limiter:
         class: App\Limiter\CustomLimiter
-        arguments:
-            - '@limiter.max_login_failure'
