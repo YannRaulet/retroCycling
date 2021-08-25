@@ -17,6 +17,7 @@ class CommentType extends AbstractType
             ->add('comment', TextareaType::class, [
             'label' => 'Publier un commentaire',
             ])
+
             ->add('parentid', HiddenType::class, [
                 'mapped' => false
             ])

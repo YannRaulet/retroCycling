@@ -54,8 +54,10 @@
 // Function to add responses to comments
 
 window.onload = () => {
+    // We put an event listener on all the answer buttons
     document.querySelectorAll("[data-reply]").forEach(element => {
         element.addEventListener("click", function() {
+            // parentid in commentType: hiddenType, unmapped: not stored in DB
             document.querySelector("#comment_parentid").value = this.dataset.id;
         });
     });

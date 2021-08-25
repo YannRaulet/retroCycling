@@ -201,8 +201,10 @@
 
             <article id="blogCyclist" style="display:none;">
                 <div class="blog-article">
+
                     {% for article in articles %}
                         {% if article.category == "Coureurs d'antan" %}
+                        
                             <div class="bloc-article">
                                 <h2 class="title-article">{{ article.name }}</h2>
                                 <div class="img-article">
