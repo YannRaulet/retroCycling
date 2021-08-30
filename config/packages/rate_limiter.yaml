@@ -1,6 +1,7 @@
 framework:
     rate_limiter:
-        max_login_failure:
-            policy: fixed_window
-            limit: 70
+        anonymous_api:
+            # use 'sliding_window' if you prefer that policy
+            policy: 'fixed_window'
+            limit: 60
             interval: '60 minutes'

@@ -2,31 +2,33 @@
 
 namespace App\Limiter;
 
-use Symfony\Component\HttpFoundation\RateLimiter\RequestRateLimiterInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimit;
+use Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
 
-class CustomLimiter implements RequestRateLimiterInterface
+class CustomLimiter extends AbstractController
 {
-    /**
-     * @var LimiterInterface
-     */
-    private $limiter;
-
-    public function __construct(RateLimiterFactory $factory)
+    // if you're using service autowiring, the variable name must be:
+    // "rate limiter name" (in camelCase) + "Limiter" suffix
+    public function index(Request $request, RateLimiterFactory $anonymousApiLimiter): mixed
     {
-        $this->limiter = $factory->create('a_unique_identifier');
+        // create a limiter based on a unique identifier of the client
+        // (e.g. the client's IP address, a username/email, an API key, etc.)
+        $limiter = $anonymousApiLimiter->create($request->getClientIp());
+
+        // the argument of consume() is the number of tokens to consume
+        // and returns an object of type Limit
+        if (false === $limiter->consume(1)->isAccepted()) {
+            throw new TooManyRequestsHttpException();
+        }
+
+        // you can also use the ensureAccepted() method - which throws a
+        // RateLimitExceededException if the limit has been reached
+        //$limiter->consume(1)->ensureAccepted();
+
+        // ...
     }
 
-    public function consume(Request $request): RateLimit
-    {
-        return $this->limiter->consume();
-    }
-
-    public function reset(Request $request): void
-    {
-        $this->limiter->reset();
-    }
+    // ...
 }
