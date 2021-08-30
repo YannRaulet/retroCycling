@@ -12,7 +12,7 @@
     font-size: 50px;
     color: #fff;
     text-align: center;
-    padding-top: 50px;
+    padding-top: 10px;
     z-index: 2;
     position: relative;
 }
@@ -28,7 +28,7 @@
 
 .contact-title-h2 {
     text-align: center;
-    padding-top: 10%;
+    padding-top: 2%;
 }
 
 .form-contact {
@@ -169,8 +169,9 @@
 
 /* Tablet - PC version */
 @media (min-width: 1024px) {
+    
     .contact-title {
-        padding-top: 5%;
+        padding-top: 1%;
     }
 
     .contact-container {
@@ -185,7 +186,6 @@
     }
 
     .form-contact {
-        //padding-top: 10%;
         width: 90%;
     }
 

@@ -183,10 +183,8 @@ class FrontController extends AbstractController
                 // we will look for the corresponding comment
                 $parent = $manager->getRepository(Comment::class)->find($parentid);
             }
-
-            // we define the parrent
+            // we define the parent, if parent doesn't exist, it is null
             $comment->setParent($parent ?? null);
-
             $manager->persist($comment);
             $manager->flush();
 

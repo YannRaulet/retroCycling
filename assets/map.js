@@ -254,8 +254,9 @@ function initMap() {
                     if (element.latitude && element.longitude != null) {
                         layerGroup = new L.marker([element.latitude, element.longitude], {icon: iconPicture})
                             .bindPopup(function () {
-                                return "<span>" + element.name + "</span>" + "<br>" +  "<div class='img-hover-zoom'>" + "<a href=" + "/collection50_60/" + element.id + ">" + "<img class='picturePopup' src=/assets/images/uploads/" + element.pictureFront + ">" + "</a>" + "</div>" +
-                                "<br>" + element.city +"<br>" + "<a href=" + "/collection50_60" + ">" + element.years + "</a>";
+                                return "<span>" + element.name + "</span>" + "<br>" +  "<div class='img-hover-zoom'>" + "<a href=" +
+                                "/collection50_60/" + element.id+ ">" + "<img class='picturePopup' src=/assets/images/uploads/" + element.pictureFront
+                                + ">" + "</a>" + "</div>" + "<br>" + element.city +"<br>" + "<a href=" + "/collection50_60" + ">" + element.years + "</a>";
                         }, {className: "pop-up-leaflet", direction: "top"},
                         );
                         markersGroup50_60.addLayer(layerGroup);
