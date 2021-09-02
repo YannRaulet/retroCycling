@@ -83,7 +83,7 @@
                                     - Le {{ comment.createdAt|date("d/m/Y à H:i") }} -</p>
                                 </div>
                             </div>
-                            <p class="comments-text">{{ comment.comment}}</p>
+                            <p class="comments-text">{{ comment.comment|raw}}</p>
                             <p><a href="#add-comment" data-reply data-id="{{ comment.id }}" class="btn btn-comment">Répondre</a></p>
                             {% if is_granted("ROLE_ADMIN") %}
                                 <form method="post" class="button-comment-delete" action="{{ path('front_comment_delete', {'id': comment.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer ce commentaire ?');">
@@ -106,7 +106,7 @@
                                         - Le {{ reply.createdAt|date("d/m/Y à H:i") }} -</p>
                                     </div>
                                 </div>
-                                <p class="replies-text">{{ reply.comment}}</p>
+                                <p class="replies-text">{{ reply.comment|raw}}</p>
                                 {% if is_granted("ROLE_ADMIN") %}
                                     <form method="post" class="button-comment-delete" action="{{ path('front_comment_delete', {'id': reply.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer ce commentaire ?');">
                                         <input type="hidden" name="_method" value="DELETE">
@@ -199,7 +199,7 @@
                                         - Le {{ comment.createdAt|date("d/m/Y à H:i") }} -</p>
                                     </div>
                                 </div>
-                                <p class="comments-text">{{ comment.comment}}</p>
+                                <p class="comments-text">{{ comment.comment|raw}}</p>
                                 <p><a href="#add-comment" data-reply data-id="{{ comment.id }}" class="btn btn-comment">Répondre</a></p>
                             </div>
                             {% if is_granted("ROLE_ADMIN") %}
@@ -221,7 +221,7 @@
                                             - Le {{ reply.createdAt|date("d/m/Y à H:i") }} -</p>
                                         </div>
                                     </div>
-                                    <p class="replies-text">{{ reply.comment}}</p>
+                                    <p class="replies-text">{{ reply.comment|raw}}</p>
                                 </div>
                                 {% if is_granted("ROLE_ADMIN") %}
                                     <form method="post" action="{{ path('front_comment_delete', {'id': reply.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer ce commentaire ?');">
